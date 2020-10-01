@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Theme Colors -->
+    <color name="colorPrimary">#1a237e</color>
+    <color name="colorPrimary_overlay">#7f1a237e</color>
+    <color name="colorPrimaryDark">#000051</color>
+    <color name="colorPrimaryDark_overlay">#7f000051</color>
+    <color name="colorPrimaryLight">#534bae</color>
+    <color name="colorPrimaryLight_overlay">#7f534bae</color>
+    <color name="colorAccent">#304ffe</color>
+    <color name="colorAccent_overlay">#7f304ffe</color>
+
+    <!-- Standard App Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#7f7f7f</color>
+    <color name="green">#009900</color>
+    <color name="green_overlay">#7f009900</color>
+    <color name="red">#990000</color>
+    <color name="red_overlay">#7f990000</color>
+    <color name="black_overlay">#7f000000</color>
+    <color name="white_overlay">#7fffffff</color>
+    <color name="gray_overlay">#7f7f7f7f</color>
+    <color name="ltgray">#f7f7f7f7</color>
+    <color name="ltgray_overlay">#f7f7f7</color>
+
+</resources>
