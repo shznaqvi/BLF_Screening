@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioGroup
@@ -117,7 +116,7 @@ class SectionDActivity : AppCompatActivity() {
 
 
     fun BtnContinue(v: View) {
-        if (!formValidation()) return
+        /*if (!formValidation()) return
         try {
             saveDraft()
         } catch (e: JSONException) {
@@ -128,7 +127,7 @@ class SectionDActivity : AppCompatActivity() {
             startActivity(Intent(this, SectionEActivity::class.java))
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show()
-        }
+        }*/
     }
 
 

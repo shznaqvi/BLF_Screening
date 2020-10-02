@@ -42,14 +42,6 @@ import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionBActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionDActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionFActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionGActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionHActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionIActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionJActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionKActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionLActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.blf_screening.utils.CreateTable;
@@ -331,30 +323,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 break;
             case R.id.formD:
                 oF = new Intent(this, SectionDActivity.class);
-                break;
-            case R.id.formE:
-                oF = new Intent(this, SectionEActivity.class);
-                break;
-            case R.id.formF:
-                oF = new Intent(this, SectionFActivity.class);
-                break;
-            case R.id.formG:
-                oF = new Intent(this, SectionGActivity.class);
-                break;
-            case R.id.formH:
-                oF = new Intent(this, SectionHActivity.class);
-                break;
-            case R.id.formI:
-                oF = new Intent(this, SectionIActivity.class);
-                break;
-            case R.id.formJ:
-                oF = new Intent(this, SectionJActivity.class);
-                break;
-            case R.id.formK:
-                oF = new Intent(this, SectionKActivity.class);
-                break;
-            case R.id.formL:
-                oF = new Intent(this, SectionLActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);

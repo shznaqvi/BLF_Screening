@@ -43,46 +43,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish" />
         <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionLActivity"
-            android:label="@string/sectionl_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionKActivity"
-            android:label="@string/sectionk_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionJActivity"
-            android:label="@string/sectionj_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionIActivity"
-            android:label="@string/sectioni_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionHActivity"
-            android:label="@string/sectionh_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionGActivity"
-            android:label="@string/sectiong_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionFActivity"
-            android:label="@string/sectionf_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
-            android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEActivity"
-            android:label="@string/sectione_mainheading"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
-        <activity
             android:name="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionDActivity"
             android:label="@string/sectiond_mainheading"
             android:screenOrientation="portrait"

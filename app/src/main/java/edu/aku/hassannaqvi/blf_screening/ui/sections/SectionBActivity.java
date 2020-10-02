@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -55,7 +54,7 @@ public class SectionBActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
-        if (!formValidation()) return;
+        /*if (!formValidation()) return;
         try {
             SaveDraft();
         } catch (JSONException e) {
@@ -67,7 +66,7 @@ public class SectionBActivity extends AppCompatActivity {
             startActivity(new Intent(this, a16 == 7 || a16 == 10 ? SectionDActivity.class : a16 >= 1 && a16 <= 6 ? SectionCActivity.class : SectionEActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     private boolean UpdateDB() {
