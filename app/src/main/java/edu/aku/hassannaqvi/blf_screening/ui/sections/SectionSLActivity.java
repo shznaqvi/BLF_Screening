@@ -62,7 +62,7 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
-        if (formValidation()) return;
+        if (!formValidation()) return;
         try {
             SaveDraft();
         } catch (JSONException e) {
@@ -94,6 +94,7 @@ public class SectionSLActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         JSONObject json = new JSONObject();
+
         json.put("sl2", bi.sl2.getText().toString());
 
         json.put("sl301", bi.sl301.getText().toString());
@@ -116,8 +117,8 @@ public class SectionSLActivity extends AppCompatActivity {
 
         json.put("sl703", bi.sl703.getText().toString());
 
-        json.put("sl8", bi.sl801.isChecked() ? ""
-                : bi.sl802.isChecked() ? ""
+        json.put("sl8", bi.sl801.isChecked() ? "1"
+                : bi.sl802.isChecked() ? "2"
                 : "-1");
 
         json.put("sl9", bi.sl9.getText().toString());
@@ -125,27 +126,6 @@ public class SectionSLActivity extends AppCompatActivity {
         json.put("sl10", bi.sl10.getText().toString());
 
         json.put("sl11", bi.sl11.getText().toString());
-
-
-
-   /* private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
-        if (bi.a05b2.isChecked() || bi.a0702.isChecked()) return true;
-
-        if (!dtFlag) {
-            return Validator.emptyCustomTextBox(this, bi.a13yy, "Invalid date!", false);
-        }
-
-        if (Integer.parseInt(bi.a14mm.getText().toString()) == 0 && Integer.parseInt(bi.a14yy.getText().toString()) == 0)
-            return Validator.emptyCustomTextBox(this, bi.a14yy, "Both Month & Year don't be zero!!", false);
-
-        return true;
-    }*/
-
-    /*public void BtnEnd() {
-        if (!Validator.emptyCheckingContainer(this, bi.fldGrpSecA00)) return;
-        AppUtilsKt.contextEndActivity(this, false);
-    }*/
 
     }
 

@@ -68,7 +68,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-
                     <TextView
                         android:id="@+id/qtxt_sf1"
                         android:layout_width="match_parent"
@@ -213,6 +212,7 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -448,9 +448,20 @@
 
                         <TextView
                             android:id="@+id/qtxt_sf7"
-                            android:layout_width="409dp"
-                            android:layout_height="13dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_sf7"
                             android:text="@string/sf7" />
+
+                        <TextView
+                            android:id="@+id/q_sf7"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_sf7"
+                            android:layout_alignBottom="@id/qtxt_sf7"
+                            android:text="@string/Q_sf7" />
+
                     </RelativeLayout>
 
                     <LinearLayout
@@ -1763,6 +1774,7 @@
                             android:layout_alignTop="@id/qtxt_sf1507"
                             android:layout_alignBottom="@id/qtxt_sf1507"
                             android:text="@string/Q_sf1507" />
+
                     </RelativeLayout>
 
                     <RadioGroup
@@ -1784,7 +1796,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/sf150702" />
+
                     </RadioGroup>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -2180,7 +2194,9 @@
 
                         app:type="range" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView><!--EndButton LinearLayout-->
+            </androidx.cardview.widget.CardView>
+
+            <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -2208,7 +2224,9 @@
                     android:text="Save"
                     android:textColor="@color/white" />
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
+
 </layout>

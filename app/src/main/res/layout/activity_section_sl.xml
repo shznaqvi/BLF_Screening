@@ -442,6 +442,7 @@
                             android:layout_alignTop="@id/qtxt_sl7"
                             android:layout_alignBottom="@id/qtxt_sl7"
                             android:text="@string/Q_sl7" />
+
                     </RelativeLayout>
 
                     <LinearLayout
@@ -523,7 +524,9 @@
                                 app:minValue="2020"
                                 app:type="range" />
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </LinearLayout>
 
 
