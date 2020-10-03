@@ -170,14 +170,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sl301" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl301"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sl301"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="29"
                                 app:minValue="1"
@@ -194,14 +197,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sl302" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl302"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sl302"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="11"
                                 app:minValue="1"
@@ -218,14 +224,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sl303" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl303"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sl303"
                                 android:inputType="number"
+                                android:maxLength="4"
                                 app:mask="##"
                                 app:maxValue="2020"
                                 app:minValue="2019"
@@ -322,8 +331,6 @@
             </androidx.cardview.widget.CardView>
 
             <!-- sl6  Title   -->
-
-            <!-- sl7  Title   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsl6"
                 style="@style/cardView">
@@ -369,14 +376,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sl601" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl601"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sl601"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="40"
                                 app:minValue="1"
@@ -393,14 +403,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sl602" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl602"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sl602"
                                 android:inputType="number"
+                                android:maxLength="1"
                                 app:mask="##"
                                 app:maxValue="6"
                                 app:minValue="1"
@@ -413,6 +426,7 @@
 
             </androidx.cardview.widget.CardView>
 
+            <!-- sl7  Title   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsl7"
                 style="@style/cardView">
@@ -459,16 +473,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sl701" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl701"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sl701"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="29"
                                 app:minValue="1"
@@ -484,16 +499,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sl702" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl702"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sl702"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="11"
                                 app:minValue="1"
@@ -509,16 +525,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sl703" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl703"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sl703"
                                 android:inputType="number"
+                                android:maxLength="4"
                                 app:mask="##"
                                 app:maxValue="2021"
                                 app:minValue="2020"
@@ -528,7 +545,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
 
             </androidx.cardview.widget.CardView>
 
