@@ -68,11 +68,28 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/qtxt_sf1"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/sf1" />
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_sf1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_sf1"
+                            android:text="@string/sf1" />
+
+                        <TextView
+                            android:id="@+id/q_sf1"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_sf1"
+                            android:layout_alignBottom="@id/qtxt_sf1"
+                            android:text="@string/Q_sf1" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,16 +105,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sf101" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf101"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sf101"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="29"
                                 app:minValue="1"
@@ -113,16 +131,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sf102" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf102"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sf102"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="11"
                                 app:minValue="1"
@@ -138,20 +157,22 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sf103" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf103"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sf103"
                                 android:inputType="number"
+                                android:maxLength="4"
                                 app:mask="##"
                                 app:maxValue="2020"
                                 app:minValue="2019"
                                 app:type="range" />
+
                         </LinearLayout>
 
                     </LinearLayout>
@@ -170,20 +191,22 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sf104" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf104"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sf104"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="23"
                                 app:minValue="1"
                                 app:type="range" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -195,25 +218,28 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="12dp"
+                                android:gravity="center"
                                 android:text="@string/sf105" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf105"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
+                                android:gravity="center"
                                 android:hint="@string/sf105"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="59"
                                 app:minValue="1"
                                 app:type="range" />
+
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <!-- sf2  Input   -->
@@ -338,8 +364,6 @@
                         android:hint="@string/sf4"
                         android:inputType="number"
                         app:mask="##"
-
-
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -478,14 +502,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sf701" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf701"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sf701"
                                 android:inputType="number"
+                                android:maxLength="2"
                                 app:mask="##"
                                 app:maxValue="40"
                                 app:minValue="1"
@@ -502,14 +529,17 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:text="@string/sf702" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf702"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
+                                android:gravity="center"
                                 android:hint="@string/sf702"
                                 android:inputType="number"
+                                android:maxLength="1"
                                 app:mask="##"
                                 app:maxValue="6"
                                 app:minValue="0"
@@ -1097,9 +1127,13 @@
                             android:id="@+id/sf130502"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/sf130502" />
+
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <!-- sf1306  Radio   -->
@@ -2123,56 +2157,57 @@
                             android:layout_alignTop="@id/qtxt_sf19"
                             android:layout_alignBottom="@id/qtxt_sf19"
                             android:text="@string/Q_sf19" />
+
                     </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:layout_marginTop="12dp"
-                            android:text="@string/sf1901" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/sf1901"
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:layout_marginBottom="12dp"
-                            android:hint="@string/sf1901" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:text="@string/sf1901" />
 
-                    </LinearLayout>
+                            <EditText
+                                android:id="@+id/sf1901"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:hint="@string/sf1901" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:layout_marginTop="12dp"
-                            android:text="@string/sf1902" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/sf1902"
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp"
-                            android:layout_marginBottom="12dp"
-                            android:hint="@string/sf1902"
-                            android:inputType="number"
-                            app:mask="##"
-                            app:type="range" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:text="@string/sf1902" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/sf1902"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:hint="@string/sf1902"
+                                android:inputType="number"
+                                app:mask="##"
+                                app:type="range" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -2218,9 +2253,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
+                        android:layout_weight="2"
                         android:hint="@string/sf20"
                         android:inputType="number"
-                        android:layout_weight="2"
                         app:mask="##"
                         app:type="range" />
                 </LinearLayout>

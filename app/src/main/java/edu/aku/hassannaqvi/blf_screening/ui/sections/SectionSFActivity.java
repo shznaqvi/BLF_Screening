@@ -25,7 +25,6 @@ public class SectionSFActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /* setContentView(R.layout.activity_section_sf);*/
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_sf);
         bi.setCallback(this);
         setupSkip();
@@ -91,7 +90,9 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
+
         JSONObject json = new JSONObject();
+
         json.put("sf101", bi.sf101.getText().toString());
 
         json.put("sf102", bi.sf102.getText().toString());
@@ -238,8 +239,7 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) ;
-        return false;
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
     public void BtnEnd() {
