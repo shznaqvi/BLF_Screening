@@ -69,7 +69,7 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
-        if (formValidation()) return;
+        if (!formValidation()) return;
         try {
             SaveDraft();
         } catch (JSONException e) {
@@ -119,40 +119,42 @@ public class SectionSLActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        MainApp.jsonSL = new JSONObject();
+        JSONObject json = new JSONObject();
+
+        json.put("sl2", bi.sl2.getText().toString());
+       /* MainApp.jsonSL = new JSONObject();*/
 
 
         //MainApp.jsonSL .put("sl2", bi.sl2.getText().toString());
 
-        MainApp.jsonSL.put("sl301", bi.sl301.getText().toString());
+        json.put("sl302", bi.sl302.getText().toString());
 
-        MainApp.jsonSL.put("sl302", bi.sl302.getText().toString());
+        json.put("sl303", bi.sl303.getText().toString());
 
-        MainApp.jsonSL.put("sl303", bi.sl303.getText().toString());
+        json.put("sl4", bi.sl4.getText().toString());
 
-        MainApp.jsonSL.put("sl4", bi.sl4.getText().toString());
+        json.put("sl5", bi.sl5.getText().toString());
 
-        MainApp.jsonSL.put("sl5", bi.sl5.getText().toString());
+        json.put("sl601", bi.sl601.getText().toString());
 
-        MainApp.jsonSL.put("sl601", bi.sl601.getText().toString());
+        json.put("sl602", bi.sl602.getText().toString());
 
-        MainApp.jsonSL.put("sl602", bi.sl602.getText().toString());
+        json.put("sl701", bi.sl701.getText().toString());
 
-        MainApp.jsonSL.put("sl701", bi.sl701.getText().toString());
+        json.put("sl702", bi.sl702.getText().toString());
 
-        MainApp.jsonSL.put("sl702", bi.sl702.getText().toString());
+        json.put("sl703", bi.sl703.getText().toString());
 
-        MainApp.jsonSL.put("sl703", bi.sl703.getText().toString());
-
-        MainApp.jsonSL.put("sl8", bi.sl801.isChecked() ? ""
+        json.put("sl8", bi.sl801.isChecked() ? ""
                 : bi.sl802.isChecked() ? ""
                 : "-1");
 
-        MainApp.jsonSL.put("sl9", bi.sl9.getText().toString());
+        json.put("sl9", bi.sl9.getText().toString());
 
-        MainApp.jsonSL.put("sl10", bi.sl10.getText().toString());
+        json.put("sl10", bi.sl10.getText().toString());
 
-        MainApp.jsonSL.put("sl11", bi.sl11.getText().toString());
+        json.put("sl11", bi.sl11.getText().toString());
+
 
 
    /* private boolean formValidation() {
