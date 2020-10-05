@@ -17,7 +17,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsContract.FormsTable;
 
 public class Form extends LiveData<Form> {
 
-    private final String projectName = "mi_covid";
+    private final String projectName = "blf";
     private String _ID = "";
     private String _UID = "";
     private String sysdate = "";

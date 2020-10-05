@@ -4,8 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -13,7 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
+import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
@@ -75,6 +82,25 @@ public class SectionSLActivity extends AppCompatActivity {
         }
     }
 
+    private boolean RetrieveSLNo() {
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSL.class).build();
+        WorkManager.getInstance().enqueue(workRequest1);
+
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest1.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(@Nullable WorkInfo workInfo) {
+                        String message = workInfo.getOutputData().getString("slno");
+                        //Displaying the status into TextView
+                        //mTextView1.append("\n" + workInfo.getState().name());
+                        bi.sl2.setText(message);
+                        //mTextView1.append("\n" + workInfo.getState().name());
+                    }
+                });
+        return false;
+    }
+
     private boolean UpdateDB() {
 
        /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
@@ -93,39 +119,40 @@ public class SectionSLActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject json = new JSONObject();
-        json.put("sl2", bi.sl2.getText().toString());
+        MainApp.jsonSL = new JSONObject();
 
-        json.put("sl301", bi.sl301.getText().toString());
 
-        json.put("sl302", bi.sl302.getText().toString());
+        //MainApp.jsonSL .put("sl2", bi.sl2.getText().toString());
 
-        json.put("sl303", bi.sl303.getText().toString());
+        MainApp.jsonSL.put("sl301", bi.sl301.getText().toString());
 
-        json.put("sl4", bi.sl4.getText().toString());
+        MainApp.jsonSL.put("sl302", bi.sl302.getText().toString());
 
-        json.put("sl5", bi.sl5.getText().toString());
+        MainApp.jsonSL.put("sl303", bi.sl303.getText().toString());
 
-        json.put("sl601", bi.sl601.getText().toString());
+        MainApp.jsonSL.put("sl4", bi.sl4.getText().toString());
 
-        json.put("sl602", bi.sl602.getText().toString());
+        MainApp.jsonSL.put("sl5", bi.sl5.getText().toString());
 
-        json.put("sl701", bi.sl701.getText().toString());
+        MainApp.jsonSL.put("sl601", bi.sl601.getText().toString());
 
-        json.put("sl702", bi.sl702.getText().toString());
+        MainApp.jsonSL.put("sl602", bi.sl602.getText().toString());
 
-        json.put("sl703", bi.sl703.getText().toString());
+        MainApp.jsonSL.put("sl701", bi.sl701.getText().toString());
 
-        json.put("sl8", bi.sl801.isChecked() ? ""
+        MainApp.jsonSL.put("sl702", bi.sl702.getText().toString());
+
+        MainApp.jsonSL.put("sl703", bi.sl703.getText().toString());
+
+        MainApp.jsonSL.put("sl8", bi.sl801.isChecked() ? ""
                 : bi.sl802.isChecked() ? ""
                 : "-1");
 
-        json.put("sl9", bi.sl9.getText().toString());
+        MainApp.jsonSL.put("sl9", bi.sl9.getText().toString());
 
-        json.put("sl10", bi.sl10.getText().toString());
+        MainApp.jsonSL.put("sl10", bi.sl10.getText().toString());
 
-        json.put("sl11", bi.sl11.getText().toString());
-
+        MainApp.jsonSL.put("sl11", bi.sl11.getText().toString());
 
 
    /* private boolean formValidation() {

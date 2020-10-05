@@ -24,6 +24,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.json.JSONObject;
+
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
 import edu.aku.hassannaqvi.blf_screening.models.Form;
@@ -37,14 +39,14 @@ import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 public class MainApp extends Application {
 
     public static final String TAG = "AppMain";
-    public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
-    //public static final String _IP = "http://f38158";// .TEST server
-    public static final String _HOST_URL = MainApp._IP + "/micovid19/api/";// .TEST server;
+    // public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
+    public static final String _IP = "http://f38158";// .TEST server
+    public static final String _HOST_URL = MainApp._IP + "/blf/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
-    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/micovid19/api/uploads.php";
+    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/blf/api/uploads.php";
 
-    public static final String _UPDATE_URL = MainApp._IP + "/micovid19/app/";
+    public static final String _UPDATE_URL = MainApp._IP + "/blf/app/";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
     // Location settings
@@ -78,6 +80,8 @@ public class MainApp extends Application {
     public static String userName = "0000";
     public static UsersContract user;
     public static Form form;
+    public static JSONObject jsonSL;
+
     public static String DeviceURL = "devices.php";
     public static String IMEI;
     public static SharedPreferences sharedPref;

@@ -38,10 +38,10 @@ import edu.aku.hassannaqvi.blf_screening.models.Form;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportCluster;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportDate;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionBActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionDActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.blf_screening.utils.CreateTable;
@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         Intent oF = null;
         switch (v.getId()) {
             case R.id.formA:
-                oF = new Intent(this, SectionAActivity.class);
+                oF = new Intent(this, SectionSLActivity.class);
                 break;
             case R.id.formB:
                 oF = new Intent(this, SectionBActivity.class);

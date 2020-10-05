@@ -115,6 +115,7 @@
                         android:layout_marginBottom="12dp"
                         android:hint="@string/sl2"
                         android:inputType="number"
+                        android:editable="false"
                         app:mask="##"
                         app:maxValue="999"
                         app:minValue="1"
@@ -623,9 +624,9 @@
                         android:layout_marginBottom="12dp"
                         android:hint="@string/sl9"
                         android:inputType="number"
+                        app:maxValue="9999999"
+                        app:minValue="0"
                         app:mask="##"
-
-
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

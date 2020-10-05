@@ -8,10 +8,10 @@ import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionApp
 
 public final class CreateTable {
 
-    public static final String DATABASE_NAME = "mi_covid.db";
-    public static final String DB_NAME = "mi_covid_copy.db";
-    public static final String PROJECT_NAME = "mi_covid";
-    public static final int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "blf.db";
+    public static final String DB_NAME = "blf_copy.db";
+    public static final String PROJECT_NAME = "blf";
+    public static final int DATABASE_VERSION = 1;
 
     public static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
