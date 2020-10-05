@@ -6,11 +6,36 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="AppThemeEnglish" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppThemeEnglish1" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <item name="android:spinnerStyle">@style/spinner</item>
         <!--
                       Customize your theme here. -->
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppThemeEnglish" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="android:textSize">18sp</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
+        <item name="android:spinnerStyle">@style/spinner</item>
+        <item name="android:actionBarStyle">@style/topBarStyle</item>
+        <item name="android:textViewStyle">@style/labels</item>
+        <item name="android:editTextStyle">@style/textInput</item>
+        <item name="radioButtonStyle">@style/radiobutton</item>
+        <item name="checkboxStyle">@style/checkbox</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:buttonStyle">@style/button</item>
+        <item name="android:textColorHint">@color/gray_overlay</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:fillAfter">true</item>
+        <item name="android:enterFadeDuration">600</item>
+        <item name="android:exitFadeDuration">200</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="android:animateLayoutChanges">false</item>
     </style>
 
     <style name="AppThemeUrdu" parent="Theme.AppCompat.Light.DarkActionBar">

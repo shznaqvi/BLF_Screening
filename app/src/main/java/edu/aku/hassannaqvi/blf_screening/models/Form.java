@@ -45,13 +45,7 @@ public class Form extends LiveData<Form> {
     private String sB = "";
     private String sC = "";
     private String sD = "";
-    private String sE = "";
     private String sF = "";
-    private String sG = "";
-    private String sH = "";
-    private String sI = "";
-    private String sJ = "";
-    private String sK = "";
     private String sL = "";
 
 
@@ -135,229 +129,66 @@ public class Form extends LiveData<Form> {
     private String d03 = "";
     private String d04 = "";
     private String d05 = "";
-    private String e01 = "";
-    private String e02 = "";
-    //  private String e0201 = "";
-    //  private String e0202 = "";
-    private String e0301 = "";
-    private String e0302 = "";
-    private String e0303 = "";
-    private String e0304 = "";
-    private String e0305 = "";
-    private String e0306 = "";
-    private String e03096 = "";
-    private String e03096x = "";
-    private String e04 = "";
-    private String e05 = "";
-    private String e06 = "";
-    private String e07 = "";
-    private String e0801 = "";
-    private String e0802 = "";
-    private String e0803 = "";
-    private String e0804 = "";
-    private String e0805 = "";
-    private String e0806 = "";
-    private String e08096 = "";
-    private String e08096x = "";
-    private String e09 = "";
-    private String e10 = "";
-    private String e1101 = "";
-    private String e1102 = "";
-    private String e1103 = "";
-    private String e1104 = "";
-    private String e1105 = "";
-    private String e1106 = "";
-    private String e12 = "";
-    private String e12096x = "";
-    private String e13 = "";
-    private String e13096x = "";
-    private String e1401 = "";
-    private String e1402 = "";
-    private String e15 = "";
-    private String f01 = "";
-    private String f02 = "";
-    private String f03 = "";
-    private String f04 = "";
-    private String f04096x = "";
-    private String f05 = "";
-    private String f06 = "";
-    private String f07 = "";
-    private String f08 = "";
-    private String f08096x = "";
-    private String f09dd = "";
-    private String f09mm = "";
-    private String f09yy = "";
-    private String f10 = "";
-    private String f11dd = "";
-    private String f11mm = "";
-    private String f11yy = "";
-    private String f12 = "";
-    private String f13 = "";
-    private String f131096x = "";
-    private String f130196x = "";
-    private String f130296x = "";
-    private String f14 = "";
-    private String f14096x = "";
-    private String f15 = "";
-    private String f16 = "";
-    private String f17 = "";
-    private String g01 = "";
-    private String g02 = "";
-    private String g03 = "";
-    private String g04 = "";
-    private String g04096x = "";
-    private String g0501 = "";
-    private String g0502 = "";
-    private String g0503 = "";
-    private String g0503a = "";
-    private String g0504 = "";
-    private String g0505 = "";
-    private String g0506 = "";
-    private String g0506a = "";
-    private String g0507 = "";
-    private String g0508 = "";
-    private String g0509 = "";
-    private String g0509a = "";
-    private String g0510 = "";
-    private String g0511 = "";
-    private String g0512 = "";
-    private String g0513 = "";
-    private String g0514 = "";
-    private String g06 = "";
-    private String g0701 = "";
-    private String g0702 = "";
-    private String g0703 = "";
-    private String g0704 = "";
-    private String g0705 = "";
-    private String g0706 = "";
-    private String g0707 = "";
-    private String g0801 = "";
-    private String g0802 = "";
-    private String g0803 = "";
-    private String g0804 = "";
-    private String g0805 = "";
-    private String g0806 = "";
-    private String g0807 = "";
-    private String g0808 = "";
-    private String g0809 = "";
-    private String g08096 = "";
-    private String g08096x = "";
-    private String g09 = "";
-    private String g10 = "";
-    private String g11 = "";
-    private String g12 = "";
-    private String g12096x = "";
-    private String g13 = "";
-    private String g13096x = "";
-    private String h01a = "";
-    private String h01dd = "";
-    private String h01mm = "";
-    private String h01yy = "";
-    private String h02dd = "";
-    private String h02mm = "";
-    private String h02yy = "";
-    private String h0301 = "";
-    private String h0302 = "";
-    private String h0303 = "";
-    private String h0304 = "";
-    private String h0305 = "";
-    private String h0306 = "";
-    private String h0307 = "";
-    private String h0308 = "";
-    private String h0309 = "";
-    private String h0310 = "";
-    private String h0311 = "";
-    private String h0312 = "";
-    private String h0313 = "";
-    private String h0314 = "";
-    private String h0315 = "";
-    private String h0316 = "";
-    private String h03096 = "";
-    private String h03096x = "";
-    private String h04 = "";
-    private String h05 = "";
-    private String h06 = "";
-    private String h0701 = "";
-    private String h0702 = "";
-    private String h0801 = "";
-    private String h0802 = "";
-    private String h0803 = "";
-    private String h0804 = "";
-    private String h08096 = "";
-    private String h08096x = "";
-    private String h09 = "";
-    private String h10 = "";
-    private String h11 = "";
-    private String h11096x = "";
-    private String h12 = "";
-    private String h12096x = "";
-    private String h13dd = "";
-    private String h13mm = "";
-    private String h13yy = "";
-    //    private String h13 = "";
-//    private String h13096x = "";
-    private String h14 = "";
-    private String h14096x = "";
-    private String h15 = "";
-    private String h16 = "";
-    private String h17 = "";
-    private String h1801 = "";
-    private String h1802 = "";
-    private String i01 = "";
-    private String i02 = "";
-    private String i03 = "";
-    private String i0401 = "";
-    private String i0402 = "";
-    private String i0403 = "";
-    private String i0404 = "";
-    private String i0405 = "";
-    private String i0406 = "";
-    private String i0407 = "";
-    private String i04096 = "";
-    private String i04096x = "";
-    private String i05 = "";
-    private String i06 = "";
-    private String i07 = "";
-    private String j01 = "";
-    private String j02 = "";
-    private String j03 = "";
-    private String j04 = "";
-    private String j05 = "";
-    private String j06 = "";
-    private String j07 = "";
-    private String j0801 = "";
-    private String j0802 = "";
-    private String j0803 = "";
-    private String j0804 = "";
-    private String j0805 = "";
-    private String j0806 = "";
-    private String j08096 = "";
-    private String j08096x = "";
-    private String j09 = "";
-    private String j09096x = "";
-    private String j010 = "";
-    private String j011 = "";
-    private String j012 = "";
-    private String k01 = "";
-    private String k02 = "";
-    private String k03 = "";
-    private String k04 = "";
-    private String k05 = "";
-    private String k05096x = "";
-    private String k06 = "";
-    private String k07 = "";
-    private String k08 = "";
-    private String k09 = "";
-    private String k10 = "";
-    private String k11 = "";
-    private String k12 = "";
-    private String k13 = "";
-    private String k14 = "";
-    private String k14096x = "";
-    private String k15 = "";
-    private String k16 = "";
-    private String k16096x = "";
-    private String k17 = "";
+
+    public String sf101 = "";
+    public String sf102 = "";
+    public String sf103 = "";
+    public String sf104 = "";
+    public String sf105 = "";
+    public String sf2 = "";
+    public String sf3 = "";
+    public String sf4 = "";
+    public String sf5 = "";
+    public String sf6 = "";
+    public String sf701 = "";
+    public String sf702 = "";
+    public String sf8 = "";
+    public String sf9 = "";
+    public String sf10 = "";
+    public String sf11 = "";
+    public String sf12 = "";
+    public String sf1296x = "";
+    public String sf1301 = "";
+    public String sf1302 = "";
+    public String sf1303 = "";
+    public String sf1304 = "";
+    public String sf1305 = "";
+    public String sf1306 = "";
+    public String sf1307 = "";
+    public String sf1308 = "";
+    public String sf1309 = "";
+    public String sf1396x = "";
+    public String sf14 = "";
+    public String sf1403x = "";
+    public String sf1501 = "";
+    public String sf1502 = "";
+    public String sf1503 = "";
+    public String sf1504 = "";
+    public String sf1505 = "";
+    public String sf1506 = "";
+    public String sf1507 = "";
+    public String sf1508 = "";
+    public String sf1509 = "";
+    public String sf16 = "";
+    public String sf17 = "";
+    public String sf18 = "";
+    public String sf1901 = "";
+    public String sf1902 = "";
+    public String sf20 = "";
+
+    public String sl1;
+    public String sl2;
+    public String sl3;
+    public String sl4;
+    public String sl5;
+    public String sl6;
+    public String sl7;
+    public String sl8;
+    public String sl9;
+    public String sl10;
+    public String sl11;
+
+
     private String l01 = "";
     private String l02 = "";
     private String l02096x = "";
@@ -381,102 +212,6 @@ public class Form extends LiveData<Form> {
 
 
     public Form() {
-    }
-
-    public String getI0401() {
-        return i0401;
-    }
-
-    public void setI0401(String i0401) {
-        this.i0401 = i0401;
-    }
-
-    public String getI0402() {
-        return i0402;
-    }
-
-    public void setI0402(String i0402) {
-        this.i0402 = i0402;
-    }
-
-    public String getI0403() {
-        return i0403;
-    }
-
-    public void setI0403(String i0403) {
-        this.i0403 = i0403;
-    }
-
-    public String getI0404() {
-        return i0404;
-    }
-
-    public void setI0404(String i0404) {
-        this.i0404 = i0404;
-    }
-
-    public String getI0405() {
-        return i0405;
-    }
-
-    public void setI0405(String i0405) {
-        this.i0405 = i0405;
-    }
-
-    public String getI0406() {
-        return i0406;
-    }
-
-    public void setI0406(String i0406) {
-        this.i0406 = i0406;
-    }
-
-    public String getI0407() {
-        return i0407;
-    }
-
-    public void setI0407(String i0407) {
-        this.i0407 = i0407;
-    }
-
-    public String getI04096() {
-        return i04096;
-    }
-
-    public void setI04096(String i04096) {
-        this.i04096 = i04096;
-    }
-
-    public String getG0503a() {
-        return g0503a;
-    }
-
-    public void setG0503a(String g0503a) {
-        this.g0503a = g0503a;
-    }
-
-    public String getG0506a() {
-        return g0506a;
-    }
-
-    public void setG0506a(String g0506a) {
-        this.g0506a = g0506a;
-    }
-
-    public String getG0509a() {
-        return g0509a;
-    }
-
-    public void setG0509a(String g0509a) {
-        this.g0509a = g0509a;
-    }
-
-    public String getG0514() {
-        return g0514;
-    }
-
-    public void setG0514(String g0514) {
-        this.g0514 = g0514;
     }
 
     public SectionSelection getSecSelection() {
@@ -1230,1887 +965,408 @@ public class Form extends LiveData<Form> {
         return this;
     }
 
-    public String getE01() {
-        return e01;
+    public String getSf101() {
+        return sf101;
     }
 
-    public Form setE01(String e01) {
-        this.e01 = e01;
+    public Form setSf101(String sf101) {
+        this.sf101 = sf101;
         return this;
     }
 
-    public String getE02() {
-        return e02;
+    public String getSf102() {
+        return sf102;
     }
 
-    public Form setE02(String e02) {
-        this.e02 = e02;
+    public Form setSf102(String sf102) {
+        this.sf102 = sf102;
         return this;
     }
 
-   /* public String getE0201() {
-        return e0201;
+    public String getSf103() {
+        return sf103;
     }
 
-    public Form setE0201(String e0201) {
-        this.e0201 = e0201;
+    public Form setSf103(String sf103) {
+        this.sf103 = sf103;
         return this;
     }
 
-    public String getE0202() {
-        return e0202;
+    public String getSf104() {
+        return sf104;
     }
 
-    public Form setE0202(String e0202) {
-        this.e0202 = e0202;
+    public Form setSf104(String sf104) {
+        this.sf104 = sf104;
         return this;
-    }*/
-
-    public String getE0301() {
-        return e0301;
-    }
-
-    public Form setE0301(String e0301) {
-        this.e0301 = e0301;
-        return this;
-    }
-
-    public String getE0302() {
-        return e0302;
-    }
-
-    public Form setE0302(String e0302) {
-        this.e0302 = e0302;
-        return this;
-    }
-
-    public String getE0303() {
-        return e0303;
-    }
-
-    public Form setE0303(String e0303) {
-        this.e0303 = e0303;
-        return this;
-    }
-
-    public String getE0304() {
-        return e0304;
-    }
-
-    public Form setE0304(String e0304) {
-        this.e0304 = e0304;
-        return this;
-    }
-
-    public String getE0305() {
-        return e0305;
-    }
-
-    public Form setE0305(String e0305) {
-        this.e0305 = e0305;
-        return this;
-    }
-
-    public String getE0306() {
-        return e0306;
-    }
-
-    public Form setE0306(String e0306) {
-        this.e0306 = e0306;
-        return this;
-    }
-
-    public String getE03096() {
-        return e03096;
-    }
-
-    public Form setE03096(String e03096) {
-        this.e03096 = e03096;
-        return this;
-    }
-
-    public String getE03096x() {
-        return e03096x;
-    }
-
-    public Form setE03096x(String e03096x) {
-        this.e03096x = e03096x;
-        return this;
-    }
-
-    public String getE04() {
-        return e04;
-    }
-
-    public Form setE04(String e04) {
-        this.e04 = e04;
-        return this;
-    }
-
-    public String getE05() {
-        return e05;
-    }
-
-    public Form setE05(String e05) {
-        this.e05 = e05;
-        return this;
-    }
-
-    public String getE06() {
-        return e06;
-    }
-
-    public Form setE06(String e06) {
-        this.e06 = e06;
-        return this;
-    }
-
-    public String getE07() {
-        return e07;
-    }
-
-    public Form setE07(String e07) {
-        this.e07 = e07;
-        return this;
-    }
-
-    public String getE0801() {
-        return e0801;
-    }
-
-    public Form setE0801(String e0801) {
-        this.e0801 = e0801;
-        return this;
-    }
-
-    public String getE0802() {
-        return e0802;
-    }
-
-    public Form setE0802(String e0802) {
-        this.e0802 = e0802;
-        return this;
-    }
-
-    public String getE0803() {
-        return e0803;
-    }
-
-    public Form setE0803(String e0803) {
-        this.e0803 = e0803;
-        return this;
-    }
-
-    public String getE0804() {
-        return e0804;
-    }
-
-    public Form setE0804(String e0804) {
-        this.e0804 = e0804;
-        return this;
-    }
-
-    public String getE0805() {
-        return e0805;
-    }
-
-    public Form setE0805(String e0805) {
-        this.e0805 = e0805;
-        return this;
-    }
-
-    public String getE0806() {
-        return e0806;
-    }
-
-    public Form setE0806(String e0806) {
-        this.e0806 = e0806;
-        return this;
-    }
-
-    public String getE08096() {
-        return e08096;
-    }
-
-    public Form setE08096(String e08096) {
-        this.e08096 = e08096;
-        return this;
-    }
-
-    public String getE08096x() {
-        return e08096x;
-    }
-
-    public Form setE08096x(String e08096x) {
-        this.e08096x = e08096x;
-        return this;
-    }
-
-    public String getE09() {
-        return e09;
-    }
-
-    public Form setE09(String e09) {
-        this.e09 = e09;
-        return this;
-    }
-
-    public String getE10() {
-        return e10;
-    }
-
-    public Form setE10(String e10) {
-        this.e10 = e10;
-        return this;
-    }
-
-    public String getE1101() {
-        return e1101;
-    }
-
-    public Form setE1101(String e1101) {
-        this.e1101 = e1101;
-        return this;
-    }
-
-    public String getE1102() {
-        return e1102;
-    }
-
-    public Form setE1102(String e1102) {
-        this.e1102 = e1102;
-        return this;
-    }
-
-    public String getE1103() {
-        return e1103;
-    }
-
-    public Form setE1103(String e1103) {
-        this.e1103 = e1103;
-        return this;
-    }
-
-    public String getE1104() {
-        return e1104;
-    }
-
-    public Form setE1104(String e1104) {
-        this.e1104 = e1104;
-        return this;
-    }
-
-    public String getE1105() {
-        return e1105;
-    }
-
-    public Form setE1105(String e1105) {
-        this.e1105 = e1105;
-        return this;
-    }
-
-    public String getE1106() {
-        return e1106;
-    }
-
-    public Form setE1106(String e1106) {
-        this.e1106 = e1106;
-        return this;
-    }
-
-    public String getE12() {
-        return e12;
-    }
-
-    public Form setE12(String e12) {
-        this.e12 = e12;
-        return this;
-    }
-
-    public String getE12096x() {
-        return e12096x;
-    }
-
-    public Form setE12096x(String e12096x) {
-        this.e12096x = e12096x;
-        return this;
-    }
-
-    public String getE13() {
-        return e13;
-    }
-
-    public Form setE13(String e13) {
-        this.e13 = e13;
-        return this;
-    }
-
-    public String getE13096x() {
-        return e13096x;
-    }
-
-    public Form setE13096x(String e13096x) {
-        this.e13096x = e13096x;
-        return this;
-    }
-
-    public String getE1401() {
-        return e1401;
-    }
-
-    public Form setE1401(String e1401) {
-        this.e1401 = e1401;
-        return this;
-    }
-
-    public String getE1402() {
-        return e1402;
-    }
-
-    public Form setE1402(String e1402) {
-        this.e1402 = e1402;
-        return this;
-    }
-
-    public String getE15() {
-        return e15;
-    }
-
-    public Form setE15(String e15) {
-        this.e15 = e15;
-        return this;
-    }
-
-    public String getF01() {
-        return f01;
-    }
-
-    public Form setF01(String f01) {
-        this.f01 = f01;
-        return this;
-    }
-
-    public String getF02() {
-        return f02;
-    }
-
-    public Form setF02(String f02) {
-        this.f02 = f02;
-        return this;
-    }
-
-    public String getF03() {
-        return f03;
-    }
-
-    public Form setF03(String f03) {
-        this.f03 = f03;
-        return this;
-    }
-
-    public String getF04() {
-        return f04;
-    }
-
-    public Form setF04(String f04) {
-        this.f04 = f04;
-        return this;
-    }
-
-    public String getF04096x() {
-        return f04096x;
-    }
-
-    public Form setF04096x(String f04096x) {
-        this.f04096x = f04096x;
-        return this;
-    }
-
-    public String getF05() {
-        return f05;
-    }
-
-    public Form setF05(String f05) {
-        this.f05 = f05;
-        return this;
-    }
-
-    public String getF06() {
-        return f06;
-    }
-
-    public Form setF06(String f06) {
-        this.f06 = f06;
-        return this;
-    }
-
-    public String getF07() {
-        return f07;
-    }
-
-    public Form setF07(String f07) {
-        this.f07 = f07;
-        return this;
-    }
-
-    public String getF08() {
-        return f08;
-    }
-
-    public Form setF08(String f08) {
-        this.f08 = f08;
-        return this;
-    }
-
-    public String getF08096x() {
-        return f08096x;
-    }
-
-    public Form setF08096x(String f08096x) {
-        this.f08096x = f08096x;
-        return this;
-    }
-
-    public String getF09dd() {
-        return f09dd;
-    }
-
-    public Form setF09dd(String f09dd) {
-        this.f09dd = f09dd;
-        return this;
-    }
-
-    public String getF09mm() {
-        return f09mm;
-    }
-
-    public Form setF09mm(String f09mm) {
-        this.f09mm = f09mm;
-        return this;
-    }
-
-    public String getF09yy() {
-        return f09yy;
-    }
-
-    public Form setF09yy(String f09yy) {
-        this.f09yy = f09yy;
-        return this;
-    }
-
-    public String getF10() {
-        return f10;
-    }
-
-    public Form setF10(String f10) {
-        this.f10 = f10;
-        return this;
-    }
-
-    public String getF11dd() {
-        return f11dd;
-    }
-
-    public Form setF11dd(String f11dd) {
-        this.f11dd = f11dd;
-        return this;
-    }
-
-    public String getF11mm() {
-        return f11mm;
-    }
-
-    public Form setF11mm(String f11mm) {
-        this.f11mm = f11mm;
-        return this;
-    }
-
-    public String getF11yy() {
-        return f11yy;
-    }
-
-    public Form setF11yy(String f11yy) {
-        this.f11yy = f11yy;
-        return this;
-    }
-
-    public String getF12() {
-        return f12;
-    }
-
-    public Form setF12(String f12) {
-        this.f12 = f12;
-        return this;
-    }
-
-    public String getF13() {
-        return f13;
-    }
-
-    public Form setF13(String f13) {
-        this.f13 = f13;
-        return this;
-    }
-
-    public String getF130196x() {
-        return f130196x;
-    }
-
-    public Form setF130196x(String f130196x) {
-        this.f130196x = f130196x;
-        return this;
-    }
-
-    public String getF130296x() {
-        return f130296x;
-    }
-
-    public Form setF130296x(String f130296x) {
-        this.f130296x = f130296x;
-        return this;
-    }
-
-    public String getF131096x() {
-        return f131096x;
-    }
-
-    public Form setF131096x(String f131096x) {
-        this.f131096x = f131096x;
-        return this;
-    }
-
-    public String getF14() {
-        return f14;
-    }
-
-    public Form setF14(String f14) {
-        this.f14 = f14;
-        return this;
-    }
-
-    public String getF14096x() {
-        return f14096x;
-    }
-
-    public Form setF14096x(String f14096x) {
-        this.f14096x = f14096x;
-        return this;
-    }
-
-    public String getF15() {
-        return f15;
-    }
-
-    public Form setF15(String f15) {
-        this.f15 = f15;
-        return this;
-    }
-
-    public String getF16() {
-        return f16;
-    }
-
-    public Form setF16(String f16) {
-        this.f16 = f16;
-        return this;
-    }
-
-    public String getF17() {
-        return f17;
-    }
-
-    public Form setF17(String f17) {
-        this.f17 = f17;
-        return this;
-    }
-
-    public String getG01() {
-        return g01;
-    }
-
-    public Form setG01(String g01) {
-        this.g01 = g01;
-        return this;
-    }
-
-    public String getG02() {
-        return g02;
-    }
-
-    public Form setG02(String g02) {
-        this.g02 = g02;
-        return this;
-    }
-
-    public String getG03() {
-        return g03;
-    }
-
-    public Form setG03(String g03) {
-        this.g03 = g03;
-        return this;
-    }
-
-    public String getG04() {
-        return g04;
-    }
-
-    public Form setG04(String g04) {
-        this.g04 = g04;
-        return this;
-    }
-
-    public String getG04096x() {
-        return g04096x;
-    }
-
-    public Form setG04096x(String g04096x) {
-        this.g04096x = g04096x;
-        return this;
-    }
-
-    public String getG0501() {
-        return g0501;
-    }
-
-    public Form setG0501(String g0501) {
-        this.g0501 = g0501;
-        return this;
-    }
-
-    public String getG0502() {
-        return g0502;
-    }
-
-    public Form setG0502(String g0502) {
-        this.g0502 = g0502;
-        return this;
-    }
-
-    public String getG0503() {
-        return g0503;
-    }
-
-    public Form setG0503(String g0503) {
-        this.g0503 = g0503;
-        return this;
-    }
-
-    public String getG0504() {
-        return g0504;
-    }
-
-    public Form setG0504(String g0504) {
-        this.g0504 = g0504;
-        return this;
-    }
-
-    public String getG0505() {
-        return g0505;
-    }
-
-    public Form setG0505(String g0505) {
-        this.g0505 = g0505;
-        return this;
-    }
-
-    public String getG0506() {
-        return g0506;
-    }
-
-    public Form setG0506(String g0506) {
-        this.g0506 = g0506;
-        return this;
-    }
-
-    public String getG0507() {
-        return g0507;
-    }
-
-    public Form setG0507(String g0507) {
-        this.g0507 = g0507;
-        return this;
-    }
-
-    public String getG0508() {
-        return g0508;
-    }
-
-    public Form setG0508(String g0508) {
-        this.g0508 = g0508;
-        return this;
-    }
-
-    public String getG0509() {
-        return g0509;
-    }
-
-    public Form setG0509(String g0509) {
-        this.g0509 = g0509;
-        return this;
-    }
-
-    public String getG0510() {
-        return g0510;
-    }
-
-    public Form setG0510(String g0510) {
-        this.g0510 = g0510;
-        return this;
-    }
-
-    public String getG0511() {
-        return g0511;
-    }
-
-    public Form setG0511(String g0511) {
-        this.g0511 = g0511;
-        return this;
-    }
-
-    public String getG0512() {
-        return g0512;
-    }
-
-    public Form setG0512(String g0512) {
-        this.g0512 = g0512;
-        return this;
-    }
-
-    public String getG0513() {
-        return g0513;
-    }
-
-    public Form setG0513(String g0513) {
-        this.g0513 = g0513;
-        return this;
-    }
-
-    public String getG06() {
-        return g06;
-    }
-
-    public Form setG06(String g06) {
-        this.g06 = g06;
-        return this;
-    }
-
-    public String getG0701() {
-        return g0701;
-    }
-
-    public Form setG0701(String g0701) {
-        this.g0701 = g0701;
-        return this;
-    }
-
-    public String getG0702() {
-        return g0702;
-    }
-
-    public Form setG0702(String g0702) {
-        this.g0702 = g0702;
-        return this;
-    }
-
-    public String getG0703() {
-        return g0703;
-    }
-
-    public Form setG0703(String g0703) {
-        this.g0703 = g0703;
-        return this;
-    }
-
-    public String getG0704() {
-        return g0704;
-    }
-
-    public Form setG0704(String g0704) {
-        this.g0704 = g0704;
-        return this;
-    }
-
-    public String getG0705() {
-        return g0705;
-    }
-
-    public Form setG0705(String g0705) {
-        this.g0705 = g0705;
-        return this;
-    }
-
-    public String getG0706() {
-        return g0706;
-    }
-
-    public Form setG0706(String g0706) {
-        this.g0706 = g0706;
-        return this;
-    }
-
-    public String getG0707() {
-        return g0707;
-    }
-
-    public Form setG0707(String g0707) {
-        this.g0707 = g0707;
-        return this;
-    }
-
-    public String getG0801() {
-        return g0801;
-    }
-
-    public Form setG0801(String g0801) {
-        this.g0801 = g0801;
-        return this;
-    }
-
-    public String getG0802() {
-        return g0802;
-    }
-
-    public Form setG0802(String g0802) {
-        this.g0802 = g0802;
-        return this;
-    }
-
-    public String getG0803() {
-        return g0803;
-    }
-
-    public Form setG0803(String g0803) {
-        this.g0803 = g0803;
-        return this;
-    }
-
-    public String getG0804() {
-        return g0804;
-    }
-
-    public Form setG0804(String g0804) {
-        this.g0804 = g0804;
-        return this;
-    }
-
-    public String getG0805() {
-        return g0805;
-    }
-
-    public Form setG0805(String g0805) {
-        this.g0805 = g0805;
-        return this;
-    }
-
-    public String getG0806() {
-        return g0806;
-    }
-
-    public Form setG0806(String g0806) {
-        this.g0806 = g0806;
-        return this;
-    }
-
-    public String getG0807() {
-        return g0807;
-    }
-
-    public Form setG0807(String g0807) {
-        this.g0807 = g0807;
-        return this;
-    }
-
-    public String getG0808() {
-        return g0808;
-    }
-
-    public Form setG0808(String g0808) {
-        this.g0808 = g0808;
-        return this;
-    }
-
-    public String getG0809() {
-        return g0809;
-    }
-
-    public Form setG0809(String g0809) {
-        this.g0809 = g0809;
-        return this;
-    }
-
-    public String getG08096() {
-        return g08096;
-    }
-
-    public Form setG08096(String g08096) {
-        this.g08096 = g08096;
-        return this;
-    }
-
-    public String getG08096x() {
-        return g08096x;
-    }
-
-    public Form setG08096x(String g08096x) {
-        this.g08096x = g08096x;
-        return this;
-    }
-
-    public String getG09() {
-        return g09;
-    }
-
-    public Form setG09(String g09) {
-        this.g09 = g09;
-        return this;
-    }
-
-    public String getG10() {
-        return g10;
-    }
-
-    public Form setG10(String g10) {
-        this.g10 = g10;
-        return this;
-    }
-
-    public String getG11() {
-        return g11;
-    }
-
-    public Form setG11(String g11) {
-        this.g11 = g11;
-        return this;
-    }
-
-    public String getG12() {
-        return g12;
-    }
-
-    public Form setG12(String g12) {
-        this.g12 = g12;
-        return this;
-    }
-
-    public String getG12096x() {
-        return g12096x;
-    }
-
-    public Form setG12096x(String g12096x) {
-        this.g12096x = g12096x;
-        return this;
-    }
-
-    public String getG13() {
-        return g13;
-    }
-
-    public Form setG13(String g13) {
-        this.g13 = g13;
-        return this;
-    }
-
-    public String getG13096x() {
-        return g13096x;
-    }
-
-    public Form setG13096x(String g13096x) {
-        this.g13096x = g13096x;
-        return this;
-    }
-
-    public String getH01a() {
-        return h01a;
-    }
-
-    public void setH01a(String h01a) {
-        this.h01a = h01a;
-    }
-
-    public String getH01dd() {
-        return h01dd;
-    }
-
-    public Form setH01dd(String h01dd) {
-        this.h01dd = h01dd;
-        return this;
-    }
-
-    public String getH01mm() {
-        return h01mm;
-    }
-
-    public Form setH01mm(String h01mm) {
-        this.h01mm = h01mm;
-        return this;
-    }
-
-    public String getH01yy() {
-        return h01yy;
-    }
-
-    public Form setH01yy(String h01yy) {
-        this.h01yy = h01yy;
-        return this;
-    }
-
-    public String getH02dd() {
-        return h02dd;
-    }
-
-    public Form setH02dd(String h02dd) {
-        this.h02dd = h02dd;
-        return this;
-    }
-
-    public String getH02mm() {
-        return h02mm;
-    }
-
-    public Form setH02mm(String h02mm) {
-        this.h02mm = h02mm;
-        return this;
-    }
-
-    public String getH02yy() {
-        return h02yy;
-    }
-
-    public Form setH02yy(String h02yy) {
-        this.h02yy = h02yy;
-        return this;
-    }
-
-    public String getH0301() {
-        return h0301;
-    }
-
-    public Form setH0301(String h0301) {
-        this.h0301 = h0301;
-        return this;
-    }
-
-    public String getH0302() {
-        return h0302;
-    }
-
-    public Form setH0302(String h0302) {
-        this.h0302 = h0302;
-        return this;
-    }
-
-    public String getH0303() {
-        return h0303;
-    }
-
-    public Form setH0303(String h0303) {
-        this.h0303 = h0303;
-        return this;
-    }
-
-    public String getH0304() {
-        return h0304;
-    }
-
-    public Form setH0304(String h0304) {
-        this.h0304 = h0304;
-        return this;
-    }
-
-    public String getH0305() {
-        return h0305;
-    }
-
-    public Form setH0305(String h0305) {
-        this.h0305 = h0305;
-        return this;
-    }
-
-    public String getH0306() {
-        return h0306;
-    }
-
-    public Form setH0306(String h0306) {
-        this.h0306 = h0306;
-        return this;
-    }
-
-    public String getH0307() {
-        return h0307;
-    }
-
-    public Form setH0307(String h0307) {
-        this.h0307 = h0307;
-        return this;
-    }
-
-    public String getH0308() {
-        return h0308;
-    }
-
-    public Form setH0308(String h0308) {
-        this.h0308 = h0308;
-        return this;
-    }
-
-    public String getH0309() {
-        return h0309;
-    }
-
-    public Form setH0309(String h0309) {
-        this.h0309 = h0309;
-        return this;
-    }
-
-    public String getH0310() {
-        return h0310;
-    }
-
-    public Form setH0310(String h0310) {
-        this.h0310 = h0310;
-        return this;
-    }
-
-    public String getH0311() {
-        return h0311;
-    }
-
-    public Form setH0311(String h0311) {
-        this.h0311 = h0311;
-        return this;
-    }
-
-    public String getH0312() {
-        return h0312;
-    }
-
-    public Form setH0312(String h0312) {
-        this.h0312 = h0312;
-        return this;
-    }
-
-    public String getH0313() {
-        return h0313;
-    }
-
-    public Form setH0313(String h0313) {
-        this.h0313 = h0313;
-        return this;
-    }
-
-    public String getH0314() {
-        return h0314;
-    }
-
-    public Form setH0314(String h0314) {
-        this.h0314 = h0314;
-        return this;
-    }
-
-    public String getH0315() {
-        return h0315;
-    }
-
-    public Form setH0315(String h0315) {
-        this.h0315 = h0315;
-        return this;
-    }
-
-    public String getH0316() {
-        return h0316;
-    }
-
-    public Form setH0316(String h0316) {
-        this.h0316 = h0316;
-        return this;
-    }
-
-    public String getH03096() {
-        return h03096;
-    }
-
-    public Form setH03096(String h03096) {
-        this.h03096 = h03096;
-        return this;
-    }
-
-    public String getH03096x() {
-        return h03096x;
-    }
-
-    public Form setH03096x(String h03096x) {
-        this.h03096x = h03096x;
-        return this;
-    }
-
-    public String getH04() {
-        return h04;
-    }
-
-    public Form setH04(String h04) {
-        this.h04 = h04;
-        return this;
-    }
-
-    public String getH05() {
-        return h05;
-    }
-
-    public Form setH05(String h05) {
-        this.h05 = h05;
-        return this;
-    }
-
-    public String getH06() {
-        return h06;
-    }
-
-    public Form setH06(String h06) {
-        this.h06 = h06;
-        return this;
-    }
-
-    public String getH0701() {
-        return h0701;
-    }
-
-    public Form setH0701(String h0701) {
-        this.h0701 = h0701;
-        return this;
-    }
-
-    public String getH0702() {
-        return h0702;
-    }
-
-    public Form setH0702(String h0702) {
-        this.h0702 = h0702;
-        return this;
-    }
-
-    public String getH0801() {
-        return h0801;
-    }
-
-    public Form setH0801(String h0801) {
-        this.h0801 = h0801;
-        return this;
-    }
-
-    public String getH0802() {
-        return h0802;
-    }
-
-    public Form setH0802(String h0802) {
-        this.h0802 = h0802;
-        return this;
-    }
-
-    public String getH0803() {
-        return h0803;
     }
 
-    public Form setH0803(String h0803) {
-        this.h0803 = h0803;
-        return this;
-    }
-
-    public String getH0804() {
-        return h0804;
-    }
-
-    public Form setH0804(String h0804) {
-        this.h0804 = h0804;
-        return this;
-    }
-
-    public String getH08096() {
-        return h08096;
-    }
-
-    public Form setH08096(String h08096) {
-        this.h08096 = h08096;
-        return this;
-    }
-
-    public String getH08096x() {
-        return h08096x;
-    }
-
-    public Form setH08096x(String h08096x) {
-        this.h08096x = h08096x;
-        return this;
-    }
-
-    public String getH09() {
-        return h09;
-    }
-
-    public Form setH09(String h09) {
-        this.h09 = h09;
-        return this;
-    }
-
-    public String getH10() {
-        return h10;
-    }
-
-    public Form setH10(String h10) {
-        this.h10 = h10;
-        return this;
-    }
-
-    public String getH11() {
-        return h11;
-    }
-
-    public Form setH11(String h11) {
-        this.h11 = h11;
-        return this;
-    }
-
-    public String getH11096x() {
-        return h11096x;
-    }
-
-    public Form setH11096x(String h11096x) {
-        this.h11096x = h11096x;
-        return this;
-    }
-
-    public String getH12() {
-        return h12;
-    }
-
-    public Form setH12(String h12) {
-        this.h12 = h12;
-        return this;
-    }
-
-    public String getH12096x() {
-        return h12096x;
-    }
-
-    public Form setH12096x(String h12096x) {
-        this.h12096x = h12096x;
-        return this;
-    }
-
-
-    public String getH13dd() {
-        return h13dd;
-    }
-
-    public Form setH13dd(String h13dd) {
-        this.h13dd = h13dd;
-        return this;
-    }
-
-    public String getH13mm() {
-        return h13mm;
-    }
-
-    public Form setH13mm(String h13mm) {
-        this.h13mm = h13mm;
-        return this;
-    }
-
-    public String getH13yy() {
-        return h13yy;
-    }
-
-    public Form setH13yy(String h13yy) {
-        this.h13yy = h13yy;
-        return this;
-    }
-
-  /*  public String getH13() {
-        return h13;
+    public String getSf105() {
+        return sf105;
     }
 
-    public Form setH13(String h13) {
-        this.h13 = h13;
+    public Form setSf105(String sf105) {
+        this.sf105 = sf105;
         return this;
     }
 
-    public String getH13096x() {
-        return h13096x;
+    public String getSf2() {
+        return sf2;
     }
 
-    public Form setH13096x(String h13096x) {
-        this.h13096x = h13096x;
+    public Form setSf2(String sf2) {
+        this.sf2 = sf2;
         return this;
-    }*/
-
-    public String getH14() {
-        return h14;
-    }
-
-    public Form setH14(String h14) {
-        this.h14 = h14;
-        return this;
-    }
-
-    public String getH14096x() {
-        return h14096x;
-    }
-
-    public Form setH14096x(String h14096x) {
-        this.h14096x = h14096x;
-        return this;
-    }
-
-    public String getH15() {
-        return h15;
-    }
-
-    public Form setH15(String h15) {
-        this.h15 = h15;
-        return this;
-    }
-
-    public String getH16() {
-        return h16;
-    }
-
-    public Form setH16(String h16) {
-        this.h16 = h16;
-        return this;
-    }
-
-    public String getH17() {
-        return h17;
-    }
-
-    public Form setH17(String h17) {
-        this.h17 = h17;
-        return this;
-    }
-
-    public String getH1801() {
-        return h1801;
-    }
-
-    public Form setH1801(String h1801) {
-        this.h1801 = h1801;
-        return this;
-    }
-
-    public String getH1802() {
-        return h1802;
-    }
-
-    public Form setH1802(String h1802) {
-        this.h1802 = h1802;
-        return this;
-    }
-
-    public String getI01() {
-        return i01;
-    }
-
-    public Form setI01(String i01) {
-        this.i01 = i01;
-        return this;
-    }
-
-    public String getI02() {
-        return i02;
-    }
-
-    public Form setI02(String i02) {
-        this.i02 = i02;
-        return this;
-    }
-
-    public String getI03() {
-        return i03;
-    }
-
-    public Form setI03(String i03) {
-        this.i03 = i03;
-        return this;
-    }
-
-    public String getI04096x() {
-        return i04096x;
-    }
-
-    public Form setI04096x(String i04096x) {
-        this.i04096x = i04096x;
-        return this;
-    }
-
-    public String getI05() {
-        return i05;
     }
 
-    public Form setI05(String i05) {
-        this.i05 = i05;
-        return this;
-    }
-
-    public String getI06() {
-        return i06;
+    public String getSf3() {
+        return sf3;
     }
 
-    public Form setI06(String i06) {
-        this.i06 = i06;
+    public Form setSf3(String sf3) {
+        this.sf3 = sf3;
         return this;
     }
 
-    public String getI07() {
-        return i07;
+    public String getSf4() {
+        return sf4;
     }
 
-    public Form setI07(String i07) {
-        this.i07 = i07;
+    public Form setSf4(String sf4) {
+        this.sf4 = sf4;
         return this;
     }
 
-    public String getJ01() {
-        return j01;
+    public String getSf5() {
+        return sf5;
     }
 
-    public Form setJ01(String j01) {
-        this.j01 = j01;
+    public Form setSf5(String sf5) {
+        this.sf5 = sf5;
         return this;
     }
 
-    public String getJ02() {
-        return j02;
+    public String getSf6() {
+        return sf6;
     }
 
-    public Form setJ02(String j02) {
-        this.j02 = j02;
+    public Form setSf6(String sf6) {
+        this.sf6 = sf6;
         return this;
     }
 
-    public String getJ03() {
-        return j03;
+    public String getSf701() {
+        return sf701;
     }
 
-    public Form setJ03(String j03) {
-        this.j03 = j03;
+    public Form setSf701(String sf701) {
+        this.sf701 = sf701;
         return this;
     }
 
-    public String getJ04() {
-        return j04;
+    public String getSf702() {
+        return sf702;
     }
 
-    public Form setJ04(String j04) {
-        this.j04 = j04;
+    public Form setSf702(String sf702) {
+        this.sf702 = sf702;
         return this;
     }
 
-    public String getJ05() {
-        return j05;
+    public String getSf8() {
+        return sf8;
     }
 
-    public Form setJ05(String j05) {
-        this.j05 = j05;
+    public Form setSf8(String sf8) {
+        this.sf8 = sf8;
         return this;
     }
 
-    public String getJ06() {
-        return j06;
+    public String getSf9() {
+        return sf9;
     }
 
-    public Form setJ06(String j06) {
-        this.j06 = j06;
+    public Form setSf9(String sf9) {
+        this.sf9 = sf9;
         return this;
     }
 
-    public String getJ07() {
-        return j07;
+    public String getSf10() {
+        return sf10;
     }
 
-    public Form setJ07(String j07) {
-        this.j07 = j07;
+    public Form setSf10(String sf10) {
+        this.sf10 = sf10;
         return this;
     }
 
-    public String getJ0801() {
-        return j0801;
+    public String getSf11() {
+        return sf11;
     }
 
-    public Form setJ0801(String j0801) {
-        this.j0801 = j0801;
+    public Form setSf11(String sf11) {
+        this.sf11 = sf11;
         return this;
     }
 
-    public String getJ0802() {
-        return j0802;
+    public String getSf12() {
+        return sf12;
     }
 
-    public Form setJ0802(String j0802) {
-        this.j0802 = j0802;
+    public Form setSf12(String sf12) {
+        this.sf12 = sf12;
         return this;
     }
 
-    public String getJ0803() {
-        return j0803;
+    public String getSf1296x() {
+        return sf1296x;
     }
 
-    public Form setJ0803(String j0803) {
-        this.j0803 = j0803;
+    public Form setSf1296x(String sf1296x) {
+        this.sf1296x = sf1296x;
         return this;
     }
 
-    public String getJ0804() {
-        return j0804;
+    public String getSf1301() {
+        return sf1301;
     }
 
-    public Form setJ0804(String j0804) {
-        this.j0804 = j0804;
+    public Form setSf1301(String sf1301) {
+        this.sf1301 = sf1301;
         return this;
     }
 
-    public String getJ0805() {
-        return j0805;
+    public String getSf1302() {
+        return sf1302;
     }
 
-    public Form setJ0805(String j0805) {
-        this.j0805 = j0805;
+    public Form setSf1302(String sf1302) {
+        this.sf1302 = sf1302;
         return this;
     }
 
-    public String getJ0806() {
-        return j0806;
+    public String getSf1303() {
+        return sf1303;
     }
 
-    public Form setJ0806(String j0806) {
-        this.j0806 = j0806;
+    public Form setSf1303(String sf1303) {
+        this.sf1303 = sf1303;
         return this;
     }
 
-    public String getJ08096() {
-        return j08096;
+    public String getSf1304() {
+        return sf1304;
     }
 
-    public Form setJ08096(String j08096) {
-        this.j08096 = j08096;
+    public Form setSf1304(String sf1304) {
+        this.sf1304 = sf1304;
         return this;
     }
 
-    public String getJ08096x() {
-        return j08096x;
+    public String getSf1305() {
+        return sf1305;
     }
 
-    public Form setJ08096x(String j08096x) {
-        this.j08096x = j08096x;
+    public Form setSf1305(String sf1305) {
+        this.sf1305 = sf1305;
         return this;
     }
 
-    public String getJ09() {
-        return j09;
+    public String getSf1306() {
+        return sf1306;
     }
 
-    public Form setJ09(String j09) {
-        this.j09 = j09;
+    public Form setSf1306(String sf1306) {
+        this.sf1306 = sf1306;
         return this;
     }
 
-    public String getJ09096x() {
-        return j09096x;
+    public String getSf1307() {
+        return sf1307;
     }
 
-    public Form setJ09096x(String j09096x) {
-        this.j09096x = j09096x;
+    public Form setSf1307(String sf1307) {
+        this.sf1307 = sf1307;
         return this;
     }
 
-    public String getJ010() {
-        return j010;
+    public String getSf1308() {
+        return sf1308;
     }
 
-    public Form setJ010(String j010) {
-        this.j010 = j010;
+    public Form setSf1308(String sf1308) {
+        this.sf1308 = sf1308;
         return this;
     }
 
-    public String getJ011() {
-        return j011;
+    public String getSf1309() {
+        return sf1309;
     }
 
-    public Form setJ011(String j011) {
-        this.j011 = j011;
+    public Form setSf1309(String sf1309) {
+        this.sf1309 = sf1309;
         return this;
     }
 
-    public String getJ012() {
-        return j012;
+    public String getSf1396x() {
+        return sf1396x;
     }
 
-    public Form setJ012(String j012) {
-        this.j012 = j012;
+    public Form setSf1396x(String sf1396x) {
+        this.sf1396x = sf1396x;
         return this;
     }
 
-    public String getK01() {
-        return k01;
+    public String getSf14() {
+        return sf14;
     }
 
-    public Form setK01(String k01) {
-        this.k01 = k01;
+    public Form setSf14(String sf14) {
+        this.sf14 = sf14;
         return this;
     }
 
-    public String getK02() {
-        return k02;
+    public String getSf1403x() {
+        return sf1403x;
     }
 
-    public Form setK02(String k02) {
-        this.k02 = k02;
+    public Form setSf1403x(String sf1403x) {
+        this.sf1403x = sf1403x;
         return this;
     }
 
-    public String getK03() {
-        return k03;
+    public String getSf1501() {
+        return sf1501;
     }
 
-    public Form setK03(String k03) {
-        this.k03 = k03;
+    public Form setSf1501(String sf1501) {
+        this.sf1501 = sf1501;
         return this;
     }
 
-    public String getK04() {
-        return k04;
+    public String getSf1502() {
+        return sf1502;
     }
 
-    public Form setK04(String k04) {
-        this.k04 = k04;
+    public Form setSf1502(String sf1502) {
+        this.sf1502 = sf1502;
         return this;
     }
 
-    public String getK05() {
-        return k05;
+    public String getSf1503() {
+        return sf1503;
     }
 
-    public Form setK05(String k05) {
-        this.k05 = k05;
+    public Form setSf1503(String sf1503) {
+        this.sf1503 = sf1503;
         return this;
-    }
-
-    public String getk05096x() {
-        return k05096x;
     }
 
-    public String getK06() {
-        return k06;
+    public String getSf1504() {
+        return sf1504;
     }
 
-    public Form setK06(String k06) {
-        this.k06 = k06;
+    public Form setSf1504(String sf1504) {
+        this.sf1504 = sf1504;
         return this;
     }
 
-    public String getK07() {
-        return k07;
+    public String getSf1505() {
+        return sf1505;
     }
 
-    public Form setK07(String k07) {
-        this.k07 = k07;
+    public Form setSf1505(String sf1505) {
+        this.sf1505 = sf1505;
         return this;
     }
 
-    public String getK08() {
-        return k08;
+    public String getSf1506() {
+        return sf1506;
     }
 
-    public Form setK08(String k08) {
-        this.k08 = k08;
+    public Form setSf1506(String sf1506) {
+        this.sf1506 = sf1506;
         return this;
     }
 
-    public String getK09() {
-        return k09;
+    public String getSf1507() {
+        return sf1507;
     }
 
-    public Form setK09(String k09) {
-        this.k09 = k09;
+    public Form setSf1507(String sf1507) {
+        this.sf1507 = sf1507;
         return this;
     }
 
-    public String getK10() {
-        return k10;
+    public String getSf1508() {
+        return sf1508;
     }
 
-    public Form setK10(String k10) {
-        this.k10 = k10;
+    public Form setSf1508(String sf1508) {
+        this.sf1508 = sf1508;
         return this;
     }
 
-    public String getK11() {
-        return k11;
+    public String getSf1509() {
+        return sf1509;
     }
 
-    public Form setK11(String k11) {
-        this.k11 = k11;
+    public Form setSf1509(String sf1509) {
+        this.sf1509 = sf1509;
         return this;
     }
 
-    public String getK12() {
-        return k12;
+    public String getSf16() {
+        return sf16;
     }
 
-    public Form setK12(String k12) {
-        this.k12 = k12;
+    public Form setSf16(String sf16) {
+        this.sf16 = sf16;
         return this;
     }
 
-    public String getK13() {
-        return k13;
+    public String getSf17() {
+        return sf17;
     }
 
-    public Form setK13(String k13) {
-        this.k13 = k13;
+    public Form setSf17(String sf17) {
+        this.sf17 = sf17;
         return this;
     }
 
-    public String getK14() {
-        return k14;
+    public String getSf18() {
+        return sf18;
     }
 
-    public Form setK14(String k14) {
-        this.k14 = k14;
+    public Form setSf18(String sf18) {
+        this.sf18 = sf18;
         return this;
-    }
-
-    public String getk14096x() {
-        return k14096x;
     }
 
-    public String getK15() {
-        return k15;
+    public String getSf1901() {
+        return sf1901;
     }
 
-    public Form setK15(String k15) {
-        this.k15 = k15;
+    public Form setSf1901(String sf1901) {
+        this.sf1901 = sf1901;
         return this;
     }
 
-    public String getK16() {
-        return k16;
+    public String getSf1902() {
+        return sf1902;
     }
 
-    public Form setK16(String k16) {
-        this.k16 = k16;
+    public Form setSf1902(String sf1902) {
+        this.sf1902 = sf1902;
         return this;
-    }
-
-    public String getk16096x() {
-        return k16096x;
     }
 
-    public String getK17() {
-        return k17;
+    public String getSf20() {
+        return sf20;
     }
 
-    public Form setK17(String k17) {
-        this.k17 = k17;
+    public Form setSf20(String sf17) {
+        this.sf20 = sf20;
         return this;
     }
 
@@ -3289,48 +1545,6 @@ public class Form extends LiveData<Form> {
     }
 //======================
 
-    public String getK05096x() {
-        return k05096x;
-    }
-
-    public Form setk05096x(String k05096x) {
-        this.k05096x = k05096x;
-        return this;
-    }
-
-    public Form setK05096x(String k05096x) {
-        this.k05096x = k05096x;
-        return this;
-    }
-
-    public String getK14096x() {
-        return k14096x;
-    }
-
-    public Form setk14096x(String k14096x) {
-        this.k14096x = k14096x;
-        return this;
-    }
-
-    public Form setK14096x(String k14096x) {
-        this.k14096x = k14096x;
-        return this;
-    }
-
-    public String getK16096x() {
-        return k16096x;
-    }
-
-    public Form setk16096x(String k16096x) {
-        this.k16096x = k16096x;
-        return this;
-    }
-
-    public Form setK16096x(String k16096x) {
-        this.k16096x = k16096x;
-        return this;
-    }
-
     public String getL02096x() {
         return l02096x;
     }
@@ -3372,69 +1586,6 @@ public class Form extends LiveData<Form> {
 
     public void setsD(String sD) {
         this.sD = sD;
-    }
-
-
-    public String getsE() {
-        return sE;
-    }
-
-    public void setsE(String sE) {
-        this.sE = sE;
-    }
-
-
-    public String getsF() {
-        return sF;
-    }
-
-    public void setsF(String sF) {
-        this.sF = sF;
-    }
-
-
-    public String getsG() {
-        return sG;
-    }
-
-    public void setsG(String sG) {
-        this.sG = sG;
-    }
-
-
-    public String getsH() {
-        return sH;
-    }
-
-    public void setsH(String sH) {
-        this.sH = sH;
-    }
-
-
-    public String getsI() {
-        return sI;
-    }
-
-    public void setsI(String sI) {
-        this.sI = sI;
-    }
-
-
-    public String getsJ() {
-        return sJ;
-    }
-
-    public void setsJ(String sJ) {
-        this.sJ = sJ;
-    }
-
-
-    public String getsK() {
-        return sK;
-    }
-
-    public void setsK(String sK) {
-        this.sK = sK;
     }
 
 
@@ -3636,13 +1787,7 @@ public class Form extends LiveData<Form> {
         this.sB = jsonObject.getString(FormsTable.COLUMN_SB);
         this.sC = jsonObject.getString(FormsTable.COLUMN_SC);
         this.sD = jsonObject.getString(FormsTable.COLUMN_SD);
-        this.sE = jsonObject.getString(FormsTable.COLUMN_SE);
         this.sF = jsonObject.getString(FormsTable.COLUMN_SF);
-        this.sG = jsonObject.getString(FormsTable.COLUMN_SG);
-        this.sH = jsonObject.getString(FormsTable.COLUMN_SH);
-        this.sI = jsonObject.getString(FormsTable.COLUMN_SI);
-        this.sJ = jsonObject.getString(FormsTable.COLUMN_SJ);
-        this.sK = jsonObject.getString(FormsTable.COLUMN_SK);
         this.sL = jsonObject.getString(FormsTable.COLUMN_SL);
 
         return this;
@@ -3686,13 +1831,7 @@ public class Form extends LiveData<Form> {
         sBHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB)));
         sCHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC)));
         sDHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD)));
-        sEHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SE)));
         sFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SF)));
-        sGHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SG)));
-        sHHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SH)));
-        sIHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SI)));
-        sJHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SJ)));
-        sKHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SK)));
         sLHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SL)));
 
 
@@ -3843,311 +1982,55 @@ public class Form extends LiveData<Form> {
         return json.toString();
     }
 
-    public String sEtoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("e01", e01)
-                    .put("e02", e02)
-                    //        .put("e0201", e0201)
-                    //        .put("e0202", e0202)
-                    .put("e0301", e0301)
-                    .put("e0302", e0302)
-                    .put("e0303", e0303)
-                    .put("e0304", e0304)
-                    .put("e0305", e0305)
-                    .put("e0306", e0306)
-                    .put("e03096", e03096)
-                    .put("e03096x", e03096x)
-                    .put("e04", e04)
-                    .put("e05", e05)
-                    .put("e06", e06)
-                    .put("e07", e07)
-                    .put("e0801", e0801)
-                    .put("e0802", e0802)
-                    .put("e0803", e0803)
-                    .put("e0804", e0804)
-                    .put("e0805", e0805)
-                    .put("e0806", e0806)
-                    .put("e08096", e08096)
-                    .put("e08096x", e08096x)
-                    .put("e09", e09)
-                    .put("e10", e10)
-                    .put("e1101", e1101)
-                    .put("e1102", e1102)
-                    .put("e1103", e1103)
-                    .put("e1104", e1104)
-                    .put("e1105", e1105)
-                    .put("e1106", e1106)
-                    .put("e12", e12)
-                    .put("e12096x", e12096x)
-                    .put("e13", e13)
-                    .put("e13096x", e13096x)
-                    .put("e1401", e1401)
-                    .put("e1402", e1402)
-                    .put("e15", e15);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
     public String sFtoString() {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("f01", f01)
-                    .put("f02", f02)
-                    .put("f03", f03)
-                    .put("f04", f04)
-                    .put("f04096x", f04096x)
-                    .put("f05", f05)
-                    .put("f06", f06)
-                    .put("f07", f07)
-                    .put("f08", f08)
-                    .put("f08096x", f08096x)
-                    .put("f09dd", f09dd)
-                    .put("f09mm", f09mm)
-                    .put("f09yy", f09yy)
-                    .put("f10", f10)
-                    .put("f11dd", f11dd)
-                    .put("f11mm", f11mm)
-                    .put("f11yy", f11yy)
-                    .put("f12", f12)
-                    .put("f13", f13)
-                    .put("f130296x", f130296x)
-                    .put("f131096x", f131096x)
-                    .put("f130196x", f130196x)
-                    .put("f14", f14)
-                    .put("f14096x", f14096x)
-                    .put("f15", f15)
-                    .put("f16", f16)
-                    .put("f17", f17);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
-    public String sGtoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("g01", g01)
-                    .put("g02", g02)
-                    .put("g03", g03)
-                    .put("g04", g04)
-                    .put("g04096x", g04096x)
-                    .put("g0501", g0501)
-                    .put("g0502", g0502)
-                    .put("g0503", g0503)
-                    .put("g0503a", g0503a)
-                    .put("g0504", g0504)
-                    .put("g0505", g0505)
-                    .put("g0506", g0506)
-                    .put("g0506a", g0506a)
-                    .put("g0507", g0507)
-                    .put("g0508", g0508)
-                    .put("g0509", g0509)
-                    .put("g0509a", g0509a)
-                    .put("g0510", g0510)
-                    .put("g0511", g0511)
-                    .put("g0512", g0512)
-                    .put("g0513", g0513)
-                    .put("g06", g06)
-                    .put("g0701", g0701)
-                    .put("g0702", g0702)
-                    .put("g0703", g0703)
-                    .put("g0704", g0704)
-                    .put("g0705", g0705)
-                    .put("g0706", g0706)
-                    .put("g0707", g0707)
-                    .put("g0501", g0501)
-                    .put("g0801", g0801)
-                    .put("g0802", g0802)
-                    .put("g0803", g0803)
-                    .put("g0804", g0804)
-                    .put("g0805", g0805)
-                    .put("g0806", g0806)
-                    .put("g0807", g0807)
-                    .put("g0808", g0808)
-                    .put("g0809", g0809)
-                    .put("g08096", g08096)
-                    .put("g08096x", g08096x)
-                    .put("g09", g09)
-                    .put("g10", g10)
-                    .put("g11", g11)
-                    .put("g12", g12)
-                    .put("g12096x", g12096x)
-                    .put("g13", g13)
-                    .put("g13096x", g13096x);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
-    public String sHtoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("h01a", h01a)
-                    .put("h01dd", h01dd)
-                    .put("h01mm", h01mm)
-                    .put("h01yy", h01yy)
-                    .put("h02dd", h02dd)
-                    .put("h02mm", h02mm)
-                    .put("h02yy", h02yy)
-                    .put("h0301", h0301)
-                    .put("h0302", h0302)
-                    .put("h0303", h0303)
-                    .put("h0304", h0304)
-                    .put("h0305", h0305)
-                    .put("h0306", h0306)
-                    .put("h0307", h0307)
-                    .put("h0308", h0308)
-                    .put("h0309", h0309)
-                    .put("h0310", h0310)
-                    .put("h0311", h0311)
-                    .put("h0312", h0312)
-                    .put("h0313", h0313)
-                    .put("h0314", h0314)
-                    .put("h0315", h0315)
-                    .put("h0316", h0316)
-                    .put("h03096", h03096)
-                    .put("h03096x", h03096x)
-                    .put("h04", h04)
-                    .put("h05", h05)
-                    .put("h06", h06)
-                    .put("h0701", h0701)
-                    .put("h0702", h0702)
-                    .put("h0801", h0801)
-                    .put("h0802", h0802)
-                    .put("h0803", h0803)
-                    .put("h0804", h0804)
-                    .put("h08096", h08096)
-                    .put("h08096x", h08096x)
-                    .put("h09", h09)
-                    .put("h10", h10)
-                    .put("h11", h11)
-                    .put("h11096x", h11096x)
-                    .put("h12", h12)
-                    .put("h12096x", h12096x)
-                    .put("h13dd", h13dd)
-                    .put("h13mm", h13mm)
-                    .put("h13yy", h13yy)
-                    //       .put("h13", h13)
-                    //       .put("h13096x", h13096x)
-                    .put("h14", h14)
-                    .put("h14096x", h14096x)
-                    .put("h15", h15)
-                    .put("h16", h16)
-                    .put("h17", h17)
-                    .put("h1801", h1801)
-                    .put("h1802", h1802);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
-    public String sItoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("i01", i01)
-                    .put("i02", i02)
-                    .put("i03", i03)
-                    .put("i0401", i0401)
-                    .put("i0402", i0402)
-                    .put("i0403", i0403)
-                    .put("i0404", i0404)
-                    .put("i0405", i0405)
-                    .put("i0406", i0406)
-                    .put("i0407", i0407)
-                    .put("i04096", i04096)
-                    .put("i04096x", i04096x)
-                    .put("i05", i05)
-                    .put("i06", i06)
-                    .put("i07", i07);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
-    public String sJtoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("j01", j01)
-                    .put("j02", j02)
-                    .put("j03", j03)
-                    .put("j04", j04)
-                    .put("j05", j05)
-                    .put("j06", j06)
-                    .put("j07", j07)
-                    .put("j0801", j0801)
-                    .put("j0802", j0802)
-                    .put("j0803", j0803)
-                    .put("j0804", j0804)
-                    .put("j0805", j0805)
-                    .put("j0806", j0806)
-                    .put("j08096", j08096)
-                    .put("j08096x", j08096x)
-                    .put("j09", j09)
-                    .put("j09096x", j09096x)
-                    .put("j010", j010)
-                    .put("j011", j011)
-                    .put("j012", j012);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "\"error\":, \"" + e.getMessage() + "\"";
-
-        }
-        return json.toString();
-    }
-
-    public String sKtoString() {
-        JSONObject json = new JSONObject();
-
-        try {
-            json.put("k01", k01)
-                    .put("k02", k02)
-                    .put("k03", k03)
-                    .put("k04", k04)
-                    .put("k05", k05)
-                    .put("k05096x", k05096x)
-                    .put("k06", k06)
-                    .put("k07", k07)
-                    .put("k08", k08)
-                    .put("k09", k09)
-                    .put("k10", k10)
-                    .put("k11", k11)
-                    .put("k12", k12)
-                    .put("k13", k13)
-                    .put("k14", k14)
-                    .put("k14096x", k14096x)
-                    .put("k15", k15)
-                    .put("k16", k16)
-                    .put("k16096x", k16096x)
-                    .put("k17", k17);
+            json.put("sf101", sf101)
+                    .put("sf102", sf102)
+                    .put("sf103", sf103)
+                    .put("sf104", sf104)
+                    .put("sf105", sf105)
+                    .put("sf2", sf2)
+                    .put("sf3 ", sf3)
+                    .put("sf4 ", sf4)
+                    .put("sf5 ", sf5)
+                    .put("sf6 ", sf6)
+                    .put("sf701", sf701)
+                    .put("sf702", sf702)
+                    .put("sf8", sf8)
+                    .put("sf9", sf9)
+                    .put("sf10", sf10)
+                    .put("sf11", sf11)
+                    .put("sf12", sf12)
+                    .put("sf1296x", sf1296x)
+                    .put("sf1301", sf1301)
+                    .put("sf1302", sf1302)
+                    .put("sf1303", sf1303)
+                    .put("sf1304", sf1304)
+                    .put("sf1305", sf1305)
+                    .put("sf1306", sf1306)
+                    .put("sf1307", sf1307)
+                    .put("sf1308", sf1308)
+                    .put("sf1309", sf1309)
+                    .put("sf1396x", sf1396x)
+                    .put("sf14", sf14)
+                    .put("sf1403x", sf1403x)
+                    .put("sf1501", sf1501)
+                    .put("sf1502", sf1502)
+                    .put("sf1503", sf1503)
+                    .put("sf1504", sf1504)
+                    .put("sf1505", sf1505)
+                    .put("sf1506", sf1506)
+                    .put("sf1507", sf1507)
+                    .put("sf1508", sf1508)
+                    .put("sf1509", sf1509)
+                    .put("sf16", sf16)
+                    .put("sf17", sf17)
+                    .put("sf18", sf18)
+                    .put("sf1901", sf1901)
+                    .put("sf1902", sf1902)
+                    .put("sf20", sf20);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -4262,13 +2145,7 @@ public class Form extends LiveData<Form> {
             json.put(FormsTable.COLUMN_SB, new JSONObject(sBtoString()));
             json.put(FormsTable.COLUMN_SC, new JSONObject(sCtoString()));
             json.put(FormsTable.COLUMN_SD, new JSONObject(sDtoString()));
-            json.put(FormsTable.COLUMN_SE, new JSONObject(sEtoString()));
             json.put(FormsTable.COLUMN_SF, new JSONObject(sFtoString()));
-            json.put(FormsTable.COLUMN_SG, new JSONObject(sGtoString()));
-            json.put(FormsTable.COLUMN_SH, new JSONObject(sHtoString()));
-            json.put(FormsTable.COLUMN_SI, new JSONObject(sItoString()));
-            json.put(FormsTable.COLUMN_SJ, new JSONObject(sJtoString()));
-            json.put(FormsTable.COLUMN_SK, new JSONObject(sKtoString()));
             json.put(FormsTable.COLUMN_SL, new JSONObject(sLtoString()));
 
 
@@ -4280,32 +2157,8 @@ public class Form extends LiveData<Form> {
                 json.put(FormsTable.COLUMN_SD, new JSONObject(this.sD));
             }
 
-            if (this.sE != null && !this.sE.equals("")) {
-                json.put(FormsTable.COLUMN_SE, new JSONObject(this.sE));
-            }
-
             if (this.sF != null && !this.sF.equals("")) {
                 json.put(FormsTable.COLUMN_SF, new JSONObject(this.sF));
-            }
-
-            if (this.sG != null && !this.sG.equals("")) {
-                json.put(FormsTable.COLUMN_SG, new JSONObject(this.sG));
-            }
-
-            if (this.sH != null && !this.sH.equals("")) {
-                json.put(FormsTable.COLUMN_SH, new JSONObject(this.sH));
-            }
-
-            if (this.sI != null && !this.sI.equals("")) {
-                json.put(FormsTable.COLUMN_SI, new JSONObject(this.sI));
-            }
-
-            if (this.sJ != null && !this.sJ.equals("")) {
-                json.put(FormsTable.COLUMN_SJ, new JSONObject(this.sJ));
-            }
-
-            if (this.sK != null && !this.sK.equals("")) {
-                json.put(FormsTable.COLUMN_SK, new JSONObject(this.sK));
             }
 
             if (this.sL != null && !this.sL.equals("")) {
@@ -4470,57 +2323,6 @@ public class Form extends LiveData<Form> {
         }
     }
 
-    private void sEHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.e01 = json.getString("e01");
-                this.e02 = json.getString("e02");
-                //        this.e0201 = json.getString("e0201");
-                //        this.e0202 = json.getString("e0202");
-                this.e0301 = json.getString("e0301");
-                this.e0302 = json.getString("e0302");
-                this.e0303 = json.getString("e0303");
-                this.e0304 = json.getString("e0304");
-                this.e0305 = json.getString("e0305");
-                this.e0306 = json.getString("e0306");
-                this.e03096 = json.getString("e03096");
-                this.e04 = json.getString("e04");
-                this.e05 = json.getString("e05");
-                this.e06 = json.getString("e06");
-                this.e07 = json.getString("e07");
-                this.e0801 = json.getString("e0801");
-                this.e0802 = json.getString("e0802");
-                this.e0803 = json.getString("e0803");
-                this.e0804 = json.getString("e0804");
-                this.e0805 = json.getString("e0805");
-                this.e0806 = json.getString("e0806");
-                this.e08096 = json.getString("e08096");
-                this.e09 = json.getString("e09");
-                this.e10 = json.getString("e10");
-                this.e1101 = json.getString("e1101");
-                this.e1102 = json.getString("e1102");
-                this.e1103 = json.getString("e1103");
-                this.e1104 = json.getString("e1104");
-                this.e1105 = json.getString("e1105");
-                this.e1106 = json.getString("e1106");
-                this.e12 = json.getString("e12");
-                this.e13 = json.getString("e13");
-                this.e1401 = json.getString("e1401");
-                this.e1402 = json.getString("e1402");
-                this.e15 = json.getString("e15");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.e01 = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
     private void sFHydrate(String string) {
 
         if (string != null) {
@@ -4529,272 +2331,54 @@ public class Form extends LiveData<Form> {
                 JSONObject json = null;
                 json = new JSONObject(string);
 
-                this.f01 = json.getString("f01");
-                this.f02 = json.getString("f02");
-                this.f03 = json.getString("f03");
-                this.f04 = json.getString("f04");
-                this.f04096x = json.getString("f04096x");
-                this.f05 = json.getString("f05");
-                this.f06 = json.getString("f06");
-                this.f07 = json.getString("f07");
-                this.f08 = json.getString("f08");
-                this.f08096x = json.getString("f08096x");
-                this.f09dd = json.getString("f09dd");
-                this.f09mm = json.getString("f09mm");
-                this.f09yy = json.getString("f09yy");
-                this.f10 = json.getString("f10");
-                this.f11dd = json.getString("f11dd");
-                this.f11mm = json.getString("f11mm");
-                this.f11yy = json.getString("f11yy");
-                this.f12 = json.getString("f12");
-                this.f13 = json.getString("f13");
-                this.f130296x = json.getString("f130296x");
-                this.f130196x = json.getString("f130196x");
-                this.f131096x = json.getString("f131096x");
-                this.f14 = json.getString("f14");
-                this.f15 = json.getString("f15");
-                this.f16 = json.getString("f16");
-                this.f17 = json.getString("f17");
+                this.sf101 = json.getString("sf101");
+                this.sf102 = json.getString("sf102");
+                this.sf103 = json.getString("sf103");
+                this.sf104 = json.getString("sf104");
+                this.sf105 = json.getString("sf105");
+                this.sf2 = json.getString("sf2");
+                this.sf3 = json.getString("sf3 ");
+                this.sf4 = json.getString("sf4 ");
+                this.sf5 = json.getString("sf5 ");
+                this.sf6 = json.getString("sf6 ");
+                this.sf701 = json.getString("sf701");
+                this.sf702 = json.getString("sf702");
+                this.sf8 = json.getString("sf8");
+                this.sf9 = json.getString("sf9");
+                this.sf10 = json.getString("sf10");
+                this.sf11 = json.getString("sf11");
+                this.sf12 = json.getString("sf12");
+                this.sf1296x = json.getString("sf1296x");
+                this.sf1301 = json.getString("sf1301");
+                this.sf1302 = json.getString("sf1302");
+                this.sf1303 = json.getString("sf1303");
+                this.sf1304 = json.getString("sf1304");
+                this.sf1305 = json.getString("sf1305");
+                this.sf1306 = json.getString("sf1306");
+                this.sf1307 = json.getString("sf1307");
+                this.sf1308 = json.getString("sf1308");
+                this.sf1309 = json.getString("sf1309");
+                this.sf1396x = json.getString("sf1396x");
+                this.sf14 = json.getString("sf14");
+                this.sf1403x = json.getString("sf1403x");
+                this.sf1501 = json.getString("sf1501");
+                this.sf1502 = json.getString("sf1502");
+                this.sf1503 = json.getString("sf1503");
+                this.sf1504 = json.getString("sf1504");
+                this.sf1505 = json.getString("sf1505");
+                this.sf1506 = json.getString("sf1506");
+                this.sf1507 = json.getString("sf1507");
+                this.sf1508 = json.getString("sf1508");
+                this.sf1509 = json.getString("sf1509");
+                this.sf16 = json.getString("sf16");
+                this.sf17 = json.getString("sf17");
+                this.sf18 = json.getString("sf18");
+                this.sf1901 = json.getString("sf1901");
+                this.sf1902 = json.getString("sf1902");
+                this.sf20 = json.getString("sf20");
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                this.f01 = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
-    private void sGHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.g01 = json.getString("g01");
-                this.g02 = json.getString("g02");
-                this.g03 = json.getString("g03");
-                this.g04 = json.getString("g04");
-                this.g04096x = json.getString("g04096x");
-                this.g0501 = json.getString("g0501");
-                this.g0502 = json.getString("g0502");
-                this.g0503 = json.getString("g0503");
-                this.g0503a = json.getString("g0503a");
-                this.g0504 = json.getString("g0504");
-                this.g0505 = json.getString("g0505");
-                this.g0506 = json.getString("g0506");
-                this.g0506a = json.getString("g0506a");
-                this.g0507 = json.getString("g0507");
-                this.g0508 = json.getString("g0508");
-                this.g0509 = json.getString("g0509");
-                this.g0509a = json.getString("g0509a");
-                this.g0510 = json.getString("g0510");
-                this.g0511 = json.getString("g0511");
-                this.g0512 = json.getString("g0512");
-                this.g0513 = json.getString("g0513");
-                this.g06 = json.getString("g06");
-                this.g0701 = json.getString("g0701");
-                this.g0702 = json.getString("g0702");
-                this.g0703 = json.getString("g0703");
-                this.g0704 = json.getString("g0704");
-                this.g0705 = json.getString("g0705");
-                this.g0706 = json.getString("g0706");
-                this.g0707 = json.getString("g0707");
-                this.g0801 = json.getString("g0801");
-                this.g0802 = json.getString("g0802");
-                this.g0803 = json.getString("g0803");
-                this.g0804 = json.getString("g0804");
-                this.g0805 = json.getString("g0805");
-                this.g0806 = json.getString("g0806");
-                this.g0807 = json.getString("g0807");
-                this.g0808 = json.getString("g0808");
-                this.g0809 = json.getString("g0809");
-                this.g08096 = json.getString("g08096");
-                this.g08096x = json.getString("g08096x");
-                this.g09 = json.getString("g09");
-                this.g10 = json.getString("g10");
-                this.g11 = json.getString("g11");
-                this.g12 = json.getString("g12");
-                this.g12096x = json.getString("g12096x");
-                this.g13 = json.getString("g13");
-                this.g13096x = json.getString("g13096x");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.g01 = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
-    private void sHHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.h01a = json.getString("h01a");
-                this.h01dd = json.getString("h01dd");
-                this.h01mm = json.getString("h01mm");
-                this.h01yy = json.getString("h01yy");
-                this.h02dd = json.getString("h02dd");
-                this.h02mm = json.getString("h02mm");
-                this.h02yy = json.getString("h02yy");
-                this.h0301 = json.getString("h0301");
-                this.h0302 = json.getString("h0302");
-                this.h0303 = json.getString("h0303");
-                this.h0304 = json.getString("h0304");
-                this.h0305 = json.getString("h0305");
-                this.h0306 = json.getString("h0306");
-                this.h0307 = json.getString("h0307");
-                this.h0308 = json.getString("h0308");
-                this.h0309 = json.getString("h0309");
-                this.h0310 = json.getString("h0310");
-                this.h0311 = json.getString("h0311");
-                this.h0312 = json.getString("h0312");
-                this.h0313 = json.getString("h0313");
-                this.h0314 = json.getString("h0314");
-                this.h0315 = json.getString("h0315");
-                this.h0316 = json.getString("h0316");
-                this.h03096 = json.getString("h03096");
-                this.h03096x = json.getString("h03096x");
-                this.h04 = json.getString("h04");
-                this.h05 = json.getString("h05");
-                this.h06 = json.getString("h06");
-                this.h0701 = json.getString("h0701");
-                this.h0702 = json.getString("h0702");
-                this.h0801 = json.getString("h0801");
-                this.h0802 = json.getString("h0802");
-                this.h0803 = json.getString("h0803");
-                this.h0804 = json.getString("h0804");
-                this.h08096 = json.getString("h08096");
-                this.h08096x = json.getString("h08096x");
-                this.h09 = json.getString("h09");
-                this.h10 = json.getString("h10");
-                this.h11 = json.getString("h11");
-                this.h11096x = json.getString("h11096x");
-                this.h12 = json.getString("h12");
-                this.h12096x = json.getString("h12096x");
-                this.h13dd = json.getString("h13dd");
-                this.h13mm = json.getString("h13mm");
-                this.h13yy = json.getString("h13yy");
-                //        this.h13 = json.getString("h13");
-                //        this.h13096x = json.getString("h13096x");
-                this.h14 = json.getString("h14");
-                this.h14096x = json.getString("h14096x");
-                this.h15 = json.getString("h15");
-                this.h16 = json.getString("h16");
-                this.h17 = json.getString("h17");
-                this.h1801 = json.getString("h1801");
-                this.h1802 = json.getString("h1802");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.h01a = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
-    private void sIHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.i01 = json.getString("i01");
-                this.i02 = json.getString("i02");
-                this.i03 = json.getString("i03");
-                this.i0401 = json.getString("i0401");
-                this.i0402 = json.getString("i0402");
-                this.i0403 = json.getString("i0403");
-                this.i0404 = json.getString("i0404");
-                this.i0405 = json.getString("i0405");
-                this.i0406 = json.getString("i0406");
-                this.i0407 = json.getString("i0407");
-                this.i04096 = json.getString("i04096");
-                this.i04096x = json.getString("i04096x");
-                this.i05 = json.getString("i05");
-                this.i06 = json.getString("i06");
-                this.i07 = json.getString("i07");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.i01 = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
-    private void sJHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.j01 = json.getString("j01");
-                this.j02 = json.getString("j02");
-                this.j03 = json.getString("j03");
-                this.j04 = json.getString("j04");
-                this.j05 = json.getString("j05");
-                this.j06 = json.getString("j06");
-                this.j07 = json.getString("j07");
-                this.j0801 = json.getString("j0801");
-                this.j0802 = json.getString("j0802");
-                this.j0803 = json.getString("j0803");
-                this.j0804 = json.getString("j0804");
-                this.j0805 = json.getString("j0805");
-                this.j0806 = json.getString("j0806");
-                this.j08096 = json.getString("j08096");
-                this.j08096x = json.getString("j08096x");
-                this.j09 = json.getString("j09");
-                this.j09096x = json.getString("j09096x");
-                this.j010 = json.getString("j010");
-                this.j011 = json.getString("j011");
-                this.j012 = json.getString("j012");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.j01 = "ERROR: " + e.getMessage();
-            }
-        }
-    }
-
-    private void sKHydrate(String string) {
-
-        if (string != null) {
-
-            try {
-                JSONObject json = null;
-                json = new JSONObject(string);
-
-                this.k01 = json.getString("k01");
-                this.k02 = json.getString("k02");
-                this.k03 = json.getString("k03");
-                this.k04 = json.getString("k04");
-                this.k05 = json.getString("k05");
-                this.k05096x = json.getString("k05096x");
-                this.k06 = json.getString("k06");
-                this.k07 = json.getString("k07");
-                this.k08 = json.getString("k08");
-                this.k09 = json.getString("k09");
-                this.k10 = json.getString("k10");
-                this.k11 = json.getString("k11");
-                this.k12 = json.getString("k12");
-                this.k13 = json.getString("k13");
-                this.k14 = json.getString("k14");
-                this.k14096x = json.getString("k14096x");
-                this.k15 = json.getString("k15");
-                this.k16 = json.getString("k16");
-                this.k16096x = json.getString("k16096x");
-                this.k17 = json.getString("k17");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                this.k10 = "ERROR: " + e.getMessage();
             }
         }
     }

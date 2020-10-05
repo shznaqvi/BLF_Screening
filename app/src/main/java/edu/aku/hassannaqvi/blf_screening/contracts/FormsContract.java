@@ -11,7 +11,7 @@ import android.provider.BaseColumns;
 
 public class FormsContract {
 
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.mi_covid";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.blf.screening";
 
     public static abstract class FormsTable implements BaseColumns {
         public static final String TABLE_NAME = "forms";
@@ -44,13 +44,7 @@ public class FormsContract {
         public static final String COLUMN_SB = "sB";
         public static final String COLUMN_SC = "sC";
         public static final String COLUMN_SD = "sD";
-        public static final String COLUMN_SE = "sE";
         public static final String COLUMN_SF = "sF";
-        public static final String COLUMN_SG = "sG";
-        public static final String COLUMN_SH = "sH";
-        public static final String COLUMN_SI = "sI";
-        public static final String COLUMN_SJ = "sJ";
-        public static final String COLUMN_SK = "sK";
         public static final String COLUMN_SL = "sL";
         public static String PATH = "forms";
         public static final String CONTENT_TYPE =
