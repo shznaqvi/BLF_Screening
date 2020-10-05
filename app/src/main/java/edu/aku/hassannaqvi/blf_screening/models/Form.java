@@ -45,8 +45,8 @@ public class Form extends LiveData<Form> {
     private String sB = "";
     private String sC = "";
     private String sD = "";
-    private String sF = "";
-    private String sL = "";
+    public String sl2 = "";
+    public String sl301 = "";
 
 
     private String a05a = "";
@@ -175,31 +175,21 @@ public class Form extends LiveData<Form> {
     public String sf1901 = "";
     public String sf1902 = "";
     public String sf20 = "";
-
-    public String sl1;
-    public String sl2;
-    public String sl3;
-    public String sl4;
-    public String sl5;
-    public String sl6;
-    public String sl7;
-    public String sl8;
-    public String sl9;
-    public String sl10;
-    public String sl11;
-
-
-    private String l01 = "";
-    private String l02 = "";
-    private String l02096x = "";
-    private String l03 = "";
-    private String l04 = "";
-    private String l05 = "";
-    private String l06 = "";
-    private String l07 = "";
-    private String l08 = "";
-    private String l09 = "";
-    private String l010 = "";
+    public String sl302 = "";
+    public String sl303 = "";
+    public String sl4 = "";
+    public String sl5 = "";
+    public String sl601 = "";
+    public String sl602 = "";
+    public String sl701 = "";
+    public String sl702 = "";
+    public String sl703 = "";
+    public String sl8 = "";
+    public String sl9 = "";
+    public String sl10 = "";
+    public String sl11 = "";
+    private String sF = ""; //SectionSF
+    private String sL = ""; //SectionSL
     private String gpslat = "";
     private String gpslng = "";
     private String gpsdate = "";
@@ -1370,97 +1360,138 @@ public class Form extends LiveData<Form> {
         return this;
     }
 
-    public String getL01() {
-        return l01;
+    public String getSl2() {
+        return sl2;
     }
 
-    public Form setL01(String l01) {
-        this.l01 = l01;
+    public Form setSl2(String sl2) {
+        this.sl2 = sl2;
         return this;
     }
 
-    public String getL02() {
-        return l02;
+    public String getSl301() {
+        return sl301;
     }
 
-    public Form setL02(String l02) {
-        this.l02 = l02;
+    public Form setSl301(String sl301) {
+        this.sl301 = sl301;
         return this;
     }
 
-    public String getl02096x() {
-        return l02096x;
+    public String getSl302() {
+        return sl302;
     }
 
-    public String getL03() {
-        return l03;
-    }
-
-    public Form setL03(String l03) {
-        this.l03 = l03;
+    public Form setSl302(String sl302) {
+        this.sl302 = sl302;
         return this;
     }
 
-    public String getL04() {
-        return l04;
+    public String getSl303() {
+        return sl303;
     }
 
-    public Form setL04(String l04) {
-        this.l04 = l04;
+    public Form setSl303(String sl303) {
+        this.sl303 = sl303;
         return this;
     }
 
-    public String getL05() {
-        return l05;
+    public String getSl4() {
+        return sl4;
     }
 
-    public Form setL05(String l05) {
-        this.l05 = l05;
+    public Form setSl4(String sl4) {
+        this.sl4 = sl4;
         return this;
     }
 
-    public String getL06() {
-        return l06;
+    public String getSl5() {
+        return sl5;
     }
 
-    public Form setL06(String l06) {
-        this.l06 = l06;
+    public Form setSl5(String sl5) {
+        this.sl5 = sl5;
         return this;
     }
 
-    public String getL07() {
-        return l07;
+    public String getSl601() {
+        return sl601;
     }
 
-    public Form setL07(String l07) {
-        this.l07 = l07;
+    public Form setSl601(String sl601) {
+        this.sl601 = sl601;
         return this;
     }
 
-    public String getL08() {
-        return l08;
+    public String getSl602() {
+        return sl602;
     }
 
-    public Form setL08(String l08) {
-        this.l08 = l08;
+    public Form setSl602(String sl602) {
+        this.sl602 = sl602;
         return this;
     }
 
-    public String getL09() {
-        return l09;
+    public String getSl701() {
+        return sl701;
     }
 
-    public Form setL09(String l09) {
-        this.l09 = l09;
+    public Form setSl701(String sl701) {
+        this.sl701 = sl701;
         return this;
     }
 
-    public String getL010() {
-        return l010;
+    public String getSl702() {
+        return sl702;
     }
 
-    public Form setL010(String l010) {
-        this.l010 = l010;
+    public Form setSl702(String sl702) {
+        this.sl702 = sl702;
+        return this;
+    }
+
+    public String getSl703() {
+        return sl703;
+    }
+
+    public Form setSl703(String sl703) {
+        this.sl703 = sl703;
+        return this;
+    }
+
+    public String getSl8() {
+        return sl8;
+    }
+
+    public Form setSl8(String sl8) {
+        this.sl8 = sl8;
+        return this;
+    }
+
+    public String getSl9() {
+        return sl9;
+    }
+
+    public Form setSl9(String sl9) {
+        this.sl9 = sl9;
+        return this;
+    }
+
+    public String getSl10() {
+        return sl10;
+    }
+
+    public Form setSl10(String sl10) {
+        this.sl10 = sl10;
+        return this;
+    }
+
+    public String getSl11() {
+        return sl11;
+    }
+
+    public Form setSl11(String sl11) {
+        this.sl11 = sl11;
         return this;
     }
 
@@ -1543,21 +1574,7 @@ public class Form extends LiveData<Form> {
         this.a05b = a05b;
         return this;
     }
-//======================
-
-    public String getL02096x() {
-        return l02096x;
-    }
-
-    public Form setl02096x(String l02096x) {
-        this.l02096x = l02096x;
-        return this;
-    }
-
-    public Form setL02096x(String l02096x) {
-        this.l02096x = l02096x;
-        return this;
-    }
+//=====================
 
 
     //====================
@@ -2044,17 +2061,21 @@ public class Form extends LiveData<Form> {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("l01", l01)
-                    .put("l02", l02)
-                    .put("l02096x", l02096x)
-                    .put("l03", l03)
-                    .put("l04", l04)
-                    .put("l05", l05)
-                    .put("l06", l06)
-                    .put("l07", l07)
-                    .put("l08", l08)
-                    .put("l09", l09)
-                    .put("l010", l010)
+            json.put("sl2", sl2)
+                    .put("sl301", sl301)
+                    .put("sl302", sl302)
+                    .put("sl303", sl303)
+                    .put("sl4", sl4)
+                    .put("sl5", sl5)
+                    .put("sl601", sl601)
+                    .put("sl602", sl602)
+                    .put("sl701", sl701)
+                    .put("sl702", sl702)
+                    .put("sl703", sl703)
+                    .put("sl8", sl8)
+                    .put("sl9", sl9)
+                    .put("sl10", sl10)
+                    .put("sl11", sl11)
                     .put("gpslat", gpslat)
                     .put("gpslng", gpslng)
                     .put("gpsdate", gpsdate)
@@ -2391,22 +2412,24 @@ public class Form extends LiveData<Form> {
                 JSONObject json = null;
                 json = new JSONObject(string);
 
-                this.l01 = json.getString("l01");
-                this.l02 = json.getString("l02");
-                this.l02096x = json.getString("l02096x");
-                this.l03 = json.getString("l03");
-                this.l04 = json.getString("l04");
-                this.l05 = json.getString("l05");
-                this.l06 = json.getString("l06");
-                this.l07 = json.getString("l07");
-                this.l08 = json.getString("l08");
-                this.l09 = json.getString("l09");
-                this.l09 = json.getString("l09");
-                this.l010 = json.getString("l010");
+                this.sl2 = json.getString("sl2");
+                this.sl301 = json.getString("sl301");
+                this.sl302 = json.getString("sl302");
+                this.sl303 = json.getString("sl303");
+                this.sl4 = json.getString("sl4");
+                this.sl5 = json.getString("sl5");
+                this.sl601 = json.getString("sl601");
+                this.sl602 = json.getString("sl602");
+                this.sl701 = json.getString("sl701");
+                this.sl702 = json.getString("sl702");
+                this.sl703 = json.getString("sl703");
+                this.sl8 = json.getString("sl8");
+                this.sl9 = json.getString("sl9");
+                this.sl10 = json.getString("sl10");
+                this.sl11 = json.getString("sl11");
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                this.l01 = "ERROR: " + e.getMessage();
             }
         }
     }

@@ -15,15 +15,17 @@ import androidx.work.WorkManager;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
+import static edu.aku.hassannaqvi.blf_screening.core.MainApp.form;
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
 
 public class SectionSLActivity extends AppCompatActivity {
@@ -103,26 +105,50 @@ public class SectionSLActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-       /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addForm(form);
-        form.set_ID(String.valueOf(updcount));
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SL, form.sLtoString());
         if (updcount > 0) {
-            form.set_UID(form.getDeviceID() + form.get_ID());
-            db.updatesFormColumn(FormsContract.FormsTable.COLUMN_UID, form.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-        return true;
+        }
     }
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject json = new JSONObject();
+        form.setSl2(bi.sl2.getText().toString());
+
+        form.setSl301(bi.sl301.getText().toString());
+        form.setSl302(bi.sl302.getText().toString());
+        form.setSl303(bi.sl303.getText().toString());
+
+        form.setSl4(bi.sl4.getText().toString());
+
+        form.setSl5(bi.sl5.getText().toString());
+
+        form.setSl601(bi.sl601.getText().toString());
+        form.setSl602(bi.sl602.getText().toString());
+
+        form.setSl701(bi.sl701.getText().toString());
+        form.setSl702(bi.sl702.getText().toString());
+        form.setSl703(bi.sl703.getText().toString());
+
+
+        form.setSl8(bi.sl801.isChecked() ? "1"
+                : bi.sl802.isChecked() ? "2"
+                : "-1");
+
+        form.setSl9(bi.sl9.getText().toString());
+
+        form.setSl10(bi.sl10.getText().toString());
+
+        form.setSl11(bi.sl11.getText().toString());
+
+       /* JSONObject json = new JSONObject();
 
         json.put("sl2", bi.sl2.getText().toString());
-       /* MainApp.jsonSL = new JSONObject();*/
+       *//* MainApp.jsonSL = new JSONObject();*//*
 
 
         //MainApp.jsonSL .put("sl2", bi.sl2.getText().toString());
@@ -153,7 +179,7 @@ public class SectionSLActivity extends AppCompatActivity {
 
         json.put("sl10", bi.sl10.getText().toString());
 
-        json.put("sl11", bi.sl11.getText().toString());
+        json.put("sl11", bi.sl11.getText().toString());*/
 
 
 
@@ -179,8 +205,7 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) ;
-        return false;
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
     public void BtnEnd() {

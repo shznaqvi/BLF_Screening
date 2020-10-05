@@ -4,9 +4,9 @@
     <data>
 
         <import type="android.view.View" />
-        <!--<variable
+        <variable
             name="form"
-            type="edu.aku.hassannaqvi.bovinelactoferrin.models.Form" />-->
+            type="edu.aku.hassannaqvi.blf_screening.models.Form" />
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity" />
@@ -40,7 +40,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- sf_title2  Title   -->
+            <!--&lt;!&ndash; sf_title2  Title   &ndash;&gt;
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsf_title2"
                 style="@style/cardView">
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sf_title2" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
             <!-- sl1  Title   -->
             <androidx.cardview.widget.CardView
@@ -643,9 +643,9 @@
                         android:layout_marginBottom="12dp"
                         android:hint="@string/sl9"
                         android:inputType="number"
+                        app:mask="##"
                         app:maxValue="9999999"
                         app:minValue="0"
-                        app:mask="##"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
