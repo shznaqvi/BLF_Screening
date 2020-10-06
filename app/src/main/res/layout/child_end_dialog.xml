@@ -9,7 +9,7 @@
         android:layoutDirection="ltr"
         android:orientation="vertical"
         android:padding="24dp"
-        android:theme="@style/AppThemeEnglish">
+>
 
         <TextView
             android:id="@+id/alertTitle"

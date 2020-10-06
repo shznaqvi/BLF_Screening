@@ -112,14 +112,12 @@
                         android:id="@+id/sl2"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
-                        android:layout_marginBottom="12dp"
-                        android:hint="@string/sl2"
-                        android:inputType="number"
-                        android:editable="false"
-                        app:mask="###"
-                        app:maxValue="999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/colorPrimaryLight"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+
+                        />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

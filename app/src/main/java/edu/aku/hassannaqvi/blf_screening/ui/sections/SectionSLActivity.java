@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -14,7 +13,12 @@ import androidx.work.WorkManager;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
@@ -23,7 +27,6 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -78,8 +81,8 @@ public class SectionSLActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (UpdateDB()) {
-            // RetrieveSLNo();
-            startActivity(new Intent(this, EndingActivity.class));
+            RetrieveSLNo();
+            // startActivity(new Intent(this, EndingActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -94,10 +97,46 @@ public class SectionSLActivity extends AppCompatActivity {
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
                     public void onChanged(@Nullable WorkInfo workInfo) {
+
                         String message = workInfo.getOutputData().getString("slno");
-                        //Displaying the status into TextView
-                        //mTextView1.append("\n" + workInfo.getState().name());
-                        bi.sl2.setText(message);
+                        if (message != null) {
+                            //Displaying the status into TextView
+                            //mTextView1.append("\n" + workInfo.getState().name());
+                            DatabaseHelper db = new DatabaseHelper(SectionSLActivity.this); // Database Helper
+                            StringBuilder sSyncedError = new StringBuilder();
+                            JSONObject jsonObject;
+                            try {
+
+
+                                JSONArray json = new JSONArray(message);
+                                for (int i = 0; i < json.length(); i++) {
+                                    jsonObject = new JSONObject(json.getString(i));
+
+
+                                    if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
+                                        bi.sl2.setText(jsonObject.getString("slno"));
+
+                                        //method.invoke(db, jsonObject.getString("id"));
+
+                                    } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id")); // UPDATE DUPLICATES
+                                        //   method.invoke(db, jsonObject.getString("id"));
+
+                                        // sDuplicate++;
+                                    } else {
+                                        sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
+
+                                    }
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //bi.sl2.setText(message);
+                        }
                         //mTextView1.append("\n" + workInfo.getState().name());
                     }
                 });
@@ -122,7 +161,12 @@ public class SectionSLActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         MainApp.formsSL = new FormsSL();
 
+        MainApp.formsSL.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.formsSL.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.formsSL.setDevicetagID(MainApp.appInfo.getTagName());
+        MainApp.formsSL.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.formsSL.setSl2(bi.sl2.getText().toString());
+
 
         MainApp.formsSL.setSl301(bi.sl301.getText().toString());
         MainApp.formsSL.setSl302(bi.sl302.getText().toString());

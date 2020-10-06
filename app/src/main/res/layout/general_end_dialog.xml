@@ -6,7 +6,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:padding="24dp"
-    android:theme="@style/AppThemeEnglish">
+>
 
     <TextView
         android:layout_width="wrap_content"

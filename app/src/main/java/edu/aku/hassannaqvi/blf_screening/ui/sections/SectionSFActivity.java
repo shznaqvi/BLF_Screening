@@ -1,15 +1,24 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract;
@@ -17,7 +26,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSfBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -70,10 +79,66 @@ public class SectionSFActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (UpdateDB()) {
-            startActivity(new Intent(this, EndingActivity.class));
+            RetrieveSrcID();
+            //startActivity(new Intent(this, EndingActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean RetrieveSrcID() {
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSL.class).build();
+        WorkManager.getInstance().enqueue(workRequest1);
+
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest1.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(@Nullable WorkInfo workInfo) {
+
+                        String message = workInfo.getOutputData().getString("study_id");
+                        if (message != null) {
+                            //Displaying the status into TextView
+                            //mTextView1.append("\n" + workInfo.getState().name());
+                            DatabaseHelper db = new DatabaseHelper(SectionSFActivity.this); // Database Helper
+                            StringBuilder sSyncedError = new StringBuilder();
+                            JSONObject jsonObject;
+                            try {
+
+
+                                JSONArray json = new JSONArray(message);
+                                for (int i = 0; i < json.length(); i++) {
+                                    jsonObject = new JSONObject(json.getString(i));
+
+
+                                    if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
+                                        bi.sf20.setText(jsonObject.getString("study_id"));
+
+                                        //method.invoke(db, jsonObject.getString("id"));
+
+                                    } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id")); // UPDATE DUPLICATES
+                                        //   method.invoke(db, jsonObject.getString("id"));
+
+                                        // sDuplicate++;
+                                    } else {
+                                        sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
+
+                                    }
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //bi.sl2.setText(message);
+                        }
+                        //mTextView1.append("\n" + workInfo.getState().name());
+                    }
+                });
+        return false;
     }
 
     private boolean UpdateDB() {
@@ -91,7 +156,10 @@ public class SectionSFActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         MainApp.formsSF = new FormsSF();
-
+        MainApp.formsSF.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.formsSF.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.formsSF.setDevicetagID(MainApp.appInfo.getTagName());
+        MainApp.formsSF.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.formsSF.setSf101(bi.sf101.getText().toString());
         MainApp.formsSF.setSf102(bi.sf102.getText().toString());
         MainApp.formsSF.setSf103(bi.sf103.getText().toString());
@@ -220,7 +288,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 : bi.sf1802.isChecked() ? "2"
                 : "-1");
 
-        MainApp.formsSF.setSf1901(bi.sf1901.getText().toString());
+        //MainApp.formsSF.setSf1901(bi.sf1901.getText().toString());
         MainApp.formsSF.setSf1902(bi.sf102.getText().toString());
 
         MainApp.formsSF.setSf20(bi.sf20.getText().toString());

@@ -1,9 +1,9 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:typeface">sans</item>
 
-    </style>
+    </style>-->
 
     <!-- Base application theme. -->
     <style name="AppThemeEnglish1" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -14,7 +14,7 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="AppThemeEnglish" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <item name="android:textSize">18sp</item>
         <item name="colorPrimary">@color/colorPrimary</item>

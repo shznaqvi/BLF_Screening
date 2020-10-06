@@ -14,7 +14,7 @@ public class FormsSFContract {
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.blf.screening";
 
     public static abstract class FormsSFTable implements BaseColumns {
-        public static final String TABLE_NAME = "formsSF";
+        public static final String TABLE_NAME = "formsScr";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
@@ -33,7 +33,7 @@ public class FormsSFContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
         public static final String COLUMN_SF = "sF";
-        public static String PATH = "formsSF";
+        public static String PATH = "formsscr";
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
         public static final String CONTENT_ITEM_TYPE =

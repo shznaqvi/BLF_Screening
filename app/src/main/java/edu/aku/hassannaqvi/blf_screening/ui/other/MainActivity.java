@@ -35,6 +35,7 @@ import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportCluster;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportDate;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
@@ -307,8 +308,11 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         if (!AndroidUtilityKt.isNetworkConnected(this)) return;
         Intent oF = null;
         switch (v.getId()) {
-            case R.id.formA:
+            case R.id.srclog:
                 oF = new Intent(this, SectionSLActivity.class);
+                break;
+            case R.id.formScr:
+                oF = new Intent(this, SectionSFActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);
