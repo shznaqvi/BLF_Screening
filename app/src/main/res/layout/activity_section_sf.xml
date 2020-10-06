@@ -168,7 +168,6 @@
                                 android:hint="@string/sf103"
                                 android:inputType="number"
                                 android:maxLength="4"
-                                app:mask="##"
                                 app:maxValue="2020"
                                 app:minValue="2019"
                                 app:type="range" />
@@ -665,18 +664,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:background="@drawable/bottom">
 
                         <TextView
                             android:id="@+id/qtxt_sf10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_sf10"
                             android:text="@string/sf10" />
 
                         <TextView
@@ -695,10 +694,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
-                        android:layout_weight="2"
                         android:hint="@string/sf10"
                         android:inputType="number"
-                        app:mask="##"
+                        android:maxLength="4"
                         app:maxValue="4000"
                         app:minValue="800"
                         app:type="range" />
@@ -2229,7 +2227,7 @@
                     android:orientation="horizontal">
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bottom">
 

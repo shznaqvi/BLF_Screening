@@ -26,7 +26,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSfBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
-import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
+import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSF;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -87,7 +87,7 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     private boolean RetrieveSrcID() {
-        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSL.class).build();
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSF.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
 
@@ -144,8 +144,11 @@ public class SectionSFActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsSFColumn(FormsSFContract.FormsSFTable.COLUMN_SF, MainApp.formsSF.sFtoString());
+        long updcount = db.addFormSF(MainApp.formsSF);
+        MainApp.formsSF.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
+            MainApp.formsSF.set_UID(MainApp.formsSF.getDeviceID() + MainApp.formsSF.get_ID());
+            db.updatesFormsSFColumn(FormsSFContract.FormsSFTable.COLUMN_UID, MainApp.formsSF.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();

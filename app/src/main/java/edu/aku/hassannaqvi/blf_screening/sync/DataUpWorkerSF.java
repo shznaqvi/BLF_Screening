@@ -67,7 +67,7 @@ public class DataUpWorkerSF extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/formsrc.php");
+                url = new URL("http://f38158/blf/api/formscr.php");
             } else {
                 url = serverURL;
             }
