@@ -116,7 +116,7 @@
                         android:hint="@string/sl2"
                         android:inputType="number"
                         android:editable="false"
-                        app:mask="##"
+                        app:mask="###"
                         app:maxValue="999"
                         app:minValue="1"
                         app:type="range" />
@@ -235,8 +235,7 @@
                                 android:gravity="center"
                                 android:hint="@string/sl303"
                                 android:inputType="number"
-                                android:maxLength="4"
-                                app:mask="##"
+                                app:mask="####"
                                 app:maxValue="2020"
                                 app:minValue="2019"
                                 app:type="range" />
@@ -286,6 +285,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
+                        android:inputType="number"
                         android:hint="@string/sl4" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -536,8 +536,7 @@
                                 android:gravity="center"
                                 android:hint="@string/sl703"
                                 android:inputType="number"
-                                android:maxLength="4"
-                                app:mask="##"
+                                app:mask="####"
                                 app:maxValue="2021"
                                 app:minValue="2020"
                                 app:type="range" />
@@ -643,7 +642,7 @@
                         android:layout_marginBottom="12dp"
                         android:hint="@string/sl9"
                         android:inputType="number"
-                        app:mask="##"
+                        android:maxLength="7"
                         app:maxValue="9999999"
                         app:minValue="0"
                         app:type="range" />
