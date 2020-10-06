@@ -107,8 +107,11 @@ public class SectionSLActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsSLColumn(FormsSLContract.FormsSLTable.COLUMN_SL, MainApp.formsSL.sLtoString());
+        long updcount = db.addFormSL(MainApp.formsSL);
+        MainApp.formsSL.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
+            MainApp.formsSL.set_UID(MainApp.formsSL.getDeviceID() + MainApp.formsSL.get_ID());
+            db.updatesFormsSLColumn(FormsSLContract.FormsSLTable.COLUMN_UID, MainApp.formsSL.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
