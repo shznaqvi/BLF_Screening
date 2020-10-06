@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -76,8 +78,8 @@ public class SectionSLActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (UpdateDB()) {
-            RetrieveSLNo();
-            // startActivity(new Intent(this, EndingActivity.class));
+            // RetrieveSLNo();
+            startActivity(new Intent(this, EndingActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
