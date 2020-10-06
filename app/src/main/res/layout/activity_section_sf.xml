@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.Form" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsSL" />
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity" />

@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -17,15 +16,14 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 
 import edu.aku.hassannaqvi.blf_screening.R;
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
-import static edu.aku.hassannaqvi.blf_screening.core.MainApp.form;
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
 
 public class SectionSLActivity extends AppCompatActivity {
@@ -78,7 +76,8 @@ public class SectionSLActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (UpdateDB()) {
-            startActivity(new Intent(this, EndingActivity.class));
+            RetrieveSLNo();
+            // startActivity(new Intent(this, EndingActivity.class));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -106,7 +105,7 @@ public class SectionSLActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SL, form.sLtoString());
+        int updcount = db.updatesFormsSLColumn(FormsSLContract.FormsSLTable.COLUMN_SL, MainApp.formsSL.sLtoString());
         if (updcount > 0) {
             return true;
         } else {
@@ -116,34 +115,35 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
+        MainApp.formsSL = new FormsSL();
 
-        form.setSl2(bi.sl2.getText().toString());
+        MainApp.formsSL.setSl2(bi.sl2.getText().toString());
 
-        form.setSl301(bi.sl301.getText().toString());
-        form.setSl302(bi.sl302.getText().toString());
-        form.setSl303(bi.sl303.getText().toString());
+        MainApp.formsSL.setSl301(bi.sl301.getText().toString());
+        MainApp.formsSL.setSl302(bi.sl302.getText().toString());
+        MainApp.formsSL.setSl303(bi.sl303.getText().toString());
 
-        form.setSl4(bi.sl4.getText().toString());
+        MainApp.formsSL.setSl4(bi.sl4.getText().toString());
 
-        form.setSl5(bi.sl5.getText().toString());
+        MainApp.formsSL.setSl5(bi.sl5.getText().toString());
 
-        form.setSl601(bi.sl601.getText().toString());
-        form.setSl602(bi.sl602.getText().toString());
+        MainApp.formsSL.setSl601(bi.sl601.getText().toString());
+        MainApp.formsSL.setSl602(bi.sl602.getText().toString());
 
-        form.setSl701(bi.sl701.getText().toString());
-        form.setSl702(bi.sl702.getText().toString());
-        form.setSl703(bi.sl703.getText().toString());
+        MainApp.formsSL.setSl701(bi.sl701.getText().toString());
+        MainApp.formsSL.setSl702(bi.sl702.getText().toString());
+        MainApp.formsSL.setSl703(bi.sl703.getText().toString());
 
 
-        form.setSl8(bi.sl801.isChecked() ? "1"
+        MainApp.formsSL.setSl8(bi.sl801.isChecked() ? "1"
                 : bi.sl802.isChecked() ? "2"
                 : "-1");
 
-        form.setSl9(bi.sl9.getText().toString());
+        MainApp.formsSL.setSl9(bi.sl9.getText().toString());
 
-        form.setSl10(bi.sl10.getText().toString());
+        MainApp.formsSL.setSl10(bi.sl10.getText().toString());
 
-        form.setSl11(bi.sl11.getText().toString());
+        MainApp.formsSL.setSl11(bi.sl11.getText().toString());
 
        /* JSONObject json = new JSONObject();
 

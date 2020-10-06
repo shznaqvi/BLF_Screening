@@ -260,7 +260,7 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
             pd.setTitle(syncClass + " Sync Failed");
 //            pd.show(); m
             if (result.equals("No new records to sync.")) {
-                //Collection<FormsContract> unclosedForms = db.getUnclosedForms();
+                //Collection<FormsSLContract> unclosedForms = db.getUnclosedForms();
 
                 uploadlist.get(position).setmessage(result /*+ " Open Forms" + String.format("%02d", unclosedForms.size())*/);
                 uploadlist.get(position).setstatus("Not processed");

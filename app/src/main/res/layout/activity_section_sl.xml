@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.Form" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsSL" />
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity" />
@@ -108,7 +108,7 @@
                             android:text="@string/Q_sl2" />
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <TextView
                         android:id="@+id/sl2"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"

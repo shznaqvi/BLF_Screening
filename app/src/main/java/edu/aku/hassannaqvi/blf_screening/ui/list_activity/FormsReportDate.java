@@ -17,12 +17,12 @@ import java.util.List;
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.adapter.FormsAdapter;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 
 
 public class FormsReportDate extends AppCompatActivity {
     DatabaseHelper db;
-    Collection<Form> form;
+    Collection<FormsSL> form;
     String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
     TextView dtFilter;
     private RecyclerView recyclerView;
@@ -44,17 +44,17 @@ public class FormsReportDate extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         dtFilter = findViewById(R.id.dtFilter);
         db = new DatabaseHelper(this);
-        form = db.getTodayForms(sysdateToday);
+//        form = db.getTodayForms(sysdateToday);
 
         // specify an adapter (see also next example)
-        formsAdapter = new FormsAdapter((List<Form>) form, this);
+        formsAdapter = new FormsAdapter((List<FormsSL>) form, this);
         recyclerView.setAdapter(formsAdapter);
     }
 
     public void filterForms(View view) {
         Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
-        form = db.getTodayForms(dtFilter.getText().toString());
-        formsAdapter = new FormsAdapter((List<Form>) form, this);
+//        form = db.getTodayForms(dtFilter.getText().toString());
+        formsAdapter = new FormsAdapter((List<FormsSL>) form, this);
         formsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(formsAdapter);
 

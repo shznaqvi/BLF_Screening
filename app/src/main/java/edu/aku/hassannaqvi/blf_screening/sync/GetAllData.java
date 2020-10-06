@@ -206,11 +206,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             if (insertCount == 1) jsonArray.put("1");
                             position = 1;
                             break;
-                        case "Districts":
+                     /*   case "Districts":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncDistricts(jsonArray);
                             position = 2;
-                            break;
+                            break;*/
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

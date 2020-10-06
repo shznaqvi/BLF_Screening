@@ -2,7 +2,8 @@ package edu.aku.hassannaqvi.blf_screening.utils;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract.DistrictsTable;
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
 
@@ -13,38 +14,46 @@ public final class CreateTable {
     public static final String PROJECT_NAME = "blf";
     public static final int DATABASE_VERSION = 1;
 
-    public static final String SQL_CREATE_FORMS = "CREATE TABLE "
-            + FormsTable.TABLE_NAME + "("
-            + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + FormsTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + FormsTable.COLUMN_DEVICEID + " TEXT,"
-            + FormsTable.COLUMN_DEVICETAGID + " TEXT,"
-            + FormsTable.COLUMN_SYSDATE + " TEXT,"
-            + FormsTable.COLUMN_UID + " TEXT,"
-            + FormsTable.COLUMN_A01 + " TEXT,"
-            + FormsTable.COLUMN_A02 + " TEXT,"
-            + FormsTable.COLUMN_A03 + " TEXT,"
-            + FormsTable.COLUMN_A04 + " TEXT,"
-            + FormsTable.COLUMN_A05 + " TEXT,"
-            + FormsTable.COLUMN_A05CODE + " TEXT,"
-            + FormsTable.COLUMN_A08 + " TEXT,"
-            + FormsTable.COLUMN_REFNO + " TEXT,"
-            + FormsTable.COLUMN_GPSLAT + " TEXT,"
-            + FormsTable.COLUMN_GPSLNG + " TEXT,"
-            + FormsTable.COLUMN_GPSDATE + " TEXT,"
-            + FormsTable.COLUMN_GPSACC + " TEXT,"
-            + FormsTable.COLUMN_APPVERSION + " TEXT,"
-            + FormsTable.COLUMN_SINFO + " TEXT,"
-            + FormsTable.COLUMN_SB + " TEXT,"
-            + FormsTable.COLUMN_SC + " TEXT,"
-            + FormsTable.COLUMN_SD + " TEXT,"
-            + FormsTable.COLUMN_SF + " TEXT,"
-            + FormsTable.COLUMN_SL + " TEXT,"
-            + FormsTable.COLUMN_ENDINGDATETIME + " TEXT,"
-            + FormsTable.COLUMN_ISTATUS + " TEXT,"
-            + FormsTable.COLUMN_ISTATUS96x + " TEXT,"
-            + FormsTable.COLUMN_SYNCED + " TEXT,"
-            + FormsTable.COLUMN_SYNCED_DATE + " TEXT"
+    public static final String SQL_CREATE_FORMSSL = "CREATE TABLE "
+            + FormsSLTable.TABLE_NAME + "("
+            + FormsSLTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsSLTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsSLTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsSLTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsSLTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsSLTable.COLUMN_UID + " TEXT,"
+            + FormsSLTable.COLUMN_GPSLAT + " TEXT,"
+            + FormsSLTable.COLUMN_GPSLNG + " TEXT,"
+            + FormsSLTable.COLUMN_GPSDATE + " TEXT,"
+            + FormsSLTable.COLUMN_GPSACC + " TEXT,"
+            + FormsSLTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsSLTable.COLUMN_SL + " TEXT,"
+            + FormsSLTable.COLUMN_ENDINGDATETIME + " TEXT,"
+            + FormsSLTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSLTable.COLUMN_ISTATUS96x + " TEXT,"
+            + FormsSLTable.COLUMN_SYNCED + " TEXT,"
+            + FormsSLTable.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+
+    public static final String SQL_CREATE_FORMSSF = "CREATE TABLE "
+            + FormsSFTable.TABLE_NAME + "("
+            + FormsSFTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsSFTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsSFTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsSFTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsSFTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsSFTable.COLUMN_UID + " TEXT,"
+            + FormsSFTable.COLUMN_GPSLAT + " TEXT,"
+            + FormsSFTable.COLUMN_GPSLNG + " TEXT,"
+            + FormsSFTable.COLUMN_GPSDATE + " TEXT,"
+            + FormsSFTable.COLUMN_GPSACC + " TEXT,"
+            + FormsSFTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsSFTable.COLUMN_SF + " TEXT,"
+            + FormsSFTable.COLUMN_ENDINGDATETIME + " TEXT,"
+            + FormsSFTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"
+            + FormsSFTable.COLUMN_SYNCED + " TEXT,"
+            + FormsSFTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("
@@ -82,13 +91,6 @@ public final class CreateTable {
             + BLRandomTable.COLUMN_RANDOMDT + " TEXT,"
             + BLRandomTable.COLUMN_SNO_HH + " TEXT );";
 
-
-    public static final String SQL_ALTER_FORMS_A05CODE = "ALTER TABLE " +
-            FormsTable.TABLE_NAME + " ADD COLUMN " +
-            FormsTable.COLUMN_A05CODE + " TEXT";
-    public static final String SQL_ALTER_FORMS_A08 = "ALTER TABLE " +
-            FormsTable.TABLE_NAME + " ADD COLUMN " +
-            FormsTable.COLUMN_A08 + " TEXT";
 /*    public static final String SQL_ALTER_CHILD_TABLE = "ALTER TABLE " +
             ChildTable.TABLE_NAME + " ADD COLUMN " +
             ChildTable.COLUMN_SYSDATE + " TEXT";*/

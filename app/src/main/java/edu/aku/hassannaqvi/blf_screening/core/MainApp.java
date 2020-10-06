@@ -28,7 +28,8 @@ import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 
 
@@ -75,11 +76,12 @@ public class MainApp extends Application {
     public static OnItemClick countItemClick;
     public static AppInfo appInfo;
     public static Boolean admin = false;
-    public static LiveData<Form> liveForms = new MutableLiveData<>();
+    public static LiveData<FormsSL> liveForms = new MutableLiveData<>();
 
     public static String userName = "0000";
     public static UsersContract user;
-    public static Form form;
+    public static FormsSL formsSL;
+    public static FormsSF formsSF;
     public static JSONObject jsonSL;
 
     public static String DeviceURL = "devices.php";
@@ -110,11 +112,11 @@ public class MainApp extends Application {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            MainApp.form.setGpsLat(GPSPref.getString("Latitude", "0"));
+/*            MainApp.form.setGpsLat(GPSPref.getString("Latitude", "0"));
             MainApp.form.setGpsLng(GPSPref.getString("Longitude", "0"));
             MainApp.form.setGpsAcc(GPSPref.getString("Accuracy", "0"));
 //            MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-            MainApp.form.setGpsDT(date); // Timestamp is converted to date above
+            MainApp.form.setGpsDT(date); // Timestamp is converted to date above*/
 
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());

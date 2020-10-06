@@ -15,7 +15,7 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 
 /**
  * Created by hassan.naqvi on 8/1/2016.
@@ -23,10 +23,10 @@ import edu.aku.hassannaqvi.blf_screening.models.Form;
 public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> {
     Context c;
     DatabaseHelper db;
-    private List<Form> form = Collections.emptyList();
+    private List<FormsSL> form = Collections.emptyList();
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public FormsAdapter(List<Form> form, Context c) {
+    public FormsAdapter(List<FormsSL> form, Context c) {
         this.form = form;
         this.c = c;
         Log.d("TAG:count", String.valueOf(getItemCount()));
@@ -100,18 +100,18 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 iColor = Color.RED;
                 break;
             default:
-                iStatus = "Open Form";
+                iStatus = "Open FormsSL";
                 iColor = Color.RED;
                 break;
 
         }
 
         //holder.hhno.setText(form.get(position).getRefno() + " \t\t(" + form.get(position).getA01() + ")");
-        holder.hhno.setText(form.get(position).getA05());
+        //    holder.hhno.setText(form.get(position).getA05());
         holder.istatus.setText(iStatus);
         holder.sysdate.setText(form.get(position).getSysdate());
         holder.istatus.setTextColor(iColor);
-        holder.cluster.setText(form.get(position).getA08() + " (" + form.get(position).getRefno() + ")");
+        //  holder.cluster.setText(form.get(position).getA08() + " (" + form.get(position).getRefno() + ")");
 
 
     }

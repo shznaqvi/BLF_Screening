@@ -32,11 +32,11 @@ import java.util.List;
 import edu.aku.hassannaqvi.blf_screening.CONSTANTS;
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySyncBinding;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
 import edu.aku.hassannaqvi.blf_screening.sync.GetAllData;
 import edu.aku.hassannaqvi.blf_screening.sync.SyncAllData;
@@ -156,10 +156,10 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     this,
                     "Forms",
                     "updateSyncedForms",
-                    Form.class,
+                    FormsSL.class,
                     MainApp._HOST_URL + MainApp._SERVER_URL,
-                    FormsContract.FormsTable.TABLE_NAME,
-                    db.getUnsyncedForms(), 0, syncListAdapter, uploadlist
+                    FormsSLContract.FormsSLTable.TABLE_NAME,
+                    db.getUnsyncedFormsSL(), 0, syncListAdapter, uploadlist
             ).execute();
 
             bi.noDataItem.setVisibility(View.GONE);

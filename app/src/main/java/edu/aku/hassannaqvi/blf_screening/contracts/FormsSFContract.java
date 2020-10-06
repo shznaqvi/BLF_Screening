@@ -9,25 +9,17 @@ import android.provider.BaseColumns;
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class FormsContract {
+public class FormsSFContract {
 
     public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.blf.screening";
 
-    public static abstract class FormsTable implements BaseColumns {
-        public static final String TABLE_NAME = "forms";
+    public static abstract class FormsSFTable implements BaseColumns {
+        public static final String TABLE_NAME = "formsSF";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_A01 = "a01";
-        public static final String COLUMN_A02 = "a02";
-        public static final String COLUMN_A03 = "a03";
-        public static final String COLUMN_A04 = "a04";
-        public static final String COLUMN_A05 = "a05";
-        public static final String COLUMN_A05CODE = "a05code";
-        public static final String COLUMN_A08 = "a08";
-        public static final String COLUMN_REFNO = "refno";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
@@ -40,13 +32,8 @@ public class FormsContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_SINFO = "sInfo";
-        public static final String COLUMN_SB = "sB";
-        public static final String COLUMN_SC = "sC";
-        public static final String COLUMN_SD = "sD";
         public static final String COLUMN_SF = "sF";
-        public static final String COLUMN_SL = "sL";
-        public static String PATH = "forms";
+        public static String PATH = "formsSF";
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
         public static final String CONTENT_ITEM_TYPE =

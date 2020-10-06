@@ -13,7 +13,7 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.Form" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsSL" />
     </data>
 
     <ScrollView

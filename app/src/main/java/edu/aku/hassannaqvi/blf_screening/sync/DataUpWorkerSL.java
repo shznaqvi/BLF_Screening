@@ -99,8 +99,7 @@ public class DataUpWorkerSL extends Worker {
             JSONArray jsonParam = new JSONArray();
             try {
                 jsonTable.put("table", "screenlog");
-                jsonSync.put(MainApp.jsonSL);
-
+                jsonSync.put(MainApp.formsSL.toJSONObject());
                 jsonParam
                         .put(jsonTable)
                         .put(jsonSync);

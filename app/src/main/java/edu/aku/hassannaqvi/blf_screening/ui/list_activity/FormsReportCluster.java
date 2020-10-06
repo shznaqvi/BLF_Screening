@@ -3,26 +3,22 @@ package edu.aku.hassannaqvi.blf_screening.ui.list_activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.R;
-import edu.aku.hassannaqvi.blf_screening.adapter.FormsAdapter;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 
 
 public class FormsReportCluster extends AppCompatActivity {
     DatabaseHelper db;
-    Collection<Form> form;
+    Collection<FormsSL> form;
     String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
     TextView dtFilter;
     private RecyclerView recyclerView;
@@ -40,23 +36,24 @@ public class FormsReportCluster extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+/*        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         dtFilter = findViewById(R.id.dtFilter);
         db = new DatabaseHelper(this);
         form = db.getFormsByCluster("0000000");
 
         // specify an adapter (see also next example)
-        formsAdapter = new FormsAdapter((List<Form>) form, this);
+        formsAdapter = new FormsAdapter((List<FormsSL>) form, this);
         recyclerView.setAdapter(formsAdapter);
+        */
     }
 
     public void filterForms(View view) {
-        Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
+      /*  Toast.makeText(this, "updated", Toast.LENGTH_SHORT).show();
         form = db.getFormsByCluster(dtFilter.getText().toString());
-        formsAdapter = new FormsAdapter((List<Form>) form, this);
+        formsAdapter = new FormsAdapter((List<FormsSL>) form, this);
         formsAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(formsAdapter);
-
+*/
     }
 }

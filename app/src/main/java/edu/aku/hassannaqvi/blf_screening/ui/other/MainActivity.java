@@ -14,7 +14,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +24,6 @@ import androidx.databinding.DataBindingUtil;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -34,13 +32,9 @@ import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.blf_screening.models.Form;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportCluster;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportDate;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionBActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionCActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionDActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
@@ -101,10 +95,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
 
-        bi.txtinstalldate.setText(appInfo.getAppInfo());
-        Collection<Form> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
-        Collection<Form> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
-        Collection<Form> unclosedForms = appInfo.getDbHelper().getUnclosedForms();
+       /* bi.txtinstalldate.setText(appInfo.getAppInfo());
+        Collection<FormsSL> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
+        Collection<FormsSL> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
+        Collection<FormsSL> unclosedForms = appInfo.getDbHelper().getUnclosedForms();
 
         StringBuilder rSumText = new StringBuilder()
                 .append("TODAY'S RECORDS SUMMARY\r\n")
@@ -115,10 +109,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         if (todaysForms.size() > 0) {
             String iStatus;
             rSumText.append("---------------------------------------------------------\r\n")
-                    .append("[District   ][Ref. No][Name   ][Form Status][Sync Status]\r\n")
+                    .append("[District   ][Ref. No][Name   ][FormsSL Status][Sync Status]\r\n")
                     .append("---------------------------------------------------------\r\n");
 
-            for (Form form : todaysForms) {
+            for (FormsSL form : todaysForms) {
                 Log.d(TAG, "onCreate: '" + form.getIstatus() + "'");
                 switch (form.getIstatus()) {
                     case "1":
@@ -148,9 +142,9 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     case "96":
                         iStatus = " Other                                             ";
                         break;
-                   /* case "":
+                   *//* case "":
                         iStatus = " Open                                              ";
-                        break;*/
+                        break;*//*
                     default:
                         iStatus = " - N/A -                                           " + form.getIstatus();
                 }
@@ -169,20 +163,21 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         SharedPreferences syncPref = getSharedPreferences("src", Context.MODE_PRIVATE);
         rSumText.append("\r\nDEVICE INFORMATION\r\n")
                 .append("  ========================================================\r\n")
-                /* .append("\t|| Open Forms: \t\t\t\t\t\t").append(String.format("%02d", unclosedForms.size()))
-                 .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")*/
+                *//* .append("\t|| Open Forms: \t\t\t\t\t\t").append(String.format("%02d", unclosedForms.size()))
+                 .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")*//*
                 .append("\t|| Unsynced Forms: \t\t\t\t").append(String.format("%02d", unsyncedForms.size()))
                 .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
                 .append("\t|| Last Data Download: \t\t").append(syncPref.getString("LastDataDownload", "Never Downloaded   "))
                 .append("\t\t\t\t\t\t||\r\n")
                 .append("\t|| Last Data Upload: \t\t\t").append(syncPref.getString("LastDataUpload", "Never Uploaded     "))
                 .append("\t\t\t\t\t\t||\r\n")
-                /*  .append("\t|| Last Photo Upload: \t\t").append(syncPref.getString("LastPhotoUpload", "Never Uploaded     "))
-                  .append("\t\t\t\t\t\t||\r\n")*/
+                *//*  .append("\t|| Last Photo Upload: \t\t").append(syncPref.getString("LastPhotoUpload", "Never Uploaded     "))
+                  .append("\t\t\t\t\t\t||\r\n")*//*
                 .append("\t========================================================\r\n");
         bi.recordSummary.setText(rSumText);
 
         Log.d(TAG, "onCreate: " + rSumText);
+        */
         if (MainApp.admin) {
             bi.databaseBtn.setVisibility(View.VISIBLE);
         } else {
@@ -314,15 +309,6 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         switch (v.getId()) {
             case R.id.formA:
                 oF = new Intent(this, SectionSLActivity.class);
-                break;
-            case R.id.formB:
-                oF = new Intent(this, SectionBActivity.class);
-                break;
-            case R.id.formC:
-                oF = new Intent(this, SectionCActivity.class);
-                break;
-            case R.id.formD:
-                oF = new Intent(this, SectionDActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);
