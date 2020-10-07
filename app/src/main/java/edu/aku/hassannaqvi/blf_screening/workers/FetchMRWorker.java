@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.blf_screening.sync;
+package edu.aku.hassannaqvi.blf_screening.workers;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,7 +12,6 @@ import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,17 +29,17 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-public class DataUpWorkerSF extends Worker {
+public class FetchMRWorker extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataDlWorkerSF()";
+    private final String TAG = "FetchMRWorker()";
     HttpURLConnection urlConnection;
     private Context mContext;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
 
-    public DataUpWorkerSF(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public FetchMRWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -67,7 +66,7 @@ public class DataUpWorkerSF extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/formscr.php");
+                url = new URL("http://f38158/blf/api/getdata.php");
             } else {
                 url = serverURL;
             }
@@ -81,37 +80,23 @@ public class DataUpWorkerSF extends Worker {
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
             urlConnection.connect();
-            JSONArray jsonSync = new JSONArray();
+
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             JSONObject json = new JSONObject();
             try {
-                json.put("table", "formscr");
-                Log.d(TAG, "json.put: Done");
+                json.put("table", "screenlog");
+                json.put("select", "sl2, sl5");
+                json.put("filter", "sl4 = " + MainApp.sf2);
             } catch (JSONException e1) {
                 e1.printStackTrace();
-                Log.d(TAG, e1.getMessage());
-            }
-            Log.d(TAG, "downloadUrl: " + json.toString());
-
-            // ============
-            JSONObject jsonTable = new JSONObject();
-            JSONArray jsonParam = new JSONArray();
-            try {
-                jsonTable.put("table", "formscr");
-                jsonSync.put(MainApp.formsSF.toJSONObject());
-                jsonParam
-                        .put(jsonTable)
-                        .put(jsonSync);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+                Log.d(TAG, "doWork: " + e1.getMessage());
             }
 
             //================
+            Log.d(TAG, "doWork: " + json);
 
-
-            wr.writeBytes(String.valueOf(jsonParam));
+            wr.writeBytes(String.valueOf(json));
             wr.flush();
             wr.close();
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
@@ -126,20 +111,20 @@ public class DataUpWorkerSF extends Worker {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "SCR ID: " + line);
+                    Log.i(TAG, "MR No.: " + line);
                     result.append(line);
-                    displayNotification("SCR ID", line);
+                    displayNotification("MR No.", line);
 
                 }
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SCR ID", "Timeout Error: " + e.getMessage());
+            displayNotification("MR. No", "Timeout Error: " + e.getMessage());
             return Result.failure();
 
         } catch (IOException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SCR ID", "IO Error: " + e.getMessage());
+            displayNotification("Mr. No", "IO Error: " + e.getMessage());
 
             return Result.failure();
 
@@ -148,25 +133,21 @@ public class DataUpWorkerSF extends Worker {
         }
 
         Log.d(TAG, "onPostExecute: Starting");
-        displayNotification("SCR ID", "Received Data");
+        displayNotification("MR. No", "Received Data");
         //Do something with the JSON string
         Data data = null;
         if (result != null) {
-            displayNotification("SCR ID", "Starting Data Processing");
+            displayNotification("MR. No", "Starting Data Processing");
 
             //String json = result.toString();
             /*if (json.length() > 0) {*/
-            displayNotification("SCR ID", "Data Size: " + result.length());
-
+            displayNotification("MR. No.", "Data Size: " + result.length());
 
             // JSONArray jsonArray = new JSONArray(json);
 
-
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
             data = new Data.Builder()
-                    .putString("study_id", String.valueOf(result)).build();
-
-
+                    .putString("mrno", String.valueOf(result)).build();
 
            /* } else {
 
@@ -175,7 +156,7 @@ public class DataUpWorkerSF extends Worker {
 
         }
 
-        displayNotification("SCR ID", " SCR ID received successfully");
+        displayNotification("MR No.", " MR. No. received successfully");
         return Result.success(data);
     }
 

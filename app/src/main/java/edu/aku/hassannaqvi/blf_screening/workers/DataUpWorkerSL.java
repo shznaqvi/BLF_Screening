@@ -1,14 +1,14 @@
-package edu.aku.hassannaqvi.blf_screening.sync;
+package edu.aku.hassannaqvi.blf_screening.workers;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -19,23 +19,18 @@ import org.json.JSONObject;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-// import com.opencsv.CSVWriter;
-
-public class DataDlWorkerSL extends Worker {
+public class DataUpWorkerSL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
     private final String TAG = "DataDlWorkerSL()";
@@ -45,7 +40,7 @@ public class DataDlWorkerSL extends Worker {
     private ProgressDialog pd;
     private int length;
 
-    public DataDlWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public DataUpWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -72,7 +67,7 @@ public class DataDlWorkerSL extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL(MainApp._HOST_URL + MainApp._SERVER_URL);
+                url = new URL("http://f38158/blf/api/scrlog.php");
             } else {
                 url = serverURL;
             }
@@ -86,6 +81,7 @@ public class DataDlWorkerSL extends Worker {
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
             urlConnection.connect();
+            JSONArray jsonSync = new JSONArray();
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             JSONObject json = new JSONObject();
@@ -97,12 +93,30 @@ public class DataDlWorkerSL extends Worker {
                 Log.d(TAG, e1.getMessage());
             }
             Log.d(TAG, "downloadUrl: " + json.toString());
-            wr.writeBytes(json.toString());
+
+            // ============
+            JSONObject jsonTable = new JSONObject();
+            JSONArray jsonParam = new JSONArray();
+            try {
+                jsonTable.put("table", "screenlog");
+                jsonSync.put(MainApp.formsSL.toJSONObject());
+                jsonParam
+                        .put(jsonTable)
+                        .put(jsonSync);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            //================
+
+
+            wr.writeBytes(String.valueOf(jsonParam));
             wr.flush();
             wr.close();
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                displayNotification("BL_Random", "Connection Established");
+                displayNotification("Screen Log", "Connection Established");
 
                 length = urlConnection.getContentLength();
 
@@ -112,20 +126,20 @@ public class DataDlWorkerSL extends Worker {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "UCs In: " + line);
+                    Log.i(TAG, "SL No: " + line);
                     result.append(line);
-                    displayNotification("BL_Random", line);
+                    displayNotification("SL No", line);
 
                 }
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("BL_Random", "Timeout Error: " + e.getMessage());
+            displayNotification("SL No", "Timeout Error: " + e.getMessage());
             return Result.failure();
 
         } catch (IOException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("BL_Random", "IO Error: " + e.getMessage());
+            displayNotification("SL No", "IO Error: " + e.getMessage());
 
             return Result.failure();
 
@@ -134,72 +148,35 @@ public class DataDlWorkerSL extends Worker {
         }
 
         Log.d(TAG, "onPostExecute: Starting");
-        displayNotification("BL_Random", "Received Data");
-        List<String[]> data = new ArrayList<String[]>();
+        displayNotification("SL No", "Received Data");
         //Do something with the JSON string
+        Data data = null;
         if (result != null) {
-            displayNotification("BL_Random", "Starting Data Processing");
+            displayNotification("SL NO", "Starting Data Processing");
 
-            String json = result.toString();
-            if (json.length() > 0) {
-                displayNotification("BL_Random", "Data Size: " + json.length());
+            //String json = result.toString();
+            /*if (json.length() > 0) {*/
+            displayNotification("SL NO", "Data Size: " + result.length());
 
-                try {
-                    JSONArray jsonArray = new JSONArray(json);
-                    //      CSVWriter writer = null;
-                    //String csv = (Environment.getExternalStorageDirectory().getAbsolutePath() + "/childlist.csv"); // Here csv file name is MyCsvFile.csv
 
-                    File csvFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + File.separator + APP_NAME);
+            // JSONArray jsonArray = new JSONArray(json);
 
-                    if (!csvFolder.exists()) {
-                        csvFolder.mkdirs();
-                    }
 
-                    File csvFile = new File(csvFolder + File.separator + "childlist.csv");
+            //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
+            data = new Data.Builder()
+                    .putString("slno", String.valueOf(result)).build();
 
-                    //writer = new CSVWriter(new FileWriter(csvFile));
 
-                    /*
-                    // SAMPLE DATA FROM SERVER
-                                        {
-                                                "gsedid": "0081",
-                                                "child_name": "FOKAIHA",
-                                                "mother_name": "SABIRA",
-                                                "dob": "19-05-2004"
-                                        },
-                    */
-                    data.add(new String[]{"gsedid", "child_name", "mother_name", "dob"});
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
-                        data.add(new String[]{
-                                jsonObjectCC.getString("_id"),
-                                jsonObjectCC.getString("dist_id"),
-                                jsonObjectCC.getString("dist_name"),
-                                jsonObjectCC.getString("sub_dist_name"),
-                                jsonObjectCC.getString("hhno"),
-                                jsonObjectCC.getString("cluster"),
 
-                        });
+           /* } else {
 
-                    }
-                    //writer.writeAll(data); // data is adding to csv
-
-                    //writer.close();
-                    //callRead();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-            } else {
-
-            }
+            }*/
         } else {
 
         }
 
-        displayNotification("BL_Random", data.size() + " Records Downloaded Successfully");
-        return Result.success();
+        displayNotification("SL No", " SL NO received successfully");
+        return Result.success(data);
     }
 
     /*

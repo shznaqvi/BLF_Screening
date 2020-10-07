@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.blf_screening.sync;
+package edu.aku.hassannaqvi.blf_screening.workers;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -30,17 +30,17 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-public class DataUpWorkerSL extends Worker {
+public class DataUpWorkerSF extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataDlWorkerSL()";
+    private final String TAG = "DataDlWorkerSF()";
     HttpURLConnection urlConnection;
     private Context mContext;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
 
-    public DataUpWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public DataUpWorkerSF(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -67,7 +67,7 @@ public class DataUpWorkerSL extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/scrlog.php");
+                url = new URL("http://f38158/blf/api/formscr.php");
             } else {
                 url = serverURL;
             }
@@ -86,7 +86,7 @@ public class DataUpWorkerSL extends Worker {
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             JSONObject json = new JSONObject();
             try {
-                json.put("table", "screenlog");
+                json.put("table", "formscr");
                 Log.d(TAG, "json.put: Done");
             } catch (JSONException e1) {
                 e1.printStackTrace();
@@ -98,8 +98,8 @@ public class DataUpWorkerSL extends Worker {
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
             try {
-                jsonTable.put("table", "screenlog");
-                jsonSync.put(MainApp.formsSL.toJSONObject());
+                jsonTable.put("table", "formscr");
+                jsonSync.put(MainApp.formsSF.toJSONObject());
                 jsonParam
                         .put(jsonTable)
                         .put(jsonSync);
@@ -116,7 +116,7 @@ public class DataUpWorkerSL extends Worker {
             wr.close();
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                displayNotification("Screen Log", "Connection Established");
+                displayNotification("Form Screen", "Connection Established");
 
                 length = urlConnection.getContentLength();
 
@@ -126,20 +126,20 @@ public class DataUpWorkerSL extends Worker {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "SL No: " + line);
+                    Log.i(TAG, "SCR ID: " + line);
                     result.append(line);
-                    displayNotification("SL No", line);
+                    displayNotification("SCR ID", line);
 
                 }
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SL No", "Timeout Error: " + e.getMessage());
+            displayNotification("SCR ID", "Timeout Error: " + e.getMessage());
             return Result.failure();
 
         } catch (IOException e) {
             Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SL No", "IO Error: " + e.getMessage());
+            displayNotification("SCR ID", "IO Error: " + e.getMessage());
 
             return Result.failure();
 
@@ -148,15 +148,15 @@ public class DataUpWorkerSL extends Worker {
         }
 
         Log.d(TAG, "onPostExecute: Starting");
-        displayNotification("SL No", "Received Data");
+        displayNotification("SCR ID", "Received Data");
         //Do something with the JSON string
         Data data = null;
         if (result != null) {
-            displayNotification("SL NO", "Starting Data Processing");
+            displayNotification("SCR ID", "Starting Data Processing");
 
             //String json = result.toString();
             /*if (json.length() > 0) {*/
-            displayNotification("SL NO", "Data Size: " + result.length());
+            displayNotification("SCR ID", "Data Size: " + result.length());
 
 
             // JSONArray jsonArray = new JSONArray(json);
@@ -164,7 +164,7 @@ public class DataUpWorkerSL extends Worker {
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
             data = new Data.Builder()
-                    .putString("slno", String.valueOf(result)).build();
+                    .putString("study_id", String.valueOf(result)).build();
 
 
 
@@ -175,7 +175,7 @@ public class DataUpWorkerSL extends Worker {
 
         }
 
-        displayNotification("SL No", " SL NO received successfully");
+        displayNotification("SCR ID", " SCR ID received successfully");
         return Result.success(data);
     }
 

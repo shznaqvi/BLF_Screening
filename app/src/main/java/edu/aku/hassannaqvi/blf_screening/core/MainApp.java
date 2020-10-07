@@ -88,6 +88,7 @@ public class MainApp extends Application {
     public static String IMEI;
     public static SharedPreferences sharedPref;
     public static String DIST_ID;
+    public static String sf2;
     protected static LocationManager locationManager;
     private LocationLiveData locationlivedata;
 

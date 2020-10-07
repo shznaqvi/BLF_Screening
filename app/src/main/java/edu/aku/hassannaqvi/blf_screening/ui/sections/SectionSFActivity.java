@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -26,8 +27,9 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSfBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
-import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSF;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSF;
+import edu.aku.hassannaqvi.blf_screening.workers.FetchMRWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
 
@@ -448,4 +450,71 @@ public class SectionSFActivity extends AppCompatActivity {
 
     }
 
+    public void checkMR(View view) {
+
+        MainApp.sf2 = bi.sf2.getText().toString();
+
+        RetrieveMR();
+
+    }
+
+    private boolean RetrieveMR() {
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest1);
+
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest1.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(@Nullable WorkInfo workInfo) {
+
+                        String message = workInfo.getOutputData().getString("mrno");
+                        if (message != null) {
+                            //Displaying the status into TextView
+                            //mTextView1.append("\n" + workInfo.getState().name());
+                            DatabaseHelper db = new DatabaseHelper(SectionSFActivity.this); // Database Helper
+                            StringBuilder sSyncedError = new StringBuilder();
+                            JSONObject jsonObject;
+                            try {
+
+
+                                JSONArray json = new JSONArray(message);
+                                for (int i = 0; i < json.length(); i++) {
+                                    jsonObject = new JSONObject(json.getString(i));
+
+                                    if (jsonObject.getString("sl2") != null) {
+
+                                        bi.sf4.setText(jsonObject.getString("sl2"));
+                                        bi.sf3.setText(jsonObject.getString("sl5"));
+
+                                    }
+                                  /*  if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
+                                        bi.sf20.setText(jsonObject.getString("study_id"));
+
+                                        //method.invoke(db, jsonObject.getString("id"));
+
+                                    } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+
+                                        db.updateSyncedFormsSL(jsonObject.getString("id")); // UPDATE DUPLICATES
+                                        //   method.invoke(db, jsonObject.getString("id"));
+
+                                        // sDuplicate++;
+                                    } else {
+                                        sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
+
+                                    }*/
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //bi.sl2.setText(message);
+                        }
+                        //mTextView1.append("\n" + workInfo.getState().name());
+                    }
+                });
+        return false;
+    }
 }

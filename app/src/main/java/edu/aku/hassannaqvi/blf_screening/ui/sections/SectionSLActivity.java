@@ -26,8 +26,8 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
-import edu.aku.hassannaqvi.blf_screening.sync.DataUpWorkerSL;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSL;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
 

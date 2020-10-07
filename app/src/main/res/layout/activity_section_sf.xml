@@ -272,13 +272,28 @@
                             android:layout_alignBottom="@id/qtxt_sf2"
                             android:text="@string/Q_sf2" />
                     </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/sf2"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginBottom="12dp"
-                        android:hint="@string/sf2" />
+    <EditText
+        android:id="@+id/sf2"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="56dp"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/sf2" />
+
+    <ImageButton
+        android:id="@+id/checkMR"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/et_style"
+        android:onClick="checkMR"
+        android:src="@drawable/ic_red_eye"
+        android:textSize="20sp" />
+</LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -355,17 +370,16 @@
                             android:text="@string/Q_sf4" />
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <TextView
                         android:id="@+id/sf4"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
-                        android:layout_marginBottom="12dp"
-                        android:hint="@string/sf4"
-                        android:inputType="number"
-                        android:maxLength="5"
-                        app:maxValue="99999"
-                        app:minValue="1"
-                        app:type="range" />
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@color/colorPrimaryLight"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+
+                        />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
