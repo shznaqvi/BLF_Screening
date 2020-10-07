@@ -4,9 +4,11 @@
     <data>
 
         <import type="android.view.View" />
+
         <variable
             name="form"
             type="edu.aku.hassannaqvi.blf_screening.models.FormsSL" />
+
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity" />
@@ -272,28 +274,31 @@
                             android:layout_alignBottom="@id/qtxt_sf2"
                             android:text="@string/Q_sf2" />
                     </RelativeLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/sf2"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="56dp"
-        android:layout_marginBottom="12dp"
-        android:hint="@string/sf2" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/checkMR"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@drawable/et_style"
-        android:onClick="checkMR"
-        android:src="@drawable/ic_red_eye"
-        android:textSize="20sp" />
-</LinearLayout>
+                        <EditText
+                            android:id="@+id/sf2"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_weight="1"
+                            android:hint="###-##-###"
+                            app:mask="###-##-###"
+                            app:required="true" />
+
+                        <ImageButton
+                            android:id="@+id/checkMR"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:background="@drawable/et_style"
+                            android:onClick="checkMR"
+                            android:src="@drawable/ic_red_eye"
+                            android:textSize="20sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
