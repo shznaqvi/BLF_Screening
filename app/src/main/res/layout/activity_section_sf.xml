@@ -420,7 +420,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
-                        android:hint="@string/sf5" />
+                        android:hint="@string/sf5"
+                        android:inputType="number" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
