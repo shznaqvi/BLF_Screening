@@ -1,6 +1,9 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +15,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONArray;
@@ -35,6 +39,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActi
 
 public class SectionSFActivity extends AppCompatActivity {
     ActivitySectionSfBinding bi;
+    boolean sf17Flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,31 +51,126 @@ public class SectionSFActivity extends AppCompatActivity {
 
     private void setupSkip() {
 
-//        bi.a07.setOnCheckedChangeListener((group, checkId) -> {
-//            if (bi.a0701.isChecked()) {
-//                bi.btnContinue.setVisibility(View.VISIBLE);
-//                bi.btnEnd.setVisibility(View.GONE);
-//            } else {
-//                bi.btnContinue.setVisibility(View.GONE);
-//                bi.btnEnd.setVisibility(View.VISIBLE);
-//                Clear.clearAllFields(bi.lla08);
-//            }
-//        });
-//
-//        bi.a05b.setOnCheckedChangeListener((group, checkId) -> {
-//            if (bi.a05b1.isChecked()) {
-//                bi.btnContinue.setVisibility(View.VISIBLE);
-//                bi.btnEnd.setVisibility(View.GONE);
-//            } else {
-//                bi.btnContinue.setVisibility(View.GONE);
-//                bi.btnEnd.setVisibility(View.VISIBLE);
-//                bi.a07.clearCheck();
-//            }
-//        });
 
-        /*bi.a21.setOnCheckedChangeListener((group, checkId) -> {
-            Clear.clearAllFields(bi.fldGrpSecA03);
-        });*/
+        bi.sf6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(bi.sf6.getText())) return;
+                if ((Integer.parseInt(bi.sf6.getText().toString()) > 18 && Integer.parseInt(bi.sf6.getText().toString()) < 45)) {
+                    sf1702Enable(true);
+                    sf17Flag = true;
+                } else {
+                    sf1702Enable(false);
+                    sf17Flag = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        bi.sf701.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(bi.sf701.getText())) return;
+                if (Integer.parseInt(bi.sf701.getText().toString()) < 37) {
+                    sf1702Enable(true);
+                    sf17Flag = true;
+                } else {
+                    sf1702Enable(false);
+                    sf17Flag = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        bi.sf8.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(bi.sf8.getText())) return;
+                if (Integer.parseInt(bi.sf8.getText().toString()) < 7) {
+                    sf1702Enable(true);
+                    sf17Flag = true;
+                } else {
+                    sf1702Enable(false);
+                    sf17Flag = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        bi.sf10.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(bi.sf10.getText())) return;
+                if (Integer.parseInt(bi.sf10.getText().toString()) > 1200) {
+                    sf1702Enable(true);
+                    sf17Flag = true;
+                } else {
+                    sf1702Enable(false);
+                    sf17Flag = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+        bi.sf9.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf901.isChecked() && bi.sf1102.isChecked() && bi.sf1602.isChecked() && bi.sf1801.isChecked()));
+
+
+        bi.sf11.setOnCheckedChangeListener((radioGroup, i) -> {
+            sf1702Enable(sf17Flag && bi.sf1102.isChecked() && bi.sf901.isChecked() && bi.sf1602.isChecked() && bi.sf1801.isChecked());
+            Clear.clearAllFields(bi.fldGrpCVsf12);
+        });
+
+
+        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
+            if (i == bi.sf1401.getId() || i == bi.sf1403.getId()) {
+                Clear.clearAllFields(bi.llsf15);
+            }
+        }));
+
+
+        bi.sf16.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked() && bi.sf1801.isChecked()));
+
+
+        bi.sf18.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1801.isChecked() && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked()));
+
+    }
+
+    private void sf1702Enable(boolean sf17Flag) {
+        bi.sf1701.setChecked(sf17Flag);
+        bi.sf1702.setChecked(!sf17Flag);
     }
 
     public void BtnContinue() {
