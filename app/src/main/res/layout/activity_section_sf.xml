@@ -25,12 +25,12 @@
             android:orientation="vertical">
 
             <!-- sf_title1  Title   -->
-                    <TextView
-                        style="@style/heading"
-                        android:id="@+id/qtxt_sf_title1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sf_title1" />
+            <TextView
+                android:id="@+id/qtxt_sf_title1"
+                style="@style/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sf_title1" />
 
             <!--&lt;!&ndash; sf_title2  Title   &ndash;&gt;
             <androidx.cardview.widget.CardView
@@ -99,20 +99,30 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
                                 android:gravity="center"
-                                android:text="@string/sf101" />
+                                android:text="@string/date" />
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
+                            <!-- <com.edittextpicker.aliazaz.EditTextPicker
+                                 android:id="@+id/sf101"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="56dp"
+                                 android:gravity="center"
+                                 android:hint="@string/sf101"
+                                 android:inputType="number"
+                                 android:maxLength="2"
+                                 app:mask="##"
+                                 app:maxValue="29"
+                                 app:minValue="1"
+                                 app:type="range" />-->
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                 android:id="@+id/sf101"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
                                 android:gravity="center"
-                                android:hint="@string/sf101"
-                                android:inputType="number"
-                                android:maxLength="2"
-                                app:mask="##"
-                                app:maxValue="29"
-                                app:minValue="1"
-                                app:type="range" />
+                                android:hint="@string/date"
+                                app:dateFormat="dd-MM-yy"
+                                app:maxDate="CR_DATE" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -126,9 +136,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
                                 android:gravity="center"
-                                android:text="@string/sf102" />
+                                android:text="@string/time" />
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
+                            <!--<com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf102"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
@@ -139,10 +149,20 @@
                                 app:mask="##"
                                 app:maxValue="11"
                                 app:minValue="1"
-                                app:type="range" />
+                                app:type="range" />-->
+
+                            <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
+                                android:id="@+id/sf102"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:hint="@string/time"
+                                app:is24HourView="true"
+                                app:timeFormat="HH:mm" />
+
                         </LinearLayout>
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -168,11 +188,11 @@
                                 app:minValue="2019"
                                 app:type="range" />
 
-                        </LinearLayout>
+                        </LinearLayout>-->
 
                     </LinearLayout>
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -235,7 +255,7 @@
 
                         </LinearLayout>
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                 </LinearLayout>
 
@@ -285,8 +305,8 @@
                             android:layout_marginBottom="12dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:inputType="number"
                             android:hint="###-##-###"
+                            android:inputType="number"
                             app:mask="###-##-###"
                             app:required="true" />
 

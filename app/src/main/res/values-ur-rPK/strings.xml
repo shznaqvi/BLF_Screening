@@ -24,6 +24,8 @@
     <string name="days"> دن </string>
     <string name="hours"> گھنٹے </string>
     <string name="minutes"> منٹ </string>
+    <string name="date"> DATE </string>
+    <string name="time"> TIME </string>
     <string name="kg"> کلوگرام </string>
     <string name="km"> کلومیٹر </string>
     <string name="cm"> سینٹی میٹر </string>

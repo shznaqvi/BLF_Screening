@@ -446,6 +446,8 @@
     <string name="days"> Day </string>
     <string name="hours"> Hour </string>
     <string name="minutes"> Minutes </string>
+    <string name="date"> DATE </string>
+    <string name="time"> TIME </string>
     <string name="kg"> Kilograms </string>
     <string name="km"> Kilometers </string>
     <string name="cm"> cm </string>
