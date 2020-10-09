@@ -1,6 +1,8 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -89,6 +91,7 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     private boolean RetrieveSLNo() {
+        bi.sl4.setError(null);
         final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSL.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
@@ -98,10 +101,14 @@ public class SectionSLActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(@Nullable WorkInfo workInfo) {
 
-                        String message = workInfo.getOutputData().getString("slno");
-                        if (message != null) {
+
+                        if (workInfo.getState() != null &&
+                                workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                             //Displaying the status into TextView
                             //mTextView1.append("\n" + workInfo.getState().name());
+                            bi.wmError.setVisibility(View.GONE);
+
+                            String message = workInfo.getOutputData().getString("slno");
                             DatabaseHelper db = new DatabaseHelper(SectionSLActivity.this); // Database Helper
                             StringBuilder sSyncedError = new StringBuilder();
                             JSONObject jsonObject;
@@ -122,10 +129,16 @@ public class SectionSLActivity extends AppCompatActivity {
 
                                     } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
 
-                                        db.updateSyncedFormsSL(jsonObject.getString("id")); // UPDATE DUPLICATES
-                                        //   method.invoke(db, jsonObject.getString("id"));
+                                        if (jsonObject.getString("sl4").equals(bi.sl4.getText().toString())) {
+                                            bi.wmError.setText("MR No. already exists.");
+                                            bi.wmError.setVisibility(View.VISIBLE);
+                                            bi.sl4.setError("MR No. already exists");
+                                        } else {
+                                            bi.wmError.setText("Server Error: UID not unique.");
+                                        }
 
-                                        // sDuplicate++;
+                                        db.updateSyncedFormsSL(jsonObject.getString("id")); // UPDATE DUPLICATES
+
                                     } else {
                                         sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
 
@@ -133,11 +146,23 @@ public class SectionSLActivity extends AppCompatActivity {
 
                                 }
                             } catch (JSONException e) {
+                                bi.wmError.setText("JSON Error: " + message);
+                                bi.wmError.setVisibility(View.VISIBLE);
+                                Log.d("JSON Error", "onChanged: " + message);
                                 e.printStackTrace();
+
+
                             }
                             //bi.sl2.setText(message);
                         }
                         //mTextView1.append("\n" + workInfo.getState().name());
+                        if (workInfo.getState() != null &&
+                                workInfo.getState() == WorkInfo.State.FAILED) {
+                            String message = workInfo.getOutputData().getString("error");
+                            bi.wmError.setText(message);
+                            bi.wmError.setVisibility(View.VISIBLE);
+
+                        }
                     }
                 });
         return false;

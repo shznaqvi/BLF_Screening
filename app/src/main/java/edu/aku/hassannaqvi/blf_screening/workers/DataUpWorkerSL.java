@@ -33,12 +33,13 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 public class DataUpWorkerSL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataDlWorkerSL()";
+    private final String TAG = "DataWorker()";
     HttpURLConnection urlConnection;
     private Context mContext;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
+    private Data data;
 
     public DataUpWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -58,19 +59,19 @@ public class DataUpWorkerSL extends Worker {
     @Override
     public Result doWork() {
 
-        Log.d(TAG, "doInBackground: Starting");
+        Log.d(TAG, "doWork: Starting");
         displayNotification("Screening Log", "Starting Sync");
 
         StringBuilder result = new StringBuilder();
 
         URL url = null;
         try {
-            Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
                 url = new URL("http://f38158/blf/api/scrlog.php");
             } else {
                 url = serverURL;
             }
+            Log.d(TAG, "doWork: Connecting...");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
@@ -81,44 +82,40 @@ public class DataUpWorkerSL extends Worker {
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
             urlConnection.connect();
+
+
             JSONArray jsonSync = new JSONArray();
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             JSONObject json = new JSONObject();
-            try {
-                json.put("table", "screenlog");
-                Log.d(TAG, "json.put: Done");
-            } catch (JSONException e1) {
-                e1.printStackTrace();
-                Log.d(TAG, e1.getMessage());
-            }
-            Log.d(TAG, "downloadUrl: " + json.toString());
+            Log.d(TAG, "Download Url: " + json.toString());
 
             // ============
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
-            try {
+
                 jsonTable.put("table", "screenlog");
                 jsonSync.put(MainApp.formsSL.toJSONObject());
                 jsonParam
                         .put(jsonTable)
                         .put(jsonSync);
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
 
             //================
+            Log.d(TAG, "Upload Begins: " + jsonParam.toString());
 
 
             wr.writeBytes(String.valueOf(jsonParam));
             wr.flush();
             wr.close();
-            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 displayNotification("Screen Log", "Connection Established");
 
+                Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
                 length = urlConnection.getContentLength();
+                Log.d(TAG, "Content Length: " + length);
 
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
@@ -128,29 +125,40 @@ public class DataUpWorkerSL extends Worker {
                 while ((line = reader.readLine()) != null) {
                     Log.i(TAG, "SL No: " + line);
                     result.append(line);
+                    Log.d(TAG, "doWork (Progress): " + result.length() + "/" + length);
                     displayNotification("SL No", line);
+                    Log.d(TAG, "Json Received: " + result);
+                    displayNotification("SL No", "Received Data");
 
                 }
+            } else {
+
+                Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
+
+                data = new Data.Builder()
+                        .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
+                Result.failure(data);
             }
         } catch (java.net.SocketTimeoutException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
+            Log.d(TAG, "doWork (Timeout): " + e.getMessage());
             displayNotification("SL No", "Timeout Error: " + e.getMessage());
-            return Result.failure();
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
+            return Result.failure(data);
 
-        } catch (IOException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
+        } catch (IOException | JSONException e) {
+            Log.d(TAG, "doWork (IO Error): " + e.getMessage());
             displayNotification("SL No", "IO Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
 
-            return Result.failure();
+            return Result.failure(data);
 
         } finally {
 //            urlConnection.disconnect();
         }
 
-        Log.d(TAG, "onPostExecute: Starting");
-        displayNotification("SL No", "Received Data");
         //Do something with the JSON string
-        Data data = null;
         if (result != null) {
             displayNotification("SL NO", "Starting Data Processing");
 
@@ -167,16 +175,19 @@ public class DataUpWorkerSL extends Worker {
                     .putString("slno", String.valueOf(result)).build();
 
 
-
+            displayNotification("SL No", " SL NO received successfully");
+            return Result.success(data);
            /* } else {
 
             }*/
         } else {
-
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(result)).build();
+            displayNotification("SL No", " SL NO received successfully");
+            return Result.failure(data);
         }
 
-        displayNotification("SL No", " SL NO received successfully");
-        return Result.success(data);
+
     }
 
     /*

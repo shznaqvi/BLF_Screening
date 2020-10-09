@@ -276,32 +276,38 @@
     </style>
 
     <style name="info">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_margin">4dp</item>
         <item name="android:background">#FFEB9C</item>
-        <item name="android:visibility">gone</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/green</item>
-        <item name="android:paddingStart">24dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/red_overlay</item>
+        <item name="android:padding">8dp</item>
         <item name="android:minHeight">52dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
 
 
     </style>
 
-    <style name="sub">
-        <item name="android:layout_marginTop">0dp</item>
+    <style name="heading">
+        <item name="android:layout_margin">4dp</item>
         <item name="android:background">@drawable/subheadings_separator</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="sub_labels">
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:background">@drawable/sub_labels_separator</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="android:minHeight">52dp</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:layout_height">16dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>

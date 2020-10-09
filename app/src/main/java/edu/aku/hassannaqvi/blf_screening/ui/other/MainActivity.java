@@ -96,6 +96,14 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
 
+/*        bi.srclog.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Screen Log", Toast.LENGTH_LONG).show();
+
+            }
+        });*/
+
        /* bi.txtinstalldate.setText(appInfo.getAppInfo());
         Collection<FormsSL> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
         Collection<FormsSL> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
@@ -305,11 +313,12 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     public void openSpecificActivity(View v) {
-        if (!AndroidUtilityKt.isNetworkConnected(this)) return;
+        Toast.makeText(this, "Button Pressed", Toast.LENGTH_SHORT).show();
         Intent oF = null;
         switch (v.getId()) {
             case R.id.srclog:
                 oF = new Intent(this, SectionSLActivity.class);
+                Toast.makeText(this, "Screen Log pressed", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.formScr:
                 oF = new Intent(this, SectionSFActivity.class);

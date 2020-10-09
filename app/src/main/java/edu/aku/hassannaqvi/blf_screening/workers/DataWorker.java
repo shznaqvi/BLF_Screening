@@ -35,17 +35,17 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
 // import com.opencsv.CSVWriter;
 
-public class DataDlWorkerSL extends Worker {
+public class DataWorker extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataDlWorkerSL()";
+    private final String TAG = "DataWorker()";
     HttpURLConnection urlConnection;
     private Context mContext;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
 
-    public DataDlWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public DataWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 

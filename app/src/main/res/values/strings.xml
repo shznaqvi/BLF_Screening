@@ -462,7 +462,7 @@
     <string name="sf101">Day</string>
     <string name="sf102">Month</string>
     <string name="sf103">Year</string>
-    <string name="sf104">Hourse</string>
+    <string name="sf104">Hours</string>
     <string name="sf105">Minutes</string>
     <string name="sf2">Mother’s MR Number</string>
     <string name="sf3">Mother Name</string>
@@ -511,7 +511,7 @@
     <string name="sf1308">Unconsciousness</string>
     <string name="sf130801">Yes</string>
     <string name="sf130802">No</string>
-    <string name="sf1309">Hypothermia (temp&lt;32oC)</string>
+    <string name="sf1309">Hypothermia (Temp: &lt; 32&#8451;)</string>
     <string name="sf130901">Yes</string>
     <string name="sf130902">No</string>
     <string name="sf1396">Other(Specify)</string>
@@ -563,7 +563,7 @@
     <string name="sf20">Study ID (If eligible)</string>
     <string name="sl_title1">EFFECT OF BOVINE LACTOFERRIN ON SEROCONVERSION FOLLOWING POLIO VACCINE ADMINISTRATION IN CHILDREN</string>
     <string name="sl_title2">SCREENING LOG :</string>
-    <string name="sl1">KEY FOR ENROLLMENT STATUS:  1. Mother\'s age &lt; 18 or &gt; 45 years 2. Gestational age 28-38 weeks	 3. Any plans to move out from Karachi in next 5 months 4. Mother unwilling for the delivery in AKU Kharadar Hospital	</string>
+    <string name="sl1"><b>KEY FOR ENROLLMENT STATUS:</b>  \n1. Mother\'s age &lt; 18 or &gt; 45 years \n2. Gestational age 28-38 weeks \n3. Any plans to move out from Karachi in next 5 months \n4. Mother unwilling for the delivery in AKU Kharadar Hospital	</string>
     <string name="sl2">SR. No</string>
     <string name="sl3">Screening date</string>
     <string name="sl301">Days</string>
