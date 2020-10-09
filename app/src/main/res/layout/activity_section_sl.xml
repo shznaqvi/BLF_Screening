@@ -157,14 +157,14 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
+                           <!-- <TextView
                                 style="@style/sub_labels"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
                                 android:gravity="center"
-                                android:text="@string/sl301" />
+                                android:text="@string/sl3" />-->
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
+                            <!--<com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl301"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
@@ -175,11 +175,20 @@
                                 app:mask="##"
                                 app:maxValue="29"
                                 app:minValue="1"
-                                app:type="range" />
+                                app:type="range" />-->
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                                android:id="@+id/sl301"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:hint="@string/sl3"
+                                app:dateFormat="dd-MM-yy"
+                                app:maxDate="CR_DATE" />
 
                         </LinearLayout>
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -205,9 +214,9 @@
                                 app:minValue="1"
                                 app:type="range" />
 
-                        </LinearLayout>
+                        </LinearLayout>-->
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -232,7 +241,7 @@
                                 app:minValue="2019"
                                 app:type="range" />
 
-                        </LinearLayout>
+                        </LinearLayout>-->
 
                     </LinearLayout>
 
@@ -471,14 +480,14 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
+                            <!--<TextView
                                 style="@style/sub_labels"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
                                 android:gravity="center"
-                                android:text="@string/sl701" />
+                                android:text="@string/sl7" />-->
 
-                            <com.edittextpicker.aliazaz.EditTextPicker
+                            <!--<com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sl701"
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp"
@@ -489,10 +498,20 @@
                                 app:mask="##"
                                 app:maxValue="29"
                                 app:minValue="1"
-                                app:type="range" />
+                                app:type="range" />-->
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                                android:id="@+id/sl701"
+                                android:layout_width="match_parent"
+                                android:layout_height="56dp"
+                                android:gravity="center"
+                                android:hint="@string/sl7"
+                                app:dateFormat="dd-MM-yyyy"
+                                app:minDate="CR_DATE" />
+
                         </LinearLayout>
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -517,9 +536,9 @@
                                 app:maxValue="11"
                                 app:minValue="1"
                                 app:type="range" />
-                        </LinearLayout>
+                        </LinearLayout>-->
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -543,7 +562,7 @@
                                 app:maxValue="2021"
                                 app:minValue="2020"
                                 app:type="range" />
-                        </LinearLayout>
+                        </LinearLayout>-->
 
                     </LinearLayout>
 
