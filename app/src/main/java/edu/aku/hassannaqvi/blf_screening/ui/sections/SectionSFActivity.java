@@ -51,7 +51,6 @@ public class SectionSFActivity extends AppCompatActivity {
 
     private void setupSkip() {
 
-
         bi.sf6.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -165,6 +164,28 @@ public class SectionSFActivity extends AppCompatActivity {
 
         bi.sf18.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1801.isChecked() && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked()));
 
+
+        bi.sf2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (TextUtils.isEmpty(bi.sf2.getText())) return;
+                if (bi.sf2.getText().toString().length() != 10) {
+                    bi.llsectionsf01.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.llsectionsf01);
+                    bi.btnContinue.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -561,6 +582,11 @@ public class SectionSFActivity extends AppCompatActivity {
         MainApp.sf2 = bi.sf2.getText().toString();
 
         FetchMR();
+
+        if (bi.sf2.getText().toString().length() == 10) {
+            bi.llsectionsf01.setVisibility(View.VISIBLE);
+            bi.btnContinue.setVisibility(View.VISIBLE);
+        }
 
     }
 
