@@ -279,6 +279,8 @@ public class SectionSFActivity extends AppCompatActivity {
         MainApp.formsSF.setSf4(bi.sf4.getText().toString());
         MainApp.formsSF.setSf5(bi.sf5.getText().toString());
         MainApp.formsSF.setSf6(bi.sf6.getText().toString());
+        MainApp.formsSF.setSf6a01(bi.sf6a01.getText().toString());
+        MainApp.formsSF.setSf6a02(bi.sf6a02.getText().toString());
 
         MainApp.formsSF.setSf701(bi.sf701.getText().toString());
         MainApp.formsSF.setSf702(bi.sf702.getText().toString());

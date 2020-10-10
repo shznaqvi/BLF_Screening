@@ -313,12 +313,10 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     }
 
     public void openSpecificActivity(View v) {
-        Toast.makeText(this, "Button Pressed", Toast.LENGTH_SHORT).show();
         Intent oF = null;
         switch (v.getId()) {
             case R.id.srclog:
                 oF = new Intent(this, SectionSLActivity.class);
-                Toast.makeText(this, "Screen Log pressed", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.formScr:
                 oF = new Intent(this, SectionSFActivity.class);

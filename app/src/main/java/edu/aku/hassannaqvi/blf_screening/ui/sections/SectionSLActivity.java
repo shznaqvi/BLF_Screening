@@ -1,6 +1,9 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -29,7 +32,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
-import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
+import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSL;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -37,6 +40,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActi
 public class SectionSLActivity extends AppCompatActivity {
 
     ActivitySectionSlBinding bi;
+    Intent oF = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
+        bi.pBar3.setVisibility(View.GONE);
         if (!formValidation()) return;
         try {
             SaveDraft();
@@ -91,6 +96,7 @@ public class SectionSLActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (UpdateDB()) {
+            bi.pBar3.setVisibility(View.VISIBLE);
             RetrieveSLNo();
             // startActivity(new Intent(this, EndingActivity.class));
         } else {
@@ -115,6 +121,8 @@ public class SectionSLActivity extends AppCompatActivity {
                             //Displaying the status into TextView
                             //mTextView1.append("\n" + workInfo.getState().name());
                             bi.wmError.setVisibility(View.GONE);
+                            bi.pBar3.setVisibility(View.GONE);
+
 
                             String message = workInfo.getOutputData().getString("slno");
                             DatabaseHelper db = new DatabaseHelper(SectionSLActivity.this); // Database Helper
@@ -132,8 +140,24 @@ public class SectionSLActivity extends AppCompatActivity {
 
                                         db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
                                         bi.sl2.setText(jsonObject.getString("slno"));
-
+                                        bi.wmError.setText("Log saved for MR No: " + bi.sl4.getText().toString());
+                                        bi.wmError.setTextColor(getResources().getColor(R.color.green));
+                                        bi.wmError.setVisibility(View.VISIBLE);
+                                        Toast.makeText(SectionSLActivity.this, "Log saved for MR No: " + bi.sl4.getText().toString(), Toast.LENGTH_LONG).show();
+                                        bi.btnEnd.setVisibility(View.VISIBLE);
+                                        bi.btnContinue.setVisibility(View.GONE);
                                         //method.invoke(db, jsonObject.getString("id"));
+
+                                        final Handler handler = new Handler(Looper.getMainLooper());
+                                        handler.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                //Do something after 100ms
+                                                oF = new Intent(SectionSLActivity.this, SectionSLActivity.class);
+                                                startActivity(oF);
+                                            }
+                                        }, 3500);
+
 
                                     } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
 
@@ -166,6 +190,7 @@ public class SectionSLActivity extends AppCompatActivity {
                         //mTextView1.append("\n" + workInfo.getState().name());
                         if (workInfo.getState() != null &&
                                 workInfo.getState() == WorkInfo.State.FAILED) {
+                            bi.pBar3.setVisibility(View.GONE);
                             String message = workInfo.getOutputData().getString("error");
                             bi.wmError.setText(message);
                             bi.wmError.setVisibility(View.VISIBLE);
@@ -194,16 +219,23 @@ public class SectionSLActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         MainApp.formsSL = new FormsSL();
 
-        MainApp.formsSL.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.formsSL.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm:sss").format(new Date().getTime()));
         MainApp.formsSL.setDeviceID(MainApp.appInfo.getDeviceID());
         MainApp.formsSL.setDevicetagID(MainApp.appInfo.getTagName());
         MainApp.formsSL.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.formsSL.setSl2(bi.sl2.getText().toString());
 
 
-        MainApp.formsSL.setSl301(bi.sl301.getText().toString());
-        //    MainApp.formsSL.setSl302(bi.sl302.getText().toString());
-        //    MainApp.formsSL.setSl303(bi.sl303.getText().toString());
+        String[] sl3 = bi.sl301.getText().toString().split("-");
+
+        String sl301 = sl3[0];
+        String sl302 = sl3[1];
+        String sl303 = sl3[2];
+
+        MainApp.formsSL.setSl301(sl301);
+        MainApp.formsSL.setSl302(sl302);
+        MainApp.formsSL.setSl303(sl303);
+
 
         MainApp.formsSL.setSl4(bi.sl4.getText().toString());
 
@@ -212,9 +244,15 @@ public class SectionSLActivity extends AppCompatActivity {
         MainApp.formsSL.setSl601(bi.sl601.getText().toString());
         MainApp.formsSL.setSl602(bi.sl602.getText().toString());
 
-        MainApp.formsSL.setSl701(bi.sl701.getText().toString());
-        //    MainApp.formsSL.setSl702(bi.sl702.getText().toString());
-        //    MainApp.formsSL.setSl703(bi.sl703.getText().toString());
+        String[] sl7 = bi.sl701.getText().toString().split("-");
+
+        String sl701 = sl7[0];
+        String sl702 = sl7[1];
+        String sl703 = sl7[2];
+
+        MainApp.formsSL.setSl701(sl701);
+        MainApp.formsSL.setSl702(sl702);
+        MainApp.formsSL.setSl703(sl703);
 
 
         MainApp.formsSL.setSl8(bi.sl801.isChecked() ? "1"
@@ -291,7 +329,9 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        AppUtilsKt.contextEndActivity(this, false);
+
+        oF = new Intent(this, MainActivity.class);
+        startActivity(oF);
     }
 
     @Override

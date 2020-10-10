@@ -29,6 +29,8 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf4 = "";
     public String sf5 = "";
     public String sf6 = "";
+    public String sf6a01 = "";
+    public String sf6a02 = "";
     public String sf701 = "";
     public String sf702 = "";
     public String sf8 = "";
@@ -203,6 +205,24 @@ public class FormsSF extends LiveData<FormsSF> {
 
     public FormsSF setSf6(String sf6) {
         this.sf6 = sf6;
+        return this;
+    }
+
+    public String getSf6a01() {
+        return sf6a01;
+    }
+
+    public FormsSF setSf6a01(String sf6a01) {
+        this.sf6a01 = sf6a01;
+        return this;
+    }
+
+    public String getSf6a02() {
+        return sf6a02;
+    }
+
+    public FormsSF setSf6a02(String sf6a02) {
+        this.sf6a02 = sf6a02;
         return this;
     }
 
@@ -715,6 +735,8 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf4 ", sf4)
                     .put("sf5 ", sf5)
                     .put("sf6 ", sf6)
+                    .put("sf6a01 ", sf6a01)
+                    .put("sf6a02 ", sf6a02)
                     .put("sf701", sf701)
                     .put("sf702", sf702)
                     .put("sf8", sf8)
@@ -810,10 +832,12 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf104 = json.getString("sf104");
                 this.sf105 = json.getString("sf105");
                 this.sf2 = json.getString("sf2");
-                this.sf3 = json.getString("sf3 ");
-                this.sf4 = json.getString("sf4 ");
-                this.sf5 = json.getString("sf5 ");
-                this.sf6 = json.getString("sf6 ");
+                this.sf3 = json.getString("sf3");
+                this.sf4 = json.getString("sf4");
+                this.sf5 = json.getString("sf5");
+                this.sf6 = json.getString("sf6");
+                this.sf6a01 = json.getString("sf6a01");
+                this.sf6a02 = json.getString("sf6a02");
                 this.sf701 = json.getString("sf701");
                 this.sf702 = json.getString("sf702");
                 this.sf8 = json.getString("sf8");
