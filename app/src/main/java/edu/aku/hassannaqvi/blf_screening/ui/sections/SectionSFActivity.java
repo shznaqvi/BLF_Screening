@@ -154,11 +154,10 @@ public class SectionSFActivity extends AppCompatActivity {
         });
 
 
-/*        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
-            if (i == bi.sf1401.getId() || i == bi.sf1403.getId()) {
-                Clear.clearAllFields(bi.llsf15);
-            }
-        }));*/
+        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
+            sf1702Enable(sf17Flag && bi.sf1402.isChecked() && bi.sf1403.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked() && bi.sf1602.isChecked() && bi.sf1801.isChecked());
+            Clear.clearAllFields(bi.llsf1501);
+        }));
 
 
         bi.sf16.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked() && bi.sf1801.isChecked()));
