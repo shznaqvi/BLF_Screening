@@ -471,7 +471,8 @@
     <string name="sf4">Screening ID</string>
     <string name="sf5">Baby’s MR Number</string>
     <string name="sf6">Mother’s Age (in completed years)</string>
-    <string name="sf7">Gestational age</string>
+    <string name="sf6a">Delivery Date &amp; Time </string>
+    <string name="sf7">Gestational age (at delivery)</string>
     <string name="sf701">Weeks </string>
     <string name="sf702">Days</string>
     <string name="sf8">APGAR Score (Score should be ≥7 for eligibility)</string>
@@ -625,6 +626,7 @@
     <string name='Q_sf4'>sf4</string>
     <string name='Q_sf5'>sf5</string>
     <string name='Q_sf6'>sf6</string>
+    <string name='Q_sf6a'>sf6a</string>
     <string name='Q_sf7'>sf7</string>
     <string name='Q_sf8'>sf8</string>
     <string name='Q_sf9'>sf9</string>

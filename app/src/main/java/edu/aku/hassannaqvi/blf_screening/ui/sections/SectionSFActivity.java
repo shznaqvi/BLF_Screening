@@ -154,11 +154,11 @@ public class SectionSFActivity extends AppCompatActivity {
         });
 
 
-        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
+/*        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
             if (i == bi.sf1401.getId() || i == bi.sf1403.getId()) {
                 Clear.clearAllFields(bi.llsf15);
             }
-        }));
+        }));*/
 
 
         bi.sf16.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked() && bi.sf1801.isChecked()));
@@ -174,6 +174,10 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
+        if (bi.sf4.getText().toString().equals("99999") && (bi.sf3.getText().toString().contains("Mother") || bi.sf3.getText().toString().contains("Found"))) {
+            bi.sf3.setText(null);
+            bi.sf3.setEnabled(true);
+        }
         if (!formValidation()) return;
         try {
             SaveDraft();
@@ -343,7 +347,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 : bi.sf1403.isChecked() ? "96"
                 : "-1");
         MainApp.formsSF.setSf1403x(bi.sf1403x.getText().toString());
-
+/*
         MainApp.formsSF.setSf1501(bi.sf150101.isChecked() ? "1"
                 : bi.sf150102.isChecked() ? "2"
                 : "-1");
@@ -378,7 +382,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
         MainApp.formsSF.setSf1509(bi.sf150901.isChecked() ? "1"
                 : bi.sf150902.isChecked() ? "2"
-                : "-1");
+                : "-1");*/
 
         MainApp.formsSF.setSf16(bi.sf1601.isChecked() ? "1"
                 : bi.sf1602.isChecked() ? "2"
@@ -554,11 +558,11 @@ public class SectionSFActivity extends AppCompatActivity {
 
         MainApp.sf2 = bi.sf2.getText().toString();
 
-        RetrieveMR();
+        FetchMR();
 
     }
 
-    private boolean RetrieveMR() {
+    private boolean FetchMR() {
         final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
@@ -586,6 +590,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
                                         bi.sf4.setText(jsonObject.getString("sl2"));
                                         bi.sf3.setText(jsonObject.getString("sl5"));
+                                        bi.sf3.setEnabled(false);
 
                                     }
                                   /*  if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
@@ -616,5 +621,12 @@ public class SectionSFActivity extends AppCompatActivity {
                     }
                 });
         return false;
+    }
+
+    public void deleteName(View view) {
+        if (bi.sf4.getText().toString().equals("99999") && (bi.sf3.getText().toString().contains("Mother") || bi.sf3.getText().toString().contains("Found"))) {
+            bi.sf3.setText(null);
+            bi.sf3.setEnabled(true);
+        }
     }
 }

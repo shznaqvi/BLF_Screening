@@ -87,7 +87,7 @@ public class FetchMRWorker extends Worker {
             try {
                 json.put("table", "screenlog");
                 json.put("select", "sl2, sl5");
-                json.put("filter", "sl4 = " + MainApp.sf2);
+                json.put("filter", "sl4 = '" + MainApp.sf2 + "'");
             } catch (JSONException e1) {
                 e1.printStackTrace();
                 Log.d(TAG, "doWork: " + e1.getMessage());
