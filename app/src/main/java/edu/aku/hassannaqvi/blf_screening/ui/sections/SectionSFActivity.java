@@ -165,6 +165,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
         bi.sf18.setOnCheckedChangeListener((radioGroup, i) -> sf1702Enable(sf17Flag && bi.sf1801.isChecked() && bi.sf1602.isChecked() && bi.sf1102.isChecked() && bi.sf901.isChecked()));
 
+
     }
 
     private void sf1702Enable(boolean sf17Flag) {
