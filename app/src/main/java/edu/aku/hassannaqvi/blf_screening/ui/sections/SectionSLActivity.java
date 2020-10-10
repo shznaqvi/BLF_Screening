@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -44,6 +45,13 @@ public class SectionSLActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setupSkip();
+
+        //for +9 months in cr_date calendar
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, +9);
+        bi.sl701.setMaxDate(sdf.format(cal.getTime()));
+
     }
 
     private void setupSkip() {
@@ -194,8 +202,8 @@ public class SectionSLActivity extends AppCompatActivity {
 
 
         MainApp.formsSL.setSl301(bi.sl301.getText().toString());
-        MainApp.formsSL.setSl302(bi.sl302.getText().toString());
-        MainApp.formsSL.setSl303(bi.sl303.getText().toString());
+        //    MainApp.formsSL.setSl302(bi.sl302.getText().toString());
+        //    MainApp.formsSL.setSl303(bi.sl303.getText().toString());
 
         MainApp.formsSL.setSl4(bi.sl4.getText().toString());
 
@@ -205,8 +213,8 @@ public class SectionSLActivity extends AppCompatActivity {
         MainApp.formsSL.setSl602(bi.sl602.getText().toString());
 
         MainApp.formsSL.setSl701(bi.sl701.getText().toString());
-        MainApp.formsSL.setSl702(bi.sl702.getText().toString());
-        MainApp.formsSL.setSl703(bi.sl703.getText().toString());
+        //    MainApp.formsSL.setSl702(bi.sl702.getText().toString());
+        //    MainApp.formsSL.setSl703(bi.sl703.getText().toString());
 
 
         MainApp.formsSL.setSl8(bi.sl801.isChecked() ? "1"
