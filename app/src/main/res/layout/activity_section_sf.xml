@@ -319,21 +319,34 @@
                             android:onClick="checkMR"
                             android:src="@drawable/ic_check"
                             android:textSize="20sp" />
+
+                        <ProgressBar
+                            android:id="@+id/pbarMR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- sf3  Input   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVsf3"
-                style="@style/cardView">
+            <LinearLayout
+                android:id="@+id/llsectionsf01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+                <!-- sf3  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVsf3"
+                    style="@style/cardView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <RelativeLayout
+                        <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bottom">
@@ -426,13 +439,7 @@
             </androidx.cardview.widget.CardView>
 
 
-            <LinearLayout
-                android:id="@+id/llsectionsf01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
-                tools:visibility="visible">
+
 
                 <!-- sf5  Input   -->
                 <androidx.cardview.widget.CardView
@@ -552,7 +559,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignTop="@id/qtxt_sf6a"
                                 android:layout_alignBottom="@id/qtxt_sf6a"
-                                android:text="@string/Q_sf1" />
+                                android:text="@string/Q_sf6a" />
 
                         </RelativeLayout>
 
@@ -581,7 +588,7 @@
                                     android:layout_height="56dp"
                                     android:gravity="center"
                                     android:hint="@string/date"
-                                    app:dateFormat="dd-MM-yy"
+                                    app:dateFormat="dd-MM-yyyy"
                                     app:maxDate="CR_DATE" />
 
                             </LinearLayout>
@@ -1077,17 +1084,23 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- sf1302  Radio   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVsf1302"
-                    style="@style/cardView">
+                <LinearLayout
+                    android:id="@+id/fldGrpsf13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{sf130102.checked ? View.GONE : View.VISIBLE}">
+                    <!-- sf1302  Radio   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVsf1302"
+                        style="@style/cardView">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                        <RelativeLayout
+                            <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bottom">
@@ -1532,7 +1545,7 @@
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
+                </LinearLayout>
                 <!-- sf16  Radio   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVsf16"
@@ -2193,16 +2206,22 @@
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/llsf1501"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility='@{sf1402.checked || sf1403.checked ? View.GONE : View.VISIBLE}'>
 
+                    <!-- sf17  Radio   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVsf17"
+                        android:layout_height="0dp"
+                        style="@style/cardView">
 
-                <!-- sf17  Radio   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVsf17"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -2231,6 +2250,7 @@
                             android:id="@+id/sf17"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
                             android:orientation="horizontal">
 
 
@@ -2239,7 +2259,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:enabled="false"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
                                 android:text="@string/sf1701" />
 
                             <RadioButton
@@ -2247,22 +2267,26 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:enabled="false"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
                                 android:text="@string/sf1702" />
 
                         </RadioGroup>
 
-                    </LinearLayout>
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginEnd="24dp"
+                                android:background="@color/colorPrimary"
+                                android:onClick="checkEligibility"
+                                android:text="CHECK ELIGIBILITY"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+
+                    </androidx.cardview.widget.CardView>
 
 
-                <LinearLayout
-                    android:id="@+id/llsf1501"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{sf1402.checked || sf1403.checked ? View.GONE : View.VISIBLE}'>
 
                     <!-- sf18  Radio   -->
                     <androidx.cardview.widget.CardView
@@ -2458,7 +2482,24 @@
 
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/pBar3"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:progress="1"
+                android:visibility="gone" />
 
+            <TextView
+                android:id="@+id/wmError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_overlay"
+                android:textSize="16sp"
+                android:visibility="gone" />
             <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"

@@ -38,6 +38,7 @@ public class FetchMRWorker extends Worker {
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
+    private Data data;
 
     public FetchMRWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -66,7 +67,7 @@ public class FetchMRWorker extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/getdata.php");
+                url = new URL("http://f38158/blf/api/fetchmr.php");
             } else {
                 url = serverURL;
             }
@@ -85,8 +86,8 @@ public class FetchMRWorker extends Worker {
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             JSONObject json = new JSONObject();
             try {
-                json.put("table", "screenlog");
-                json.put("select", "sl2, sl5");
+                json.put("table", "fetchMR");
+                json.put("select", "sl2, sl4, sl5, sf6a");
                 json.put("filter", "sl4 = '" + MainApp.sf2 + "'");
             } catch (JSONException e1) {
                 e1.printStackTrace();
@@ -118,15 +119,19 @@ public class FetchMRWorker extends Worker {
                 }
             }
         } catch (java.net.SocketTimeoutException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
+            Log.d(TAG, "doWork (Timeout): " + e.getMessage());
             displayNotification("MR. No", "Timeout Error: " + e.getMessage());
-            return Result.failure();
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
+            return Result.failure(data);
 
         } catch (IOException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("Mr. No", "IO Error: " + e.getMessage());
+            Log.d(TAG, "doWork (IO Error): " + e.getMessage());
+            displayNotification("MR. No", "IO Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
 
-            return Result.failure();
+            return Result.failure(data);
 
         } finally {
 //            urlConnection.disconnect();

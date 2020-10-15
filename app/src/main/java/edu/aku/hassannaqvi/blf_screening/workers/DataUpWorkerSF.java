@@ -65,12 +65,12 @@ public class DataUpWorkerSF extends Worker {
 
         URL url = null;
         try {
-            Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
                 url = new URL("http://f38158/blf/api/formscr.php");
             } else {
                 url = serverURL;
             }
+            Log.d(TAG, "doWork: Connecting...");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);

@@ -137,7 +137,7 @@ public class DataUpWorkerSL extends Worker {
 
                 data = new Data.Builder()
                         .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
-                Result.failure(data);
+               return Result.failure(data);
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doWork (Timeout): " + e.getMessage());
