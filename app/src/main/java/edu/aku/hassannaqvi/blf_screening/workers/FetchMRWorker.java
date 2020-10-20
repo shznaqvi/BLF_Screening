@@ -87,7 +87,7 @@ public class FetchMRWorker extends Worker {
             JSONObject json = new JSONObject();
             try {
                 json.put("table", "fetchMR");
-                json.put("select", "sl2, sl4, sl5, sf6a");
+                //json.put("select", "sl2, sl4, sl5, sf6a");
                 json.put("filter", "sl4 = '" + MainApp.sf2 + "'");
             } catch (JSONException e1) {
                 e1.printStackTrace();

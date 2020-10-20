@@ -348,55 +348,66 @@ public class SectionSFActivity extends AppCompatActivity {
                                     jsonObject = new JSONObject(json.getString(i));
 
 
-                                    if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
+                                    if (!jsonObject.getString("error").equals("1")) {
                                         bi.llsectionsf01.setVisibility(View.GONE);
                                         bi.btnContinue.setVisibility(View.GONE);
                                         Clear.clearAllFields(bi.llsectionsf01);
-                                        db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
-                                        bi.sf20.setText(jsonObject.getString("study_id"));
 
-                                        bi.wmError.setText(
-                                                "Screening Form saved for MR No: " + bi.sf2.getText().toString()
-                                                        + "\r\n Study ID: " + jsonObject.getString("study_id")
-                                        );
-                                        bi.wmError.setTextColor(getResources().getColor(R.color.green));
-                                        bi.wmError.setVisibility(View.VISIBLE);
-                                        Toast.makeText(SectionSFActivity.this, "Screen Form saved for MR No: " + bi.sf2.getText().toString(), Toast.LENGTH_LONG).show();
-                                        bi.btnEnd.setVisibility(View.VISIBLE);
-                                        bi.btnContinue.setVisibility(View.GONE);
-                                        //method.invoke(db, jsonObject.getString("id"));
+                                        if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-                                        final Handler handler = new Handler(Looper.getMainLooper());
-                                        handler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                //Do something after 100ms
-                                                oF = new Intent(SectionSFActivity.this, SectionSFActivity.class);
-                                                //   startActivity(oF);
-                                            }
-                                        }, 3500);
+                                            db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
+                                            bi.sf20.setText(jsonObject.getString("study_id"));
+                                            bi.sf20.setVisibility(View.VISIBLE);
 
-
-                                    } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-
-                                        if (jsonObject.getString("sf2").equals(bi.sf2.getText().toString())) {
-                                            bi.wmError.setText("MR No. already exists.");
+                                            bi.wmError.setText(
+                                                    "Screening Form saved for MR No: " + bi.sf2.getText().toString()
+                                                            + "\r\n Study ID: " + jsonObject.getString("study_id")
+                                            );
+                                            bi.wmError.setTextColor(getResources().getColor(R.color.green));
                                             bi.wmError.setVisibility(View.VISIBLE);
-                                            bi.sf2.setError("MR No. already exists");
+                                            Toast.makeText(SectionSFActivity.this, "Screen Form saved for MR No: " + bi.sf2.getText().toString(), Toast.LENGTH_LONG).show();
+                                            bi.btnEnd.setVisibility(View.VISIBLE);
+                                            bi.btnContinue.setVisibility(View.GONE);
+                                            //method.invoke(db, jsonObject.getString("id"));
+
+                                            final Handler handler = new Handler(Looper.getMainLooper());
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    //Do something after 100ms
+                                                    oF = new Intent(SectionSFActivity.this, SectionSFActivity.class);
+                                                    //   startActivity(oF);
+                                                }
+                                            }, 3500);
+
+
+                                        } else if (jsonObject.getString("status").equals("3")) {
+
+                                            bi.wmError.setText(
+                                                    "Screening Form saved for MR No: " + bi.sf2.getText().toString()
+                                                            + "\r\n Child is Ineligible or Consent not signed"
+                                            );
+                                            bi.wmError.setTextColor(getResources().getColor(R.color.green));
+                                            bi.wmError.setVisibility(View.VISIBLE);
+                                            Toast.makeText(SectionSFActivity.this, "Screen Form saved for MR No: " + bi.sf2.getText().toString(), Toast.LENGTH_LONG).show();
+                                            bi.btnEnd.setVisibility(View.VISIBLE);
+                                            bi.btnContinue.setVisibility(View.GONE);
+
+
+                                            db.updateSyncedFormsSF(jsonObject.getString("id")); // UPDATE DUPLICATES
+                                            //   method.invoke(db, jsonObject.getString("id"));
+
+                                            // sDuplicate++;
                                         } else {
-                                            bi.wmError.setText("Server Error: UID not unique.");
+                                            sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
+
                                         }
-
-
-                                        db.updateSyncedFormsSF(jsonObject.getString("id")); // UPDATE DUPLICATES
-                                        //   method.invoke(db, jsonObject.getString("id"));
-
-                                        // sDuplicate++;
                                     } else {
-                                        sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
-
+                                        bi.wmError.setText(jsonObject.getString("message"));
+                                        bi.wmError.setVisibility(View.VISIBLE);
+                                        bi.wmError.setTextColor(getResources().getColor(R.color.red));
+                                        //bi.sf2.setError("MR No. already exists");
                                     }
-
                                 }
                             } catch (JSONException e) {
                                 bi.wmError.setText("JSON Error: " + message);
@@ -796,6 +807,12 @@ public class SectionSFActivity extends AppCompatActivity {
                                             bi.btnContinue.setVisibility(View.VISIBLE);
 
                                             bi.sf3.setEnabled(false);
+                                        } else if (jsonObject.getString("sl2").equals("88888")) {
+                                            if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                                                bi.llsectionsf01.setVisibility(View.GONE);
+                                                bi.btnContinue.setVisibility(View.GONE);
+                                                Clear.clearAllFields(bi.llsectionsf01);
+                                            }
                                         } else {
                                             bi.wmError.setText(jsonObject.getString("sl5"));
                                             bi.wmError.setVisibility(View.VISIBLE);

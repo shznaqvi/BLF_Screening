@@ -39,6 +39,7 @@ public class DataUpWorkerSF extends Worker {
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
+    private Data data;
 
     public DataUpWorkerSF(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -81,44 +82,35 @@ public class DataUpWorkerSF extends Worker {
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
             urlConnection.connect();
+            Log.d(TAG, "downloadURL: " + url);
+
             JSONArray jsonSync = new JSONArray();
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-            JSONObject json = new JSONObject();
-            try {
-                json.put("table", "formscr");
-                Log.d(TAG, "json.put: Done");
-            } catch (JSONException e1) {
-                e1.printStackTrace();
-                Log.d(TAG, e1.getMessage());
-            }
-            Log.d(TAG, "downloadUrl: " + json.toString());
 
-            // ============
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
-            try {
-                jsonTable.put("table", "formscr");
-                jsonSync.put(MainApp.formsSF.toJSONObject());
+
+            jsonTable.put("table", "formscr");
+            jsonSync.put(MainApp.formsSF.toJSONObject());
                 jsonParam
                         .put(jsonTable)
                         .put(jsonSync);
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            //================
-
+            Log.d(TAG, "uploadData: " + jsonParam.toString());
 
             wr.writeBytes(String.valueOf(jsonParam));
             wr.flush();
             wr.close();
+
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
                 displayNotification("Form Screen", "Connection Established");
 
                 length = urlConnection.getContentLength();
+                Log.d(TAG, "Content Length: " + length);
 
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
@@ -126,37 +118,44 @@ public class DataUpWorkerSF extends Worker {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "SCR ID: " + line);
                     result.append(line);
-                    displayNotification("SCR ID", line);
 
                 }
+                displayNotification("Form Screen", "Received Data");
+                Log.d(TAG, "doWork(SF): " + result.toString());
+            } else {
+
+                Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
+
+                data = new Data.Builder()
+                        .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
+                return Result.failure(data);
             }
         } catch (java.net.SocketTimeoutException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SCR ID", "Timeout Error: " + e.getMessage());
-            return Result.failure();
+            Log.d(TAG, "doWork (Timeout): " + e.getMessage());
+            displayNotification("Form Screen", "Timeout Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
+            return Result.failure(data);
+        } catch (IOException | JSONException e) {
+            Log.d(TAG, "doWork (IO Error): " + e.getMessage());
+            displayNotification("Study ID", "IO Error: " + e.getMessage());
 
-        } catch (IOException e) {
-            Log.d(TAG, "doInBackground: " + e.getMessage());
-            displayNotification("SCR ID", "IO Error: " + e.getMessage());
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(e.getMessage())).build();
 
-            return Result.failure();
-
+            return Result.failure(data);
         } finally {
 //            urlConnection.disconnect();
         }
 
-        Log.d(TAG, "onPostExecute: Starting");
-        displayNotification("SCR ID", "Received Data");
-        //Do something with the JSON string
-        Data data = null;
+
         if (result != null) {
-            displayNotification("SCR ID", "Starting Data Processing");
+            displayNotification("Study ID", "Starting Data Processing");
 
             //String json = result.toString();
             /*if (json.length() > 0) {*/
-            displayNotification("SCR ID", "Data Size: " + result.length());
+            displayNotification("Study ID", "Data Size: " + result.length());
 
 
             // JSONArray jsonArray = new JSONArray(json);
@@ -167,16 +166,16 @@ public class DataUpWorkerSF extends Worker {
                     .putString("study_id", String.valueOf(result)).build();
 
 
+            displayNotification("Form Screen", " Data received successfully");
+            return Result.success(data);
 
-           /* } else {
-
-            }*/
         } else {
-
+            data = new Data.Builder()
+                    .putString("error", String.valueOf(result)).build();
+            displayNotification("Form Screem", " Error received");
+            return Result.failure(data);
         }
 
-        displayNotification("SCR ID", " SCR ID received successfully");
-        return Result.success(data);
     }
 
     /*
@@ -189,11 +188,11 @@ public class DataUpWorkerSF extends Worker {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("simplifiedcoding", "simplifiedcoding", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("formscr", "BLF", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
 
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "simplifiedcoding")
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "formscr")
                 .setContentTitle(title)
                 .setContentText(task)
                 .setSmallIcon(R.mipmap.ic_launcher);

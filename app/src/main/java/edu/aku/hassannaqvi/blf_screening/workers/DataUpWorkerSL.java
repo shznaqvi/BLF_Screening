@@ -82,27 +82,21 @@ public class DataUpWorkerSL extends Worker {
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
             urlConnection.connect();
-
+            Log.d(TAG, "downloadURL: " + url);
 
             JSONArray jsonSync = new JSONArray();
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-            JSONObject json = new JSONObject();
-            Log.d(TAG, "Download Url: " + json.toString());
 
-            // ============
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
 
-                jsonTable.put("table", "screenlog");
-                jsonSync.put(MainApp.formsSL.toJSONObject());
-                jsonParam
-                        .put(jsonTable)
-                        .put(jsonSync);
+            jsonTable.put("table", "screenlog");
+            jsonSync.put(MainApp.formsSL.toJSONObject());
+            jsonParam
+                    .put(jsonTable)
+                    .put(jsonSync);
 
-
-
-            //================
             Log.d(TAG, "Upload Begins: " + jsonParam.toString());
 
 
@@ -110,10 +104,12 @@ public class DataUpWorkerSL extends Worker {
             wr.flush();
             wr.close();
 
+            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
                 displayNotification("Screen Log", "Connection Established");
 
-                Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
                 length = urlConnection.getContentLength();
                 Log.d(TAG, "Content Length: " + length);
 
@@ -123,21 +119,18 @@ public class DataUpWorkerSL extends Worker {
 
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, "SL No: " + line);
                     result.append(line);
-                    Log.d(TAG, "doWork (Progress): " + result.length() + "/" + length);
-                    displayNotification("SL No", line);
-                    Log.d(TAG, "Json Received: " + result);
-                    displayNotification("SL No", "Received Data");
 
                 }
+                displayNotification("Screening Log", "Received Data");
+                Log.d(TAG, "doWork(SL): " + result.toString());
             } else {
 
                 Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
 
                 data = new Data.Builder()
                         .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
-               return Result.failure(data);
+                return Result.failure(data);
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doWork (Timeout): " + e.getMessage());
@@ -177,13 +170,11 @@ public class DataUpWorkerSL extends Worker {
 
             displayNotification("SL No", " SL NO received successfully");
             return Result.success(data);
-           /* } else {
 
-            }*/
         } else {
             data = new Data.Builder()
                     .putString("error", String.valueOf(result)).build();
-            displayNotification("SL No", " SL NO received successfully");
+            displayNotification("SL No", "Error Received");
             return Result.failure(data);
         }
 
@@ -200,11 +191,11 @@ public class DataUpWorkerSL extends Worker {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("simplifiedcoding", "simplifiedcoding", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("scrlog", "BLF", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
 
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "simplifiedcoding")
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "scrlog")
                 .setContentTitle(title)
                 .setContentText(task)
                 .setSmallIcon(R.mipmap.ic_launcher);
