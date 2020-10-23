@@ -245,7 +245,8 @@
                                 android:radius="2dp"
                                 android:text="@string/database"
                                 android:textColor="@color/black_overlay"
-                                android:visibility="" />
+                                />
+<!--                            android:visibility=""-->
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>

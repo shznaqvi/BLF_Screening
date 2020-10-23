@@ -53,7 +53,7 @@ public class SectionSLActivity extends AppCompatActivity {
         //for +9 months in cr_date calendar
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.MONTH, +9);
+        cal.add(Calendar.MONTH, +3);
         bi.sl701.setMaxDate(sdf.format(cal.getTime()));
 
     }
@@ -329,7 +329,6 @@ public class SectionSLActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-
         oF = new Intent(this, MainActivity.class);
         startActivity(oF);
     }

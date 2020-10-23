@@ -288,8 +288,8 @@
                         android:layout_marginBottom="12dp"
                         android:gravity="center"
                         android:inputType="number"
-                        android:hint="###-##-###"
-                        app:mask="###-##-###"
+                        android:hint="###-##-##"
+                        app:mask="###-##-##"
                         app:required="true" />
 
                 </LinearLayout>
@@ -333,6 +333,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
+                        android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                         android:inputType="textPersonName"
                         android:hint="@string/sl5" />
                 </LinearLayout>
@@ -397,8 +398,8 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 app:mask="##"
-                                app:maxValue="45"
-                                app:minValue="0"
+                                app:maxValue="38"
+                                app:minValue="28"
                                 app:type="range" />
 
                         </LinearLayout>
@@ -424,7 +425,7 @@
                                 android:hint="@string/sl602"
                                 android:inputType="number"
                                 android:maxLength="1"
-                                app:mask="##"
+                                app:mask="#"
                                 app:maxValue="6"
                                 app:minValue="0"
                                 app:type="range" />
@@ -507,7 +508,7 @@
                                 android:gravity="center"
                                 android:hint="@string/sl7"
                                 app:dateFormat="dd-MM-yyyy"
-                                app:minDate="CR_DATE" />
+                                app:minDate="CR_DATE"/>
 
                         </LinearLayout>
 
@@ -663,11 +664,11 @@
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
                         android:hint="@string/sl9"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:maxLength="11"
                         app:maxValue="03999999999"
                         app:minValue="0"
-                        app:type="range" />
+                        app:type="range"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -745,7 +746,8 @@
                             android:text="@string/Q_sl11" />
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:tag="-1"
                         android:id="@+id/sl11"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
