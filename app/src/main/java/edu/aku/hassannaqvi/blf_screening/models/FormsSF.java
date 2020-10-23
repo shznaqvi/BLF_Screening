@@ -709,7 +709,6 @@ public class FormsSF extends LiveData<FormsSF> {
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_APPVERSION));
         sFHydrate(cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_SF)));
 
-
         return this;
     }
 

@@ -770,6 +770,18 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.wmError.setVisibility(View.GONE);
         bi.wmError.setText(null);
 
+        // Sending data to Worker class
+
+       /* Data data = new Data.Builder()
+                .putString(KEY, VALUE)
+                .build();
+
+
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class)
+                .setInputData(data)
+                .build();
+*/
+
         final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
