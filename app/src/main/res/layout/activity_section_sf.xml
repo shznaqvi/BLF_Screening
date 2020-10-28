@@ -493,6 +493,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+
                     <!-- sf6  Input-Numeric   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVsf6"
@@ -538,6 +539,7 @@
                                 app:type="range" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
 
                     <!-- sf1  Title   -->
                     <androidx.cardview.widget.CardView
@@ -634,6 +636,8 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
+
+
                     <!-- sf7  Title   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVsf7"
@@ -681,20 +685,20 @@
                                     <TextView
                                         style="@style/sub_labels"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="@string/sf701" />
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/sf701"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/sf701"
+                                        android:hint="##"
                                         android:inputType="number"
                                         android:maxLength="2"
                                         app:maxValue="40"
-                                        app:minValue="1"
+                                        app:minValue="28"
                                         app:type="range" />
 
                                 </LinearLayout>
@@ -708,19 +712,18 @@
                                     <TextView
                                         style="@style/sub_labels"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="@string/sf702" />
 
                                     <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/sf702"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/sf702"
+                                        android:hint="#"
                                         android:inputType="number"
                                         android:maxLength="1"
-                                        app:mask="##"
                                         app:maxValue="6"
                                         app:minValue="0"
                                         app:type="range" />
