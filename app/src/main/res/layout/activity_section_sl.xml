@@ -184,7 +184,8 @@
                                 android:gravity="center"
                                 android:hint="@string/sl3"
                                 app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE" />
+                                app:maxDate="CR_DATE"
+                                app:minDate="14/09/2020" />
 
                         </LinearLayout>
 

@@ -23,7 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -33,6 +32,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSlBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSL;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
@@ -47,54 +47,21 @@ public class SectionSLActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_sl);
         bi.setCallback(this);
-
         setupSkip();
 
-        //for +9 months in cr_date calendar
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.MONTH, +3);
-        bi.sl701.setMaxDate(sdf.format(cal.getTime()));
-
     }
+
 
     private void setupSkip() {
-
-//        bi.a07.setOnCheckedChangeListener((group, checkId) -> {
-//            if (bi.a0701.isChecked()) {
-//                bi.btnContinue.setVisibility(View.VISIBLE);
-//                bi.btnEnd.setVisibility(View.GONE);
-//            } else {
-//                bi.btnContinue.setVisibility(View.GONE);
-//                bi.btnEnd.setVisibility(View.VISIBLE);
-//                Clear.clearAllFields(bi.lla08);
-//            }
-//        });
-//
-//        bi.a05b.setOnCheckedChangeListener((group, checkId) -> {
-//            if (bi.a05b1.isChecked()) {
-//                bi.btnContinue.setVisibility(View.VISIBLE);
-//                bi.btnEnd.setVisibility(View.GONE);
-//            } else {
-//                bi.btnContinue.setVisibility(View.GONE);
-//                bi.btnEnd.setVisibility(View.VISIBLE);
-//                bi.a07.clearCheck();
-//            }
-//        });
-
-        /*bi.a21.setOnCheckedChangeListener((group, checkId) -> {
-            Clear.clearAllFields(bi.fldGrpSecA03);
-        });*/
+        //sl701 setMaxDate
+        bi.sl701.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", 3));
     }
+
 
     public void BtnContinue() {
         bi.pBar3.setVisibility(View.GONE);
         if (!formValidation()) return;
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        SaveDraft();
         if (UpdateDB()) {
             bi.pBar3.setVisibility(View.VISIBLE);
             RetrieveSLNo();
@@ -103,6 +70,7 @@ public class SectionSLActivity extends AppCompatActivity {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private boolean RetrieveSLNo() {
         bi.sl4.setError(null);
@@ -216,7 +184,7 @@ public class SectionSLActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveDraft() throws JSONException {
+    private void SaveDraft() {
         MainApp.formsSL = new FormsSL();
 
         MainApp.formsSL.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm:sss").format(new Date().getTime()));
@@ -264,69 +232,15 @@ public class SectionSLActivity extends AppCompatActivity {
         MainApp.formsSL.setSl10(bi.sl10.getText().toString());
 
         MainApp.formsSL.setSl11(bi.sl11.getText().toString());
-
-       /* JSONObject json = new JSONObject();
-
-        json.put("sl2", bi.sl2.getText().toString());
-       *//* MainApp.jsonSL = new JSONObject();*//*
-
-
-        //MainApp.jsonSL .put("sl2", bi.sl2.getText().toString());
-
-        json.put("sl302", bi.sl302.getText().toString());
-
-        json.put("sl303", bi.sl303.getText().toString());
-
-        json.put("sl4", bi.sl4.getText().toString());
-
-        json.put("sl5", bi.sl5.getText().toString());
-
-        json.put("sl601", bi.sl601.getText().toString());
-
-        json.put("sl602", bi.sl602.getText().toString());
-
-        json.put("sl701", bi.sl701.getText().toString());
-
-        json.put("sl702", bi.sl702.getText().toString());
-
-        json.put("sl703", bi.sl703.getText().toString());
-
-        json.put("sl8", bi.sl801.isChecked() ? ""
-                : bi.sl802.isChecked() ? ""
-                : "-1");
-
-        json.put("sl9", bi.sl9.getText().toString());
-
-        json.put("sl10", bi.sl10.getText().toString());
-
-        json.put("sl11", bi.sl11.getText().toString());*/
-
-
-
-   /* private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
-        if (bi.a05b2.isChecked() || bi.a0702.isChecked()) return true;
-
-        if (!dtFlag) {
-            return Validator.emptyCustomTextBox(this, bi.a13yy, "Invalid date!", false);
-        }
-
-        if (Integer.parseInt(bi.a14mm.getText().toString()) == 0 && Integer.parseInt(bi.a14yy.getText().toString()) == 0)
-            return Validator.emptyCustomTextBox(this, bi.a14yy, "Both Month & Year don't be zero!!", false);
-
-        return true;
-    }*/
-
-    /*public void BtnEnd() {
-        if (!Validator.emptyCheckingContainer(this, bi.fldGrpSecA00)) return;
-        AppUtilsKt.contextEndActivity(this, false);
-    }*/
+        MainApp.setGPS(this);
 
     }
+
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
+
 
     public void BtnEnd() {
         oF = new Intent(this, MainActivity.class);
