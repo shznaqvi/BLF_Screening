@@ -48,7 +48,8 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf1307 = "";
     public String sf1308 = "";
     public String sf1309 = "";
-    public String sf1396x = "";
+    public String sf1396 = "";
+    public String sf139601x = "";
     public String sf14 = "";
     public String sf1403x = "";
     public String sf1501 = "";
@@ -379,14 +380,25 @@ public class FormsSF extends LiveData<FormsSF> {
         return this;
     }
 
-    public String getSf1396x() {
-        return sf1396x;
+    public String getSf1396() {
+        return sf1396;
     }
 
-    public FormsSF setSf1396x(String sf1396x) {
-        this.sf1396x = sf1396x;
+    public FormsSF setSf1396(String sf1396) {
+        this.sf1396 = sf1396;
         return this;
     }
+
+
+
+    public String getSf139601x() {
+        return sf139601x;
+    }
+
+    public void setSf139601x(String sf139601x) {
+        this.sf139601x = sf139601x;
+    }
+
 
     public String getSf14() {
         return sf14;
@@ -753,7 +765,8 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf1307", sf1307)
                     .put("sf1308", sf1308)
                     .put("sf1309", sf1309)
-                    .put("sf1396x", sf1396x)
+                    .put("sf1396", sf1396)
+                    .put("sf139601x", sf139601x)
                     .put("sf14", sf14)
                     .put("sf1403x", sf1403x)
                     .put("sf1501", sf1501)
@@ -854,7 +867,8 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf1307 = json.getString("sf1307");
                 this.sf1308 = json.getString("sf1308");
                 this.sf1309 = json.getString("sf1309");
-                this.sf1396x = json.getString("sf1396x");
+                this.sf1396 = json.getString("sf1396");
+                this.sf139601x = json.getString("sf139601x");
                 this.sf14 = json.getString("sf14");
                 this.sf1403x = json.getString("sf1403x");
                 this.sf1501 = json.getString("sf1501");

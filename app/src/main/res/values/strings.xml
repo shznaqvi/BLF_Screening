@@ -518,6 +518,8 @@
     <string name="sf130901">Yes</string>
     <string name="sf130902">No</string>
     <string name="sf1396">Other(Specify)</string>
+    <string name="sf139601">Yes</string>
+    <string name="sf139602">No</string>
     <string name="sf14">Did the mother expressed breast milk</string>
     <string name="sf1401">Yes</string>
     <string name="sf1402">No</string>
@@ -605,6 +607,7 @@
     <string name='Q_sf1307'>sf1307</string>
     <string name='Q_sf1308'>sf1308</string>
     <string name='Q_sf1309'>sf1309</string>
+    <string name='Q_sf1396'>sf1396</string>
     <string name='Q_sf14'>sf14</string>
     <string name='Q_sf15'>sf15</string>
     <string name='Q_sf1501'>sf1501</string>

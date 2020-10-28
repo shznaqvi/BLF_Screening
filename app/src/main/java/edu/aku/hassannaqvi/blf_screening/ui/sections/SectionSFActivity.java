@@ -524,9 +524,12 @@ public class SectionSFActivity extends AppCompatActivity {
 
         MainApp.formsSF.setSf1309(bi.sf130901.isChecked() ? "1"
                 : bi.sf130902.isChecked() ? "2"
-                : bi.sf1396.isChecked() ? "96"
                 : "-1");
-        MainApp.formsSF.setSf1396x(bi.sf1396x.getText().toString());
+
+        MainApp.formsSF.setSf1396(bi.sf139601.isChecked() ? "1"
+                : bi.sf139602.isChecked() ? "2"
+                : "-1");
+        MainApp.formsSF.setSf139601x(bi.sf139601x.getText().toString());
 
         MainApp.formsSF.setSf14(bi.sf1401.isChecked() ? "1"
                 : bi.sf1402.isChecked() ? "2"
