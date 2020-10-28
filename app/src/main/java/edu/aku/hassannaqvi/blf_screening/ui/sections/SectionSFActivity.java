@@ -70,7 +70,7 @@ public class SectionSFActivity extends AppCompatActivity {
                     && Integer.parseInt(bi.sf701.getText().toString()) >= 37
                     && Integer.parseInt(bi.sf8.getText().toString()) >= 7
                     && bi.sf901.isChecked()
-                    && Integer.parseInt(bi.sf10.getText().toString()) > 1200
+                    && Integer.parseInt(bi.sf10.getText().toString()) >= 1200
                     && bi.sf1102.isChecked()
                     && bi.sf1401.isChecked()
                     && bi.sf1602.isChecked()
@@ -204,17 +204,24 @@ public class SectionSFActivity extends AppCompatActivity {
             }
         });
 
-        bi.sf11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.sf1102.isChecked()) {
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1102.isChecked());
-                    Clear.clearAllFields(bi.fldGrpCVsf12);
-                } else {
-                    EligibilityFlag = false;
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1102.isChecked());
 
-                }
+        bi.sf11.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (bi.sf1102.isChecked()) {
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1102.isChecked());
+                Clear.clearAllFields(bi.fldGrpCVsf12);
+            } else {
+                EligibilityFlag = false;
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1102.isChecked());
+
+            }
+        });
+
+
+        bi.sf1301.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.fldGrpsf13);
+            bi.fldGrpsf13.setVisibility(View.VISIBLE);
+            if (bi.sf130101.isChecked()) {
+                bi.fldGrpsf13.setVisibility(View.GONE);
             }
         });
 
