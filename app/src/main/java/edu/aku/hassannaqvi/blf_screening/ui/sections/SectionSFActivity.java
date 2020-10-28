@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSfBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSF;
 import edu.aku.hassannaqvi.blf_screening.workers.FetchMRWorker;
 
@@ -55,6 +56,7 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkip();
     }
+
 
     public void checkEligibility() {
         Toast.makeText(this, "Checking Eligibility", Toast.LENGTH_SHORT).show();
@@ -88,6 +90,10 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     private void setupSkip() {
+
+        //SF06A MinDate
+        bi.sf6a01.setMinDate(DateUtils.getDaysBack("dd/MM/yyyy", -3));
+
 
         bi.sf6.addTextChangedListener(new TextWatcher() {
             @Override

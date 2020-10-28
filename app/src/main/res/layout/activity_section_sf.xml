@@ -98,7 +98,7 @@
                             <TextView
                                 style="@style/sub_labels"
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="@string/date" />
 
@@ -118,9 +118,9 @@
                             <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                 android:id="@+id/sf101"
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="@string/date"
+                                android:hint="DD-MM-YY"
                                 app:dateFormat="dd-MM-yy"
                                 app:maxDate="CR_DATE" />
 
@@ -135,7 +135,7 @@
                             <TextView
                                 style="@style/sub_labels"
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="@string/time" />
 
@@ -155,9 +155,9 @@
                             <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
                                 android:id="@+id/sf102"
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="@string/time"
+                                android:hint="HH:mm"
                                 app:is24HourView="true"
                                 app:timeFormat="HH:mm" />
 
@@ -541,7 +541,7 @@
                     </androidx.cardview.widget.CardView>
 
 
-                    <!-- sf1  Title   -->
+                    <!-- sf6a  Title   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVsf6a"
                         style="@style/cardView">
@@ -588,7 +588,7 @@
                                     <TextView
                                         style="@style/sub_labels"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="@string/date" />
 
@@ -596,9 +596,9 @@
                                     <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                         android:id="@+id/sf6a01"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/date"
+                                        android:hint="DD-MM-YYYY"
                                         app:dateFormat="dd-MM-yyyy"
                                         app:maxDate="CR_DATE" />
 
@@ -613,7 +613,7 @@
                                     <TextView
                                         style="@style/sub_labels"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
                                         android:text="@string/time" />
 
@@ -621,9 +621,9 @@
                                     <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
                                         android:id="@+id/sf6a02"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"
+                                        android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/time"
+                                        android:hint="HH:mm"
                                         app:is24HourView="true"
                                         app:timeFormat="HH:mm" />
 
