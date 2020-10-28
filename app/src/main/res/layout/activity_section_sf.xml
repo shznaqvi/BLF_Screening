@@ -764,21 +764,22 @@
                                     android:layout_alignTop="@id/qtxt_sf8"
                                     android:layout_alignBottom="@id/qtxt_sf8"
                                     android:text="@string/Q_sf8" />
+
                             </RelativeLayout>
 
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/sf8"
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
-                                android:hint="@string/sf8"
+                                android:layout_height="wrap_content"
+                                android:hint="##"
                                 android:inputType="number"
-                                app:mask="##"
-                                app:maxValue="18"
+                                android:maxLength="2"
+                                app:maxValue="15"
                                 app:minValue="1"
                                 app:type="range" />
 
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
@@ -812,6 +813,7 @@
                                     android:layout_alignTop="@id/qtxt_sf9"
                                     android:layout_alignBottom="@id/qtxt_sf9"
                                     android:text="@string/Q_sf9" />
+
                             </RelativeLayout>
 
                             <RadioGroup
@@ -833,8 +835,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="@string/sf902" />
+
                             </RadioGroup>
+
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
