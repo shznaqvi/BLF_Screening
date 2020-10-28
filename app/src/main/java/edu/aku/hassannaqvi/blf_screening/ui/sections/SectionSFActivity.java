@@ -286,6 +286,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
     }
 
+
     private void Eligibility(boolean sf17Flag) {
         bi.sf1701.setChecked(sf17Flag);
         bi.sf1702.setChecked(!sf17Flag);
@@ -608,7 +609,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
 
         return !bi.sf2.getText().toString().equals(bi.sf5.getText().toString());
 
