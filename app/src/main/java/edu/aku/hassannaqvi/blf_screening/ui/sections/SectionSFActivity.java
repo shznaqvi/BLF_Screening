@@ -611,7 +611,10 @@ public class SectionSFActivity extends AppCompatActivity {
 
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
 
-        return !bi.sf2.getText().toString().equals(bi.sf5.getText().toString());
+        if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
+            return Validator.emptyTextBox(this, bi.sf5);
+        }
+        return true;
 
     }
 
