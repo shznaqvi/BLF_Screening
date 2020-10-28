@@ -51,6 +51,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>-->
 
+
             <!-- sf1  Title   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsf1"
@@ -262,6 +263,7 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <!-- sf2  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsf2"
@@ -325,8 +327,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:visibility="gone" />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -381,6 +386,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="56dp"
                                 android:layout_marginBottom="12dp"
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                                 android:layout_weight="1"
                                 android:hint="@string/sf3" />
 
@@ -392,8 +398,11 @@
                                 android:onClick="deleteName"
                                 android:src="@drawable/ic_clear"
                                 android:textSize="20sp" />
+
                         </LinearLayout>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -480,6 +489,7 @@
                                     android:layout_alignTop="@id/qtxt_sf5"
                                     android:layout_alignBottom="@id/qtxt_sf5"
                                     android:text="@string/Q_sf5" />
+
                             </RelativeLayout>
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -490,7 +500,9 @@
                                 android:hint="###-##-##"
                                 android:inputType="number"
                                 app:mask="###-##-##" />
+
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
