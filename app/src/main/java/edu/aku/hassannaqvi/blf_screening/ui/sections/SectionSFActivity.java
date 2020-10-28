@@ -219,47 +219,29 @@ public class SectionSFActivity extends AppCompatActivity {
         });
 
 
-        bi.sf14.setOnCheckedChangeListener((new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                checkEligibility();
-               /* if(bi.sf1401.isChecked()) {
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
-                    Clear.clearAllFields(bi.llsf1501);
-                } else {
-                    EligibilityFlag = false;
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
-
-                }*/
-
-            }
+        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
+            checkEligibility();
+            Clear.clearAllFields(bi.fldGrpCVsf18);
+           /* if(bi.sf1401.isChecked()) {
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
+                Clear.clearAllFields(bi.llsf1501);
+            } else {
+                EligibilityFlag = false;
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
+            }*/
         }));
 
 
-        bi.sf16.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                checkEligibility();
-                /*if (EligibilityFlag && bi.sf1602.isChecked()) {
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1602.isChecked());
-                } else {
-                    Eligibility();
-                    SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1602.isChecked());
-
-
-                }*/
-
-
-            }
+        bi.sf16.setOnCheckedChangeListener((radioGroup, i) -> {
+            checkEligibility();
+            /*if (EligibilityFlag && bi.sf1602.isChecked()) {
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1602.isChecked());
+            } else {
+                Eligibility();
+                SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1602.isChecked());
+            }*/
         });
 
-
-        bi.sf14.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                checkEligibility();
-            }
-        });
 
         bi.sf2.addTextChangedListener(new TextWatcher() {
 
