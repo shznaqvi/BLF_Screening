@@ -228,6 +228,7 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.sf1301.setOnCheckedChangeListener((radioGroup, i) -> {
             Clear.clearAllFields(bi.fldGrpsf13);
             bi.fldGrpsf13.setVisibility(View.VISIBLE);
+            checkEligibility();
             if (i == bi.sf130101.getId()) {
                 bi.fldGrpsf13.setVisibility(View.GONE);
             }
