@@ -74,6 +74,7 @@ public class SectionSFActivity extends AppCompatActivity {
                     && bi.sf901.isChecked()
                     && Integer.parseInt(bi.sf10.getText().toString()) >= 1200
                     && bi.sf1102.isChecked()
+                    && bi.sf130101.isChecked()
                     && bi.sf1401.isChecked()
                     && bi.sf1602.isChecked()
             ) {
@@ -227,7 +228,7 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.sf1301.setOnCheckedChangeListener((radioGroup, i) -> {
             Clear.clearAllFields(bi.fldGrpsf13);
             bi.fldGrpsf13.setVisibility(View.VISIBLE);
-            if (bi.sf130101.isChecked()) {
+            if (i == bi.sf130101.getId()) {
                 bi.fldGrpsf13.setVisibility(View.GONE);
             }
         });

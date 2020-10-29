@@ -489,7 +489,7 @@
     <string name="sf1203">Down Syndrome</string>
     <string name="sf1204">Cleft lip and palate</string>
     <string name="sf1296">Others (Specify):</string>
-    <string name="sf13">Did the baby present with any danger sign?[Multiple Options]</string>
+    <string name="sf13"> Did the baby present with any danger sign ? Multiple Options </string>
     <string name="sf1301">None</string>
     <string name="sf130101">Yes</string>
     <string name="sf130102">No</string>

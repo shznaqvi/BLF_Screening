@@ -907,6 +907,7 @@
 
                     </androidx.cardview.widget.CardView>
 
+
                     <!-- sf11  Radio   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVsf11"
@@ -937,6 +938,7 @@
                                     android:layout_alignTop="@id/qtxt_sf11"
                                     android:layout_alignBottom="@id/qtxt_sf11"
                                     android:text="@string/Q_sf11" />
+
                             </RelativeLayout>
 
                             <RadioGroup
@@ -958,8 +960,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="@string/sf1102" />
+
                             </RadioGroup>
+
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
@@ -994,6 +999,7 @@
                                     android:layout_alignTop="@id/qtxt_sf12"
                                     android:layout_alignBottom="@id/qtxt_sf12"
                                     android:text="@string/Q_sf12" />
+
                             </RelativeLayout>
 
                             <RadioGroup
@@ -1040,8 +1046,11 @@
                                     android:tag="sf1296"
                                     android:text='@{sf1296.checked ? sf1296x.getText().toString() : ""}'
                                     android:visibility='@{sf1296.checked? View.VISIBLE : View.GONE}' />
+
                             </RadioGroup>
+
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
@@ -1056,11 +1065,13 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/qtxt_sf13"
+                                style="@style/quesNum"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/sf13" />
+
                         </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
 
@@ -1094,6 +1105,7 @@
                                     android:layout_alignTop="@id/qtxt_sf1301"
                                     android:layout_alignBottom="@id/qtxt_sf1301"
                                     android:text="@string/Q_sf1301" />
+
                             </RelativeLayout>
 
                             <RadioGroup
@@ -1160,6 +1172,7 @@
                                         android:layout_alignTop="@id/qtxt_sf1302"
                                         android:layout_alignBottom="@id/qtxt_sf1302"
                                         android:text="@string/Q_sf1302" />
+
                                 </RelativeLayout>
 
                                 <RadioGroup
@@ -1170,20 +1183,24 @@
 
                                     <RadioButton
                                         android:id="@+id/sf130201"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:text="@string/sf130201" />
 
                                     <RadioButton
                                         android:id="@+id/sf130202"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:text="@string/sf130202" />
+
                                 </RadioGroup>
+
                             </LinearLayout>
+
                         </androidx.cardview.widget.CardView>
+
 
                         <!-- sf1303  Radio   -->
                         <androidx.cardview.widget.CardView
@@ -1240,6 +1257,7 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
+
                         <!-- sf1304  Radio   -->
                         <androidx.cardview.widget.CardView
                             android:id="@+id/fldGrpCVsf1304"
@@ -1294,6 +1312,7 @@
                                 </RadioGroup>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
+
 
                         <!-- sf1305  Radio   -->
                         <androidx.cardview.widget.CardView
@@ -1353,6 +1372,7 @@
 
                         </androidx.cardview.widget.CardView>
 
+
                         <!-- sf1306  Radio   -->
                         <androidx.cardview.widget.CardView
                             android:id="@+id/fldGrpCVsf1306"
@@ -1407,6 +1427,7 @@
                                 </RadioGroup>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
+
 
                         <!-- sf1307  Radio   -->
                         <androidx.cardview.widget.CardView
@@ -1755,6 +1776,7 @@
                                 android:layout_alignTop="@id/qtxt_sf14"
                                 android:layout_alignBottom="@id/qtxt_sf14"
                                 android:text="@string/Q_sf14" />
+
                         </RelativeLayout>
 
                         <RadioGroup
@@ -1789,8 +1811,11 @@
                                 android:tag="sf1403"
                                 android:text='@{sf1403.checked ? sf1403x.getText().toString() : ""}'
                                 android:visibility='@{sf1403.checked? View.VISIBLE : View.GONE}' />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -2320,6 +2345,8 @@
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>-->
+
+
                 <LinearLayout
                     android:id="@+id/llsf1501"
                     android:layout_width="match_parent"
