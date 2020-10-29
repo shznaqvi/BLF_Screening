@@ -612,11 +612,12 @@ public class SectionSFActivity extends AppCompatActivity {
 
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
 
-        if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
-            return Validator.emptyTextBox(this, bi.sf5);
+        if (!bi.sf2.getText().toString().isEmpty() && !bi.sf5.getText().toString().isEmpty()) {
+            if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
+                return Validator.emptyCustomTextBox(this, bi.sf5, "SF2 - Mother MR No. and SF5 Baby MR No. could not be the SAME");
+            }
         }
         return true;
-
     }
 
 
@@ -747,6 +748,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 });
         return false;
     }
+
 
     public void deleteName(View view) {
         if (bi.sf4.getText().toString().equals("99999") && (bi.sf3.getText().toString().contains("Mother") || bi.sf3.getText().toString().contains("Found"))) {
