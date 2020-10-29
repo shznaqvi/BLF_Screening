@@ -51,7 +51,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf1396 = "";
     public String sf139601x = "";
     public String sf14 = "";
-    public String sf1403x = "";
+    public String sf1402x = "";
     public String sf1501 = "";
     public String sf1502 = "";
     public String sf1503 = "";
@@ -409,12 +409,12 @@ public class FormsSF extends LiveData<FormsSF> {
         return this;
     }
 
-    public String getSf1403x() {
-        return sf1403x;
+    public String getSf1402x() {
+        return sf1402x;
     }
 
-    public FormsSF setSf1403x(String sf1403x) {
-        this.sf1403x = sf1403x;
+    public FormsSF setSf1402x(String sf1402x) {
+        this.sf1402x = sf1402x;
         return this;
     }
 
@@ -768,7 +768,7 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf1396", sf1396)
                     .put("sf139601x", sf139601x)
                     .put("sf14", sf14)
-                    .put("sf1403x", sf1403x)
+                    .put("sf1402x", sf1402x)
                     .put("sf1501", sf1501)
                     .put("sf1502", sf1502)
                     .put("sf1503", sf1503)
@@ -870,7 +870,7 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf1396 = json.getString("sf1396");
                 this.sf139601x = json.getString("sf139601x");
                 this.sf14 = json.getString("sf14");
-                this.sf1403x = json.getString("sf1403x");
+                this.sf1402x = json.getString("sf1402x");
                 this.sf1501 = json.getString("sf1501");
                 this.sf1502 = json.getString("sf1502");
                 this.sf1503 = json.getString("sf1503");

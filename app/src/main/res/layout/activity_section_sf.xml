@@ -386,8 +386,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="56dp"
                                 android:layout_marginBottom="12dp"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                                 android:layout_weight="1"
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                                 android:hint="@string/sf3" />
 
                             <ImageButton
@@ -1782,37 +1782,34 @@
                         <RadioGroup
                             android:id="@+id/sf14"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/sf1401"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/sf1401" />
 
                             <RadioButton
                                 android:id="@+id/sf1402"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="@string/sf1402" />
 
-                            <RadioButton
-                                android:id="@+id/sf1403"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/sf1403" />
-
-                            <EditText
-                                android:id="@+id/sf1403x"
-                                android:layout_width="match_parent"
-                                android:layout_height="56dp"
-                                android:layout_marginBottom="12dp"
-                                android:hint="@string/sf1403"
-                                android:tag="sf1403"
-                                android:text='@{sf1403.checked ? sf1403x.getText().toString() : ""}'
-                                android:visibility='@{sf1403.checked? View.VISIBLE : View.GONE}' />
-
                         </RadioGroup>
+
+                        <EditText
+                            android:id="@+id/sf1402x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/sf1403"
+                            android:tag="sf1402"
+                            android:text='@{sf1402.checked ? sf1402x.getText().toString() : ""}'
+                            android:visibility='@{sf1402.checked? View.VISIBLE : View.GONE}' />
 
                     </LinearLayout>
 
@@ -2352,7 +2349,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility='@{sf1402.checked || sf1403.checked ? View.GONE : View.VISIBLE}'>
+                    android:visibility='@{sf1402.checked ? View.GONE : View.VISIBLE}'>
 
                     <!-- sf17  Radio   -->
                     <androidx.cardview.widget.CardView
