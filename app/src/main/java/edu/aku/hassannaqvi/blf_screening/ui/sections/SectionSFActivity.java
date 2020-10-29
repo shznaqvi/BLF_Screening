@@ -614,7 +614,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
         if (!bi.sf2.getText().toString().isEmpty() && !bi.sf5.getText().toString().isEmpty()) {
             if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
-                return Validator.emptyCustomTextBox(this, bi.sf5, "SF2 - Mother MR No. and SF5 Baby MR No. could not be the SAME");
+                return Validator.emptyCustomTextBox(this, bi.sf5, "SF2 & SF5\ncould not be the SAME");
             }
         }
         return true;
