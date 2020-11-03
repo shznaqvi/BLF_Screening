@@ -123,7 +123,8 @@
                                 android:gravity="center"
                                 android:hint="DD-MM-YY"
                                 app:dateFormat="dd-MM-yy"
-                                app:maxDate="CR_DATE" />
+                                app:maxDate="CR_DATE"
+                                app:minDate="14/09/2020" />
 
                         </LinearLayout>
 

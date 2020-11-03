@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.blf_screening.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +61,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
 
         String iStatus = "Status  Unknown";
         int iColor = 0;
-        switch (form.get(position).getIstatus()) {
+      /*  switch (form.get(position).getIstatus()) {
             case "1":
                 iStatus = "Complete";
                 iColor = Color.GREEN;
@@ -104,7 +103,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
                 iColor = Color.RED;
                 break;
 
-        }
+        }*/
 
         //holder.hhno.setText(form.get(position).getRefno() + " \t\t(" + form.get(position).getA01() + ")");
         //    holder.hhno.setText(form.get(position).getA05());

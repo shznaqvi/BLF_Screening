@@ -29,8 +29,8 @@ public final class CreateTable {
             + FormsSLTable.COLUMN_APPVERSION + " TEXT,"
             + FormsSLTable.COLUMN_SL + " TEXT,"
             + FormsSLTable.COLUMN_ENDINGDATETIME + " TEXT,"
-            + FormsSLTable.COLUMN_ISTATUS + " TEXT,"
-            + FormsSLTable.COLUMN_ISTATUS96x + " TEXT,"
+ /*           + FormsSLTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSLTable.COLUMN_ISTATUS96x + " TEXT,"*/
             + FormsSLTable.COLUMN_SYNCED + " TEXT,"
             + FormsSLTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
@@ -49,9 +49,9 @@ public final class CreateTable {
             + FormsSFTable.COLUMN_GPSACC + " TEXT,"
             + FormsSFTable.COLUMN_APPVERSION + " TEXT,"
             + FormsSFTable.COLUMN_SF + " TEXT,"
-            + FormsSFTable.COLUMN_ENDINGDATETIME + " TEXT,"
-            + FormsSFTable.COLUMN_ISTATUS + " TEXT,"
-            + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"
+//            + FormsSFTable.COLUMN_ENDINGDATETIME + " TEXT,"
+           /* + FormsSFTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"*/
             + FormsSFTable.COLUMN_SYNCED + " TEXT,"
             + FormsSFTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";

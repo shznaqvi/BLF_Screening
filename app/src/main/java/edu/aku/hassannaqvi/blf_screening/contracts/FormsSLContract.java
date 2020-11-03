@@ -20,8 +20,8 @@ public class FormsSLContract {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_ISTATUS96x = "istatus96x";
+        //    public static final String COLUMN_ISTATUS = "istatus";
+        //  public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

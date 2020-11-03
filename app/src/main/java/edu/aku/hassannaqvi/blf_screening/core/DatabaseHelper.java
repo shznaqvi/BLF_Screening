@@ -200,8 +200,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsSLContract.FormsSLTable.COLUMN_PROJECT_NAME, formsl.getProjectName());
         values.put(FormsSLTable.COLUMN_UID, formsl.get_UID());
         values.put(FormsSLTable.COLUMN_SYSDATE, formsl.getSysdate());
-        values.put(FormsSLTable.COLUMN_ISTATUS, formsl.getIstatus());
-        values.put(FormsSLTable.COLUMN_ISTATUS96x, formsl.getIstatus96x());
+        //     values.put(FormsSLTable.COLUMN_ISTATUS, formsl.getIstatus());
+        //    values.put(FormsSLTable.COLUMN_ISTATUS96x, formsl.getIstatus96x());
         values.put(FormsSLTable.COLUMN_ENDINGDATETIME, formsl.getEndingdatetime());
         values.put(FormsSLTable.COLUMN_GPSLAT, formsl.getGpsLat());
         values.put(FormsSLTable.COLUMN_GPSLNG, formsl.getGpsLng());
@@ -230,9 +230,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsSFTable.COLUMN_PROJECT_NAME, formSF.getProjectName());
         values.put(FormsSFTable.COLUMN_UID, formSF.get_UID());
         values.put(FormsSFTable.COLUMN_SYSDATE, formSF.getSysdate());
-        values.put(FormsSFTable.COLUMN_ISTATUS, formSF.getIstatus());
-        values.put(FormsSFTable.COLUMN_ISTATUS96x, formSF.getIstatus96x());
-        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
+    /*    values.put(FormsSFTable.COLUMN_ISTATUS, formSF.getIstatus());
+        values.put(FormsSFTable.COLUMN_ISTATUS96x, formSF.getIstatus96x());*/
+//        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
         values.put(FormsSFTable.COLUMN_GPSLAT, formSF.getGpsLat());
         values.put(FormsSFTable.COLUMN_GPSLNG, formSF.getGpsLng());
         values.put(FormsSFTable.COLUMN_GPSDATE, formSF.getGpsDT());
@@ -293,7 +293,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSLTable._ID,
                 FormsSLTable.COLUMN_UID,
                 FormsSLTable.COLUMN_SYSDATE,
+/*
                 FormsSLTable.COLUMN_ISTATUS,
+*/
                 FormsSLTable.COLUMN_SL,
                 FormsSLTable.COLUMN_GPSLAT,
                 FormsSLTable.COLUMN_GPSLNG,
@@ -345,7 +347,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSFTable._ID,
                 FormsSFTable.COLUMN_UID,
                 FormsSFTable.COLUMN_SYSDATE,
+/*
                 FormsSFTable.COLUMN_ISTATUS,
+*/
                 FormsSFTable.COLUMN_SF,
                 FormsSFTable.COLUMN_GPSLAT,
                 FormsSFTable.COLUMN_GPSLNG,
@@ -398,7 +402,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSFTable._ID,
                 FormsSFTable.COLUMN_UID,
                 FormsSFTable.COLUMN_SYSDATE,
-                FormsSFTable.COLUMN_ISTATUS,
+//                FormsSFTable.COLUMN_ISTATUS,
                 FormsSFTable.COLUMN_SF,
                 FormsSFTable.COLUMN_GPSLAT,
                 FormsSFTable.COLUMN_GPSLNG,
@@ -450,9 +454,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSLTable._ID,
                 FormsSLTable.COLUMN_UID,
                 FormsSLTable.COLUMN_SYSDATE,
-                FormsSLTable.COLUMN_ISTATUS,
-                FormsSLTable.COLUMN_ISTATUS96x,
-                FormsSLTable.COLUMN_ENDINGDATETIME,
+                /*               FormsSLTable.COLUMN_ISTATUS,
+                               FormsSLTable.COLUMN_ISTATUS96x,
+               */                FormsSLTable.COLUMN_ENDINGDATETIME,
                 FormsSLTable.COLUMN_SL,
                 FormsSLTable.COLUMN_GPSLAT,
                 FormsSLTable.COLUMN_GPSLNG,
@@ -508,9 +512,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSFTable._ID,
                 FormsSFTable.COLUMN_UID,
                 FormsSFTable.COLUMN_SYSDATE,
-                FormsSFTable.COLUMN_ISTATUS,
-                FormsSFTable.COLUMN_ISTATUS96x,
-                FormsSFTable.COLUMN_ENDINGDATETIME,
+//                FormsSFTable.COLUMN_ISTATUS,
+                //               FormsSFTable.COLUMN_ISTATUS96x,
+//                FormsSFTable.COLUMN_ENDINGDATETIME,
                 FormsSFTable.COLUMN_SF,
                 FormsSFTable.COLUMN_GPSLAT,
                 FormsSFTable.COLUMN_GPSLNG,
@@ -568,7 +572,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSLTable._ID,
                 FormsSLTable.COLUMN_UID,
                 FormsSLTable.COLUMN_SYSDATE,
-                FormsSLTable.COLUMN_ISTATUS,
+//                FormsSLTable.COLUMN_ISTATUS,
                 FormsSLTable.COLUMN_SYNCED,
 
         };
@@ -597,7 +601,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 formsSL.set_ID(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_ID)));
                 formsSL.set_UID(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_UID)));
                 formsSL.setSysdate(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_SYSDATE)));
-                formsSL.setIstatus(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_ISTATUS)));
+//                formsSL.setIstatus(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_ISTATUS)));
                 formsSL.setSynced(c.getString(c.getColumnIndex(FormsSLTable.COLUMN_SYNCED)));
                 allFormsSL.add(formsSL);
             }
@@ -624,7 +628,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSFTable._ID,
                 FormsSFTable.COLUMN_UID,
                 FormsSFTable.COLUMN_SYSDATE,
-                FormsSFTable.COLUMN_ISTATUS,
+//                FormsSFTable.COLUMN_ISTATUS,
                 FormsSFTable.COLUMN_SYNCED,
 
         };
@@ -653,7 +657,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 formsSF.set_ID(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_ID)));
                 formsSF.set_UID(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_UID)));
                 formsSF.setSysdate(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_SYSDATE)));
-                formsSF.setIstatus(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_ISTATUS)));
+                //               formsSF.setIstatus(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_ISTATUS)));
                 formsSF.setSynced(c.getString(c.getColumnIndex(FormsSFTable.COLUMN_SYNCED)));
                 allFormsSF.add(formsSF);
             }
@@ -782,8 +786,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsSLTable.COLUMN_ISTATUS, MainApp.formsSL.getIstatus());
-        values.put(FormsSLTable.COLUMN_ISTATUS96x, MainApp.formsSL.getIstatus96x());
+        /*values.put(FormsSLTable.COLUMN_ISTATUS, MainApp.formsSL.getIstatus());
+        values.put(FormsSLTable.COLUMN_ISTATUS96x, MainApp.formsSL.getIstatus96x());*/
         values.put(FormsSLTable.COLUMN_ENDINGDATETIME, MainApp.formsSL.getEndingdatetime());
 
         // Which row to update, based on the ID
@@ -801,9 +805,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsSFTable.COLUMN_ISTATUS, MainApp.formsSF.getIstatus());
-        values.put(FormsSFTable.COLUMN_ISTATUS96x, MainApp.formsSF.getIstatus96x());
-        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, MainApp.formsSF.getEndingdatetime());
+/*        values.put(FormsSFTable.COLUMN_ISTATUS, MainApp.formsSF.getIstatus());
+        values.put(FormsSFTable.COLUMN_ISTATUS96x, MainApp.formsSF.getIstatus96x());*/
+//        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, MainApp.formsSF.getEndingdatetime());
 
         // Which row to update, based on the ID
         String selection = FormsSFTable.COLUMN_ID + " =? ";

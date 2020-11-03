@@ -52,7 +52,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf139601x = "";
     public String sf14 = "";
     public String sf1402x = "";
-    public String sf1501 = "";
+   /* public String sf1501 = "";
     public String sf1502 = "";
     public String sf1503 = "";
     public String sf1504 = "";
@@ -60,8 +60,8 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf1506 = "";
     public String sf1507 = "";
     public String sf1508 = "";
-    public String sf1509 = "";
-    public String sf16 = "";
+    public String sf1509 = "";*/
+   public String sf16 = "";
     public String sf17 = "";
     public String sf18 = "";
     public String sf1901 = "";
@@ -71,9 +71,11 @@ public class FormsSF extends LiveData<FormsSF> {
     private String _UID = "";
     private String sysdate = "";
     private String username = ""; // Interviewer
-    private String istatus = ""; // Interview Status
-    private String istatus96x = ""; // Interview Status
+    //  private String istatus = ""; // Interview Status
+    //  private String istatus96x = ""; // Interview Status
+/*
     private String endingdatetime = "";
+*/
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -417,6 +419,7 @@ public class FormsSF extends LiveData<FormsSF> {
         this.sf1402x = sf1402x;
         return this;
     }
+/*
 
     public String getSf1501() {
         return sf1501;
@@ -498,6 +501,7 @@ public class FormsSF extends LiveData<FormsSF> {
         this.sf1509 = sf1509;
         return this;
     }
+*/
 
     public String getSf16() {
         return sf16;
@@ -581,7 +585,7 @@ public class FormsSF extends LiveData<FormsSF> {
         this._UID = _UID;
     }
 
-    public String getIstatus() {
+    /*public String getIstatus() {
         return istatus;
     }
 
@@ -595,8 +599,9 @@ public class FormsSF extends LiveData<FormsSF> {
 
     public void setIstatus96x(String istatus96x) {
         this.istatus96x = istatus96x;
-    }
+    }*/
 
+/*
 
     public String getEndingdatetime() {
         return endingdatetime;
@@ -605,6 +610,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public void setEndingdatetime(String endingdatetime) {
         this.endingdatetime = endingdatetime;
     }
+*/
 
 
     public String getGpsLat() {
@@ -685,9 +691,9 @@ public class FormsSF extends LiveData<FormsSF> {
         this._UID = jsonObject.getString(FormsSFTable.COLUMN_UID);
         this.sysdate = jsonObject.getString(FormsSFTable.COLUMN_SYSDATE);
 
-        this.istatus = jsonObject.getString(FormsSFTable.COLUMN_ISTATUS);
-        this.istatus96x = jsonObject.getString(FormsSFTable.COLUMN_ISTATUS96x);
-        this.endingdatetime = jsonObject.getString(FormsSFTable.COLUMN_ENDINGDATETIME);
+        //   this.istatus = jsonObject.getString(FormsSFTable.COLUMN_ISTATUS);
+        //    this.istatus96x = jsonObject.getString(FormsSFTable.COLUMN_ISTATUS96x);
+        //  this.endingdatetime = jsonObject.getString(FormsSFTable.COLUMN_ENDINGDATETIME);
         this.gpsLat = jsonObject.getString(FormsSFTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsSFTable.COLUMN_GPSLNG);
         this.gpsDT = jsonObject.getString(FormsSFTable.COLUMN_GPSDATE);
@@ -709,9 +715,9 @@ public class FormsSF extends LiveData<FormsSF> {
         this._UID = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_UID));
         this.sysdate = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_SYSDATE));
 
-        this.istatus = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ISTATUS));
-        this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ISTATUS96x));
-        this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ENDINGDATETIME));
+        //   this.istatus = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ISTATUS));
+        //   this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ISTATUS96x));
+        //     this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_ENDINGDATETIME));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsSFTable.COLUMN_GPSDATE));
@@ -769,15 +775,15 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf139601x", sf139601x)
                     .put("sf14", sf14)
                     .put("sf1402x", sf1402x)
-                    .put("sf1501", sf1501)
-                    .put("sf1502", sf1502)
-                    .put("sf1503", sf1503)
-                    .put("sf1504", sf1504)
-                    .put("sf1505", sf1505)
-                    .put("sf1506", sf1506)
-                    .put("sf1507", sf1507)
-                    .put("sf1508", sf1508)
-                    .put("sf1509", sf1509)
+                    /*  .put("sf1501", sf1501)
+                      .put("sf1502", sf1502)
+                      .put("sf1503", sf1503)
+                      .put("sf1504", sf1504)
+                      .put("sf1505", sf1505)
+                      .put("sf1506", sf1506)
+                      .put("sf1507", sf1507)
+                      .put("sf1508", sf1508)
+                      .put("sf1509", sf1509)*/
                     .put("sf16", sf16)
                     .put("sf17", sf17)
                     .put("sf18", sf18)
@@ -802,9 +808,9 @@ public class FormsSF extends LiveData<FormsSF> {
 
             json.put(FormsSFTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
             json.put(FormsSFTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
-            json.put(FormsSFTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
-            json.put(FormsSFTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
-            json.put(FormsSFTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
+            //        json.put(FormsSFTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+            //       json.put(FormsSFTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
+            //   json.put(FormsSFTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
             json.put(FormsSFTable.COLUMN_SF, new JSONObject(sFtoString()));
 
           /*  if (this.sF != null && !this.sF.equals("")) {
@@ -871,7 +877,7 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf139601x = json.getString("sf139601x");
                 this.sf14 = json.getString("sf14");
                 this.sf1402x = json.getString("sf1402x");
-                this.sf1501 = json.getString("sf1501");
+             /*   this.sf1501 = json.getString("sf1501");
                 this.sf1502 = json.getString("sf1502");
                 this.sf1503 = json.getString("sf1503");
                 this.sf1504 = json.getString("sf1504");
@@ -879,7 +885,7 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf1506 = json.getString("sf1506");
                 this.sf1507 = json.getString("sf1507");
                 this.sf1508 = json.getString("sf1508");
-                this.sf1509 = json.getString("sf1509");
+                this.sf1509 = json.getString("sf1509");*/
                 this.sf16 = json.getString("sf16");
                 this.sf17 = json.getString("sf17");
                 this.sf18 = json.getString("sf18");
