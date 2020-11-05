@@ -1,9 +1,13 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -186,13 +190,13 @@ public class SectionSLActivity extends AppCompatActivity {
 
     private void SaveDraft() {
         MainApp.formsSL = new FormsSL();
-
         MainApp.formsSL.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm:sss").format(new Date().getTime()));
         MainApp.formsSL.setDeviceID(MainApp.appInfo.getDeviceID());
         MainApp.formsSL.setDevicetagID(MainApp.appInfo.getTagName());
         MainApp.formsSL.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.formsSL.setSl2(bi.sl2.getText().toString());
-
+        MainApp.formsSL.setUsername(MainApp.userName);
+        setGPS(this);
 
         String[] sl3 = bi.sl301.getText().toString().split("-");
 
@@ -241,6 +245,33 @@ public class SectionSLActivity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
+    private void setGPS(Activity activity) {
+        SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+            String dt = GPSPref.getString("Time", "0");
+
+            if (lat.equals("0") && lang.equals("0")) {
+                Toast.makeText(activity, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            MainApp.formsSL.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.formsSL.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.formsSL.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+//            MainApp.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.formsSL.setGpsDT(date); // Timestamp is converted to date above
+
+        } catch (Exception e) {
+            Log.e("GPS", "setGPS: " + e.getMessage());
+        }
+    }
 
     public void BtnEnd() {
         oF = new Intent(this, MainActivity.class);

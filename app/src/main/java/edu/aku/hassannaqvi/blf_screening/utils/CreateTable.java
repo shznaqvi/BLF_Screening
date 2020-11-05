@@ -28,7 +28,9 @@ public final class CreateTable {
             + FormsSLTable.COLUMN_GPSACC + " TEXT,"
             + FormsSLTable.COLUMN_APPVERSION + " TEXT,"
             + FormsSLTable.COLUMN_SL + " TEXT,"
+/*
             + FormsSLTable.COLUMN_ENDINGDATETIME + " TEXT,"
+*/
  /*           + FormsSLTable.COLUMN_ISTATUS + " TEXT,"
             + FormsSLTable.COLUMN_ISTATUS96x + " TEXT,"*/
             + FormsSLTable.COLUMN_SYNCED + " TEXT,"

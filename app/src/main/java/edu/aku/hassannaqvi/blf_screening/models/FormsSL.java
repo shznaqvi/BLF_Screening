@@ -39,7 +39,9 @@ public class FormsSL extends LiveData<FormsSL> {
     private String username = ""; // Interviewer
     //   private String istatus = ""; // Interview Status
     //   private String istatus96x = ""; // Interview Status
+/*
     private String endingdatetime = "";
+*/
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -277,6 +279,7 @@ public class FormsSL extends LiveData<FormsSL> {
         this.istatus96x = istatus96x;
     }
 */
+/*
 
     public String getEndingdatetime() {
         return endingdatetime;
@@ -286,6 +289,7 @@ public class FormsSL extends LiveData<FormsSL> {
         this.endingdatetime = endingdatetime;
     }
 
+*/
 
     public String getGpsLat() {
         return gpsLat;
@@ -367,7 +371,9 @@ public class FormsSL extends LiveData<FormsSL> {
 
      /*   this.istatus = jsonObject.getString(FormsSLTable.COLUMN_ISTATUS);
         this.istatus96x = jsonObject.getString(FormsSLTable.COLUMN_ISTATUS96x);*/
+/*
         this.endingdatetime = jsonObject.getString(FormsSLTable.COLUMN_ENDINGDATETIME);
+*/
         this.gpsLat = jsonObject.getString(FormsSLTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsSLTable.COLUMN_GPSLNG);
         this.gpsDT = jsonObject.getString(FormsSLTable.COLUMN_GPSDATE);
@@ -391,7 +397,9 @@ public class FormsSL extends LiveData<FormsSL> {
 
        /* this.istatus = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_ISTATUS));
         this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_ISTATUS96x));*/
+/*
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_ENDINGDATETIME));
+*/
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsSLTable.COLUMN_GPSDATE));
@@ -419,6 +427,7 @@ public class FormsSL extends LiveData<FormsSL> {
         try {
             json.put("sl2", sl2)
                     .put("sl301", sl301)
+                    .put("username", username)
                     .put("sl302", sl302)
                     .put("sl303", sl303)
                     .put("sl4", sl4)
@@ -453,7 +462,9 @@ public class FormsSL extends LiveData<FormsSL> {
             json.put(FormsSLTable.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
            /* json.put(FormsSLTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             json.put(FormsSLTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);*/
+/*
             json.put(FormsSLTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
+*/
             json.put(FormsSLTable.COLUMN_SL, new JSONObject(sLtoString()));
 
           /*  if (this.sF != null && !this.sF.equals("")) {
@@ -488,6 +499,7 @@ public class FormsSL extends LiveData<FormsSL> {
                 json = new JSONObject(string);
 
                 this.sl2 = json.getString("sl2");
+                this.username = json.getString("username");
                 this.sl301 = json.getString("sl301");
                 this.sl302 = json.getString("sl302");
                 this.sl303 = json.getString("sl303");

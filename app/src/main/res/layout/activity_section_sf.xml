@@ -121,8 +121,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:hint="DD-MM-YY"
-                                app:dateFormat="dd-MM-yy"
+                                android:hint="DD-MM-YYYY"
+                                app:dateFormat="dd-MM-yyyy"
                                 app:maxDate="CR_DATE"
                                 app:minDate="14/09/2020" />
 
@@ -312,6 +312,7 @@
                             android:hint="###-##-##"
                             android:inputType="number"
                             app:mask="###-##-##"
+
                             app:required="true" />
 
                         <ImageButton

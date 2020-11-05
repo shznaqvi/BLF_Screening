@@ -202,7 +202,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsSLTable.COLUMN_SYSDATE, formsl.getSysdate());
         //     values.put(FormsSLTable.COLUMN_ISTATUS, formsl.getIstatus());
         //    values.put(FormsSLTable.COLUMN_ISTATUS96x, formsl.getIstatus96x());
-        values.put(FormsSLTable.COLUMN_ENDINGDATETIME, formsl.getEndingdatetime());
+        /*values.put(FormsSLTable.COLUMN_ENDINGDATETIME, formsl.getEndingdatetime());*/
         values.put(FormsSLTable.COLUMN_GPSLAT, formsl.getGpsLat());
         values.put(FormsSLTable.COLUMN_GPSLNG, formsl.getGpsLng());
         values.put(FormsSLTable.COLUMN_GPSDATE, formsl.getGpsDT());
@@ -456,7 +456,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSLTable.COLUMN_SYSDATE,
                 /*               FormsSLTable.COLUMN_ISTATUS,
                                FormsSLTable.COLUMN_ISTATUS96x,
-               */                FormsSLTable.COLUMN_ENDINGDATETIME,
+                             FormsSLTable.COLUMN_ENDINGDATETIME,  */
                 FormsSLTable.COLUMN_SL,
                 FormsSLTable.COLUMN_GPSLAT,
                 FormsSLTable.COLUMN_GPSLNG,
@@ -787,8 +787,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // New value for one column
         ContentValues values = new ContentValues();
         /*values.put(FormsSLTable.COLUMN_ISTATUS, MainApp.formsSL.getIstatus());
-        values.put(FormsSLTable.COLUMN_ISTATUS96x, MainApp.formsSL.getIstatus96x());*/
-        values.put(FormsSLTable.COLUMN_ENDINGDATETIME, MainApp.formsSL.getEndingdatetime());
+        values.put(FormsSLTable.COLUMN_ISTATUS96x, MainApp.formsSL.getIstatus96x());
+        values.put(FormsSLTable.COLUMN_ENDINGDATETIME, MainApp.formsSL.getEndingdatetime());*/
 
         // Which row to update, based on the ID
         String selection = FormsSLTable.COLUMN_ID + " =? ";

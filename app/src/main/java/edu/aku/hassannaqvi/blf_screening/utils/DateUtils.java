@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.blf_screening.utils;
 
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -98,6 +100,33 @@ public class DateUtils {
         cal.setTime(cal.getTime());
         cal.add(Calendar.DAY_OF_YEAR, day);
         return new SimpleDateFormat(format).format(cal.getTime()); //"dd-MM-yyyy HH:mm"
+    }
+
+    public static String calculatedDate(String date, String dateFormat, int q, String period) {
+        // q = quantity or add (substract)
+        // p = period :: d=day, m=month, y=year
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat s = new SimpleDateFormat(dateFormat);
+
+        try {
+            cal.setTime(s.parse(date));
+
+            switch (period) {
+                case "d":
+                    cal.add(Calendar.DAY_OF_YEAR, q);
+                    break;
+                case "m":
+                    cal.add(Calendar.MONTH, q);
+                    break;
+                case "y":
+                    cal.add(Calendar.YEAR, q);
+                    break;
+            }
+            return s.format(cal.getTime()); //"dd-MM-yyyy HH:mm"
+        } catch (ParseException e) {
+            Log.e("TAG", "Error in Parsing Date : " + e.getMessage());
+        }
+        return null;
     }
 
     public static String getDOB(String format, int year, int month, int day) {

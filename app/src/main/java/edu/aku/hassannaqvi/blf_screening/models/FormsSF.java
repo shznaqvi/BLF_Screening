@@ -65,8 +65,10 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf17 = "";
     public String sf18 = "";
     public String sf1901 = "";
+/*
     public String sf1902 = "";
-    public String sf20 = "";
+*/
+public String sf20 = "";
     private String _ID = "";
     private String _UID = "";
     private String sysdate = "";
@@ -539,14 +541,14 @@ public class FormsSF extends LiveData<FormsSF> {
         return this;
     }
 
-    public String getSf1902() {
+   /* public String getSf1902() {
         return sf1902;
     }
 
     public FormsSF setSf1902(String sf1902) {
         this.sf1902 = sf1902;
         return this;
-    }
+    }*/
 
     public String getSf20() {
         return sf20;
@@ -744,6 +746,7 @@ public class FormsSF extends LiveData<FormsSF> {
         try {
             json.put("sf101", sf101)
                     .put("sf102", sf102)
+                    .put("username", username)
                     .put("sf103", sf103)
                     .put("sf104", sf104)
                     .put("sf105", sf105)
@@ -788,7 +791,9 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf17", sf17)
                     .put("sf18", sf18)
                     .put("sf1901", sf1901)
+/*
                     .put("sf1902", sf1902)
+*/
                     .put("sf20", sf20);
 
         } catch (JSONException e) {
@@ -846,6 +851,7 @@ public class FormsSF extends LiveData<FormsSF> {
 
                 this.sf101 = json.getString("sf101");
                 this.sf102 = json.getString("sf102");
+                this.username = json.getString("username");
                 this.sf103 = json.getString("sf103");
                 this.sf104 = json.getString("sf104");
                 this.sf105 = json.getString("sf105");
@@ -890,7 +896,9 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf17 = json.getString("sf17");
                 this.sf18 = json.getString("sf18");
                 this.sf1901 = json.getString("sf1901");
+/*
                 this.sf1902 = json.getString("sf1902");
+*/
                 this.sf20 = json.getString("sf20");
 
             } catch (JSONException e) {

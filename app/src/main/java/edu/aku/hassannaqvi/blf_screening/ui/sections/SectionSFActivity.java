@@ -1,12 +1,16 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -68,6 +72,29 @@ public class SectionSFActivity extends AppCompatActivity {
                 && !bi.sf10.getText().toString().equals("")
         ) {
 
+            /*long days = 0;
+
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy" +
+                    "");
+*//*
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+*//*
+
+            Date date1 = new Date();
+            Date date2 = new Date();
+            try {
+                date1 = format.parse(bi.sf101.getText().toString());
+                date2 = format.parse(bi.sf6a01.getText().toString());
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            days = date1.getTime() - date2.getTime()  ;
+                System.out.println ("Days: " + TimeUnit.DAYS.convert(days, TimeUnit.MILLISECONDS));
+                System.out.println (date1+" - "+date2+" = "+days);
+        *//*    LocalDate start = LocalDate.parse(bi.sf101.getText().toString(),formatter);
+            LocalDate end = LocalDate.parse(bi.sf6a01.getText().toString(),formatter);*//*
+            Toast.makeText(this, date1+" + "+date2+" = "+days, Toast.LENGTH_SHORT).show();*/
             if ((Integer.parseInt(bi.sf6.getText().toString()) > 18 && Integer.parseInt(bi.sf6.getText().toString()) < 45)
                     && Integer.parseInt(bi.sf701.getText().toString()) >= 37
                     && Integer.parseInt(bi.sf8.getText().toString()) >= 7
@@ -93,7 +120,6 @@ public class SectionSFActivity extends AppCompatActivity {
     private void setupSkip() {
 
         //SF06A MinDate
-        bi.sf6a01.setMinDate(DateUtils.getDaysBack("dd/MM/yyyy", -3));
 
 
         bi.sf6.addTextChangedListener(new TextWatcher() {
@@ -271,17 +297,18 @@ public class SectionSFActivity extends AppCompatActivity {
           public void onTextChanged(CharSequence s, int start, int before, int count) {
               //           Log.d(this.getClass().getSimpleName(), "onTextChanged: S " + start + " B " + before + " C " + count);
               // if (TextUtils.isEmpty(bi.sf2.getText())) return;
-                //if (bi.sf2.getText().toString().length() != 10) {
-                if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
-                    bi.llsectionsf01.setVisibility(View.GONE);
-                    bi.btnContinue.setVisibility(View.GONE);
-                    Clear.clearAllFields(bi.llsectionsf01);
+              //if (bi.sf2.getText().toString().length() != 10) {
+              if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                  bi.llsectionsf01.setVisibility(View.GONE);
+                  bi.btnContinue.setVisibility(View.GONE);
+                  Clear.clearAllFields(bi.llsectionsf01);
+              }
 
 
-                    //
-                    bi.fldGrpCVsf20.setVisibility(View.GONE);
-                    bi.sf20.setText(null);
-                }
+              //
+              bi.fldGrpCVsf20.setVisibility(View.GONE);
+              bi.sf20.setText(null);
+
               //}
           }
 
@@ -461,6 +488,9 @@ public class SectionSFActivity extends AppCompatActivity {
         MainApp.formsSF.setDeviceID(MainApp.appInfo.getDeviceID());
         MainApp.formsSF.setDevicetagID(MainApp.appInfo.getTagName());
         MainApp.formsSF.setAppversion(MainApp.appInfo.getAppVersion());
+        MainApp.formsSF.setUsername(MainApp.userName);
+
+        setGPS(this);
 
         String[] sf1 = bi.sf101.getText().toString().split("-");
 
@@ -604,7 +634,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 : bi.sf1802.isChecked() ? "2"
                 : "-1");
 
-        //MainApp.formsSF.setSf1901(bi.sf1901.getText().toString());
+        MainApp.formsSF.setSf1901(MainApp.userName);
         //MainApp.formsSF.setSf1902(bi.setSf1902.getText().toString());
 
         MainApp.formsSF.setSf20(bi.sf20.getText().toString());
@@ -617,9 +647,18 @@ public class SectionSFActivity extends AppCompatActivity {
 
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
 
-        if (!bi.sf2.getText().toString().isEmpty() && !bi.sf5.getText().toString().isEmpty()) {
-            if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
-                return Validator.emptyCustomTextBox(this, bi.sf5, "SF2 & SF5\ncould not be the SAME");
+        if (!bi.sf2.getText().toString().isEmpty()) {
+            if (bi.sf2.getText().length() != 9) {
+                return Validator.emptyCustomTextBox(this, bi.sf5, "MR Number is incomplete");
+
+            }
+
+
+            if (!bi.sf5.getText().toString().isEmpty()) {
+
+                if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
+                    return Validator.emptyCustomTextBox(this, bi.sf5, "SF2 & SF5\ncould not be the SAME");
+                }
             }
         }
         return true;
@@ -654,6 +693,10 @@ public class SectionSFActivity extends AppCompatActivity {
     private boolean FetchMR() {
         bi.wmError.setVisibility(View.GONE);
         bi.wmError.setText(null);
+
+        bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -7, "d"));
+
+        bi.sf6a01.setMaxDate(bi.sf101.getText().toString().replace("-", "/"));
 
         // Sending data to Worker class
 
@@ -775,5 +818,32 @@ public class SectionSFActivity extends AppCompatActivity {
         }
     }
 
+    private void setGPS(Activity activity) {
+        SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+            String dt = GPSPref.getString("Time", "0");
+
+            if (lat.equals("0") && lang.equals("0")) {
+                Toast.makeText(activity, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            MainApp.formsSF.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.formsSF.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.formsSF.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+//            MainApp.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.formsSF.setGpsDT(date); // Timestamp is converted to date above
+
+        } catch (Exception e) {
+            Log.e("GPS", "setGPS: " + e.getMessage());
+        }
+    }
 
 }
