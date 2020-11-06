@@ -4,7 +4,6 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,8 +13,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,8 +28,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
@@ -47,12 +52,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import edu.aku.hassannaqvi.blf_screening.CONSTANTS;
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.core.AppInfo;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityLoginBinding;
+import edu.aku.hassannaqvi.blf_screening.workers.FetchUsersWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
 import static edu.aku.hassannaqvi.blf_screening.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
@@ -65,7 +70,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 import static java.lang.Thread.sleep;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
     protected static LocationManager locationManager;
 
@@ -104,14 +109,20 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_login);
         bi.setCallback(this);
-
-
         MainApp.appInfo = new AppInfo(this);
+
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        if (!db.checkUsers()) {
+            bi.btnSignin.setVisibility(View.GONE);
+            bi.syncData.setVisibility(View.VISIBLE);
+            callUsersWorker();
+        }
+
         bi.txtinstalldate.setText(MainApp.appInfo.getAppInfo());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkAndRequestPermissions()) {
-                //   populateAutoComplete();
+                //   populateAutoComplete();const
                 loadIMEI();
             }
         } else {
@@ -149,6 +160,93 @@ public class LoginActivity extends Activity {
         db = new DatabaseHelper(this);
 //        DB backup
         dbBackup();
+    }
+
+    private void callUsersWorker() {
+
+
+        Constraints mConstraints = new Constraints
+                .Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .build();
+
+        final OneTimeWorkRequest usersWorkRequest1 = new OneTimeWorkRequest
+                .Builder(FetchUsersWorker.class)
+                .setConstraints(mConstraints)
+                .build();
+
+        WorkManager.getInstance().enqueue(usersWorkRequest1);
+
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(usersWorkRequest1.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                            @Override
+                            public void onChanged(WorkInfo workInfo) {
+
+                            }
+                        }
+                );
+
+        WorkManager.getInstance().getWorkInfoByIdLiveData(usersWorkRequest1.getId())
+                .observe(this, new Observer<WorkInfo>() {
+                    @Override
+                    public void onChanged(@Nullable WorkInfo workInfo) {
+
+
+                       /* WorkManager.getInstance().enqueue(usersWorkRequest1);
+
+                        WorkManager.getInstance().getWorkInfoByIdLiveData(WorkRequest.getId())
+                                .observe(this, new Observer<WorkInfo>() {
+                                            @Override
+                                            public void onChanged(WorkInfo workInfo) {
+
+                                                switch (workInfo.getState()) {
+                                                    case ENQUEUED:
+                                                        // TODO: Show alert here
+                                                        break;
+                                                    case RUNNING:
+                                                        // TODO: Remove alert, if running
+                                                        break;
+                                                    case SUCCEEDED:
+                                                        // TODO: after complete
+                                                        break;
+                                                    case FAILED:
+                                                        break;
+                                                    case BLOCKED:
+                                                        break;
+                                                    case CANCELLED:
+                                                        break;
+                                                }
+
+                                            }
+                                        }
+                                );*/
+
+                        if (workInfo.getState() != null &&
+                                workInfo.getState() == WorkInfo.State.SUCCEEDED) {
+
+                            //updateDB();
+
+                            bi.pbarMR.setVisibility(View.GONE);
+                            bi.btnSignin.setVisibility(View.VISIBLE);
+                            bi.syncData.setVisibility(View.GONE);
+
+                        }
+                        if (workInfo.getState() != null &&
+                                workInfo.getState() == WorkInfo.State.FAILED) {
+                            bi.pbarMR.setVisibility(View.GONE);
+                            bi.syncData.setVisibility(View.VISIBLE);
+
+                        }
+                        if (workInfo.getState() != null &&
+                                workInfo.getState() == WorkInfo.State.RUNNING) {
+                            bi.pbarMR.setVisibility(View.VISIBLE);
+                            bi.btnSignin.setVisibility(View.GONE);
+                            bi.syncData.setVisibility(View.GONE);
+
+                        }
+                    }
+                });
     }
 
     /*private void setListeners() {
@@ -263,17 +361,7 @@ public class LoginActivity extends Activity {
     }
 
     public void onSyncDataClick(View view) {
-        //TODO implement
-
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            startActivity(new Intent(this, SyncActivity.class).putExtra(CONSTANTS.SYNC_LOGIN, true));
-        } else {
-            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
+        callUsersWorker();
     }
 
 /*    private void populateAutoComplete() {
@@ -745,6 +833,8 @@ public class LoginActivity extends Activity {
             showProgress(false);
         }
     }
+
+
 }
 
 

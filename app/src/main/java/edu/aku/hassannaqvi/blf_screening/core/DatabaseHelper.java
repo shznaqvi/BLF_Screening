@@ -160,7 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
                 values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
-                values.put(UsersTable.DIST_ID, user.getDistId());
+                values.put(UsersTable.COLUMN_FULLNAME, user.getFullname());
                 long rowID = db.insert(UsersTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
@@ -174,18 +174,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+
     public boolean Login(String username, String password) throws SQLException {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor mCursor = db.rawQuery("SELECT * FROM " + UsersTable.TABLE_NAME + " WHERE " + UsersTable.COLUMN_USERNAME + "=? AND " + UsersTable.COLUMN_PASSWORD + "=?", new String[]{username, password});
         if (mCursor != null) {
-            if (mCursor.getCount() > 0) {
+            return mCursor.getCount() > 0;
+        }
+        return false;
+    }
 
-                if (mCursor.moveToNext()) {
-//                    MainApp.DIST_ID = mCursor.getString(mCursor.getColumnIndex(Users.UsersTable.ROW_USERNAME));
-                }
-                return true;
-            }
+    public boolean checkUsers() throws SQLException {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor mCursor = db.rawQuery("SELECT * FROM " + UsersTable.TABLE_NAME, null, null);
+        if (mCursor != null) {
+            return mCursor.getCount() > 0;
         }
         return false;
     }

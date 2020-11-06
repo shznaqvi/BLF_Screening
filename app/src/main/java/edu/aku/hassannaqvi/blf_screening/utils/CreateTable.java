@@ -62,7 +62,7 @@ public final class CreateTable {
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.COLUMN_USERNAME + " TEXT,"
             + UsersTable.COLUMN_PASSWORD + " TEXT,"
-            + UsersTable.DIST_ID + " TEXT"
+            + UsersTable.COLUMN_FULLNAME + " TEXT"
             + " );";
 
     public static final String SQL_CREATE_DISTRICTS = "CREATE TABLE " + DistrictsTable.TABLE_NAME + "("
