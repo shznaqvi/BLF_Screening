@@ -31,13 +31,11 @@
         <activity
             android:name=".ui.list_activity.FormsReportCluster"
             android:label="Forms Report"
-            android:screenOrientation="portrait"
-   />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.list_activity.FormsReportDate"
             android:label="Forms Report"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.sections.SectionSLActivity"
             android:label="@string/sl_title2"
@@ -46,7 +44,18 @@
             android:name=".ui.sections.SectionSFActivity"
             android:label="@string/sf_title2"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".ui.sections.Section301Activity"
+            android:label="@string/section1_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.Section302Activity"
+            android:label="@string/section2newbornexamination_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.Section303Activity"
+            android:label="@string/section3careofbaby_mainheading"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.other.SplashscreenActivity"
             android:screenOrientation="portrait"
@@ -60,8 +69,7 @@
         <activity
             android:name=".ui.other.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.other.MainActivity" />
+        <activity android:name=".ui.other.MainActivity" />
         <activity
             android:name=".ui.other.EndingActivity"
             android:screenOrientation="portrait"
