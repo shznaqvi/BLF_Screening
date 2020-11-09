@@ -15,10 +15,19 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsS3Contract;
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySection301Binding;
+import edu.aku.hassannaqvi.blf_screening.models.FormsS3;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+
+import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsS3;
 
 public class Section301Activity extends AppCompatActivity {
 
@@ -72,96 +81,96 @@ public class Section301Activity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-       /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addFormSF(MainApp.formsSF);
-        MainApp.formsSF.set_ID(String.valueOf(updcount));
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        long updcount = db.addFormS3(formsS3);
+        formsS3.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
-            MainApp.formsSF.set_UID(MainApp.formsSF.getDeviceID() + MainApp.formsSF.get_ID());
-            db.updatesFormsSFColumn(FormsSFContract.FormsSFTable.COLUMN_UID, MainApp.formsSF.get_UID());
+            formsS3.set_UID(formsS3.getDeviceID() + formsS3.get_ID());
+            db.updatesFormsS3Column(FormsS3Contract.FormsS3Table.COLUMN_UID, formsS3.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-        return true;
+        }
+
     }
 
 
     private void SaveDraft() {
 
-      /*  MainApp.formsSF = new FormsSF();
-        MainApp.formsSF.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
-        MainApp.formsSF.setDeviceID(MainApp.appInfo.getDeviceID());
-        MainApp.formsSF.setDevicetagID(MainApp.appInfo.getTagName());
-        MainApp.formsSF.setAppversion(MainApp.appInfo.getAppVersion());
-        MainApp.formsSF.setUsername(MainApp.userName);
+        formsS3 = new FormsS3();
+        formsS3.setSysdate(new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date().getTime()));
+        formsS3.setDeviceID(MainApp.appInfo.getDeviceID());
+        formsS3.setDevicetagID(MainApp.appInfo.getTagName());
+        formsS3.setAppversion(MainApp.appInfo.getAppVersion());
+        formsS3.setUsername(MainApp.userName);
 
         setGPS(this);
 
-    //    json.put("ah49a", bi.ah49a.getText().toString().trim().isEmpty() ? "-1" : bi.ah49a.getText().toString());
+        formsS3.setS1q1(bi.s1q1.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1.getText().toString());
 
+        formsS3.setS1q2(bi.s1q2.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2.getText().toString());
 
-        form.setS1q1(bi.s1q1.getText().toString());
+        formsS3.setS1q3(bi.s1q3.getText().toString().trim().isEmpty() ? "-1" : bi.s1q3.getText().toString());
 
-        form.setS1q2(bi.s1q2.getText().toString());
-
-        form.setS1q3(bi.s1q3.getText().toString());
-
-        form.setS1q4( bi.s1q401.isChecked() ? "1"
+        formsS3.setS1q4(bi.s1q401.isChecked() ? "1"
                 : bi.s1q402.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setS1q501(bi.s1q501.getText().toString());
-        form.setS1q502(bi.s1q502.getText().toString());
-        form.setS1q6(bi.s1q6.getText().toString());
+        formsS3.setS1q501(bi.s1q501.getText().toString().trim().isEmpty() ? "-1" : bi.s1q501.getText().toString());
+        formsS3.setS1q502(bi.s1q502.getText().toString().trim().isEmpty() ? "-1" : bi.s1q502.getText().toString());
 
-        form.setS1q7(bi.s1q7.getText().toString());
+        formsS3.setS1q6(bi.s1q6.getText().toString().trim().isEmpty() ? "-1" : bi.s1q6.getText().toString());
 
-        form.setS1q8(bi.s1q8.getText().toString());
+        formsS3.setS1q7(bi.s1q7.getText().toString().trim().isEmpty() ? "-1" : bi.s1q7.getText().toString());
 
-        form.setS1q9(bi.s1q9.getText().toString());
+        formsS3.setS1q8(bi.s1q8.getText().toString().trim().isEmpty() ? "-1" : bi.s1q8.getText().toString());
 
-        form.setS1q10(bi.s1q10.getText().toString());
+        formsS3.setS1q9(bi.s1q9.getText().toString().trim().isEmpty() ? "-1" : bi.s1q9.getText().toString());
 
-        form.setS1q11(bi.s1q11.getText().toString());
+        formsS3.setS1q10(bi.s1q10.getText().toString().trim().isEmpty() ? "-1" : bi.s1q10.getText().toString());
 
-        form.setS1q12(bi.s1q12.getText().toString());
+        formsS3.setS1q11(bi.s1q11.getText().toString().trim().isEmpty() ? "-1" : bi.s1q11.getText().toString());
 
-        form.setS1q13(bi.s1q13.getText().toString());
+        formsS3.setS1q12(bi.s1q12.getText().toString().trim().isEmpty() ? "-1" : bi.s1q12.getText().toString());
 
-        form.setS1q14(bi.s1q14.getText().toString());
+        formsS3.setS1q13(bi.s1q13.getText().toString().trim().isEmpty() ? "-1" : bi.s1q13.getText().toString());
 
-        form.setS1q15(bi.s1q15.getText().toString());
+        formsS3.setS1q14(bi.s1q14.getText().toString().trim().isEmpty() ? "-1" : bi.s1q14.getText().toString());
 
-        form.setS1q16( bi.s1q1601.isChecked() ? "1"
+        formsS3.setS1q15(bi.s1q15.getText().toString().trim().isEmpty() ? "-1" : bi.s1q15.getText().toString());
+
+        formsS3.setS1q16(bi.s1q1601.isChecked() ? "1"
                 : bi.s1q1602.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setS1q17( bi.s1q1701.isChecked() ? "1"
+        formsS3.setS1q17(bi.s1q1701.isChecked() ? "1"
                 : bi.s1q1702.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setS1q18( bi.s1q1801.isChecked() ? "1"
+        formsS3.setS1q18(bi.s1q1801.isChecked() ? "1"
                 : bi.s1q1802.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setS1q1802x(bi.s1q1802x.getText().toString());
-        form.setS1q1901(bi.s1q1901.getText().toString());
-        form.setS1q1902(bi.s1q1902.getText().toString());
-        form.setS1q20( bi.s1q2001.isChecked() ? "1"
+        formsS3.setS1q1802x(bi.s1q1802x.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1802x.getText().toString());
+
+        formsS3.setS1q1901(bi.s1q1901.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1901.getText().toString());
+        formsS3.setS1q1902(bi.s1q1902.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1902.getText().toString());
+
+        formsS3.setS1q20(bi.s1q2001.isChecked() ? "1"
                 : bi.s1q2002.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setS1q21( bi.s1q2101.isChecked() ? "1"
+        formsS3.setS1q21(bi.s1q2101.isChecked() ? "1"
                 : bi.s1q2102.isChecked() ? "2"
                 : bi.s1q2103.isChecked() ? "3"
                 : bi.s1q2104.isChecked() ? "4"
-                :  "-1");
+                : "-1");
 
-        form.setS1q22(bi.s1q22.getText().toString());
+        formsS3.setS1q22(bi.s1q22.getText().toString().trim().isEmpty() ? "-1" : bi.s1q22.getText().toString());
 
-        form.setS1q2301(bi.s1q2301.getText().toString());
-        form.setS1q2302(bi.s1q2302.getText().toString());*/
+        formsS3.setS1q2301(bi.s1q2301.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2301.getText().toString());
+        formsS3.setS1q2302(bi.s1q2302.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2302.getText().toString());
 
     }
 

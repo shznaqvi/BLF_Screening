@@ -4,9 +4,9 @@
 
         <import type="android.view.View" />
 
-        <!--<variable
+        <variable
             name="form"
-            type="edu.aku.hassannaqvi.bovinelactoferrin.models.Form" />-->
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsS3" />
 
         <variable
             name="callback"

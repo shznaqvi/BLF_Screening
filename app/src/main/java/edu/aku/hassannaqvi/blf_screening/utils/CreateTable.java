@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.utils;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract.DistrictsTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsS3Contract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
@@ -56,6 +57,27 @@ public final class CreateTable {
             + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"*/
             + FormsSFTable.COLUMN_SYNCED + " TEXT,"
             + FormsSFTable.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+
+    public static final String SQL_CREATE_FORMSS3 = "CREATE TABLE "
+            + FormsS3Table.TABLE_NAME + "("
+            + FormsS3Table.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsS3Table.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsS3Table.COLUMN_DEVICEID + " TEXT,"
+            + FormsS3Table.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsS3Table.COLUMN_SYSDATE + " TEXT,"
+            + FormsS3Table.COLUMN_UID + " TEXT,"
+            + FormsS3Table.COLUMN_GPSLAT + " TEXT,"
+            + FormsS3Table.COLUMN_GPSLNG + " TEXT,"
+            + FormsS3Table.COLUMN_GPSDATE + " TEXT,"
+            + FormsS3Table.COLUMN_GPSACC + " TEXT,"
+            + FormsS3Table.COLUMN_APPVERSION + " TEXT,"
+            + FormsS3Table.COLUMN_S3 + " TEXT,"
+//            + FormsS3Table.COLUMN_ENDINGDATETIME + " TEXT,"
+           /* + FormsSFTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"*/
+            + FormsS3Table.COLUMN_SYNCED + " TEXT,"
+            + FormsS3Table.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("

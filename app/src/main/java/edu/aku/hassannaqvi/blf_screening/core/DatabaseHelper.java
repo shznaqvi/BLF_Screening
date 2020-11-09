@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsS3Contract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.blf_screening.models.FormsS3;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
@@ -33,6 +35,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_BL_RANDOM;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISTRICTS;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSS3;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSL;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
@@ -60,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMSSL);
         db.execSQL(SQL_CREATE_FORMSSF);
+        db.execSQL(SQL_CREATE_FORMSS3);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_DISTRICTS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
@@ -195,6 +199,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+
     public Long addFormSL(FormsSL formsl) {
 
         // Gets the data repository in write mode
@@ -255,6 +260,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addFormS3(FormsS3 formS3) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FormsS3Table.COLUMN_PROJECT_NAME, formS3.getProjectName());
+        values.put(FormsS3Table.COLUMN_UID, formS3.get_UID());
+        values.put(FormsS3Table.COLUMN_SYSDATE, formS3.getSysdate());
+    /*    values.put( FormsS3Table.COLUMN_ISTATUS, formSF.getIstatus());
+        values.put( FormsS3Table.COLUMN_ISTATUS96x, formSF.getIstatus96x());*/
+//        values.put( FormsS3Table.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
+        values.put(FormsS3Table.COLUMN_GPSLAT, formS3.getGpsLat());
+        values.put(FormsS3Table.COLUMN_GPSLNG, formS3.getGpsLng());
+        values.put(FormsS3Table.COLUMN_GPSDATE, formS3.getGpsDT());
+        values.put(FormsS3Table.COLUMN_GPSACC, formS3.getGpsAcc());
+        values.put(FormsS3Table.COLUMN_DEVICETAGID, formS3.getDevicetagID());
+        values.put(FormsS3Table.COLUMN_DEVICEID, formS3.getDeviceID());
+        values.put(FormsS3Table.COLUMN_APPVERSION, formS3.getAppversion());
+        values.put(FormsS3Table.COLUMN_S3, formS3.getS3());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                FormsS3Table.TABLE_NAME,
+                FormsS3Table.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
     public int updateFormSLID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -290,6 +327,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
 
     public Collection<FormsSL> getAllFormsSL() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -399,6 +437,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
+    public Collection<FormsS3> getAllFormsS3() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsS3Table._ID,
+                FormsS3Table.COLUMN_UID,
+                FormsS3Table.COLUMN_SYSDATE,
+/*
+                 FormsS3Table.COLUMN_ISTATUS,
+*/
+                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_GPSLAT,
+                FormsS3Table.COLUMN_GPSLNG,
+                FormsS3Table.COLUMN_GPSDATE,
+                FormsS3Table.COLUMN_GPSACC,
+                FormsS3Table.COLUMN_DEVICETAGID,
+                FormsS3Table.COLUMN_DEVICEID,
+                FormsS3Table.COLUMN_APPVERSION,
+
+        };
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsS3Table.COLUMN_ID + " ASC";
+
+        Collection<FormsS3> allFormsS3 = new ArrayList<FormsS3>();
+        try {
+            c = db.query(
+                    FormsS3Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsS3 formsS3 = new FormsS3();
+                allFormsS3.add(formsS3.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsS3;
+    }
+
 
     public Collection<FormsSF> checkFormsSFExist() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -451,6 +543,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFormsSF;
     }
+
+    public Collection<FormsS3> checkFormsS3Exist() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsS3Table._ID,
+                FormsS3Table.COLUMN_UID,
+                FormsS3Table.COLUMN_SYSDATE,
+//                 FormsS3Table.COLUMN_ISTATUS,
+                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_GPSLAT,
+                FormsS3Table.COLUMN_GPSLNG,
+                FormsS3Table.COLUMN_GPSDATE,
+                FormsS3Table.COLUMN_GPSACC,
+                FormsS3Table.COLUMN_DEVICETAGID,
+                FormsS3Table.COLUMN_DEVICEID,
+                FormsS3Table.COLUMN_APPVERSION,
+
+        };
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsS3Table.COLUMN_ID + " ASC";
+
+        Collection<FormsS3> allFormsS3 = new ArrayList<FormsS3>();
+        try {
+            c = db.query(
+                    FormsS3Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsS3 formsS3 = new FormsS3();
+                allFormsS3.add(formsS3.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsS3;
+    }
+
 
     public Collection<FormsSL> getUnsyncedFormsSL() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -568,6 +713,65 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
+    public Collection<FormsS3> getUnsyncedFormsS3() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsS3Table._ID,
+                FormsS3Table.COLUMN_UID,
+                FormsS3Table.COLUMN_SYSDATE,
+//                 FormsS3Table.COLUMN_ISTATUS,
+                //                FormsS3Table.COLUMN_ISTATUS96x,
+//                 FormsS3Table.COLUMN_ENDINGDATETIME,
+                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_GPSLAT,
+                FormsS3Table.COLUMN_GPSLNG,
+                FormsS3Table.COLUMN_GPSDATE,
+                FormsS3Table.COLUMN_GPSACC,
+                FormsS3Table.COLUMN_DEVICETAGID,
+                FormsS3Table.COLUMN_DEVICEID,
+                FormsS3Table.COLUMN_APPVERSION,
+        };
+
+        String whereClause = FormsS3Table.COLUMN_SYNCED + " is null OR " + FormsS3Table.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsS3Table.COLUMN_ID + " ASC";
+
+        Collection<FormsS3> allFormsS3 = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsS3Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                FormsS3 formsS3 = new FormsS3();
+                allFormsS3.add(formsS3.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsS3;
+    }
+
+
     public Collection<FormsSL> getTodayFormsSL(String sysdate) {
 
         // String sysdate =  spDateT.substring(0, 8).trim()
@@ -679,6 +883,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFormsSF;
+    }
+
+    public Collection<FormsS3> getTodayFormsS3(String sysdate) {
+
+        // String sysdate =  spDateT.substring(0, 8).trim()
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsS3Table._ID,
+                FormsS3Table.COLUMN_UID,
+                FormsS3Table.COLUMN_SYSDATE,
+//                 FormsS3Table.COLUMN_ISTATUS,
+                FormsS3Table.COLUMN_SYNCED,
+
+        };
+        String whereClause = FormsS3Table.COLUMN_SYSDATE + " Like ? ";
+        String[] whereArgs = new String[]{"%" + sysdate + " %"};
+//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsS3Table.COLUMN_ID + " ASC";
+
+        Collection<FormsS3> allFormsS3 = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsS3Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsS3 formsS3 = new FormsS3();
+                formsS3.set_ID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_ID)));
+                formsS3.set_UID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_UID)));
+                formsS3.setSysdate(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYSDATE)));
+                //               formsSF.setIstatus(c.getString(c.getColumnIndex( FormsS3Table.COLUMN_ISTATUS)));
+                formsS3.setSynced(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYNCED)));
+                allFormsS3.add(formsS3);
+            }
+        } catch (SQLiteException e) {
+
+            //      db.rawQuery(SQL_ALTER_FORMS_A05CODE, null);
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsS3;
     }
     
     /*public Collection<FormsSL> getFormsByCluster(String cluster) {
@@ -824,6 +1085,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    public int updateEndingS3() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+/*        values.put(FormsSFTable.COLUMN_ISTATUS, MainApp.formsSF.getIstatus());
+        values.put(FormsSFTable.COLUMN_ISTATUS96x, MainApp.formsSF.getIstatus96x());*/
+//        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, MainApp.formsSF.getEndingdatetime());
+
+        // Which row to update, based on the ID
+        String selection = FormsS3Table.COLUMN_ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsS3.get_ID())};
+
+        return db.update(FormsS3Table.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
 
   /*  //Get FormsSL already exist
     public FormsSL getFilledFormSL(String district, String refno) {
@@ -912,6 +1192,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    //Generic update FormColumn
+    public int updatesFormsS3Column(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsS3Table._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsS3.get_ID())};
+
+        return db.update(FormsS3Table.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
@@ -958,6 +1255,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
     //Generic Un-Synced Forms
     public void updateSyncedFormsSL(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -997,4 +1295,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
+    //Generic Un-Synced Forms
+    public void updateSyncedFormsS3(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsS3Table.COLUMN_SYNCED, true);
+        values.put(FormsS3Table.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FormsS3Table.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsS3Table.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
 }
