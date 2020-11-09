@@ -274,7 +274,8 @@
             <!-- s3q4  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVs3q4"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{s3q301.checked ? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -345,6 +346,7 @@
                             android:visibility='@{s3q496.checked? View.VISIBLE : View.GONE}' />
                     </LinearLayout>
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -431,14 +433,17 @@
                             android:text='@{s3q596.checked ? s3q596x.getText().toString() : ""}'
                             android:visibility='@{s3q596.checked? View.VISIBLE : View.GONE}' />
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
             <!-- s3q6  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVs3q6"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{s3q505.checked ? View.VISIBLE : View.GONE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -521,6 +526,7 @@
                             android:visibility='@{s3q696.checked? View.VISIBLE : View.GONE}' />
                     </LinearLayout>
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -586,7 +592,8 @@
             <!-- s3q8  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVs3q8"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{s3q702.checked ? View.VISIBLE : View.GONE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -657,6 +664,7 @@
                             android:visibility='@{s3q896.checked? View.VISIBLE : View.GONE}' />
                     </LinearLayout>
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 

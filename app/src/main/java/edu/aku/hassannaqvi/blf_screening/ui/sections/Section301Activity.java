@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -34,11 +35,17 @@ public class Section301Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.s1q18.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.s1q1802.getId()) {
+                Clear.clearAllFields(bi.llGrpsec31);
             }
-        });*/
+        });
+
+        bi.s1q20.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.s1q2002.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVs1q21);
+            }
+        });
 
     }
 
@@ -65,12 +72,15 @@ public class Section301Activity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesAdolsColumn(AdolscentContract.SingleAdolscent.COLUMN_SAH3, MainApp.adolscent.getsAH3());
-        if (updcount == 1) {
+       /* DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        long updcount = db.addFormSF(MainApp.formsSF);
+        MainApp.formsSF.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
+            MainApp.formsSF.set_UID(MainApp.formsSF.getDeviceID() + MainApp.formsSF.get_ID());
+            db.updatesFormsSFColumn(FormsSFContract.FormsSFTable.COLUMN_UID, MainApp.formsSF.get_UID());
             return true;
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
             return false;
         }*/
         return true;

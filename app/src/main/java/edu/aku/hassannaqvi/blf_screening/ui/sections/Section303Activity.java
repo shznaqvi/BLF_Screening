@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -34,11 +35,23 @@ public class Section303Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.s3q3.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.s3q301.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVs3q4);
             }
-        });*/
+        });
+
+        bi.s3q5.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.s3q505.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVs3q6);
+            }
+        });
+
+        bi.s3q7.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.s3q702.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVs3q8);
+            }
+        });
 
     }
 
