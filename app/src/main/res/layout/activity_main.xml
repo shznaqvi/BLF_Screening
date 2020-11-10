@@ -252,6 +252,7 @@
                                 android:padding="18dp"
                                 android:radius="2dp"
                                 android:text="@string/btnUpload"
+                                android:visibility="gone"
                                 android:textColor="@color/black_overlay" />
 
                             <Button

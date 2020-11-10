@@ -681,6 +681,7 @@ public class SectionSFActivity extends AppCompatActivity {
     public void checkMR(View view) {
 
         MainApp.sf2 = bi.sf2.getText().toString();
+        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();
 
 
         if (formValidation()) {

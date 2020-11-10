@@ -91,6 +91,7 @@ public class MainApp extends Application {
     public static SharedPreferences sharedPref;
     public static String DIST_ID;
     public static String sf2;
+    public static String scrdt;
     protected static LocationManager locationManager;
     private LocationLiveData locationlivedata;
 
