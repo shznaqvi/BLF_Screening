@@ -63,7 +63,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
 
     public void checkEligibility() {
-        Toast.makeText(this, "Checking Eligibility", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Checking Eligibility", Toast.LENGTH_SHORT).show();
         if (bi.llsectionsf01.getVisibility() == View.VISIBLE
 
                 && !bi.sf6.getText().toString().equals("")
@@ -107,11 +107,11 @@ public class SectionSFActivity extends AppCompatActivity {
             ) {
                 bi.sf1701.setChecked(true);
                 bi.sf1702.setChecked(false);
-                Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
+                //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
             } else {
                 bi.sf1701.setChecked(false);
                 bi.sf1702.setChecked(true);
-                Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -284,39 +284,42 @@ public class SectionSFActivity extends AppCompatActivity {
             }*/
         });
 
+        bi.sf1701.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.sf18);
+        });
 
-      bi.sf2.addTextChangedListener(new TextWatcher() {
+        bi.sf2.addTextChangedListener(new TextWatcher() {
 
-          @Override
-          public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-              //         Log.d(this.getClass().getSimpleName(), "onTextChanged: S " + start + " A " + after + " C " + count);
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //         Log.d(this.getClass().getSimpleName(), "onTextChanged: S " + start + " A " + after + " C " + count);
 
-          }
+            }
 
-          @Override
-          public void onTextChanged(CharSequence s, int start, int before, int count) {
-              //           Log.d(this.getClass().getSimpleName(), "onTextChanged: S " + start + " B " + before + " C " + count);
-              // if (TextUtils.isEmpty(bi.sf2.getText())) return;
-              //if (bi.sf2.getText().toString().length() != 10) {
-              if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
-                  bi.llsectionsf01.setVisibility(View.GONE);
-                  bi.btnContinue.setVisibility(View.GONE);
-                  Clear.clearAllFields(bi.llsectionsf01);
-              }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //           Log.d(this.getClass().getSimpleName(), "onTextChanged: S " + start + " B " + before + " C " + count);
+                // if (TextUtils.isEmpty(bi.sf2.getText())) return;
+                //if (bi.sf2.getText().toString().length() != 10) {
+                if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                    bi.llsectionsf01.setVisibility(View.GONE);
+                    bi.btnContinue.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.llsectionsf01);
+                }
 
 
-              //
-              bi.fldGrpCVsf20.setVisibility(View.GONE);
-              bi.sf20.setText(null);
+                //
+                bi.fldGrpCVsf20.setVisibility(View.GONE);
+                bi.sf20.setText(null);
 
-              //}
-          }
+                //}
+            }
 
-          @Override
-          public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-          }
-      });
+            }
+        });
 
     }
 
@@ -653,7 +656,6 @@ public class SectionSFActivity extends AppCompatActivity {
 
             }
 
-
             if (!bi.sf5.getText().toString().isEmpty()) {
 
                 if (bi.sf5.getText().toString().equals(bi.sf2.getText().toString())) {
@@ -694,7 +696,7 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.wmError.setVisibility(View.GONE);
         bi.wmError.setText(null);
 
-        bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -7, "d"));
+        bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -3, "d"));
 
         bi.sf6a01.setMaxDate(bi.sf101.getText().toString().replace("-", "/"));
 

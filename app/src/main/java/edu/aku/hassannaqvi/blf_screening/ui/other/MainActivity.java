@@ -14,8 +14,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,8 +31,6 @@ import edu.aku.hassannaqvi.blf_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
-import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportCluster;
-import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.Section301Activity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
@@ -249,16 +245,16 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
     }
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = null;
         switch (item.getItemId()) {
             case R.id.onSync:
                 intent = new Intent(MainActivity.this, SyncActivity.class);
                 break;
-          /*  case R.id.checkOpenForms:
+          *//*  case R.id.checkOpenForms:
                 intent = new Intent(MainActivity.this, PendingFormsActivity.class);
-                break;*/
+                break;*//*
             case R.id.formsReportDate:
                 intent = new Intent(MainActivity.this, FormsReportDate.class);
                 break;
@@ -270,11 +266,11 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.item_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
     @Override
     public void callWarningActivity() {
