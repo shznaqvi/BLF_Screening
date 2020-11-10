@@ -107,10 +107,12 @@ public class SectionSFActivity extends AppCompatActivity {
             ) {
                 bi.sf1701.setChecked(true);
                 bi.sf1702.setChecked(false);
+                bi.fldGrpCVsf18.setVisibility(View.VISIBLE);
                 //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
             } else {
                 bi.sf1701.setChecked(false);
                 bi.sf1702.setChecked(true);
+                bi.fldGrpCVsf18.setVisibility(View.GONE);
                 //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
 
             }

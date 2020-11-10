@@ -2432,7 +2432,6 @@
                     <!-- sf18  Radio   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVsf18"
-                        android:visibility="@{sf1701.checked ? View.VISIBLE : View.GONE}"
                         style="@style/cardView">
 
                         <LinearLayout
