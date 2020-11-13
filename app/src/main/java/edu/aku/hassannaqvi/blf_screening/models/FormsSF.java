@@ -63,6 +63,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf1509 = "";*/
    public String sf16 = "";
     public String sf17 = "";
+    public String sfFlag = "";
     public String sf18 = "";
     public String sf1901 = "";
 /*
@@ -523,6 +524,15 @@ public String sf20 = "";
         return this;
     }
 
+    public String getSfFlag() {
+        return sfFlag;
+    }
+
+    public FormsSF setSfFlag(String sfFlag) {
+        this.sfFlag = sfFlag;
+        return this;
+    }
+
     public String getSf18() {
         return sf18;
     }
@@ -789,6 +799,7 @@ public String sf20 = "";
                       .put("sf1509", sf1509)*/
                     .put("sf16", sf16)
                     .put("sf17", sf17)
+                    .put("sfFlag", sfFlag)
                     .put("sf18", sf18)
                     .put("sf1901", sf1901)
 /*
@@ -894,6 +905,7 @@ public String sf20 = "";
                 this.sf1509 = json.getString("sf1509");*/
                 this.sf16 = json.getString("sf16");
                 this.sf17 = json.getString("sf17");
+                this.sfFlag = json.getString("sfFlag");
                 this.sf18 = json.getString("sf18");
                 this.sf1901 = json.getString("sf1901");
 /*

@@ -2345,6 +2345,116 @@
 
                 </LinearLayout>-->
 
+                <!-- sf17  Radio   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVsf17"
+                    style="@style/cardView">
+                    <!---->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
+
+                            <TextView
+                                android:id="@+id/qtxt_sf17"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_sf17"
+                                android:text="@string/sf17" />
+
+                            <TextView
+                                android:id="@+id/q_sf17"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_sf17"
+                                android:layout_alignBottom="@id/qtxt_sf17"
+                                android:text="@string/Q_sf17" />
+
+                        </RelativeLayout>
+
+
+                        <RadioGroup
+                            android:id="@+id/sfFlag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="  Pre-EBM" />
+
+                            <RadioButton
+                                android:id="@+id/Flag01"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
+                                android:enabled="false"
+                                android:text="@string/sf1701" />
+
+                            <RadioButton
+                                android:id="@+id/Flag02"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
+                                android:enabled="false"
+                                android:text="@string/sf1702" />
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/sf17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Post-EBM" />
+
+                            <RadioButton
+                                android:id="@+id/sf1701"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
+                                android:enabled="false"
+                                android:text="@string/sf1701" />
+
+                            <RadioButton
+                                android:id="@+id/sf1702"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
+                                android:enabled="false"
+                                android:text="@string/sf1702" />
+
+                        </RadioGroup>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:background="@color/colorPrimary"
+                            android:onClick="checkEligibility"
+                            android:text="CHECK ELIGIBILITY"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:id="@+id/llsf1501"
@@ -2352,81 +2462,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility='@{sf1402.checked ? View.GONE : View.VISIBLE}'>
-
-                    <!-- sf17  Radio   -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/fldGrpCVsf17"
-                        style="@style/cardView">
-                        <!---->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/bottom">
-
-                                <TextView
-                                    android:id="@+id/qtxt_sf17"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_toEndOf="@id/q_sf17"
-                                    android:text="@string/sf17" />
-
-                                <TextView
-                                    android:id="@+id/q_sf17"
-                                    style="@style/quesNum"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignTop="@id/qtxt_sf17"
-                                    android:layout_alignBottom="@id/qtxt_sf17"
-                                    android:text="@string/Q_sf17" />
-
-                            </RelativeLayout>
-
-                            <RadioGroup
-                                android:id="@+id/sf17"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <RadioButton
-                                    android:id="@+id/sf1701"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
-                                    android:enabled="false"
-                                    android:text="@string/sf1701" />
-
-                                <RadioButton
-                                    android:id="@+id/sf1702"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:checked="@{llsf1501.getVisibility() == View.GONE ? false : false}"
-                                    android:enabled="false"
-                                    android:text="@string/sf1702" />
-
-                            </RadioGroup>
-
-                            <Button
-                                android:layout_height="0dp"
-                                android:layout_width="match_parent"
-                                android:layout_marginStart="24dp"
-                                android:layout_marginEnd="24dp"
-                                android:background="@color/colorPrimary"
-                                android:onClick="checkEligibility"
-                                android:text="CHECK ELIGIBILITY"
-                                android:textColor="@color/white" />
-
-                        </LinearLayout>
-
-
-                    </androidx.cardview.widget.CardView>
 
 
                     <!-- sf18  Radio   -->

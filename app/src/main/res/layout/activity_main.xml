@@ -190,7 +190,6 @@
                         android:onClick="@{callback::openSpecificActivity}"
                         android:padding="12dp"
                         android:text="Open Enrollment Form"
-                        android:visibility="gone"
                         android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/white" />
 
