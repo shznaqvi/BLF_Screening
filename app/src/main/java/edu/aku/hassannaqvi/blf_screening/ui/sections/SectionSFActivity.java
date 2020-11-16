@@ -812,6 +812,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
                                         // Mother does not exist in Screening Log (sl2 = 00000)
                                         if (!jsonObject.getString("sl2").equals("00000")) {
+
                                             // 72 hours passed
                                             if (jsonObject.getString("sl2").equals("88888")) {
                                                 if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
@@ -826,21 +827,31 @@ public class SectionSFActivity extends AppCompatActivity {
                                                 bi.wmError.setVisibility(View.VISIBLE);
 
                                             } else {
-                                                if (jsonObject.getString("sl2") != null) {
-                                                    if (jsonObject.getString("sl2").equals("1")) {
-                                                        EligibilityFlag = true;
-                                                        // checkEligibility();
-                                                        bi.Flag01.setChecked(true);
-                                                        bi.Flag02.setChecked(false);
+                                                try {
+                                                    if (jsonObject.getString("sfFlag") != null) {
+                                                        if (jsonObject.getString("sfFlag").equals("1")) {
+                                                            EligibilityFlag = true;
+                                                            bi.Flag01.setChecked(true);
+                                                            bi.Flag02.setChecked(false);
+
+                                                        } else {
+                                                            EligibilityFlag = false;
+                                                            checkEligibility();
+                                                        }
                                                     }
+                                                } catch (JSONException e) {
+
+                                                } finally {
+
+
+                                                    bi.sf4.setText(jsonObject.getString("sl2"));
+                                                    bi.sf3.setText(jsonObject.getString("sl5"));
+                                                    bi.fldGrpsf5.setVisibility(View.VISIBLE);
+                                                    bi.llsectionsf01.setVisibility(View.VISIBLE);
+                                                    bi.btnContinue.setVisibility(View.VISIBLE);
+                                                    Toast.makeText(SectionSFActivity.this, "2_" + jsonObject.getString("sl2"), Toast.LENGTH_SHORT).show();
+                                                    bi.sf3.setEnabled(false);
                                                 }
-                                                bi.sf4.setText(jsonObject.getString("sl2"));
-                                                bi.sf3.setText(jsonObject.getString("sl5"));
-                                                bi.fldGrpsf5.setVisibility(View.VISIBLE);
-                                                bi.llsectionsf01.setVisibility(View.VISIBLE);
-                                                bi.btnContinue.setVisibility(View.VISIBLE);
-                                                Toast.makeText(SectionSFActivity.this, "2_" + jsonObject.getString("sl2"), Toast.LENGTH_SHORT).show();
-                                                bi.sf3.setEnabled(false);
                                                 if (!jsonObject.isNull("sf18")) {
                                                     if (jsonObject.getString("sf18").equals("-1")) {
                                                         Toast.makeText(SectionSFActivity.this, "18_" + jsonObject.getString("sf18"), Toast.LENGTH_SHORT).show();
