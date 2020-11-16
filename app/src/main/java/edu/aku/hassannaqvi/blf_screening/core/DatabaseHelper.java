@@ -18,14 +18,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsS3Contract.FormsS3Table;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
-import edu.aku.hassannaqvi.blf_screening.models.FormsS3;
+import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
@@ -260,7 +260,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Long addFormS3(FormsS3 formS3) {
+    public Long addFormS3(FormsEN formS3) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
@@ -280,7 +280,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsS3Table.COLUMN_DEVICETAGID, formS3.getDevicetagID());
         values.put(FormsS3Table.COLUMN_DEVICEID, formS3.getDeviceID());
         values.put(FormsS3Table.COLUMN_APPVERSION, formS3.getAppversion());
-        values.put(FormsS3Table.COLUMN_S3, formS3.getS3());
+        values.put(FormsS3Table.COLUMN_EN, formS3.getSecEN());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -437,7 +437,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
-    public Collection<FormsS3> getAllFormsS3() {
+    public Collection<FormsEN> getAllFormsS3() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -447,7 +447,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 /*
                  FormsS3Table.COLUMN_ISTATUS,
 */
-                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_EN,
                 FormsS3Table.COLUMN_GPSLAT,
                 FormsS3Table.COLUMN_GPSLNG,
                 FormsS3Table.COLUMN_GPSDATE,
@@ -465,7 +465,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy =
                 FormsS3Table.COLUMN_ID + " ASC";
 
-        Collection<FormsS3> allFormsS3 = new ArrayList<FormsS3>();
+        Collection<FormsEN> allFormsEN = new ArrayList<FormsEN>();
         try {
             c = db.query(
                     FormsS3Table.TABLE_NAME,  // The table to query
@@ -477,8 +477,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FormsS3 formsS3 = new FormsS3();
-                allFormsS3.add(formsS3.Hydrate(c));
+                FormsEN formsEN = new FormsEN();
+                allFormsEN.add(formsEN.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -488,7 +488,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFormsS3;
+        return allFormsEN;
     }
 
 
@@ -544,7 +544,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
-    public Collection<FormsS3> checkFormsS3Exist() {
+    public Collection<FormsEN> checkFormsS3Exist() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -552,7 +552,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsS3Table.COLUMN_UID,
                 FormsS3Table.COLUMN_SYSDATE,
 //                 FormsS3Table.COLUMN_ISTATUS,
-                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_EN,
                 FormsS3Table.COLUMN_GPSLAT,
                 FormsS3Table.COLUMN_GPSLNG,
                 FormsS3Table.COLUMN_GPSDATE,
@@ -570,7 +570,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy =
                 FormsS3Table.COLUMN_ID + " ASC";
 
-        Collection<FormsS3> allFormsS3 = new ArrayList<FormsS3>();
+        Collection<FormsEN> allFormsEN = new ArrayList<FormsEN>();
         try {
             c = db.query(
                     FormsS3Table.TABLE_NAME,  // The table to query
@@ -582,8 +582,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FormsS3 formsS3 = new FormsS3();
-                allFormsS3.add(formsS3.Hydrate(c));
+                FormsEN formsEN = new FormsEN();
+                allFormsEN.add(formsEN.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -593,7 +593,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFormsS3;
+        return allFormsEN;
     }
 
 
@@ -713,7 +713,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
-    public Collection<FormsS3> getUnsyncedFormsS3() {
+    public Collection<FormsEN> getUnsyncedFormsS3() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -723,7 +723,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                 FormsS3Table.COLUMN_ISTATUS,
                 //                FormsS3Table.COLUMN_ISTATUS96x,
 //                 FormsS3Table.COLUMN_ENDINGDATETIME,
-                FormsS3Table.COLUMN_S3,
+                FormsS3Table.COLUMN_EN,
                 FormsS3Table.COLUMN_GPSLAT,
                 FormsS3Table.COLUMN_GPSLNG,
                 FormsS3Table.COLUMN_GPSDATE,
@@ -740,7 +740,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
         String orderBy = FormsS3Table.COLUMN_ID + " ASC";
 
-        Collection<FormsS3> allFormsS3 = new ArrayList<>();
+        Collection<FormsEN> allFormsEN = new ArrayList<>();
         try {
             c = db.query(
                     FormsS3Table.TABLE_NAME,  // The table to query
@@ -753,8 +753,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Log.d(TAG, "getUnsyncedForms: " + c.getCount());
-                FormsS3 formsS3 = new FormsS3();
-                allFormsS3.add(formsS3.Hydrate(c));
+                FormsEN formsEN = new FormsEN();
+                allFormsEN.add(formsEN.Hydrate(c));
             }
         } catch (SQLiteException e) {
 
@@ -768,7 +768,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFormsS3;
+        return allFormsEN;
     }
 
 
@@ -885,7 +885,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsSF;
     }
 
-    public Collection<FormsS3> getTodayFormsS3(String sysdate) {
+    public Collection<FormsEN> getTodayFormsS3(String sysdate) {
 
         // String sysdate =  spDateT.substring(0, 8).trim()
         SQLiteDatabase db = this.getReadableDatabase();
@@ -907,7 +907,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy =
                 FormsS3Table.COLUMN_ID + " ASC";
 
-        Collection<FormsS3> allFormsS3 = new ArrayList<>();
+        Collection<FormsEN> allFormsEN = new ArrayList<>();
         try {
             c = db.query(
                     FormsS3Table.TABLE_NAME,  // The table to query
@@ -919,13 +919,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FormsS3 formsS3 = new FormsS3();
-                formsS3.set_ID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_ID)));
-                formsS3.set_UID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_UID)));
-                formsS3.setSysdate(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYSDATE)));
+                FormsEN formsEN = new FormsEN();
+                formsEN.set_ID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_ID)));
+                formsEN.set_UID(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_UID)));
+                formsEN.setSysdate(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYSDATE)));
                 //               formsSF.setIstatus(c.getString(c.getColumnIndex( FormsS3Table.COLUMN_ISTATUS)));
-                formsS3.setSynced(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYNCED)));
-                allFormsS3.add(formsS3);
+                formsEN.setSynced(c.getString(c.getColumnIndex(FormsS3Table.COLUMN_SYNCED)));
+                allFormsEN.add(formsEN);
             }
         } catch (SQLiteException e) {
 
@@ -939,7 +939,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFormsS3;
+        return allFormsEN;
     }
     
     /*public Collection<FormsSL> getFormsByCluster(String cluster) {
@@ -1096,7 +1096,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Which row to update, based on the ID
         String selection = FormsS3Table.COLUMN_ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.formsS3.get_ID())};
+        String[] selectionArgs = {String.valueOf(MainApp.formsEN.get_ID())};
 
         return db.update(FormsS3Table.TABLE_NAME,
                 values,
@@ -1200,7 +1200,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = FormsS3Table._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.formsS3.get_ID())};
+        String[] selectionArgs = {String.valueOf(MainApp.formsEN.get_ID())};
 
         return db.update(FormsS3Table.TABLE_NAME,
                 values,
@@ -1297,7 +1297,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Generic Un-Synced Forms
-    public void updateSyncedFormsS3(String id) {
+    public void updateSyncedFormsEN(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column

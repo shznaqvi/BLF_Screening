@@ -43,7 +43,7 @@ import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSF;
-import edu.aku.hassannaqvi.blf_screening.workers.FetchMRWorker;
+import edu.aku.hassannaqvi.blf_screening.workers.FetchMotherMRWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActivity;
 
@@ -52,6 +52,7 @@ public class SectionSFActivity extends AppCompatActivity {
     Intent oF = null;
     private boolean EligibilityFlag;
     private String mmrno;
+    private boolean SfFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,15 +134,13 @@ public class SectionSFActivity extends AppCompatActivity {
                     && bi.sf1102.isChecked()
                     && bi.sf130101.isChecked()
                     && bi.sf1602.isChecked()*/
-                EligibilityFlag
+                (EligibilityFlag || SfFlag)
                         && bi.sf1401.isChecked()
         ) {
             bi.sf1701.setChecked(true);
-            bi.sf1702.setChecked(false);
             bi.fldGrpCVsf18.setVisibility(View.VISIBLE);
             //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
         } else {
-            bi.sf1701.setChecked(false);
             bi.sf1702.setChecked(true);
             bi.fldGrpCVsf18.setVisibility(View.GONE);
             //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
@@ -775,12 +774,12 @@ public class SectionSFActivity extends AppCompatActivity {
                 .build();
 
 
-        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class)
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
                 .setInputData(data)
                 .build();
 */
 
-        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMRWorker.class).build();
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
 
@@ -830,7 +829,7 @@ public class SectionSFActivity extends AppCompatActivity {
                                                 try {
                                                     if (jsonObject.getString("sfFlag") != null) {
                                                         if (jsonObject.getString("sfFlag").equals("1")) {
-                                                            EligibilityFlag = true;
+                                                            SfFlag = true;
                                                             bi.Flag01.setChecked(true);
                                                             bi.Flag02.setChecked(false);
 

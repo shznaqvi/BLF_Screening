@@ -7,11 +7,11 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.FormsS3" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsEN" />
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.blf_screening.ui.sections.Section302Activity" />
+            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN02Activity" />
 
     </data>
 

@@ -28,7 +28,7 @@ import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
-import edu.aku.hassannaqvi.blf_screening.models.FormsS3;
+import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
@@ -83,7 +83,7 @@ public class MainApp extends Application {
     public static UsersContract user;
     public static FormsSL formsSL;
     public static FormsSF formsSF;
-    public static FormsS3 formsS3;
+    public static FormsEN formsEN;
     public static JSONObject jsonSL;
 
     public static String DeviceURL = "devices.php";
@@ -91,6 +91,7 @@ public class MainApp extends Application {
     public static SharedPreferences sharedPref;
     public static String DIST_ID;
     public static String sf2;
+    public static String s1q2;
     public static String scrdt;
     protected static LocationManager locationManager;
     private LocationLiveData locationlivedata;

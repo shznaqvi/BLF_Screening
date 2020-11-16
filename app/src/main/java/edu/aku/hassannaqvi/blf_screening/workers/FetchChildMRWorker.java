@@ -29,10 +29,10 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-public class FetchMRWorker extends Worker {
+public class FetchChildMRWorker extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "FetchMRWorker()";
+    private final String TAG = "FetchChildMRWorker()";
     HttpURLConnection urlConnection;
     private Context mContext;
     private URL serverURL = null;
@@ -40,7 +40,7 @@ public class FetchMRWorker extends Worker {
     private int length;
     private Data data;
 
-    public FetchMRWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public FetchChildMRWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -88,8 +88,8 @@ public class FetchMRWorker extends Worker {
             try {
                 json.put("table", "fetchMR");
                 //json.put("select", "sl2, sl4, sl5, sf6a");
-                json.put("filter", "sl4 = '" + MainApp.sf2 + "'");
-                json.put("scrdt", MainApp.scrdt);
+                json.put("filter", "sf5 = '" + MainApp.s1q2 + "' and sf18 = '1'");
+                //json.put("scrdt", MainApp.scrdt);
             } catch (JSONException e1) {
                 e1.printStackTrace();
                 Log.d(TAG, "doWork: " + e1.getMessage());
@@ -156,6 +156,7 @@ public class FetchMRWorker extends Worker {
                     .putString("mrno", String.valueOf(result)).build();
 
            /* } else {
+
 
             }*/
         } else {

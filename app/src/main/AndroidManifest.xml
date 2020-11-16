@@ -45,15 +45,15 @@
             android:label="@string/sf_title2"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.sections.Section301Activity"
+            android:name=".ui.sections.SectionEN01Activity"
             android:label="@string/section1_mainheading"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.sections.Section302Activity"
+            android:name=".ui.sections.SectionEN02Activity"
             android:label="@string/section2newbornexamination_mainheading"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.sections.Section303Activity"
+            android:name=".ui.sections.SectionEN03Activity"
             android:label="@string/section3careofbaby_mainheading"
             android:screenOrientation="portrait" />
         <activity

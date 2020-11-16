@@ -6,11 +6,11 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.FormsS3" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsEN" />
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.blf_screening.ui.sections.Section303Activity" />
+            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN03Activity" />
 
     </data>
 
@@ -733,7 +733,25 @@
 
             </androidx.cardview.widget.CardView>
 
+            <ProgressBar
+                android:id="@+id/pBar3"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:progress="1"
+                android:visibility="gone" />
 
+
+            <TextView
+                android:id="@+id/wmError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_overlay"
+                android:textSize="16sp"
+                android:visibility="gone" />
             <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"

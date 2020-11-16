@@ -9,13 +9,13 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsS3Contract.FormsS3Table;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
  */
 
-public class FormsS3 extends LiveData<FormsS3> {
+public class FormsEN extends LiveData<FormsEN> {
 
     private final String projectName = "blf";
     public String s1q1 = "";
@@ -98,13 +98,13 @@ public class FormsS3 extends LiveData<FormsS3> {
     private String synced = "";
     private String synced_date = "";
     private String appversion = "";
-    private String s3 = ""; //SectionS3
+    private String secEN = ""; // Enrolment
 
     //For section selection
     private SectionSelection secSelection;
 
 
-    public FormsS3() {
+    public FormsEN() {
     }
 
     public String getS1q1() {
@@ -647,12 +647,12 @@ public class FormsS3 extends LiveData<FormsS3> {
     }
 
 
-    public String getS3() {
-        return s3;
+    public String getSecEN() {
+        return secEN;
     }
 
-    public void setS3(String s3) {
-        this.s3 = s3;
+    public void setSecEN(String secEN) {
+        this.secEN = secEN;
     }
 
 
@@ -678,7 +678,7 @@ public class FormsS3 extends LiveData<FormsS3> {
         return username;
     }
 
-    public FormsS3 setUsername(String username) {
+    public FormsEN setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -698,7 +698,7 @@ public class FormsS3 extends LiveData<FormsS3> {
         return sf20;
     }
 
-    public FormsS3 setSf20(String sf17) {
+    public FormsEN setSf20(String sf17) {
         this.sf20 = sf20;
         return this;
     }
@@ -835,7 +835,7 @@ public class FormsS3 extends LiveData<FormsS3> {
     }
 
 
-    public FormsS3 Sync(JSONObject jsonObject) throws JSONException {
+    public FormsEN Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsS3Table.COLUMN_ID);
         this._UID = jsonObject.getString(FormsS3Table.COLUMN_UID);
         this.sysdate = jsonObject.getString(FormsS3Table.COLUMN_SYSDATE);
@@ -853,13 +853,13 @@ public class FormsS3 extends LiveData<FormsS3> {
         this.synced_date = jsonObject.getString(FormsS3Table.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsS3Table.COLUMN_SYNCED_DATE);
 
-        this.s3 = jsonObject.getString(FormsS3Table.COLUMN_S3);
+        this.secEN = jsonObject.getString(FormsS3Table.COLUMN_EN);
 
         return this;
 
     }
 
-    public FormsS3 Hydrate(Cursor cursor) {
+    public FormsEN Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_UID));
         this.sysdate = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_SYSDATE));
@@ -874,7 +874,7 @@ public class FormsS3 extends LiveData<FormsS3> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_APPVERSION));
-        s3Hydrate(cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_S3)));
+        s3Hydrate(cursor.getString(cursor.getColumnIndex(FormsS3Table.COLUMN_EN)));
 
         return this;
     }
@@ -883,7 +883,7 @@ public class FormsS3 extends LiveData<FormsS3> {
     //TODO: Try this instead of toJSONObject
     @Override
     public String toString() {
-        return new GsonBuilder().create().toJson(this, FormsS3.class);
+        return new GsonBuilder().create().toJson(this, FormsEN.class);
     }
 
 
@@ -973,7 +973,7 @@ public class FormsS3 extends LiveData<FormsS3> {
             //        json.put( FormsS3Table.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             //       json.put( FormsS3Table.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
             //   json.put( FormsS3Table.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
-            json.put(FormsS3Table.COLUMN_S3, new JSONObject(s3toString()));
+            json.put(FormsS3Table.COLUMN_EN, new JSONObject(s3toString()));
 
             json.put(FormsS3Table.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
             json.put(FormsS3Table.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
@@ -983,8 +983,8 @@ public class FormsS3 extends LiveData<FormsS3> {
             json.put(FormsS3Table.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
             json.put(FormsS3Table.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
 
-            if (this.s3 != null && !this.s3.equals("")) {
-                json.put(FormsS3Table.COLUMN_S3, new JSONObject(this.s3));
+            if (this.secEN != null && !this.secEN.equals("")) {
+                json.put(FormsS3Table.COLUMN_EN, new JSONObject(this.secEN));
             }
 
             return json;

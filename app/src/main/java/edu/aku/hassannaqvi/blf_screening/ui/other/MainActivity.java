@@ -31,7 +31,7 @@ import edu.aku.hassannaqvi.blf_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
-import edu.aku.hassannaqvi.blf_screening.ui.sections.Section301Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN01Activity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 oF = new Intent(this, SectionSFActivity.class);
                 break;
             case R.id.formEnr:
-                oF = new Intent(this, Section301Activity.class);
+                oF = new Intent(this, SectionEN01Activity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);

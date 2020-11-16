@@ -7,11 +7,11 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.blf_screening.models.FormsS3" />
+            type="edu.aku.hassannaqvi.blf_screening.models.FormsEN" />
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.blf_screening.ui.sections.Section301Activity" />
+            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN01Activity" />
 
     </data>
 
@@ -26,46 +26,7 @@
             android:orientation="vertical">
 
 
-            <!-- s1q1  Input-Numeric   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVs1q1"
-                style="@style/cardView">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_s1q1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_s1q1"
-                            android:text="@string/s1q1" />
-
-                        <TextView
-                            android:id="@+id/q_s1q1"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_s1q1"
-                            android:layout_alignBottom="@id/qtxt_s1q1"
-                            android:text="@string/Q_s1q1" />
-                    </RelativeLayout>
-
-                    <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/s1q1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/s1q1"
-                        android:inputType="number" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
 
             <!-- s1q2  Input-Numeric   -->
@@ -115,6 +76,7 @@
                             android:hint="###-##-##"
                             android:inputType="number"
                             app:mask="###-##-##"
+
                             app:required="true" />
 
                         <ImageButton
@@ -133,7 +95,6 @@
                             android:visibility="gone" />
 
                     </LinearLayout>
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -142,8 +103,48 @@
                 android:id="@+id/llGrpName03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical">
+                <!-- s1q1  Input-Numeric   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVs1q1"
+                    style="@style/cardView">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
+
+                            <TextView
+                                android:id="@+id/qtxt_s1q1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_s1q1"
+                                android:text="@string/s1q1" />
+
+                            <TextView
+                                android:id="@+id/q_s1q1"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_s1q1"
+                                android:layout_alignBottom="@id/qtxt_s1q1"
+                                android:text="@string/Q_s1q1" />
+                        </RelativeLayout>
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/s1q1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/s1q1"
+                            android:inputType="number" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- s1q3  Input   -->
                 <androidx.cardview.widget.CardView
@@ -1323,6 +1324,25 @@
 
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/pBar3"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:progress="1"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/wmError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_overlay"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <!--EndButton LinearLayout-->
             <LinearLayout
