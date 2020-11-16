@@ -1,4 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:Tool="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -24,9 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-
 
 
             <!-- s1q2  Input-Numeric   -->
@@ -103,8 +101,10 @@
                 android:id="@+id/llGrpName03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:visibility="gone"
-                android:orientation="vertical">
+                Tool:visibility="visible">
+
                 <!-- s1q1  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVs1q1"
@@ -145,6 +145,7 @@
                             android:inputType="number" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
 
                 <!-- s1q3  Input   -->
                 <androidx.cardview.widget.CardView
@@ -297,13 +298,14 @@
                                     android:gravity="center"
                                     android:text="@string/s1q501" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
+                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                     android:id="@+id/s1q501"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="@string/s1q501"
-                                    android:inputType="number" />
+                                    android:hint="DD-MM-YYYY"
+                                    app:dateFormat="dd-MM-yyyy"
+                                    app:maxDate="CR_DATE" />
 
                             </LinearLayout>
 
@@ -319,13 +321,14 @@
                                     android:gravity="center"
                                     android:text="@string/s1q502" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
+                                <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
                                     android:id="@+id/s1q502"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="@string/s1q502"
-                                    android:inputType="number" />
+                                    android:hint="HH:mm"
+                                    app:is24HourView="true"
+                                    app:timeFormat="HH:mm" />
 
                             </LinearLayout>
 
@@ -461,6 +464,7 @@
                             android:inputType="number"
                             app:mask="###-##-##"
                             app:required="true" />
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -1021,13 +1025,14 @@
                                         android:gravity="center"
                                         android:text="@string/s1q1901" />
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
+                                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                         android:id="@+id/s1q1901"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/s1q1901"
-                                        android:inputType="number" />
+                                        android:hint="DD-MM-YYYY"
+                                        app:dateFormat="dd-MM-yyyy"
+                                        app:maxDate="CR_DATE" />
 
                                 </LinearLayout>
 
@@ -1043,13 +1048,14 @@
                                         android:gravity="center"
                                         android:text="@string/s1q1902" />
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
+                                    <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
                                         android:id="@+id/s1q1902"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
-                                        android:hint="@string/s1q1902"
-                                        android:inputType="number" />
+                                        android:hint="HH:mm"
+                                        app:is24HourView="true"
+                                        app:timeFormat="HH:mm" />
 
                                 </LinearLayout>
 
@@ -1187,6 +1193,7 @@
 
                     </androidx.cardview.widget.CardView>
 
+
                 </LinearLayout>
 
 
@@ -1284,13 +1291,14 @@
                                     android:gravity="center"
                                     android:text="@string/s1q2301" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
+                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                     android:id="@+id/s1q2301"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="@string/s1q2301"
-                                    android:inputType="number" />
+                                    android:hint="DD-MM-YYYY"
+                                    app:dateFormat="dd-MM-yyyy"
+                                    app:maxDate="CR_DATE" />
 
                             </LinearLayout>
 
@@ -1306,13 +1314,14 @@
                                     android:gravity="center"
                                     android:text="@string/s1q2302" />
 
-                                <com.edittextpicker.aliazaz.EditTextPicker
+                                <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
                                     android:id="@+id/s1q2302"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:hint="@string/s1q2302"
-                                    android:inputType="number" />
+                                    android:hint="HH:mm"
+                                    app:is24HourView="true"
+                                    app:timeFormat="HH:mm" />
 
                             </LinearLayout>
 
@@ -1322,7 +1331,9 @@
 
                 </androidx.cardview.widget.CardView>
 
+
             </LinearLayout>
+
 
             <ProgressBar
                 android:id="@+id/pBar3"
@@ -1335,7 +1346,6 @@
                 android:progress="1"
                 android:visibility="gone" />
 
-
             <TextView
                 android:id="@+id/wmError"
                 android:layout_width="match_parent"
@@ -1343,6 +1353,7 @@
                 android:textColor="@color/red_overlay"
                 android:textSize="16sp"
                 android:visibility="gone" />
+
 
             <!--EndButton LinearLayout-->
             <LinearLayout
@@ -1371,6 +1382,7 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="Save"
                     android:textColor="@color/white" />
+
             </LinearLayout>
 
 

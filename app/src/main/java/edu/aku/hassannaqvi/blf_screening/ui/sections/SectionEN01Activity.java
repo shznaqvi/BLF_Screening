@@ -214,7 +214,17 @@ public class SectionEN01Activity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+            return false;
+
+        if (!bi.s1q8.getText().toString().isEmpty()) {
+
+            if (bi.s1q8.getText().toString().equals(bi.s1q2.getText().toString())) {
+                return Validator.emptyCustomTextBox(this, bi.s1q8, "S1Q2 & S1Q8\ncould not be the SAME");
+            }
+        }
+
+        return true;
 
     }
 

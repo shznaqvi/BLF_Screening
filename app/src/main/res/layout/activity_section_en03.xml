@@ -733,6 +733,7 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <ProgressBar
                 android:id="@+id/pBar3"
                 style="?android:attr/progressBarStyleSmall"
@@ -752,6 +753,8 @@
                 android:textColor="@color/red_overlay"
                 android:textSize="16sp"
                 android:visibility="gone" />
+
+
             <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"
