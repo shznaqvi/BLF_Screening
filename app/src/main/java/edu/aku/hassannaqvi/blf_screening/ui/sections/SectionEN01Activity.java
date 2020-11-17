@@ -341,11 +341,11 @@ public class SectionEN01Activity extends AppCompatActivity {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            MainApp.formsSF.setGpsLat(GPSPref.getString("Latitude", "0"));
-            MainApp.formsSF.setGpsLng(GPSPref.getString("Longitude", "0"));
-            MainApp.formsSF.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+            MainApp.formsEN.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.formsEN.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.formsEN.setGpsAcc(GPSPref.getString("Accuracy", "0"));
 //            MainApp.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-            MainApp.formsSF.setGpsDT(date); // Timestamp is converted to date above
+            MainApp.formsEN.setGpsDT(date); // Timestamp is converted to date above
 
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());

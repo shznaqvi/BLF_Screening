@@ -892,6 +892,7 @@ public class FormsEN extends LiveData<FormsEN> {
 
         try {
             json.put("s1q1", s1q1)
+                    .put("username", username)
                     .put("s1q2", s1q2)
                     .put("s1q3", s1q3)
                     .put("s1q4", s1q4)
@@ -1003,6 +1004,7 @@ public class FormsEN extends LiveData<FormsEN> {
                 json = new JSONObject(string);
 
                 this.s1q1 = json.getString("s1q1");
+                this.username = json.getString("username");
                 this.s1q2 = json.getString("s1q2");
                 this.s1q3 = json.getString("s1q3");
                 this.s1q4 = json.getString("s1q4");
