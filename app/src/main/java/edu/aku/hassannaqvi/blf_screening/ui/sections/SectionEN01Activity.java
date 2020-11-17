@@ -205,7 +205,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                 : bi.s1q2104.isChecked() ? "4"
                 : "-1");
 
-        formsEN.setS1q22(bi.s1q22.getText().toString().trim().isEmpty() ? "-1" : bi.s1q22.getText().toString());
+    //    formsEN.setS1q22(bi.s1q22.getText().toString().trim().isEmpty() ? "-1" : bi.s1q22.getText().toString());
 
         formsEN.setS1q2301(bi.s1q2301.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2301.getText().toString());
         formsEN.setS1q2302(bi.s1q2302.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2302.getText().toString());

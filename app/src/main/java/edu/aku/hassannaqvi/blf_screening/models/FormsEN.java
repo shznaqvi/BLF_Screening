@@ -916,7 +916,7 @@ public class FormsEN extends LiveData<FormsEN> {
                     .put("s1q1902", s1q1902)
                     .put("s1q20", s1q20)
                     .put("s1q21", s1q21)
-                    .put("s1q22", s1q22)
+            //        .put("s1q22", s1q22)
                     .put("s1q2301", s1q2301)
                     .put("s1q2302", s1q2302)
                     .put("s2q1", s2q1)
@@ -1028,7 +1028,7 @@ public class FormsEN extends LiveData<FormsEN> {
                 this.s1q1902 = json.getString("s1q1902");
                 this.s1q20 = json.getString("s1q20");
                 this.s1q21 = json.getString("s1q21");
-                this.s1q22 = json.getString("s1q22");
+                //    this.s1q22 = json.getString("s1q22");
                 this.s1q2301 = json.getString("s1q2301");
                 this.s1q2302 = json.getString("s1q2302");
                 this.s2q1 = json.getString("s2q1");
