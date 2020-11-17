@@ -59,7 +59,7 @@ public final class CreateTable {
             + FormsSFTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
-    public static final String SQL_CREATE_FORMSS3 = "CREATE TABLE "
+    public static final String SQL_CREATE_FORMSEN = "CREATE TABLE "
             + FormsS3Table.TABLE_NAME + "("
             + FormsS3Table.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FormsS3Table.COLUMN_PROJECT_NAME + " TEXT,"

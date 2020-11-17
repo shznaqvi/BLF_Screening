@@ -35,7 +35,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_BL_RANDOM;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISTRICTS;
-import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSS3;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSEN;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSL;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMSSL);
         db.execSQL(SQL_CREATE_FORMSSF);
-        db.execSQL(SQL_CREATE_FORMSS3);
+        db.execSQL(SQL_CREATE_FORMSEN);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_DISTRICTS);
         db.execSQL(SQL_CREATE_VERSIONAPP);

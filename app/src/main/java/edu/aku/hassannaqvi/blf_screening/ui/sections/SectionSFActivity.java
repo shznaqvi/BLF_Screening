@@ -474,8 +474,8 @@ public class SectionSFActivity extends AppCompatActivity {
                                                 @Override
                                                 public void run() {
                                                     //Do something after 100ms
-                                                    oF = new Intent(SectionSFActivity.this, SectionSFActivity.class);
-                                                    //   startActivity(oF);
+                                                    oF = new Intent(SectionSFActivity.this, MainActivity.class);
+                                                    startActivity(oF);
                                                 }
                                             }, 3500);
 
