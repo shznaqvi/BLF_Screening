@@ -1,6 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:Tool="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
-                Tool:visibility="visible">
+                tools:visibility="visible">
 
                 <!-- s1q1  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
@@ -506,7 +506,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/s1q9"
-                            android:inputType="number" />
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            app:maxValue="03999999999"
+                            app:minValue="0" />
 
                     </LinearLayout>
 
@@ -550,7 +553,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/s1q10"
-                            android:inputType="number" />
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            app:maxValue="03999999999"
+                            app:minValue="0" />
 
                     </LinearLayout>
 
@@ -594,7 +600,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/s1q11"
-                            android:inputType="number" />
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            app:maxValue="03999999999"
+                            app:minValue="0" />
 
                     </LinearLayout>
 
@@ -1381,7 +1390,9 @@
                     android:background="@color/green_overlay"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="Save"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
