@@ -954,7 +954,7 @@
                                 android:id="@+id/s1q1802x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/s1q1802"
                                 android:tag="s1q1802"
                                 android:text='@{s1q1802.checked ? s1q1802x.getText().toString() : ""}'

@@ -113,6 +113,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 EligibilityFlag = true;
                 bi.Flag01.setChecked(true);
                 bi.Flag02.setChecked(false);
+                bi.fldGrpCVsf14.setVisibility(View.VISIBLE);
                 //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
             } else {
                 /*bi.sf1701.setChecked(false);
@@ -122,6 +123,9 @@ public class SectionSFActivity extends AppCompatActivity {
                 EligibilityFlag = false;
                 bi.Flag01.setChecked(false);
                 bi.Flag02.setChecked(true);
+                bi.fldGrpCVsf14.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVsf14);
+
                 //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
 
             }

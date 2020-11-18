@@ -281,24 +281,29 @@ public class SectionEN01Activity extends AppCompatActivity {
                                     jsonObject = new JSONObject(json.getString(i));
 
                                     // Child MR matched
-                                    if (!jsonObject.isNull("sf5")) {
+                                    if (!jsonObject.has("sf5")) {
+                                        if (!jsonObject.has("sf18")) {
+                                            // Child does Eligible (sf18=1)
+                                            if (jsonObject.getString("sf18").equals("1")) {
 
-                                        // Child does Eligible (sf18=1)
-                                        if (jsonObject.getString("sf18").equals("1")) {
+                                                bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
+                                                bi.s1q7.setText(jsonObject.getString("sl5"));
+                                                bi.s1q8.setText(jsonObject.getString("sl4"));
+                                                bi.llGrpName03.setVisibility(View.VISIBLE);
+                                                bi.btnContinue.setVisibility(View.VISIBLE);
+                                                bi.s1q1.setEnabled(false);
+                                                bi.s1q7.setEnabled(false);
+                                                bi.s1q8.setEnabled(false);
+                                            } else {
+                                                bi.wmError.setText("Consent not given!");
+                                                bi.wmError.setVisibility(View.VISIBLE);
 
-                                            bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
-                                            bi.s1q7.setText(jsonObject.getString("sl5"));
-                                            bi.s1q8.setText(jsonObject.getString("sl4"));
-                                            bi.llGrpName03.setVisibility(View.VISIBLE);
-                                            bi.btnContinue.setVisibility(View.VISIBLE);
-                                            bi.s1q1.setEnabled(false);
-                                            bi.s1q7.setEnabled(false);
-                                            bi.s1q8.setEnabled(false);
+                                            }
                                         } else {
-                                            bi.wmError.setText("Consent not given!");
+                                            bi.wmError.setText(jsonObject.getString("sl5"));
                                             bi.wmError.setVisibility(View.VISIBLE);
-
                                         }
+
                                     } else {
                                         bi.wmError.setText("Child not found.");
                                         bi.wmError.setVisibility(View.VISIBLE);
