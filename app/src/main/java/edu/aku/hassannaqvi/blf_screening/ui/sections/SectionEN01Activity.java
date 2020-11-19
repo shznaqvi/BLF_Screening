@@ -281,7 +281,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                                     jsonObject = new JSONObject(json.getString(i));
 
                                     // Child MR matched
-                                    if (!jsonObject.has("sf5")) {
+                                    //    if (!jsonObject.has("sf5")) {
                                         if (jsonObject.has("sf18")) {
                                             // Child does Eligible (sf18=1)
                                             if (jsonObject.getString("sf18").equals("1")) {
@@ -308,11 +308,11 @@ public class SectionEN01Activity extends AppCompatActivity {
                                             bi.wmError.setText(jsonObject.getString("sl5"));
                                             bi.wmError.setVisibility(View.VISIBLE);
                                         }
-
+/*
                                     } else {
                                         bi.wmError.setText("Child not found.");
                                         bi.wmError.setVisibility(View.VISIBLE);
-                                    }
+                                    }*/
 
                                 }
                             } catch (JSONException e) {
