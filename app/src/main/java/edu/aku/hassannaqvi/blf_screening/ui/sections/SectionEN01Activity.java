@@ -37,7 +37,6 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionEn01Binding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
-import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.workers.FetchChildMRWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsEN;
@@ -53,6 +52,7 @@ public class SectionEN01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_en01);
         bi.setCallback(this);
         setupSkips();
+
     }
 
     private void setupSkips() {
@@ -113,8 +113,7 @@ public class SectionEN01Activity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        super.onBackPressed();
     }
 
 
@@ -205,7 +204,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                 : bi.s1q2104.isChecked() ? "4"
                 : "-1");
 
-    //    formsEN.setS1q22(bi.s1q22.getText().toString().trim().isEmpty() ? "-1" : bi.s1q22.getText().toString());
+        //    formsEN.setS1q22(bi.s1q22.getText().toString().trim().isEmpty() ? "-1" : bi.s1q22.getText().toString());
 
         formsEN.setS1q2301(bi.s1q2301.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2301.getText().toString());
         formsEN.setS1q2302(bi.s1q2302.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2302.getText().toString());
@@ -221,6 +220,13 @@ public class SectionEN01Activity extends AppCompatActivity {
 
             if (bi.s1q8.getText().toString().equals(bi.s1q2.getText().toString())) {
                 return Validator.emptyCustomTextBox(this, bi.s1q8, "S1Q2 & S1Q8\ncould not be the SAME");
+            }
+        }
+
+        if (!bi.s1q15.getText().toString().isEmpty()) {
+
+            if (Integer.parseInt(bi.s1q15.getText().toString()) >= Integer.parseInt(bi.s1q14.getText().toString())) {
+                return Validator.emptyCustomTextBox(this, bi.s1q15, "S1Q15 could not be the \n greater then S1Q14");
             }
         }
 
@@ -282,32 +288,34 @@ public class SectionEN01Activity extends AppCompatActivity {
 
                                     // Child MR matched
                                     //    if (!jsonObject.has("sf5")) {
-                                        if (jsonObject.has("sf18")) {
-                                            // Child does Eligible (sf18=1)
-                                            if (jsonObject.getString("sf18").equals("1")) {
+                                    if (jsonObject.has("sf18")) {
+                                        // Child does Eligible (sf18=1)
+                                        if (jsonObject.getString("sf18").equals("1")) {
 
-                                                bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
-                                                bi.s1q7.setText(jsonObject.getString("sl5"));
-                                                bi.s1q8.setText(jsonObject.getString("sl4"));
-                                                bi.s1q501.setText(jsonObject.getString("sf6a").split(" ")[0]);
-                                                bi.s1q502.setText(jsonObject.getString("sf6a").split(" ")[1]);
-                                                bi.llGrpName03.setVisibility(View.VISIBLE);
-                                                bi.btnContinue.setVisibility(View.VISIBLE);
-                                                bi.s1q1.setEnabled(false);
-                                                bi.s1q7.setEnabled(false);
-                                                bi.s1q8.setEnabled(false);
-                                                bi.s1q501.setEnabled(false);
-                                                bi.s1q502.setEnabled(false);
-                                            } else {
-                                                bi.wmError.setText("Consent not given!");
-                                                bi.wmError.setVisibility(View.VISIBLE);
-
-                                            }
+                                            bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
+                                            bi.s1q7.setText(jsonObject.getString("sl5"));
+                                            bi.s1q8.setText(jsonObject.getString("sl4"));
+                                            String dt501 = jsonObject.getString("sf6a").split(" ")[0];
+                                            bi.s1q501.setText(dt501);
+                                            bi.s1q1901.setMinDate(dt501.replace("-", "/"));
+                                            bi.s1q502.setText(jsonObject.getString("sf6a").split(" ")[1]);
+                                            bi.llGrpName03.setVisibility(View.VISIBLE);
+                                            bi.btnContinue.setVisibility(View.VISIBLE);
+                                            bi.s1q1.setEnabled(false);
+                                            bi.s1q7.setEnabled(false);
+                                            bi.s1q8.setEnabled(false);
+                                            bi.s1q501.setEnabled(false);
+                                            bi.s1q502.setEnabled(false);
                                         } else {
-
-                                            bi.wmError.setText(jsonObject.getString("sl5"));
+                                            bi.wmError.setText("Consent not given!");
                                             bi.wmError.setVisibility(View.VISIBLE);
+
                                         }
+                                    } else {
+
+                                        bi.wmError.setText(jsonObject.getString("sl5"));
+                                        bi.wmError.setVisibility(View.VISIBLE);
+                                    }
 /*
                                     } else {
                                         bi.wmError.setText("Child not found.");

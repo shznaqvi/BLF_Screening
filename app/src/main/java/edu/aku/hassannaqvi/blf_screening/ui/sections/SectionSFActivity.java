@@ -298,8 +298,10 @@ public class SectionSFActivity extends AppCompatActivity {
 
 
         bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
-            checkEligibility();
-            Clear.clearAllFields(bi.fldGrpCVsf18);
+            if (bi.sf14.getCheckedRadioButtonId() != -1) {
+                checkEligibility();
+                Clear.clearAllFields(bi.fldGrpCVsf18);
+            }
            /* if(bi.sf1401.isChecked()) {
                 SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
                 Clear.clearAllFields(bi.llsf1501);
@@ -356,6 +358,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
             }
         });
+
         bi.sf101.addTextChangedListener(new TextWatcher() {
 
             @Override
