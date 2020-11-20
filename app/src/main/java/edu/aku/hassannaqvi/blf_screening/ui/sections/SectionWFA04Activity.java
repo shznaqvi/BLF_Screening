@@ -47,7 +47,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SectionWFA05Activity.class));
             }
         }
     }
