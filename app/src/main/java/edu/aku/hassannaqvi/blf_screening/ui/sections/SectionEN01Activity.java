@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -98,15 +99,37 @@ public class SectionEN01Activity extends AppCompatActivity {
 
 
     public void BtnContinue() {
+
         if (formValidation()) {
             try {
                 SaveDraft();
+                Date date1 = null;
+                Date date2 = null;
+                String strDate1 = bi.s1q501.getText().toString() + " " + bi.s1q502.getText().toString();
+                String strDate2 = bi.s1q2301.getText().toString() + " " + bi.s1q2302.getText().toString();
+                try {
+                    date1 = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(strDate1);
+                    date2 = new SimpleDateFormat("dd-MM-yyyy HH:mm").parse(strDate2);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                long diff = date2.getTime() - date1.getTime();
+                long seconds = diff / 1000;
+                long minutes = seconds / 60;
+                long hours = minutes / 60;
+                long days = hours / 24;
+
+//        Toast.makeText(this, "Hours:" + String.valueOf(hours), Toast.LENGTH_SHORT).show();
+
+                MainApp.childAgeinHours = hours;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionEN02Activity.class));
+
+
+                // finish();
+                //startActivity(new Intent(this, SectionEN02Activity.class));
             }
         }
     }
@@ -226,7 +249,7 @@ public class SectionEN01Activity extends AppCompatActivity {
         if (!bi.s1q15.getText().toString().isEmpty()) {
 
             if (Integer.parseInt(bi.s1q15.getText().toString()) >= Integer.parseInt(bi.s1q14.getText().toString())) {
-                return Validator.emptyCustomTextBox(this, bi.s1q15, "S1Q15 could not be the \n greater then S1Q14");
+                return Validator.emptyCustomTextBox(this, bi.s1q15, "S1Q15 could not be the \n greater or equals to then S1Q14");
             }
         }
 

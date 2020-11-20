@@ -93,6 +93,7 @@ public class MainApp extends Application {
     public static String sf2;
     public static String s1q2;
     public static String scrdt;
+    public static long childAgeinHours;
     protected static LocationManager locationManager;
     private LocationLiveData locationlivedata;
 

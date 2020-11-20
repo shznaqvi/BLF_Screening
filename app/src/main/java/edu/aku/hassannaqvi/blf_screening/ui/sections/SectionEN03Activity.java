@@ -46,6 +46,8 @@ public class SectionEN03Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
+        bi.fldGrpCVs3q9.setVisibility(MainApp.childAgeinHours > 24 ? View.VISIBLE : View.GONE);
+
         bi.s3q3.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == bi.s3q301.getId()) {
                 Clear.clearAllFields(bi.fldGrpCVs3q4);
