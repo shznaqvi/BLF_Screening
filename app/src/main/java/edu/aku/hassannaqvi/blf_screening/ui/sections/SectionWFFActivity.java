@@ -47,9 +47,28 @@ import edu.aku.hassannaqvi.blf_screening.R;
 
 public class SectionWFFActivity extends AppCompatActivity {
 
+
+    ActivitySectionWffBinding bi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_wff);
+        bi.setCallback(this);
+        /*setupSkips();*/
+    }
+
+
+    private void SaveDraft() {
+
+
+        JSONObject json = new JSONObject();
+        /*json.put("wf101", bi.wf10101.isChecked() ? "1"
+                : bi.wf10102.isChecked() ? "2"
+                :  "-1");
+
+        json.put("wf10102x", bi.wf10102x.getText().toString());
+        json.put("wfi02", bi.wfi02.getText().toString());
+*/
+
     }
 }
