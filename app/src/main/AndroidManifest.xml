@@ -27,6 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup">
+        <activity android:name=".ui.sections.SectionCActivity"></activity>
+        <activity android:name=".ui.sections.SectionWFEActivity" />
+        <activity android:name=".ui.sections.SectionWFFActivity" />
         <activity android:name=".ui.sections.SectionWFA05Activity"></activity>
         <activity android:name=".ui.sections.SectionWFA04Activity" />
         <activity android:name=".ui.sections.SectionWFB02Activity" />
