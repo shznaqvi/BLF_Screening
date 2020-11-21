@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -18,6 +19,7 @@ public class SectionWFEActivity extends AppCompatActivity {
     ActivitySectionWfeBinding bi;
     Intent oF = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,17 @@ public class SectionWFEActivity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
+        bi.wfe101.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.wfe10102.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVwfe102);
+            }
+        });
+     /*   bi.wfe101".setOnCheckedChangeListener(((radioGroup, i) -> {
+            if (i == bi.wfe10102.getId()  {
+                Clear.clearAllFields(bi.fldGrpCVwfe102);
+            }
+        }));*/
+        /*bi.wfe101".setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == bi.ah51e.getId()) {
                 Clear.clearAllFields(bi.fldGrpAH52);
             }
