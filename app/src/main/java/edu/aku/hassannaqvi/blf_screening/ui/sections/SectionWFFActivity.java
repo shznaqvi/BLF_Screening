@@ -20,6 +20,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +34,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWffBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSL;
@@ -49,12 +51,60 @@ public class SectionWFFActivity extends AppCompatActivity {
 
 
     ActivitySectionWffBinding bi;
+    Intent oF = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_wff);
         bi.setCallback(this);
         /*setupSkips();*/
+    }
+
+
+
+
+    private void setupSkips() {
+
+        bi.wf101.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.wf10102.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVwfi02);
+            }
+        });
+
+    }
+    public void BtnContinue() {
+        if (formValidation()) {
+            try {
+                SaveDraft();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                finish();
+                startActivity(new Intent(this, EndingActivity.class));
+            }
+        }
+    }
+
+
+    public void BtnEnd() {
+        oF = new Intent(this, MainActivity.class);
+        startActivity(oF);
+    }
+
+
+
+    private boolean UpdateDB() {
+        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormsS3Column(FormsENContract.FormsS3Table.COLUMN_EN, MainApp.formsEN.s3toString());
+        if (updcount == 1) {
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+        return true;
+
     }
 
 
@@ -71,4 +121,15 @@ public class SectionWFFActivity extends AppCompatActivity {
 */
 
     }
+    private boolean formValidation() {
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You can't go back", Toast.LENGTH_SHORT).show();
+    }
+
 }
