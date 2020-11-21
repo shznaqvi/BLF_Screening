@@ -9,7 +9,7 @@
             type="edu.aku.hassannaqvi.bovinelactoferrin.models.Form" />-->
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionCActivity" />
+            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFCActivity" />
     </data>
 
     <ScrollView

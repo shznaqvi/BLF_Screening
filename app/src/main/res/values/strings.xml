@@ -724,9 +724,9 @@
     <string name="wfa10701">Alive</string>
     <string name="wfa10702">Dead</string>
     <string name="wfa10696">Other hospital</string>
-    <string name="wfa108">Status of baby</string>
+    <!--<string name="wfa108">Status of baby</string>
     <string name="wfa10801">Alive</string>
-    <string name="wfa10802">Dead</string>
+    <string name="wfa10802">Dead</string>-->
     <string name="wfa109">If the baby is not alive, what was the reason of death as per medical record</string>
     <string name="wfa10901">Preterm birth complications</string>
     <string name="wfa10902">Perinatal Asphyxia</string>
@@ -1195,7 +1195,7 @@
     <string name='Q_wfa105'>wfa105</string>
     <string name='Q_wfa106'>wfa106</string>
     <string name='Q_wfa107'>wfa107</string>
-    <string name='Q_wfa108'>wfa108</string>
+    <!--<string name='Q_wfa108'>wfa108</string>-->
     <string name='Q_wfa109'>wfa109</string>
     <string name='Q_wfa110'>wfa110</string>
     <string name='Q_wfa111'>wfa111</string>
