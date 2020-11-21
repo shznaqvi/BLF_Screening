@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWffBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSL;
@@ -80,7 +81,7 @@ public class SectionWFFActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFB02Activity.class));
+                startActivity(new Intent(this, EndingActivity.class));
             }
         }
     }

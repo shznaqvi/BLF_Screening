@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -28,11 +29,11 @@ public class SectionWFDActivity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.wfd101.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.wfd10102.getId()) {
+                Clear.clearAllFields(bi.wfdGrpCVwfd101);
             }
-        });*/
+        });
 
     }
 
