@@ -7,9 +7,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
+import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfb02Binding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
@@ -26,13 +30,14 @@ public class SectionWFB02Activity extends AppCompatActivity {
         setupSkips();
     }
 
+
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.wfb201.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.wfb20101.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVwfb202);
             }
-        });*/
+        });
 
     }
 
@@ -46,7 +51,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SectionWFCActivity.class));
             }
         }
     }
@@ -59,47 +64,46 @@ public class SectionWFB02Activity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsS3Column(FormsENContract.FormsS3Table.COLUMN_EN, MainApp.formsEN.s3toString());
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
         if (updcount == 1) {
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-        return true;
+        }
 
     }
 
 
     private void SaveDraft() {
 
-        /*form.setWfb201( bi.wfb20101.isChecked() ? "1"
+        MainApp.formsWF.setWfb201(bi.wfb20101.isChecked() ? "1"
                 : bi.wfb20102.isChecked() ? "2"
-                :  "-1");
+                : "-1");
 
-        form.setWfb202(bi.wfb202.getText().toString());
+        MainApp.formsWF.setWfb202(bi.wfb202.getText().toString().trim().isEmpty() ? "-1" : bi.wfb202.getText().toString());
 
-        form.setWfb203( bi.wfb20301.isChecked() ? "1"
+        MainApp.formsWF.setWfb203(bi.wfb20301.isChecked() ? "1"
                 : bi.wfb20302.isChecked() ? "2"
                 : bi.wfb20303.isChecked() ? "3"
                 : bi.wfb20396.isChecked() ? "96"
-                :  "-1");
+                : "-1");
+        MainApp.formsWF.setWfb20396x(bi.wfb20396x.getText().toString().trim().isEmpty() ? "-1" : bi.wfb20396x.getText().toString());
 
-        form.setWfb20396x(bi.wfb20396x.getText().toString());
-        form.setWfb204(bi.wfb204.getText().toString());
+        MainApp.formsWF.setWfb204(bi.wfb204.getText().toString().trim().isEmpty() ? "-1" : bi.wfb204.getText().toString());
 
-        form.setWfb205( bi.wfb20501.isChecked() ? "1"
+        MainApp.formsWF.setWfb205(bi.wfb20501.isChecked() ? "1"
                 : bi.wfb20502.isChecked() ? "2"
                 : bi.wfb20503.isChecked() ? "3"
                 : bi.wfb20504.isChecked() ? "4"
                 : bi.wfb20596.isChecked() ? "96"
-                :  "-1");
+                : "-1");
+        MainApp.formsWF.setWfb20596x(bi.wfb20596x.getText().toString().trim().isEmpty() ? "-1" : bi.wfb20596x.getText().toString());
 
-        form.setWfb20596x(bi.wfb20596x.getText().toString());
-        form.setWfb206(bi.wfb206.getText().toString());
+        MainApp.formsWF.setWfb206(bi.wfb206.getText().toString().trim().isEmpty() ? "-1" : bi.wfb206.getText().toString());
 
-        form.setWfb207(bi.wfb207.getText().toString());*/
+        MainApp.formsWF.setWfb207(bi.wfb207.getText().toString().trim().isEmpty() ? "-1" : bi.wfb207.getText().toString());
 
     }
 

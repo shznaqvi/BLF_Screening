@@ -61,18 +61,21 @@
                     <RadioGroup
                         android:id="@+id/wfb201"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/wfb20101"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfb20101" />
 
                         <RadioButton
                             android:id="@+id/wfb20102"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfb20102" />
                     </RadioGroup>
                 </LinearLayout>
@@ -82,7 +85,8 @@
             <!-- wfb202  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfb202"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{wfb20101.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"

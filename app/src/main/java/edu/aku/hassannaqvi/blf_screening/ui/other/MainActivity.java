@@ -34,6 +34,17 @@ import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN01Activity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA01Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA02Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA03Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA04Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA05Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFB01Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFB02Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFCActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFDActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFEActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFFActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.blf_screening.utils.CreateTable;
@@ -320,6 +331,42 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 break;
             case R.id.formEnr:
                 oF = new Intent(this, SectionEN01Activity.class);
+                break;
+            case R.id.formWF:
+                oF = new Intent(this, SectionWFA01Activity.class);
+                break;
+            case R.id.secWFA01:
+                oF = new Intent(this, SectionWFA01Activity.class);
+                break;
+            case R.id.secWFA02:
+                oF = new Intent(this, SectionWFA02Activity.class);
+                break;
+            case R.id.secWFA03:
+                oF = new Intent(this, SectionWFA03Activity.class);
+                break;
+            case R.id.secWFA04:
+                oF = new Intent(this, SectionWFA04Activity.class);
+                break;
+            case R.id.secWFA05:
+                oF = new Intent(this, SectionWFA05Activity.class);
+                break;
+            case R.id.secWFB01:
+                oF = new Intent(this, SectionWFB01Activity.class);
+                break;
+            case R.id.secWFB02:
+                oF = new Intent(this, SectionWFB02Activity.class);
+                break;
+            case R.id.secWFC:
+                oF = new Intent(this, SectionWFCActivity.class);
+                break;
+            case R.id.secWFD:
+                oF = new Intent(this, SectionWFDActivity.class);
+                break;
+            case R.id.secWFE:
+                oF = new Intent(this, SectionWFEActivity.class);
+                break;
+            case R.id.secWFF:
+                oF = new Intent(this, SectionWFFActivity.class);
                 break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);

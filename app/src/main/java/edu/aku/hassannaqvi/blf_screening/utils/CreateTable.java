@@ -5,6 +5,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract.DistrictsTa
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
 
@@ -78,6 +79,27 @@ public final class CreateTable {
             + FormsSFTable.COLUMN_ISTATUS96x + " TEXT,"*/
             + FormsS3Table.COLUMN_SYNCED + " TEXT,"
             + FormsS3Table.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+
+    public static final String SQL_CREATE_FORMSWF = "CREATE TABLE "
+            + FormsWFTable.TABLE_NAME + "("
+            + FormsWFTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsWFTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsWFTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsWFTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsWFTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsWFTable.COLUMN_UID + " TEXT,"
+            + FormsWFTable.COLUMN_GPSLAT + " TEXT,"
+            + FormsWFTable.COLUMN_GPSLNG + " TEXT,"
+            + FormsWFTable.COLUMN_GPSDATE + " TEXT,"
+            + FormsWFTable.COLUMN_GPSACC + " TEXT,"
+            + FormsWFTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsWFTable.COLUMN_SWF + " TEXT,"
+//            + FormsWFTable.COLUMN_ENDINGDATETIME + " TEXT,"
+           /* + FormsWFTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsWFTable.COLUMN_ISTATUS96x + " TEXT,"*/
+            + FormsWFTable.COLUMN_SYNCED + " TEXT,"
+            + FormsWFTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("

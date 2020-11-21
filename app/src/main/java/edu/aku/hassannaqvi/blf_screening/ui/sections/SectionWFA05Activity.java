@@ -10,6 +10,9 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
+import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa05Binding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
@@ -47,7 +50,7 @@ public class SectionWFA05Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SectionWFB01Activity.class));
             }
         }
     }
@@ -60,63 +63,81 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsS3Column(FormsENContract.FormsS3Table.COLUMN_EN, MainApp.formsEN.s3toString());
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
         if (updcount == 1) {
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-        return true;
+        }
 
     }
 
 
     private void SaveDraft() {
 
-        /*form.setWfa401( bi.wfa40101.isChecked() ? "1"
-                : bi.wfa40102.isChecked() ? "2"
-                :  "-1");
+        MainApp.formsWF.setWfa504(bi.wfa504.getText().toString().trim().isEmpty() ? "-1" : bi.wfa504.getText().toString());
 
-        form.setWfa40201(bi.wfa40201.getText().toString());
-        form.setWfa40202(bi.wfa40202.getText().toString());
-        form.setWfa40203(bi.wfa40203.getText().toString());
-        form.setWfa403( bi.wfa40301.isChecked() ? "1"
-                : bi.wfa40396.isChecked() ? "96"
-                :  "-1");
+        MainApp.formsWF.setWfa505(bi.wfa505.getText().toString().trim().isEmpty() ? "-1" : bi.wfa505.getText().toString());
 
-        form.setWfa40396x(bi.wfa40396x.getText().toString());
-        form.setWfa404( bi.wfa40401.isChecked() ? "666"
-                : bi.wfa40402.isChecked() ? "2"
-                : bi.wfa40403.isChecked() ? "3"
-                :  "-1");
+        MainApp.formsWF.setWfa506(bi.wfa506.getText().toString().trim().isEmpty() ? "-1" : bi.wfa506.getText().toString());
 
-        form.setWfa40402x(bi.wfa40402x.getText().toString());
-        form.setWfa40403x(bi.wfa40403x.getText().toString());
-        form.setWfa405(bi.wfa405.getText().toString());
+        MainApp.formsWF.setWfa507(bi.wfa50701.isChecked() ? "1"
+                : bi.wfa50702.isChecked() ? "2"
+                : "-1");
 
-        form.setWfa406( bi.wfa40601.isChecked() ? "1"
-                : bi.wfa40602.isChecked() ? "2"
-                :  "-1");
+        MainApp.formsWF.setWfa50801(bi.wfa50801.isChecked() ? "1" : "-1");
+        MainApp.formsWF.setWfa50802(bi.wfa50802.isChecked() ? "2" : "-1");
+        MainApp.formsWF.setWfa50803(bi.wfa50803.isChecked() ? "3" : "-1");
+        MainApp.formsWF.setWfa50804(bi.wfa50804.isChecked() ? "4" : "-1");
+        MainApp.formsWF.setWfa50805(bi.wfa50805.isChecked() ? "5" : "-1");
 
-        form.setWfa40701(bi.wfa40701.getText().toString());
-        form.setWfa40702(bi.wfa40702.getText().toString());
-        form.setWfa40703(bi.wfa40703.getText().toString());
-        form.setWfa40801(bi.wfa40801.getText().toString());
-        form.setWfa40803(bi.wfa40803.getText().toString());
-        form.setWfa40804(bi.wfa40804.getText().toString());
-        form.setWfa40805(bi.wfa40805.getText().toString());
-        form.setWfa409( bi.wfa40901.isChecked() ? "1"
-                : bi.wfa40902.isChecked() ? "2"
-                : bi.wfa40903.isChecked() ? "3"
-                : bi.wfa40904.isChecked() ? "4"
-                : bi.wfa40905.isChecked() ? "5"
-                :  "-1");
+        MainApp.formsWF.setWfa509(bi.wfa50901.isChecked() ? "1"
+                : bi.wfa50902.isChecked() ? "2"
+                : bi.wfa50903.isChecked() ? "3"
+                : bi.wfa50904.isChecked() ? "4"
+                : bi.wfa50996.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa50996x(bi.wfa50996x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa50996x.getText().toString());
 
-        form.setWfa40903x(bi.wfa40903x.getText().toString());
-        form.setWfa40904x(bi.wfa40904x.getText().toString());
-        form.setWfa40905x(bi.wfa40905x.getText().toString());*/
+        MainApp.formsWF.setWfa510(bi.wfa51001.isChecked() ? "1"
+                : bi.wfa51002.isChecked() ? "2"
+                : bi.wfa51096.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa51096x(bi.wfa51096x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa51096x.getText().toString());
+
+        MainApp.formsWF.setWfa511(bi.wfa51101.isChecked() ? "1"
+                : bi.wfa51102.isChecked() ? "2"
+                : bi.wfa51103.isChecked() ? "3"
+                : bi.wfa51104.isChecked() ? "4"
+                : bi.wfa51105.isChecked() ? "5"
+                : bi.wfa51196.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa51196x(bi.wfa51196x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa51196x.getText().toString());
+
+        MainApp.formsWF.setWfa512(bi.wfa51201.isChecked() ? "1"
+                : bi.wfa51202.isChecked() ? "2"
+                : bi.wfa51296.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa51296x(bi.wfa51296x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa51296x.getText().toString());
+
+        MainApp.formsWF.setWfa513(bi.wfa51301.isChecked() ? "1"
+                : bi.wfa51302.isChecked() ? "2"
+                : bi.wfa51396.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa51396x(bi.wfa51396x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa51396x.getText().toString());
+
+        MainApp.formsWF.setWfa51401(bi.wfa51401.isChecked() ? "1" : "-1");
+        MainApp.formsWF.setWfa51402(bi.wfa51402.isChecked() ? "2" : "-1");
+        MainApp.formsWF.setWfa51403(bi.wfa51403.isChecked() ? "3" : "-1");
+        MainApp.formsWF.setWfa51404(bi.wfa51404.isChecked() ? "4" : "-1");
+
+        MainApp.formsWF.setWfa515(bi.wfa51501.isChecked() ? "1"
+                : bi.wfa51502.isChecked() ? "2"
+                : bi.wfa51596.isChecked() ? "96"
+                : "-1");
+        MainApp.formsWF.setWfa51596x(bi.wfa51596x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa51596x.getText().toString());
 
     }
 

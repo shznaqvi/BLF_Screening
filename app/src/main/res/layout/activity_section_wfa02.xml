@@ -60,18 +60,21 @@
                     <RadioGroup
                         android:id="@+id/wfa201"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/wfa20101"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa20101" />
 
                         <RadioButton
                             android:id="@+id/wfa20102"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa20102" />
                     </RadioGroup>
                 </LinearLayout>
@@ -81,7 +84,8 @@
             <!-- wfa202  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa202"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{wfa20101.checked? View.GONE : View.VISIBLE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -120,7 +124,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:gravity="center"
                             android:text="@string/wfa202titel1" />
 
                         <CheckBox
@@ -178,7 +182,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:gravity="center"
                             android:text="@string/wfa202titel2" />
 
                         <CheckBox
@@ -208,8 +212,11 @@
                             android:tag="wfa20296b"
                             android:text='@{wfa20296b.checked ? wfa20296bx.getText().toString() : ""}'
                             android:visibility='@{wfa20296b.checked? View.VISIBLE : View.GONE}' />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -511,6 +518,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
 
             <!--EndButton LinearLayout-->
             <LinearLayout

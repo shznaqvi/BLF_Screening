@@ -11,6 +11,9 @@ import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
+import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfeBinding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
@@ -18,7 +21,6 @@ public class SectionWFEActivity extends AppCompatActivity {
 
     ActivitySectionWfeBinding bi;
     Intent oF = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +33,10 @@ public class SectionWFEActivity extends AppCompatActivity {
     private void setupSkips() {
 
         bi.wfe101.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfe10102.getId()) {
+            if (checkedId == bi.wfe10102.getId()) {
                 Clear.clearAllFields(bi.fldGrpCVwfe102);
             }
         });
-     /*   bi.wfe101".setOnCheckedChangeListener(((radioGroup, i) -> {
-            if (i == bi.wfe10102.getId()  {
-                Clear.clearAllFields(bi.fldGrpCVwfe102);
-            }
-        }));*/
-        /*bi.wfe101".setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
-            }
-        });*/
 
     }
 
@@ -58,7 +50,7 @@ public class SectionWFEActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SectionWFFActivity.class));
             }
         }
     }
@@ -71,27 +63,26 @@ public class SectionWFEActivity extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsS3Column(FormsENContract.FormsS3Table.COLUMN_EN, MainApp.formsEN.s3toString());
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
         if (updcount == 1) {
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-        return true;
+        }
 
     }
 
 
     private void SaveDraft() {
 
-       /* form.setWfe101( bi.wfe10101.isChecked() ? "1"
-                : bi.wfe10102.isChecked() ? ""
-                :  "-1");
+        MainApp.formsWF.setWfe101(bi.wfe10101.isChecked() ? "1"
+                : bi.wfe10102.isChecked() ? "2"
+                : "-1");
+        MainApp.formsWF.setWfe10102x(bi.wfe10102x.getText().toString().trim().isEmpty() ? "-1" : bi.wfe10102x.getText().toString());
 
-        form.setWfe10102x(bi.wfe10102x.getText().toString());
-        form.setWfe102(bi.wfe102.getText().toString());*/
+        MainApp.formsWF.setWfe102(bi.wfe102.getText().toString().trim().isEmpty() ? "-1" : bi.wfe102.getText().toString());
 
     }
 

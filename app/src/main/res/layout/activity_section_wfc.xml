@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <!-- wfc101  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfc101"
@@ -90,12 +91,15 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
             <LinearLayout
                 android:id="@+id/llgrpsec1101"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility='@{wfc10102.checked? View.GONE : View.VISIBLE}'>
+                android:visibility='@{wfc10101.checked? View.VISIBLE : View.GONE}'>
+
+
                 <!-- wfc102  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVwfc102"
@@ -141,6 +145,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+
                 <!-- wfc103  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVwfc103"
@@ -185,6 +190,8 @@
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+
                 <!-- wfc104  Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVwfc104"
@@ -229,6 +236,8 @@
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+
             </LinearLayout>
 
 
@@ -260,6 +269,10 @@
                     android:text="Save"
                     android:textColor="@color/white" />
             </LinearLayout>
+
+
         </LinearLayout>
+
     </ScrollView>
+
 </layout>

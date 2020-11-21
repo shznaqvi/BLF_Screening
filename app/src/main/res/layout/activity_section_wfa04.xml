@@ -61,18 +61,21 @@
                     <RadioGroup
                         android:id="@+id/wfa401"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/wfa40101"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa40101" />
 
                         <RadioButton
                             android:id="@+id/wfa40102"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa40102" />
                     </RadioGroup>
                 </LinearLayout>
@@ -371,18 +374,21 @@
                     <RadioGroup
                         android:id="@+id/wfa406"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/wfa40601"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa40601" />
 
                         <RadioButton
                             android:id="@+id/wfa40602"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa40602" />
                     </RadioGroup>
                 </LinearLayout>

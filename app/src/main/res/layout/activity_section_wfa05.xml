@@ -58,11 +58,18 @@
                             android:text="@string/Q_wfa504" />
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/wfa504"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/wfa504" />
+                        android:gravity="center"
+                        android:hint="##.#"
+                        android:inputType="number"
+                        app:mask="##.#"
+                        app:maxValue="41.0"
+                        app:minValue="33.0"
+                        app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
+                        app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -103,6 +110,7 @@
                         android:id="@+id/wfa505"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:hint="@string/wfa505"
                         android:inputType="number"
                         android:maxLength="2"
@@ -149,6 +157,7 @@
                         android:id="@+id/wfa506"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:hint="@string/wfa506"
                         android:inputType="number"
                         android:maxLength="3"
@@ -194,18 +203,21 @@
                     <RadioGroup
                         android:id="@+id/wfa507"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/wfa50701"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa50701" />
 
                         <RadioButton
                             android:id="@+id/wfa50702"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfa50702" />
                     </RadioGroup>
                 </LinearLayout>

@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <!-- wfe101  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfe101"
@@ -83,6 +84,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
             <!-- wfe102  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfe102"
@@ -122,7 +124,11 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/wfe102" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView><!--EndButton LinearLayout-->
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--EndButton LinearLayout-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -150,6 +156,10 @@
                     android:text="Save"
                     android:textColor="@color/white" />
             </LinearLayout>
+
+
         </LinearLayout>
+
     </ScrollView>
+
 </layout>
