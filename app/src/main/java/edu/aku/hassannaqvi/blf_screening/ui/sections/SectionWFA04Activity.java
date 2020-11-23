@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -32,11 +33,17 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.wfa401.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.wfa40102.getId()) {
+                Clear.clearAllFields(bi.llGrpsec401);
             }
-        });*/
+        });
+
+        bi.wfa406.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.wfa40602.getId()) {
+                Clear.clearAllFields(bi.llGrpsec402);
+            }
+        });
 
     }
 
@@ -64,7 +71,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFA04, MainApp.formsWF.sWFA04toString());
         if (updcount == 1) {
             return true;
         } else {
@@ -81,9 +88,13 @@ public class SectionWFA04Activity extends AppCompatActivity {
                 : bi.wfa40102.isChecked() ? "2"
                 : "-1");
 
-        MainApp.formsWF.setWfa40201(bi.wfa40201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40201.getText().toString());
-        MainApp.formsWF.setWfa40202(bi.wfa40202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40202.getText().toString());
-        MainApp.formsWF.setWfa40203(bi.wfa40203.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40203.getText().toString());
+        String[] swf402 = bi.wfa40201.getText().toString().split("-");
+        String wfa40201 = swf402[0];
+        String wfa40202 = swf402[1];
+        String wfa40203 = swf402[2];
+        MainApp.formsWF.setWfa40201(wfa40201);
+        MainApp.formsWF.setWfa40202(wfa40202);
+        MainApp.formsWF.setWfa40203(wfa40203);
 
         MainApp.formsWF.setWfa403(bi.wfa40301.isChecked() ? "1"
                 : bi.wfa40396.isChecked() ? "96"
@@ -108,9 +119,14 @@ public class SectionWFA04Activity extends AppCompatActivity {
         MainApp.formsWF.setWfa40703(bi.wfa40703.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40703.getText().toString());
 
         MainApp.formsWF.setWfa40801(bi.wfa40801.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40801.getText().toString());
-        MainApp.formsWF.setWfa40803(bi.wfa40803.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40803.getText().toString());
-        MainApp.formsWF.setWfa40804(bi.wfa40804.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40804.getText().toString());
-        MainApp.formsWF.setWfa40805(bi.wfa40805.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40805.getText().toString());
+
+        String[] swf408 = bi.wfa40802.getText().toString().split("-");
+        String wfa40802 = swf408[0];
+        String wfa40803 = swf408[1];
+        String wfa40804 = swf408[2];
+        MainApp.formsWF.setWfa40803(wfa40802);
+        MainApp.formsWF.setWfa40804(wfa40803);
+        MainApp.formsWF.setWfa40805(wfa40804);
 
         MainApp.formsWF.setWfa409(bi.wfa40901.isChecked() ? "1"
                 : bi.wfa40902.isChecked() ? "2"

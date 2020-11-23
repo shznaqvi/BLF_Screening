@@ -206,21 +206,36 @@ public class FormsWF extends LiveData<FormsWF> {
     public String wfc104 = "";
     public String wfd101 = "";
     public String wfd10102x = "";
-    public String wfd102a01 = "";
-    public String wfd102b01 = "";
-    public String wfd102c01 = "";
-    public String wfd102d01 = "";
-    public String wfd102e01 = "";
-    public String wfd102f01 = "";
-    public String wfd102g01 = "";
-    public String wfd102h01 = "";
-    public String wfd102i01 = "";
-    public String wfd102j01 = "";
-    public String wfd102k01 = "";
-    public String wfd102l01 = "";
-    public String wfd102m01 = "";
-    public String wfd102n01 = "";
-    public String wfd102o01 = "";
+    public String wfd102a;
+    public String wfd102a01x;
+    public String wfd102b;
+    public String wfd102b01x;
+    public String wfd102c;
+    public String wfd102c01x;
+    public String wfd102d;
+    public String wfd102d01x;
+    public String wfd102e;
+    public String wfd102e01x;
+    public String wfd102f;
+    public String wfd102f01x;
+    public String wfd102g;
+    public String wfd102g01x;
+    public String wfd102h;
+    public String wfd102h01x;
+    public String wfd102i;
+    public String wfd102i01x;
+    public String wfd102j;
+    public String wfd102j01x;
+    public String wfd102k;
+    public String wfd102k01x;
+    public String wfd102l;
+    public String wfd102l01x;
+    public String wfd102m;
+    public String wfd102m01x;
+    public String wfd102n;
+    public String wfd102n01x;
+    public String wfd102o;
+    public String wfd102o01x;
     public String wfe101 = "";
     public String wfe10102x = "";
     public String wfe102 = "";
@@ -246,7 +261,17 @@ public class FormsWF extends LiveData<FormsWF> {
     private String synced = "";
     private String synced_date = "";
     private String appversion = "";
-    private String sWF = ""; //SectionSWF
+    private String sWFA01 = "";
+    private String sWFA02 = "";
+    private String sWFA03 = "";
+    private String sWFA04 = "";
+    private String sWFA05 = "";
+    private String sWFB01 = "";
+    private String sWFB02 = "";
+    private String sWFC = "";
+    private String sWFD = "";
+    private String sWFE = "";
+    private String sWFF = "";
 
     //For section selection
     private SectionSelection secSelection;
@@ -1752,124 +1777,244 @@ public class FormsWF extends LiveData<FormsWF> {
         this.wfd10102x = wfd10102x;
     }
 
-    public String getWfd102a01() {
-        return wfd102a01;
+    public String getWfd102a() {
+        return wfd102a;
     }
 
-    public void setWfd102a01(String wfd102a01) {
-        this.wfd102a01 = wfd102a01;
+    public void setWfd102a(String wfd102a) {
+        this.wfd102a = wfd102a;
     }
 
-    public String getWfd102b01() {
-        return wfd102b01;
+    public String getWfd102a01x() {
+        return wfd102a01x;
     }
 
-    public void setWfd102b01(String wfd102b01) {
-        this.wfd102b01 = wfd102b01;
+    public void setWfd102a01x(String wfd102a01x) {
+        this.wfd102a01x = wfd102a01x;
     }
 
-    public String getWfd102c01() {
-        return wfd102c01;
+    public String getWfd102b() {
+        return wfd102b;
     }
 
-    public void setWfd102c01(String wfd102c01) {
-        this.wfd102c01 = wfd102c01;
+    public void setWfd102b(String wfd102b) {
+        this.wfd102b = wfd102b;
     }
 
-    public String getWfd102d01() {
-        return wfd102d01;
+    public String getWfd102b01x() {
+        return wfd102b01x;
     }
 
-    public void setWfd102d01(String wfd102d01) {
-        this.wfd102d01 = wfd102d01;
+    public void setWfd102b01x(String wfd102b01x) {
+        this.wfd102b01x = wfd102b01x;
     }
 
-    public String getWfd102e01() {
-        return wfd102e01;
+    public String getWfd102c() {
+        return wfd102c;
     }
 
-    public void setWfd102e01(String wfd102e01) {
-        this.wfd102e01 = wfd102e01;
+    public void setWfd102c(String wfd102c) {
+        this.wfd102c = wfd102c;
     }
 
-    public String getWfd102f01() {
-        return wfd102f01;
+    public String getWfd102c01x() {
+        return wfd102c01x;
     }
 
-    public void setWfd102f01(String wfd102f01) {
-        this.wfd102f01 = wfd102f01;
+    public void setWfd102c01x(String wfd102c01x) {
+        this.wfd102c01x = wfd102c01x;
     }
 
-    public String getWfd102g01() {
-        return wfd102g01;
+    public String getWfd102d() {
+        return wfd102d;
     }
 
-    public void setWfd102g01(String wfd102g01) {
-        this.wfd102g01 = wfd102g01;
+    public void setWfd102d(String wfd102d) {
+        this.wfd102d = wfd102d;
     }
 
-    public String getWfd102h01() {
-        return wfd102h01;
+    public String getWfd102d01x() {
+        return wfd102d01x;
     }
 
-    public void setWfd102h01(String wfd102h01) {
-        this.wfd102h01 = wfd102h01;
+    public void setWfd102d01x(String wfd102d01x) {
+        this.wfd102d01x = wfd102d01x;
     }
 
-    public String getWfd102i01() {
-        return wfd102i01;
+    public String getWfd102e() {
+        return wfd102e;
     }
 
-    public void setWfd102i01(String wfd102i01) {
-        this.wfd102i01 = wfd102i01;
+    public void setWfd102e(String wfd102e) {
+        this.wfd102e = wfd102e;
     }
 
-    public String getWfd102j01() {
-        return wfd102j01;
+    public String getWfd102e01x() {
+        return wfd102e01x;
     }
 
-    public void setWfd102j01(String wfd102j01) {
-        this.wfd102j01 = wfd102j01;
+    public void setWfd102e01x(String wfd102e01x) {
+        this.wfd102e01x = wfd102e01x;
     }
 
-    public String getWfd102k01() {
-        return wfd102k01;
+    public String getWfd102f() {
+        return wfd102f;
     }
 
-    public void setWfd102k01(String wfd102k01) {
-        this.wfd102k01 = wfd102k01;
+    public void setWfd102f(String wfd102f) {
+        this.wfd102f = wfd102f;
     }
 
-    public String getWfd102l01() {
-        return wfd102l01;
+    public String getWfd102f01x() {
+        return wfd102f01x;
     }
 
-    public void setWfd102l01(String wfd102l01) {
-        this.wfd102l01 = wfd102l01;
+    public void setWfd102f01x(String wfd102f01x) {
+        this.wfd102f01x = wfd102f01x;
     }
 
-    public String getWfd102m01() {
-        return wfd102m01;
+    public String getWfd102g() {
+        return wfd102g;
     }
 
-    public void setWfd102m01(String wfd102m01) {
-        this.wfd102m01 = wfd102m01;
+    public void setWfd102g(String wfd102g) {
+        this.wfd102g = wfd102g;
     }
 
-    public String getWfd102n01() {
-        return wfd102n01;
+    public String getWfd102g01x() {
+        return wfd102g01x;
     }
 
-    public void setWfd102n01(String wfd102n01) {
-        this.wfd102n01 = wfd102n01;
+    public void setWfd102g01x(String wfd102g01x) {
+        this.wfd102g01x = wfd102g01x;
     }
 
-    public String getWfd102o01() {
-        return wfd102o01;
+    public String getWfd102h() {
+        return wfd102h;
     }
 
-    public void setWfd102o01(String wfd102o01) {
-        this.wfd102o01 = wfd102o01;
+    public void setWfd102h(String wfd102h) {
+        this.wfd102h = wfd102h;
+    }
+
+    public String getWfd102h01x() {
+        return wfd102h01x;
+    }
+
+    public void setWfd102h01x(String wfd102h01x) {
+        this.wfd102h01x = wfd102h01x;
+    }
+
+    public String getWfd102i() {
+        return wfd102i;
+    }
+
+    public void setWfd102i(String wfd102i) {
+        this.wfd102i = wfd102i;
+    }
+
+    public String getWfd102i01x() {
+        return wfd102i01x;
+    }
+
+    public void setWfd102i01x(String wfd102i01x) {
+        this.wfd102i01x = wfd102i01x;
+    }
+
+    public String getWfd102j() {
+        return wfd102j;
+    }
+
+    public void setWfd102j(String wfd102j) {
+        this.wfd102j = wfd102j;
+    }
+
+    public String getWfd102j01x() {
+        return wfd102j01x;
+    }
+
+    public void setWfd102j01x(String wfd102j01x) {
+        this.wfd102j01x = wfd102j01x;
+    }
+
+    public String getWfd102k() {
+        return wfd102k;
+    }
+
+    public void setWfd102k(String wfd102k) {
+        this.wfd102k = wfd102k;
+    }
+
+    public String getWfd102k01x() {
+        return wfd102k01x;
+    }
+
+    public void setWfd102k01x(String wfd102k01x) {
+        this.wfd102k01x = wfd102k01x;
+    }
+
+    public String getWfd102l() {
+        return wfd102l;
+    }
+
+    public void setWfd102l(String wfd102l) {
+        this.wfd102l = wfd102l;
+    }
+
+    public String getWfd102l01x() {
+        return wfd102l01x;
+    }
+
+    public void setWfd102l01x(String wfd102l01x) {
+        this.wfd102l01x = wfd102l01x;
+    }
+
+    public String getWfd102m() {
+        return wfd102m;
+    }
+
+    public void setWfd102m(String wfd102m) {
+        this.wfd102m = wfd102m;
+    }
+
+    public String getWfd102m01x() {
+        return wfd102m01x;
+    }
+
+    public void setWfd102m01x(String wfd102m01x) {
+        this.wfd102m01x = wfd102m01x;
+    }
+
+    public String getWfd102n() {
+        return wfd102n;
+    }
+
+    public void setWfd102n(String wfd102n) {
+        this.wfd102n = wfd102n;
+    }
+
+    public String getWfd102n01x() {
+        return wfd102n01x;
+    }
+
+    public void setWfd102n01x(String wfd102n01x) {
+        this.wfd102n01x = wfd102n01x;
+    }
+
+    public String getWfd102o() {
+        return wfd102o;
+    }
+
+    public void setWfd102o(String wfd102o) {
+        this.wfd102o = wfd102o;
+    }
+
+    public String getWfd102o01x() {
+        return wfd102o01x;
+    }
+
+    public void setWfd102o01x(String wfd102o01x) {
+        this.wfd102o01x = wfd102o01x;
     }
 
     public String getWfe101() {
@@ -1918,14 +2063,6 @@ public class FormsWF extends LiveData<FormsWF> {
 
     public void setWfi02(String wfi02) {
         this.wfi02 = wfi02;
-    }
-
-    public String getsWF() {
-        return sWF;
-    }
-
-    public void setsWF(String sWF) {
-        this.sWF = sWF;
     }
 
 
@@ -2078,6 +2215,105 @@ public class FormsWF extends LiveData<FormsWF> {
     }
 
 
+    public String getsWFA01() {
+        return sWFA01;
+    }
+
+    public void setsWFA01(String sWFA01) {
+        this.sWFA01 = sWFA01;
+    }
+
+
+    public String getsWFA02() {
+        return sWFA02;
+    }
+
+    public void setsWFA02(String sWFA02) {
+        this.sWFA02 = sWFA02;
+    }
+
+
+    public String getsWFA03() {
+        return sWFA03;
+    }
+
+    public void setsWFA03(String sWFA03) {
+        this.sWFA03 = sWFA03;
+    }
+
+
+    public String getsWFA04() {
+        return sWFA04;
+    }
+
+    public void setsWFA04(String sWFA04) {
+        this.sWFA04 = sWFA04;
+    }
+
+
+    public String getsWFA05() {
+        return sWFA05;
+    }
+
+    public void setsWFA05(String sWFA05) {
+        this.sWFA05 = sWFA05;
+    }
+
+
+    public String getsWFB01() {
+        return sWFB01;
+    }
+
+    public void setsWFB01(String sWFB01) {
+        this.sWFB01 = sWFB01;
+    }
+
+
+    public String getsWFB02() {
+        return sWFB02;
+    }
+
+    public void setsWFB02(String sWFB02) {
+        this.sWFB02 = sWFB02;
+    }
+
+
+    public String getsWFC() {
+        return sWFC;
+    }
+
+    public void setsWFC(String sWFC) {
+        this.sWFC = sWFC;
+    }
+
+
+    public String getsWFD() {
+        return sWFD;
+    }
+
+    public void setsWFD(String sWFD) {
+        this.sWFD = sWFD;
+    }
+
+
+    public String getsWFE() {
+        return sWFE;
+    }
+
+    public void setsWFE(String sWFE) {
+        this.sWFE = sWFE;
+    }
+
+
+    public String getsWFF() {
+        return sWFF;
+    }
+
+    public void setsWFF(String sWFF) {
+        this.sWFF = sWFF;
+    }
+
+
     public String getSynced_date() {
         return synced_date;
     }
@@ -2104,7 +2340,17 @@ public class FormsWF extends LiveData<FormsWF> {
         this.synced = jsonObject.getString(FormsWFTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsWFTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsWFTable.COLUMN_SYNCED_DATE);
-        this.sWF = jsonObject.getString(FormsWFTable.COLUMN_SWF);
+        this.sWFA01 = jsonObject.getString(FormsWFTable.COLUMN_SWFA01);
+        this.sWFA02 = jsonObject.getString(FormsWFTable.COLUMN_SWFA02);
+        this.sWFA03 = jsonObject.getString(FormsWFTable.COLUMN_SWFA03);
+        this.sWFA04 = jsonObject.getString(FormsWFTable.COLUMN_SWFA04);
+        this.sWFA05 = jsonObject.getString(FormsWFTable.COLUMN_SWFA05);
+        this.sWFB01 = jsonObject.getString(FormsWFTable.COLUMN_SWFB01);
+        this.sWFB02 = jsonObject.getString(FormsWFTable.COLUMN_SWFB02);
+        this.sWFC = jsonObject.getString(FormsWFTable.COLUMN_SWFC);
+        this.sWFD = jsonObject.getString(FormsWFTable.COLUMN_SWFD);
+        this.sWFE = jsonObject.getString(FormsWFTable.COLUMN_SWFE);
+        this.sWFF = jsonObject.getString(FormsWFTable.COLUMN_SWFF);
 
         return this;
 
@@ -2124,7 +2370,18 @@ public class FormsWF extends LiveData<FormsWF> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_APPVERSION));
-        sWFHydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWF)));
+
+        sWFA01Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA01)));
+        sWFA02Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA02)));
+        sWFA03Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA03)));
+        sWFA04Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA04)));
+        sWFA05Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA05)));
+        sWFB01Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFB01)));
+        sWFB02Hydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFB02)));
+        sWFCHydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFC)));
+        sWFDHydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFD)));
+        sWFEHydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFE)));
+        sWFFHydrate(cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFF)));
 
         return this;
     }
@@ -2137,7 +2394,7 @@ public class FormsWF extends LiveData<FormsWF> {
     }
 
 
-    public String sWFtoString() {
+    public String sWFA01toString() {
         JSONObject json = new JSONObject();
 
         try {
@@ -2161,8 +2418,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfa11003", wfa11003)
                     .put("wfa11004", wfa11004)
                     .put("wfa11005", wfa11005)
-                    .put("wfa111", wfa111)
-                    .put("wfa201", wfa201)
+                    .put("wfa111", wfa111);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFA02toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfa201", wfa201)
                     .put("wfa202", wfa202)
                     .put("wfa20201", wfa20201)
                     .put("wfa20202", wfa20202)
@@ -2191,8 +2461,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfa20608", wfa20608)
                     .put("wfa20609", wfa20609)
                     .put("wfa20696", wfa20696)
-                    .put("wfa20696x", wfa20696x)
-                    .put("wfa301", wfa301)
+                    .put("wfa20696x", wfa20696x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFA03toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfa301", wfa301)
                     .put("wfa302", wfa302)
                     .put("wfa30301", wfa30301)
                     .put("wfa30302", wfa30302)
@@ -2243,8 +2526,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfa336", wfa336)
                     .put("wfa337", wfa337)
                     .put("wfa338", wfa338)
-                    .put("wfa339", wfa339)
-                    .put("wfa401", wfa401)
+                    .put("wfa339", wfa339);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFA04toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfa401", wfa401)
                     .put("wfa40201", wfa40201)
                     .put("wfa40202", wfa40202)
                     .put("wfa40203", wfa40203)
@@ -2265,8 +2561,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfa409", wfa409)
                     .put("wfa40903x", wfa40903x)
                     .put("wfa40904x", wfa40904x)
-                    .put("wfa40905x", wfa40905x)
-                    .put("wfa504", wfa504)
+                    .put("wfa40905x", wfa40905x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFA05toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfa504", wfa504)
                     .put("wfa505", wfa505)
                     .put("wfa506", wfa506)
                     .put("wfa507", wfa507)
@@ -2292,8 +2601,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfa51403", wfa51403)
                     .put("wfa51404", wfa51404)
                     .put("wfa515", wfa515)
-                    .put("wfa51596x", wfa51596x)
-                    .put("wfb101", wfb101)
+                    .put("wfa51596x", wfa51596x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFB01toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfb101", wfb101)
                     .put("wfb102", wfb102)
                     .put("wfb10296x", wfb10296x)
                     .put("wfb103", wfb103)
@@ -2311,8 +2633,21 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfb1081c", wfb1081c)
                     .put("wfb1081d", wfb1081d)
                     .put("wfb1081d06x", wfb1081d06x)
-                    .put("wfb1081d96x", wfb1081d96x)
-                    .put("wfb201", wfb201)
+                    .put("wfb1081d96x", wfb1081d96x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFB02toString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfb201", wfb201)
                     .put("wfb202", wfb202)
                     .put("wfb203", wfb203)
                     .put("wfb20396x", wfb20396x)
@@ -2320,33 +2655,99 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfb205", wfb205)
                     .put("wfb20596x", wfb20596x)
                     .put("wfb206", wfb206)
-                    .put("wfb207", wfb207)
-                    .put("wfc101", wfc101)
+                    .put("wfb207", wfb207);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFCtoString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfc101", wfc101)
                     .put("wfc10196x", wfc10196x)
                     .put("wfc102", wfc102)
                     .put("wfc103", wfc103)
-                    .put("wfc104", wfc104)
-                    .put("wfd101", wfd101)
-                    .put("wfd10102x", wfd10102x)
-                    .put("wfd102a01", wfd102a01)
-                    .put("wfd102b01", wfd102b01)
-                    .put("wfd102c01", wfd102c01)
-                    .put("wfd102d01", wfd102d01)
-                    .put("wfd102e01", wfd102e01)
-                    .put("wfd102f01", wfd102f01)
-                    .put("wfd102g01", wfd102g01)
-                    .put("wfd102h01", wfd102h01)
-                    .put("wfd102i01", wfd102i01)
-                    .put("wfd102j01", wfd102j01)
-                    .put("wfd102k01", wfd102k01)
-                    .put("wfd102l01", wfd102l01)
-                    .put("wfd102m01", wfd102m01)
-                    .put("wfd102n01", wfd102n01)
-                    .put("wfd102o01", wfd102o01)
-                    .put("wfe101", wfe101)
+                    .put("wfc104", wfc104);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFDtoString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfd101", wfd101)
+                    .put("wfd102a", wfd102a)
+                    .put("wfd102a01x", wfd102a01x)
+                    .put("wfd102b", wfd102b)
+                    .put("wfd102b01x", wfd102b01x)
+                    .put("wfd102c", wfd102c)
+                    .put("wfd102c01x", wfd102c01x)
+                    .put("wfd102d", wfd102d)
+                    .put("wfd102d01x", wfd102d01x)
+                    .put("wfd102e", wfd102e)
+                    .put("wfd102e01x", wfd102e01x)
+                    .put("wfd102f", wfd102f)
+                    .put("wfd102f01x", wfd102f01x)
+                    .put("wfd102g", wfd102g)
+                    .put("wfd102g01x", wfd102g01x)
+                    .put("wfd102h", wfd102h)
+                    .put("wfd102h01x", wfd102h01x)
+                    .put("wfd102i", wfd102i)
+                    .put("wfd102i01x", wfd102i01x)
+                    .put("wfd102j", wfd102j)
+                    .put("wfd102j01x", wfd102j01x)
+                    .put("wfd102k", wfd102k)
+                    .put("wfd102k01x", wfd102k01x)
+                    .put("wfd102l", wfd102l)
+                    .put("wfd102l01x", wfd102l01x)
+                    .put("wfd102m", wfd102m)
+                    .put("wfd102m01x", wfd102m01x)
+                    .put("wfd102n", wfd102n)
+                    .put("wfd102n01x", wfd102n01x)
+                    .put("wfd102o", wfd102o)
+                    .put("wfd102o01x", wfd102o01x);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFEtoString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wfe101", wfe101)
                     .put("wfe10102x", wfe10102x)
-                    .put("wfe102", wfe102)
-                    .put("wf101", wf101)
+                    .put("wfe102", wfe102);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+
+        }
+        return json.toString();
+    }
+
+    public String sWFFtoString() {
+        JSONObject json = new JSONObject();
+
+        try {
+            json.put("wf101", wf101)
                     .put("wf10102x", wf10102x)
                     .put("wfi02", wfi02);
 
@@ -2371,7 +2772,17 @@ public class FormsWF extends LiveData<FormsWF> {
             //        json.put(FormsWFTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
             //       json.put(FormsWFTable.COLUMN_ISTATUS96x, this.istatus96x == null ? JSONObject.NULL : this.istatus96x);
             //   json.put(FormsWFTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
-            json.put(FormsWFTable.COLUMN_SWF, new JSONObject(sWFtoString()));
+            json.put(FormsWFTable.COLUMN_SWFA01, new JSONObject(sWFA01toString()));
+            json.put(FormsWFTable.COLUMN_SWFA02, new JSONObject(sWFA02toString()));
+            json.put(FormsWFTable.COLUMN_SWFA03, new JSONObject(sWFA03toString()));
+            json.put(FormsWFTable.COLUMN_SWFA04, new JSONObject(sWFA04toString()));
+            json.put(FormsWFTable.COLUMN_SWFA05, new JSONObject(sWFA05toString()));
+            json.put(FormsWFTable.COLUMN_SWFB01, new JSONObject(sWFB01toString()));
+            json.put(FormsWFTable.COLUMN_SWFB02, new JSONObject(sWFB02toString()));
+            json.put(FormsWFTable.COLUMN_SWFC, new JSONObject(sWFCtoString()));
+            json.put(FormsWFTable.COLUMN_SWFD, new JSONObject(sWFDtoString()));
+            json.put(FormsWFTable.COLUMN_SWFE, new JSONObject(sWFEtoString()));
+            json.put(FormsWFTable.COLUMN_SWFF, new JSONObject(sWFFtoString()));
             /*  if (this.sF != null && !this.sF.equals("")) {
                 json.put(FormsWFTable.COLUMN_SF, new JSONObject(this.sF));
             }
@@ -2395,7 +2806,7 @@ public class FormsWF extends LiveData<FormsWF> {
     }
 
 
-    private void sWFHydrate(String string) {
+    private void sWFA01Hydrate(String string) {
 
         if (string != null) {
 
@@ -2424,6 +2835,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfa11004 = json.getString("wfa11004");
                 this.wfa11005 = json.getString("wfa11005");
                 this.wfa111 = json.getString("wfa111");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFA02Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfa201 = json.getString("wfa201");
                 this.wfa202 = json.getString("wfa202");
                 this.wfa20201 = json.getString("wfa20201");
@@ -2454,6 +2880,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfa20609 = json.getString("wfa20609");
                 this.wfa20696 = json.getString("wfa20696");
                 this.wfa20696x = json.getString("wfa20696x");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFA03Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfa301 = json.getString("wfa301");
                 this.wfa302 = json.getString("wfa302");
                 this.wfa30301 = json.getString("wfa30301");
@@ -2506,6 +2947,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfa337 = json.getString("wfa337");
                 this.wfa338 = json.getString("wfa338");
                 this.wfa339 = json.getString("wfa339");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFA04Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfa401 = json.getString("wfa401");
                 this.wfa40201 = json.getString("wfa40201");
                 this.wfa40202 = json.getString("wfa40202");
@@ -2528,6 +2984,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfa40903x = json.getString("wfa40903x");
                 this.wfa40904x = json.getString("wfa40904x");
                 this.wfa40905x = json.getString("wfa40905x");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFA05Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfa504 = json.getString("wfa504");
                 this.wfa505 = json.getString("wfa505");
                 this.wfa506 = json.getString("wfa506");
@@ -2555,6 +3026,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfa51404 = json.getString("wfa51404");
                 this.wfa515 = json.getString("wfa515");
                 this.wfa51596x = json.getString("wfa51596x");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFB01Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfb101 = json.getString("wfb101");
                 this.wfb102 = json.getString("wfb102");
                 this.wfb10296x = json.getString("wfb10296x");
@@ -2574,6 +3060,21 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfb1081d = json.getString("wfb1081d");
                 this.wfb1081d06x = json.getString("wfb1081d06x");
                 this.wfb1081d96x = json.getString("wfb1081d96x");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFB02Hydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfb201 = json.getString("wfb201");
                 this.wfb202 = json.getString("wfb202");
                 this.wfb203 = json.getString("wfb20396x");
@@ -2583,31 +3084,106 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfb20596x = json.getString("wfb20596x");
                 this.wfb206 = json.getString("wfb206");
                 this.wfb207 = json.getString("wfb207");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFCHydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfc101 = json.getString("wfc101");
                 this.wfc10196x = json.getString("wfc10196x");
                 this.wfc102 = json.getString("wfc102");
                 this.wfc103 = json.getString("wfc103");
                 this.wfc104 = json.getString("wfc104");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFDHydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfd101 = json.getString("wfd101");
                 this.wfd10102x = json.getString("wfd10102x");
-                this.wfd102a01 = json.getString("wfd102a01");
-                this.wfd102b01 = json.getString("wfd102b01");
-                this.wfd102c01 = json.getString("wfd102c01");
-                this.wfd102d01 = json.getString("wfd102d01");
-                this.wfd102e01 = json.getString("wfd102e01");
-                this.wfd102f01 = json.getString("wfd102f01");
-                this.wfd102g01 = json.getString("wfd102g01");
-                this.wfd102h01 = json.getString("wfd102h01");
-                this.wfd102i01 = json.getString("wfd102i01");
-                this.wfd102j01 = json.getString("wfd102j01");
-                this.wfd102k01 = json.getString("wfd102k01");
-                this.wfd102l01 = json.getString("wfd102l01");
-                this.wfd102m01 = json.getString("wfd102m01");
-                this.wfd102n01 = json.getString("wfd102n01");
-                this.wfd102o01 = json.getString("wfd102o01");
+                this.wfd102a = json.getString("wfd102a");
+                this.wfd102a01x = json.getString("wfd102a01x");
+                this.wfd102b = json.getString("wfd102b");
+                this.wfd102b01x = json.getString("wfd102b01x");
+                this.wfd102c = json.getString("wfd102c");
+                this.wfd102c01x = json.getString("wfd102c01x");
+                this.wfd102d = json.getString("wfd102d");
+                this.wfd102d01x = json.getString("wfd102d01x");
+                this.wfd102e = json.getString("wfd102e");
+                this.wfd102e01x = json.getString("wfd102e01x");
+                this.wfd102f = json.getString("wfd102f");
+                this.wfd102f01x = json.getString("wfd102f01x");
+                this.wfd102g = json.getString("wfd102g");
+                this.wfd102g01x = json.getString("wfd102g01x");
+                this.wfd102h = json.getString("wfd102h");
+                this.wfd102h01x = json.getString("wfd102h01x");
+                this.wfd102i = json.getString("wfd102i");
+                this.wfd102i01x = json.getString("wfd102i01x");
+                this.wfd102j = json.getString("wfd102j");
+                this.wfd102j01x = json.getString("wfd102j01x");
+                this.wfd102k = json.getString("wfd102k");
+                this.wfd102k01x = json.getString("wfd102k01x");
+                this.wfd102l = json.getString("wfd102l");
+                this.wfd102l01x = json.getString("wfd102l01x");
+                this.wfd102m = json.getString("wfd102m");
+                this.wfd102m01x = json.getString("wfd102m01x");
+                this.wfd102n = json.getString("wfd102n");
+                this.wfd102n01x = json.getString("wfd102n01x");
+                this.wfd102o = json.getString("wfd102o");
+                this.wfd102o01x = json.getString("wfd102o01x");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFEHydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wfe101 = json.getString("wfe101");
                 this.wfe10102x = json.getString("wfe10102x");
                 this.wfe102 = json.getString("wfe102");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sWFFHydrate(String string) {
+
+        if (string != null) {
+
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+
                 this.wf101 = json.getString("wf101");
                 this.wf10102x = json.getString("wf10102x");
                 this.wfi02 = json.getString("wfi02");

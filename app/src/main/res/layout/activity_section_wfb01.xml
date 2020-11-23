@@ -204,6 +204,7 @@
                         android:id="@+id/wfb103"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:hint="@string/wfb103"
                         android:inputType="number"
                         android:maxLength="2"
@@ -250,6 +251,7 @@
                         android:id="@+id/wfb104"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:hint="@string/wfb104"
                         android:inputType="number"
                         android:maxLength="2"
@@ -296,6 +298,7 @@
                         android:id="@+id/wfb105"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:hint="@string/wfb105"
                         android:inputType="number"
                         android:maxLength="2"
@@ -346,7 +349,6 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
                             android:layout_weight="1"
                             android:text="@string/wfi0601" />
 
@@ -354,7 +356,7 @@
                             android:id="@+id/wfi0601"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
+                            android:layout_weight="2.5"
                             android:hint="@string/wfi0601" />
 
                     </LinearLayout>

@@ -315,6 +315,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsWFTable.COLUMN_DEVICETAGID, formWF.getDevicetagID());
         values.put(FormsWFTable.COLUMN_DEVICEID, formWF.getDeviceID());
         values.put(FormsWFTable.COLUMN_APPVERSION, formWF.getAppversion());
+        values.put(FormsWFTable.COLUMN_SWFA01, formWF.getsWFA01());
+        values.put(FormsWFTable.COLUMN_SWFA02, formWF.getsWFA02());
+        values.put(FormsWFTable.COLUMN_SWFA03, formWF.getsWFA03());
+        values.put(FormsWFTable.COLUMN_SWFA04, formWF.getsWFA04());
+        values.put(FormsWFTable.COLUMN_SWFA05, formWF.getsWFA05());
+        values.put(FormsWFTable.COLUMN_SWFB01, formWF.getsWFB01());
+        values.put(FormsWFTable.COLUMN_SWFB02, formWF.getsWFB02());
+        values.put(FormsWFTable.COLUMN_SWFC, formWF.getsWFC());
+        values.put(FormsWFTable.COLUMN_SWFD, formWF.getsWFD());
+        values.put(FormsWFTable.COLUMN_SWFE, formWF.getsWFE());
+        values.put(FormsWFTable.COLUMN_SWFF, formWF.getsWFF());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -535,7 +546,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 /*
                 FormsWFTable.COLUMN_ISTATUS,
 */
-                FormsWFTable.COLUMN_SWF,
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
                 FormsWFTable.COLUMN_GPSLAT,
                 FormsWFTable.COLUMN_GPSLNG,
                 FormsWFTable.COLUMN_GPSDATE,
@@ -692,7 +713,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsWFTable.COLUMN_UID,
                 FormsWFTable.COLUMN_SYSDATE,
 //              FormsWFTable.COLUMN_ISTATUS,
-                FormsWFTable.COLUMN_SWF,
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
                 FormsWFTable.COLUMN_GPSLAT,
                 FormsWFTable.COLUMN_GPSLNG,
                 FormsWFTable.COLUMN_GPSDATE,
@@ -921,7 +952,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                FormsWFTable.COLUMN_ISTATUS,
                 //               FormsWFTable.COLUMN_ISTATUS96x,
 //                FormsWFTable.COLUMN_ENDINGDATETIME,
-                FormsWFTable.COLUMN_SWF,
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
                 FormsWFTable.COLUMN_GPSLAT,
                 FormsWFTable.COLUMN_GPSLNG,
                 FormsWFTable.COLUMN_GPSDATE,

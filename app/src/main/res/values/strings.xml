@@ -693,7 +693,7 @@
     <string name="s3q999">Don’t Know</string>
 
     <!-- BLF Weekly Followup Forms -->
-    <string name="sectionai_mainheading">Section I: Identification</string>
+    <string name="sectionai_mainheading">Section AI: Identification</string>
     <string name="wfa101">MR Number of the child</string>
     <string name="wfa102">Study ID</string>
     <string name="wfa103">Name of the child</string>
@@ -749,7 +749,7 @@
     <string name="wfa11102">Hospital</string>
     <string name="wfa11103">In Route</string>
 
-    <string name="sectionaii_mainheading">Section II: Feeding Practices</string>
+    <string name="sectionaii_mainheading">Section AII: Feeding Practices</string>
     <string name="wfa201">Is your baby being breastfed?</string>
     <string name="wfa20101">Yes</string>
     <string name="wfa20102">No</string>
@@ -790,7 +790,7 @@
     <string name="wfa20609">Mother milk</string>
     <string name="wfa20696">Others (specify)</string>
 
-    <string name="sectionaiii_mainheading">Section III: Clinical History</string>
+    <string name="sectionaiii_mainheading">Section AIII: Clinical History</string>
     <string name="wfa301">Did the child had fever since last visit</string>
     <string name="wfa30101">Yes</string>
     <string name="wfa30102">No</string>
@@ -882,7 +882,7 @@
     <string name="wfa338">Duration of apnea (seconds) *Record separately for each episode (First Reading)</string>
     <string name="wfa339">Any other significant history:</string>
 
-    <string name="sectionaiv_mainheading">Section IV: Hospital Admission</string>
+    <string name="sectionaiv_mainheading">Section AIV: Hospital Admission</string>
     <string name="wfa401">Has the child been hospitalized?</string>
     <string name="wfa40101">Yes</string>
     <string name="wfa40102">No</string>
@@ -918,7 +918,7 @@
     <string name="wfa40904">Month</string>
     <string name="wfa40905">Year</string>
 
-    <string name="sectionav_mainheading">Section V: Examination</string>
+    <string name="sectionav_mainheading">Section AV: Examination</string>
     <string name="wfa504">Temperature (in °C)</string>
     <string name="wfa505">Respiratory rate (Breaths/ minute)</string>
     <string name="wfa506">Heart rate (/minute)</string>
@@ -966,6 +966,7 @@
     <string name="wfa51502">Not distended</string>
     <string name="wfa51596">Others (specify)</string>
 
+    <string name="sectionbi_mainheading">Section BI: Supplement administration And History of Supplement Consumption to be administered in Week 1, 2, 3, 4, 5, and 6</string>
     <string name="wfb101">Has the baby received the supplement today?</string>
     <string name="wfb10101">Yes</string>
     <string name="wfb10102">No</string>
@@ -1003,7 +1004,7 @@
     <string name="wfb1081d06">(specify)</string>
     <string name="wfb1081d96">Others (specify)</string>
 
-    <string name="sectionbii_mainheading">Section II: Visit Outcome</string>
+    <string name="sectionbii_mainheading">Section BII: Visit Outcome</string>
     <string name="wfb201">Outcome</string>
     <string name="wfb20101">Healthy</string>
     <string name="wfb20102">Sick</string>
@@ -1023,6 +1024,7 @@
     <string name="wfb206">Reason of refusal or withdrawal</string>
     <string name="wfb207">Total sachets given at this visit</string>
 
+    <string name="sectionci_mainheading">Section C: Section I To be assessed in Week2, 4, 6, 10, 14, 18 and 20</string>
     <string name="wfc101">Status of Anthropometry</string>
     <string name="wfc10101">Yes</string>
     <string name="wfc10102">No</string>
@@ -1031,7 +1033,7 @@
     <string name="wfc103">Weight of neonate (in grams)</string>
     <string name="wfc104">Head circumference (in cms)</string>
 
-    <string name="sectiondi_mainheading">Section I: Section I To be assessed at birth, Week 6, 10, 14 and 18</string>
+    <string name="sectiondi_mainheading">Section D: To be assessed at birth, Week 6, 10, 14 and 18</string>
     <string name="wfd101">EPI Vaccination Received</string>
     <string name="wfd10101">Yes</string>
     <string name="wfd10102">No, If No specify the reason</string>
@@ -1083,11 +1085,13 @@
     <string name="wfd102n02">No</string>
     <string name="wfd102o02">No</string>
 
+    <string name="sectionei_mainheading">Section E: To be assessed in Week 6, 10, and 18</string>
     <string name="wfe101">Blood Sample Collected</string>
     <string name="wfe10101">Yes</string>
     <string name="wfe10102">No, If No, specify the reason</string>
     <string name="wfe102">Blood Sample ID (Paste CRF ID)</string>
 
+    <string name="sectionfi_mainheading">Section F: To be assessed in Week 6, 7, 8, 14, 18, 19 and 20</string>
     <string name="wf101">Stool Sample Collected</string>
     <string name="wf10101">Yes</string>
     <string name="wf10102">No, If No, specify the reason</string>
@@ -1207,18 +1211,23 @@
     <string name='Q_wfa206'>wfa206</string>
     <string name='Q_wfa301'>wfa301</string>
     <string name='Q_wfa302'>wfa302</string>
+    <string name='Q_wfa303'>wfa303</string>
     <string name='Q_wfa303_title1'>wfa303_title1</string>
     <string name='Q_wfa304'>wfa304</string>
     <string name='Q_wfa305'>wfa305</string>
+    <string name='Q_wfa306'>wfa306</string>
     <string name='Q_wfa306_title1'>wfa306_title1</string>
     <string name='Q_wfa307'>wfa307</string>
     <string name='Q_wfa308'>wfa308</string>
+    <string name='Q_wfa309'>wfa309</string>
     <string name='Q_wfa309_title1'>wfa309_title1</string>
     <string name='Q_wfa310'>wfa310</string>
     <string name='Q_wfa311'>wfa311</string>
+    <string name='Q_wfa312'>wfa312</string>
     <string name='Q_wfa312_title1'>wfa312_title1</string>
     <string name='Q_wfa313'>wfa313</string>
     <string name='Q_wfa314'>wfa314</string>
+    <string name='Q_wfa315'>wfa315</string>
     <string name='Q_wfa315_title1'>wfa315_title1</string>
     <string name='Q_wfa316'>wfa316</string>
     <string name='Q_wfa317'>wfa317</string>
@@ -1227,18 +1236,22 @@
     <string name='Q_wfa320'>wfa320</string>
     <string name='Q_wfa321'>wfa321</string>
     <string name='Q_wfa322'>wfa322</string>
+    <string name='Q_wfa323'>wfa323</string>
     <string name='Q_wfa323_title1'>wfa323_title1</string>
     <string name='Q_wfa324'>wfa324</string>
     <string name='Q_wfa325'>wfa325</string>
+    <string name='Q_wfa326'>wfa326</string>
     <string name='Q_wfa326_title1'>wfa326_title1</string>
     <string name='Q_wfa327'>wfa327</string>
     <string name='Q_wfa328'>wfa328</string>
     <string name='Q_wfa329'>wfa329</string>
     <string name='Q_wfa330'>wfa330</string>
     <string name='Q_wfa331'>wfa331</string>
+    <string name='Q_wfa332'>wfa332</string>
     <string name='Q_wfa332_title1'>wfa332_title1</string>
     <string name='Q_wfa333'>wfa333</string>
     <string name='Q_wfa334'>wfa334</string>
+    <string name='Q_wfa335'>wfa335</string>
     <string name='Q_wfa335_title1'>wfa335_title1</string>
     <string name='Q_wfa336'>wfa336</string>
     <string name='Q_wfa337'>wfa337</string>

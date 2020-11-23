@@ -33,6 +33,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     ActivitySectionWfa01Binding bi;
     Intent oF = null;
+    public static int followupNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +41,57 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfa01);
         bi.setCallback(this);
         setupSkips();
+        getIntentClass();
     }
 
     private void setupSkips() {
 
-        bi.wfa108.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa10801.getId()) {
-                Clear.clearAllFields(bi.llGrpseca01);
-            }
-        });
-
         bi.wfa107.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != bi.wfa10701.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVwfa108);
+            }
+        });
+
+        bi.wfa108.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId != bi.wfa10802.getId()) {
                 Clear.clearAllFields(bi.llGrpseca01);
             }
         });
 
+
+        followupNo = bi.wfa10501.isChecked() ? 1
+                : bi.wfa10502.isChecked() ? 2
+                : bi.wfa10503.isChecked() ? 3
+                : bi.wfa10504.isChecked() ? 4
+                : bi.wfa10505.isChecked() ? 5
+                : bi.wfa10506.isChecked() ? 6
+                : bi.wfa10507.isChecked() ? 7
+                : bi.wfa10508.isChecked() ? 8
+                : bi.wfa10509.isChecked() ? 10
+                : bi.wfa10510.isChecked() ? 14
+                : bi.wfa10511.isChecked() ? 18
+                : bi.wfa10512.isChecked() ? 19
+                : bi.wfa10513.isChecked() ? 20
+                : 0;
+
+    }
+
+    public Class<?> getIntentClass() {
+        switch (followupNo) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return SectionWFB01Activity.class;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            default:
+                return SectionWFA01Activity.class;
+        }
     }
 
 
@@ -88,6 +124,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         if (updcount > 0) {
             formsWF.set_UID(formsWF.getDeviceID() + formsWF.get_ID());
             db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_UID, formsWF.get_UID());
+            db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFA01, formsWF.sWFA01toString());
             return true;
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();

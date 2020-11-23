@@ -28,6 +28,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb01);
         bi.setCallback(this);
         setupSkips();
+
     }
 
 
@@ -77,7 +78,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFB01, MainApp.formsWF.sWFB01toString());
         if (updcount == 1) {
             return true;
         } else {

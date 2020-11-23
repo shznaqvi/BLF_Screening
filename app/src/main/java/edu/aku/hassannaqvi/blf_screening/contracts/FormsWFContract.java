@@ -32,7 +32,17 @@ public class FormsWFContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_SWF = "sWF";
+        public static final String COLUMN_SWFA01 = "sWFA01";
+        public static final String COLUMN_SWFA02 = "sWFA02";
+        public static final String COLUMN_SWFA03 = "sWFA03";
+        public static final String COLUMN_SWFA04 = "sWFA04";
+        public static final String COLUMN_SWFA05 = "sWFA05";
+        public static final String COLUMN_SWFB01 = "sWFB01";
+        public static final String COLUMN_SWFB02 = "sWFB02";
+        public static final String COLUMN_SWFC = "sWFC";
+        public static final String COLUMN_SWFD = "sWFD";
+        public static final String COLUMN_SWFE = "sWFE";
+        public static final String COLUMN_SWFF = "sWFF";
         public static String PATH = "formswf";
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;

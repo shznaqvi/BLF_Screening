@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -32,11 +33,11 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        /*bi.ah51.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.ah51e.getId()) {
-                Clear.clearAllFields(bi.fldGrpAH52);
+        bi.wfa507.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.wfa50702.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVwfa508);
             }
-        });*/
+        });
 
     }
 
@@ -64,7 +65,7 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWF, MainApp.formsWF.sWFtoString());
+        int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFA05, MainApp.formsWF.sWFA05toString());
         if (updcount == 1) {
             return true;
         } else {
