@@ -819,6 +819,7 @@ public class SectionSFActivity extends AppCompatActivity {
                                         // Mother does not exist in Screening Log (sl2 = 00000)
                                         if (!jsonObject.getString("sl2").equals("00000")) {
 
+
                                             // 72 hours passed
                                             if (jsonObject.getString("sl2").equals("88888")) {
                                                 if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
@@ -865,6 +866,17 @@ public class SectionSFActivity extends AppCompatActivity {
                                                         bi.btnContinue.setVisibility(View.VISIBLE);
                                                         Clear.clearAllFields(bi.fldGrpsf5);
                                                     }
+                                                } else {
+                                                    if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                                                        bi.llsectionsf01.setVisibility(View.GONE);
+                                                        // bi.fldGrpsf5.setVisibility(View.VISIBLE);
+                                                        bi.btnContinue.setVisibility(View.GONE);
+                                                        Clear.clearAllFields(bi.llsectionsf01);
+                                                        //Clear.clearAllFields(bi.fldGrpsf5);
+
+                                                    }
+                                                    bi.wmError.setText("Mother has already been screened. Consent: " + (jsonObject.getString("sf18").equals("1") ? "Yes" : "No"));
+                                                    bi.wmError.setVisibility(View.VISIBLE);
                                                 }
                                             }
 

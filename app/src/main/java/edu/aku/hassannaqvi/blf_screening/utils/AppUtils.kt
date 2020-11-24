@@ -5,7 +5,6 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import edu.aku.hassannaqvi.blf_screening.R
 import edu.aku.hassannaqvi.blf_screening.databinding.ChildEndDialogBinding
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity
 import java.util.*
 
 
@@ -58,7 +56,7 @@ fun openEndActivity(activity: Activity) {
     dialog.window!!.attributes = params
     dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? ->
         activity.finish()
-        activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra("complete", false))
+    //    activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra("complete", false))
 //                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
@@ -77,7 +75,7 @@ fun openFormEndActivity(activity: Activity, extraKey: String, extraValue: Int) {
     dialog.window!!.attributes = params
     dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? ->
         activity.finish()
-        activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra(extraKey, extraValue))
+        //     activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra(extraKey, extraValue))
 //                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }

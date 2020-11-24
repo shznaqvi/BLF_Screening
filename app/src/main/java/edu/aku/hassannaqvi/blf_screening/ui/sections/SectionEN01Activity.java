@@ -128,8 +128,8 @@ public class SectionEN01Activity extends AppCompatActivity {
             if (UpdateDB()) {
 
 
-                // finish();
-                //startActivity(new Intent(this, SectionEN02Activity.class));
+                finish();
+                startActivity(new Intent(this, SectionEN02Activity.class));
             }
         }
     }

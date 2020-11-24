@@ -2,11 +2,8 @@ package edu.aku.hassannaqvi.blf_screening.core;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -31,7 +28,6 @@ import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 
 
 /**
@@ -41,8 +37,8 @@ import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 public class MainApp extends Application {
 
     public static final String TAG = "AppMain";
-    // public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
-    public static final String _IP = "http://f38158";// .TEST server
+    public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
+    //public static final String _IP = "http://f38158";// .TEST server
     public static final String _HOST_URL = MainApp._IP + "/blf/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
@@ -136,7 +132,7 @@ public class MainApp extends Application {
         return sharedPref.getString("tagName", null);
     }
 
-    public static void endActivity(final Context context, final Activity activity) {
+    /*public static void endActivity(final Context context, final Activity activity) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
@@ -160,7 +156,7 @@ public class MainApp extends Application {
                 });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
-    }
+    }*/
 
     @Override
     public void onCreate() {

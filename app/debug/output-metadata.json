@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "edu.aku.hassannaqvi.mi_covid",
+  "applicationId": "edu.aku.hassannaqvi.blf_screening",
   "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "properties": [],
-      "versionCode": 146,
-      "versionName": "1.2",
+      "versionCode": 707,
+      "versionName": "1.0",
       "enabled": true,
       "outputFile": "app-debug.apk"
     }
