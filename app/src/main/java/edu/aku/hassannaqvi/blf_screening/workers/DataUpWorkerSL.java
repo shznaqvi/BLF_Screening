@@ -67,7 +67,7 @@ public class DataUpWorkerSL extends Worker {
         URL url = null;
         try {
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/scrlog.php");
+                url = new URL(MainApp._HOST_URL + "scrlog.php");
             } else {
                 url = serverURL;
             }

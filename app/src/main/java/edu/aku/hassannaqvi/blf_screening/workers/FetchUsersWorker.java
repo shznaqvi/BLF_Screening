@@ -72,7 +72,7 @@ public class FetchUsersWorker extends Worker {
         try {
             Log.d(TAG, "doInBackground: Trying...");
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/getData.php");
+                url = new URL(MainApp._HOST_URL + "getData.php");
             } else {
                 url = serverURL;
             }

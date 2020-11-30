@@ -128,8 +128,8 @@ public class SectionEN01Activity extends AppCompatActivity {
             if (UpdateDB()) {
 
 
-                // finish();
-                //startActivity(new Intent(this, SectionEN02Activity.class));
+                finish();
+                startActivity(new Intent(this, SectionEN02Activity.class));
             }
         }
     }
@@ -323,6 +323,8 @@ public class SectionEN01Activity extends AppCompatActivity {
                                             bi.s1q1901.setMinDate(dt501.replace("-", "/"));
                                             bi.s1q502.setText(jsonObject.getString("sf6a").split(" ")[1]);
                                             bi.llGrpName03.setVisibility(View.VISIBLE);
+
+                                            // CONTINUE VISIBLE
                                             bi.btnContinue.setVisibility(View.VISIBLE);
                                             bi.s1q1.setEnabled(false);
                                             bi.s1q7.setEnabled(false);

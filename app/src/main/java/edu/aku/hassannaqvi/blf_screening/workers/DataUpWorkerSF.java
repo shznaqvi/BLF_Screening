@@ -67,7 +67,7 @@ public class DataUpWorkerSF extends Worker {
         URL url = null;
         try {
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/formscr.php");
+                url = new URL(MainApp._HOST_URL + "formscr.php");
             } else {
                 url = serverURL;
             }

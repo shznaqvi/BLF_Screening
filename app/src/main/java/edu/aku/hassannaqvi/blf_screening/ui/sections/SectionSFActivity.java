@@ -832,6 +832,20 @@ public class SectionSFActivity extends AppCompatActivity {
                                                 bi.wmError.setText(jsonObject.getString("sl5"));
                                                 bi.wmError.setVisibility(View.VISIBLE);
 
+                                            } else if (!jsonObject.getString("sf20").equals("") && !jsonObject.getString("sf20").equals("0")) {
+
+                                                if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                                                    bi.llsectionsf01.setVisibility(View.GONE);
+                                                    // bi.fldGrpsf5.setVisibility(View.VISIBLE);
+                                                    bi.btnContinue.setVisibility(View.GONE);
+                                                    Clear.clearAllFields(bi.llsectionsf01);
+                                                    //Clear.clearAllFields(bi.fldGrpsf5);
+
+                                                }
+                                                bi.wmError.setText("Child already enrolled");
+                                                bi.wmError.setVisibility(View.VISIBLE);
+
+
                                             } else {
                                                 try {
                                                     if (jsonObject.getString("sfFlag") != null) {
@@ -854,6 +868,8 @@ public class SectionSFActivity extends AppCompatActivity {
                                                     bi.sf3.setText(jsonObject.getString("sl5"));
                                                     bi.fldGrpsf5.setVisibility(View.VISIBLE);
                                                     bi.llsectionsf01.setVisibility(View.VISIBLE);
+
+                                                    // CONTINUE VISIBLE
                                                     bi.btnContinue.setVisibility(View.VISIBLE);
                                                     Toast.makeText(SectionSFActivity.this, "2_" + jsonObject.getString("sl2"), Toast.LENGTH_SHORT).show();
                                                     bi.sf3.setEnabled(false);
@@ -862,6 +878,8 @@ public class SectionSFActivity extends AppCompatActivity {
                                                     if (jsonObject.getString("sf18").equals("-1")) {
                                                         Toast.makeText(SectionSFActivity.this, "18_" + jsonObject.getString("sf18"), Toast.LENGTH_SHORT).show();
                                                         bi.fldGrpsf5.setVisibility(View.GONE);
+
+                                                        // CONTINUE VISIBLE
                                                         bi.btnContinue.setVisibility(View.VISIBLE);
                                                         Clear.clearAllFields(bi.fldGrpsf5);
                                                     }

@@ -68,7 +68,7 @@ public class DataUpWorkerEN extends Worker {
         URL url = null;
         try {
             if (serverURL == null) {
-                url = new URL("http://f38158/blf/api/sync.php");
+                url = new URL(MainApp._HOST_URL + "sync.php");
             } else {
                 url = serverURL;
             }
