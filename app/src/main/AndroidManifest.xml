@@ -57,6 +57,50 @@
             android:label="@string/section3careofbaby_mainheading"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.sections.SectionWFA01Activity"
+            android:label="@string/sectionai_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFA02Activity"
+            android:label="@string/sectionaii_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFA03Activity"
+            android:label="@string/sectionaiii_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFA04Activity"
+            android:label="@string/sectionaiv_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFA05Activity"
+            android:label="@string/sectionav_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFB01Activity"
+            android:label="@string/sectionbi_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFB02Activity"
+            android:label="@string/sectionbii_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFCActivity"
+            android:label="@string/sectionci_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFDActivity"
+            android:label="@string/sectiondi_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFEActivity"
+            android:label="@string/sectionei_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionWFFActivity"
+            android:label="@string/sectionfi_mainheading"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.other.SplashscreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">

@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
+import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 
 
@@ -84,6 +85,7 @@ public class MainApp extends Application {
     public static FormsSL formsSL;
     public static FormsSF formsSF;
     public static FormsEN formsEN;
+    public static FormsWF formsWF;
     public static JSONObject jsonSL;
 
     public static String DeviceURL = "devices.php";

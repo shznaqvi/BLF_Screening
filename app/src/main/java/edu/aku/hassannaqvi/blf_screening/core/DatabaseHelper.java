@@ -22,12 +22,14 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
+import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 
@@ -38,6 +40,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DIS
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSEN;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSL;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSWF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -63,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMSSL);
         db.execSQL(SQL_CREATE_FORMSSF);
+        db.execSQL(SQL_CREATE_FORMSWF);
         db.execSQL(SQL_CREATE_FORMSEN);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_DISTRICTS);
@@ -291,6 +295,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addFormWF(FormsWF formWF) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FormsWFTable.COLUMN_PROJECT_NAME, formWF.getProjectName());
+        values.put(FormsWFTable.COLUMN_UID, formWF.get_UID());
+        values.put(FormsWFTable.COLUMN_SYSDATE, formWF.getSysdate());
+    /*    values.put(FormsWFTable.COLUMN_ISTATUS, formSF.getIstatus());
+        values.put(FormsWFTable.COLUMN_ISTATUS96x, formSF.getIstatus96x());*/
+//        values.put(FormsWFTable.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
+        values.put(FormsWFTable.COLUMN_GPSLAT, formWF.getGpsLat());
+        values.put(FormsWFTable.COLUMN_GPSLNG, formWF.getGpsLng());
+        values.put(FormsWFTable.COLUMN_GPSDATE, formWF.getGpsDT());
+        values.put(FormsWFTable.COLUMN_GPSACC, formWF.getGpsAcc());
+        values.put(FormsWFTable.COLUMN_DEVICETAGID, formWF.getDevicetagID());
+        values.put(FormsWFTable.COLUMN_DEVICEID, formWF.getDeviceID());
+        values.put(FormsWFTable.COLUMN_APPVERSION, formWF.getAppversion());
+        values.put(FormsWFTable.COLUMN_SWFA01, formWF.getsWFA01());
+        values.put(FormsWFTable.COLUMN_SWFA02, formWF.getsWFA02());
+        values.put(FormsWFTable.COLUMN_SWFA03, formWF.getsWFA03());
+        values.put(FormsWFTable.COLUMN_SWFA04, formWF.getsWFA04());
+        values.put(FormsWFTable.COLUMN_SWFA05, formWF.getsWFA05());
+        values.put(FormsWFTable.COLUMN_SWFB01, formWF.getsWFB01());
+        values.put(FormsWFTable.COLUMN_SWFB02, formWF.getsWFB02());
+        values.put(FormsWFTable.COLUMN_SWFC, formWF.getsWFC());
+        values.put(FormsWFTable.COLUMN_SWFD, formWF.getsWFD());
+        values.put(FormsWFTable.COLUMN_SWFE, formWF.getsWFE());
+        values.put(FormsWFTable.COLUMN_SWFF, formWF.getsWFF());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                FormsWFTable.TABLE_NAME,
+                FormsWFTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
 
     public int updateFormSLID() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -491,6 +536,70 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsEN;
     }
 
+    public Collection<FormsWF> getAllFormsWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsWFTable._ID,
+                FormsWFTable.COLUMN_UID,
+                FormsWFTable.COLUMN_SYSDATE,
+/*
+                FormsWFTable.COLUMN_ISTATUS,
+*/
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
+                FormsWFTable.COLUMN_GPSLAT,
+                FormsWFTable.COLUMN_GPSLNG,
+                FormsWFTable.COLUMN_GPSDATE,
+                FormsWFTable.COLUMN_GPSACC,
+                FormsWFTable.COLUMN_DEVICETAGID,
+                FormsWFTable.COLUMN_DEVICEID,
+                FormsWFTable.COLUMN_APPVERSION,
+
+        };
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsWFTable.COLUMN_ID + " ASC";
+
+        Collection<FormsWF> allFormsWF = new ArrayList<FormsWF>();
+        try {
+            c = db.query(
+                    FormsWFTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsWF formsWF = new FormsWF();
+                allFormsWF.add(formsWF.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsWF;
+    }
+
 
     public Collection<FormsSF> checkFormsSFExist() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -594,6 +703,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFormsEN;
+    }
+
+    public Collection<FormsWF> checkFormsWFExist() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsWFTable._ID,
+                FormsWFTable.COLUMN_UID,
+                FormsWFTable.COLUMN_SYSDATE,
+//              FormsWFTable.COLUMN_ISTATUS,
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
+                FormsWFTable.COLUMN_GPSLAT,
+                FormsWFTable.COLUMN_GPSLNG,
+                FormsWFTable.COLUMN_GPSDATE,
+                FormsWFTable.COLUMN_GPSACC,
+                FormsWFTable.COLUMN_DEVICETAGID,
+                FormsWFTable.COLUMN_DEVICEID,
+                FormsWFTable.COLUMN_APPVERSION,
+
+        };
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsWFTable.COLUMN_ID + " ASC";
+
+        Collection<FormsWF> allFormsWF = new ArrayList<FormsWF>();
+        try {
+            c = db.query(
+                    FormsWFTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsWF formsWF = new FormsWF();
+                allFormsWF.add(formsWF.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsWF;
     }
 
 
@@ -771,6 +942,74 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsEN;
     }
 
+    public Collection<FormsWF> getUnsyncedFormsWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsWFTable._ID,
+                FormsWFTable.COLUMN_UID,
+                FormsWFTable.COLUMN_SYSDATE,
+//                FormsWFTable.COLUMN_ISTATUS,
+                //               FormsWFTable.COLUMN_ISTATUS96x,
+//                FormsWFTable.COLUMN_ENDINGDATETIME,
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
+                FormsWFTable.COLUMN_GPSLAT,
+                FormsWFTable.COLUMN_GPSLNG,
+                FormsWFTable.COLUMN_GPSDATE,
+                FormsWFTable.COLUMN_GPSACC,
+                FormsWFTable.COLUMN_DEVICETAGID,
+                FormsWFTable.COLUMN_DEVICEID,
+                FormsWFTable.COLUMN_APPVERSION,
+        };
+
+        String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsWFTable.COLUMN_ID + " ASC";
+
+        Collection<FormsWF> allFormsWF = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsWFTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                FormsWF formsWF = new FormsWF();
+                allFormsWF.add(formsWF.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsWF;
+    }
+
 
     public Collection<FormsSL> getTodayFormsSL(String sysdate) {
 
@@ -941,6 +1180,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFormsEN;
     }
+
+    public Collection<FormsWF> getTodayFormsWF(String sysdate) {
+
+        // String sysdate =  spDateT.substring(0, 8).trim()
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsWFTable._ID,
+                FormsWFTable.COLUMN_UID,
+                FormsWFTable.COLUMN_SYSDATE,
+//                FormsWFTable.COLUMN_ISTATUS,
+                FormsWFTable.COLUMN_SYNCED,
+
+        };
+        String whereClause = FormsWFTable.COLUMN_SYSDATE + " Like ? ";
+        String[] whereArgs = new String[]{"%" + sysdate + " %"};
+//        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsWFTable.COLUMN_ID + " ASC";
+
+        Collection<FormsWF> allFormsWF = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsWFTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsWF formsWF = new FormsWF();
+                formsWF.set_ID(c.getString(c.getColumnIndex(FormsWFTable.COLUMN_ID)));
+                formsWF.set_UID(c.getString(c.getColumnIndex(FormsWFTable.COLUMN_UID)));
+                formsWF.setSysdate(c.getString(c.getColumnIndex(FormsWFTable.COLUMN_SYSDATE)));
+                //               formsWF.setIstatus(c.getString(c.getColumnIndex(FormsWFTable.COLUMN_ISTATUS)));
+                formsWF.setSynced(c.getString(c.getColumnIndex(FormsWFTable.COLUMN_SYNCED)));
+                allFormsWF.add(formsWF);
+            }
+        } catch (SQLiteException e) {
+
+            //      db.rawQuery(SQL_ALTER_FORMS_A05CODE, null);
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsWF;
+    }
     
     /*public Collection<FormsSL> getFormsByCluster(String cluster) {
 
@@ -1104,6 +1400,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    public int updateEndingWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+/*        values.put(FormsSFTable.COLUMN_ISTATUS, MainApp.formsSF.getIstatus());
+        values.put(FormsSFTable.COLUMN_ISTATUS96x, MainApp.formsSF.getIstatus96x());*/
+//        values.put(FormsSFTable.COLUMN_ENDINGDATETIME, MainApp.formsSF.getEndingdatetime());
+
+        // Which row to update, based on the ID
+        String selection = FormsWFTable.COLUMN_ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsWF.get_ID())};
+
+        return db.update(FormsWFTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
 
   /*  //Get FormsSL already exist
     public FormsSL getFilledFormSL(String district, String refno) {
@@ -1203,6 +1518,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.formsEN.get_ID())};
 
         return db.update(FormsS3Table.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    //Generic update FormColumn
+    public int updatesFormsWFColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsWFTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsWF.get_ID())};
+
+        return db.update(FormsWFTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1311,6 +1642,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 FormsS3Table.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    //Generic Un-Synced Forms
+    public void updateSyncedFormsWF(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsWFTable.COLUMN_SYNCED, true);
+        values.put(FormsWFTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FormsWFTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsWFTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
