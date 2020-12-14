@@ -30,20 +30,33 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-public class DataUpWorkerEN extends Worker {
+public class DataUpWorkerALL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
     private final String TAG = "DataWorkerEN()";
+
+    // to be initialised by workParams
+    private final Context mContext;
+    private final String uploadTable;
     HttpURLConnection urlConnection;
-    private Context mContext;
+    private JSONObject uploadData;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
     private Data data;
     private String nTitle = "Enrolment";
 
-    public DataUpWorkerEN(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public DataUpWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+        mContext = context;
+        uploadTable = workerParams.getInputData().getString("table");
+        try {
+            uploadData = new JSONObject(workerParams.getInputData().getString("data"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     /*
@@ -92,8 +105,8 @@ public class DataUpWorkerEN extends Worker {
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
 
-            jsonTable.put("table", "formsEn");
-            jsonSync.put(MainApp.formsWF.toJSONObject());
+            jsonTable.put("table", uploadTable);
+            jsonSync.put(uploadData);
             jsonParam
                     .put(jsonTable)
                     .put(jsonSync);
@@ -165,9 +178,15 @@ public class DataUpWorkerEN extends Worker {
 
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
-            data = new Data.Builder()
-                    .putString("message", String.valueOf(result)).build();
+            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 BYTES
+            if (result.toString().length() > 10240) {
+                data = new Data.Builder()
+                        .putString("message", String.valueOf(result).substring(0, (10240 - 1) / 8)).build();
+            } else {
 
+                data = new Data.Builder()
+                        .putString("message", String.valueOf(result)).build();
+            }
 
             displayNotification(nTitle, "Uploaded successfully");
             return Result.success(data);

@@ -14,7 +14,7 @@ public final class CreateTable {
     public static final String DATABASE_NAME = "blf.db";
     public static final String DB_NAME = "blf_copy.db";
     public static final String PROJECT_NAME = "blf";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     public static final String SQL_CREATE_FORMSSL = "CREATE TABLE "
             + FormsSLTable.TABLE_NAME + "("

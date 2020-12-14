@@ -7,13 +7,26 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,14 +39,16 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa01Binding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.workers.FetchFollowupWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF;
 
 public class SectionWFA01Activity extends AppCompatActivity {
 
+    public static int followupNo;
+    private final String TAG = "SectionWFA01Activity";
     ActivitySectionWfa01Binding bi;
     Intent oF = null;
-    public static int followupNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +56,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfa01);
         bi.setCallback(this);
         setupSkips();
-        getIntentClass();
+        //getIntentClass();
     }
 
     private void setupSkips() {
@@ -59,24 +74,13 @@ public class SectionWFA01Activity extends AppCompatActivity {
         });
 
 
-        followupNo = bi.wfa10501.isChecked() ? 1
-                : bi.wfa10502.isChecked() ? 2
-                : bi.wfa10503.isChecked() ? 3
-                : bi.wfa10504.isChecked() ? 4
-                : bi.wfa10505.isChecked() ? 5
-                : bi.wfa10506.isChecked() ? 6
-                : bi.wfa10507.isChecked() ? 7
-                : bi.wfa10508.isChecked() ? 8
-                : bi.wfa10509.isChecked() ? 10
-                : bi.wfa10510.isChecked() ? 14
-                : bi.wfa10511.isChecked() ? 18
-                : bi.wfa10512.isChecked() ? 19
-                : bi.wfa10513.isChecked() ? 20
-                : 0;
+/*
+        followupNo = Integer.parseInt(bi.wfa105.getText().toString());
+*/
 
     }
 
-    public Class<?> getIntentClass() {
+/*    public Class<?> getIntentClass() {
         switch (followupNo) {
             case 1:
             case 2:
@@ -92,7 +96,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
             default:
                 return SectionWFA01Activity.class;
         }
-    }
+    }*/
 
 
     public void BtnContinue() {
@@ -164,20 +168,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
         formsWF.setWfa103(bi.wfa103.getText().toString().trim().isEmpty() ? "-1" : bi.wfa103.getText().toString());
 
-        formsWF.setWfa105(bi.wfa10501.isChecked() ? "1"
-                : bi.wfa10502.isChecked() ? "2"
-                : bi.wfa10503.isChecked() ? "3"
-                : bi.wfa10504.isChecked() ? "4"
-                : bi.wfa10505.isChecked() ? "5"
-                : bi.wfa10506.isChecked() ? "6"
-                : bi.wfa10507.isChecked() ? "7"
-                : bi.wfa10508.isChecked() ? "8"
-                : bi.wfa10509.isChecked() ? "9"
-                : bi.wfa10510.isChecked() ? "10"
-                : bi.wfa10511.isChecked() ? "11"
-                : bi.wfa10512.isChecked() ? "12"
-                : bi.wfa10513.isChecked() ? "13"
-                : "-1");
+        formsWF.setWfa105(bi.wfa105.getText().toString());
 
         formsWF.setWfa106(bi.wfa10601.isChecked() ? "1"
                 : bi.wfa10602.isChecked() ? "2"
@@ -261,5 +252,137 @@ public class SectionWFA01Activity extends AppCompatActivity {
             Log.e("GPS", "setGPS: " + e.getMessage());
         }
     }
+
+    public void FetchFollowups(View view) {
+        /*MainApp.sf2 = bi.sf2.getText().toString();
+        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();
+*/
+
+        if (formValidation()) {
+            bi.checkMR.setVisibility(View.GONE);
+            bi.pbarMR.setVisibility(View.VISIBLE);
+
+            bi.wmError.setVisibility(View.GONE);
+            bi.wmError.setText(null);
+
+            /*bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -3, "d"));
+
+            bi.sf6a01.setMaxDate(bi.sf101.getText().toString().replace("-", "/"));
+*/
+            // Sending data to Worker class
+
+       /*
+
+
+        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
+                .setInputData(data)
+                .build();
+*/
+            JSONObject json = new JSONObject();
+            try {
+                json.put("table", "fetchMR");
+                //json.put("select", "sl2, sl4, sl5, sf6a");
+                json.put("filter", "sf5 = '" + bi.wfa101.getText().toString() + "'");
+                //json.put("scrdt", MainApp.scrdt);
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+                Log.d(TAG, "doWork: " + e1.getMessage());
+            }
+
+            Data data = new Data.Builder()
+                    .putString("json", json.toString())
+                    .build();
+
+            Constraints constraints = new Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build();
+
+
+            final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchFollowupWorker.class).setInputData(data).setConstraints(constraints).build();
+            WorkManager.getInstance().enqueue(workRequest1);
+
+
+            WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest1.getId())
+                    .observe(this, new Observer<WorkInfo>() {
+                        @Override
+                        public void onChanged(@Nullable WorkInfo workInfo) {
+
+
+                            if (workInfo.getState() != null &&
+                                    workInfo.getState() == WorkInfo.State.SUCCEEDED) {
+                                bi.wmError.setVisibility(View.GONE);
+                                bi.pbarMR.setVisibility(View.GONE);
+                                bi.checkMR.setVisibility(View.VISIBLE);
+                                //Displaying the status into TextView
+                                //mTextView1.append("\n" + workInfo.getState().name());
+                                String message = workInfo.getOutputData().getString("data");
+                                DatabaseHelper db = new DatabaseHelper(SectionWFA01Activity.this); // Database Helper
+                                StringBuilder sSyncedError = new StringBuilder();
+                                JSONObject jsonObject;
+                                try {
+
+                                    JSONArray json = new JSONArray(message);
+                                    for (int i = 0; i < json.length(); i++) {
+                                        jsonObject = new JSONObject(json.getString(i));
+
+                                        if (!jsonObject.isNull("curfupweek")) {
+                                            if (!jsonObject.isNull("curfupdt")) {
+                                                Toast.makeText(SectionWFA01Activity.this, "Child followup found.", Toast.LENGTH_SHORT).show();
+
+                                                bi.wfa102.setText(jsonObject.getString("sf20"));
+                                                bi.wfa103.setText(jsonObject.getString("s1q3"));
+                                                bi.wfa105.setText(jsonObject.getString("curfupweek"));
+
+                                                bi.llsectionwfa01.setVisibility(View.VISIBLE);
+
+                                                // CONTINUE VISIBLE
+                                                bi.btnContinue.setVisibility(View.VISIBLE);
+                                                bi.btnEnd.setVisibility(View.GONE);
+                                                // Clear.clearAllFields(bi.llsectionwfa01);
+                                            } else {
+                                                Toast.makeText(SectionWFA01Activity.this, jsonObject.getString("curfupweek"), Toast.LENGTH_SHORT).show();
+                                                bi.llsectionwfa01.setVisibility(View.GONE);
+
+                                                // CONTINUE VISIBLE
+                                                bi.btnContinue.setVisibility(View.GONE);
+                                                bi.btnEnd.setVisibility(View.VISIBLE);
+                                                Clear.clearAllFields(bi.llsectionwfa01);
+                                                bi.wmError.setText(jsonObject.getString("curfupweek"));
+                                                bi.wmError.setVisibility(View.VISIBLE);
+
+                                            }
+                                        } else {
+
+                                            Toast.makeText(SectionWFA01Activity.this, "Child not found.", Toast.LENGTH_SHORT).show();
+                                            bi.llsectionwfa01.setVisibility(View.GONE);
+                                            bi.wmError.setText("Child not found.");
+                                            bi.wmError.setVisibility(View.VISIBLE);
+                                            // CONTINUE VISIBLE
+                                            bi.btnContinue.setVisibility(View.GONE);
+                                            bi.btnEnd.setVisibility(View.VISIBLE);
+                                            Clear.clearAllFields(bi.llsectionwfa01);
+
+                                        }
+
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                //bi.sl2.setText(message);
+                            }
+                            if (workInfo.getState() != null &&
+                                    workInfo.getState() == WorkInfo.State.FAILED) {
+                                bi.pbarMR.setVisibility(View.GONE);
+                                bi.checkMR.setVisibility(View.VISIBLE);
+                                String message = workInfo.getOutputData().getString("error");
+                                bi.wmError.setText(message);
+                                bi.wmError.setVisibility(View.VISIBLE);
+
+                            }
+                        }
+                    });
+        }
+    }
+
 
 }
