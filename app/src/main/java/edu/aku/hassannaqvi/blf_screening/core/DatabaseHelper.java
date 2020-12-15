@@ -75,9 +75,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Toast.makeText(mContext, "Upgrading Database to version " + newVersion + "...", Toast.LENGTH_SHORT).show();
+
         switch (oldVersion) {
             case 1:
-                db.execSQL(SQL_CREATE_DISTRICTS);
+                db.execSQL(SQL_CREATE_FORMSWF);
+                Toast.makeText(mContext, "Follow-up Table Created!", Toast.LENGTH_SHORT).show();
             case 2:
 //                db.execSQL(SQL_ALTER_FORMS_A05CODE);
                 //               db.execSQL(SQL_ALTER_FORMS_A08);
