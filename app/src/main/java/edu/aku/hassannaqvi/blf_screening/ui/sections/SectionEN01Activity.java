@@ -313,7 +313,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                                     //    if (!jsonObject.has("sf5")) {
                                     if (jsonObject.has("sf18")) {
                                         // Child does Eligible (sf18=1)
-                                        if (jsonObject.getString("sf18").equals("1")) {
+                                        if (jsonObject.getString("sf18").equals("1") && jsonObject.getString("s1q8").equals("null")) {
 
                                             bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
                                             bi.s1q7.setText(jsonObject.getString("sl5"));
@@ -332,9 +332,35 @@ public class SectionEN01Activity extends AppCompatActivity {
                                             bi.s1q501.setEnabled(false);
                                             bi.s1q502.setEnabled(false);
                                         } else {
-                                            bi.wmError.setText("Consent not given!");
-                                            bi.wmError.setVisibility(View.VISIBLE);
+                                            if (!jsonObject.getString("sf18").equals("1")) {
+                                                bi.wmError.setText("Consent not given!");
+                                                bi.wmError.setVisibility(View.VISIBLE);
+                                            } else {
+                                                bi.wmError.setText("Child Already Enrolled");
+                                                bi.wmError.setVisibility(View.VISIBLE);
+                                                if (!jsonObject.getString("curfupweek").equals("null")) {
 
+                                                    String nSeries = null;
+                                                    String str = jsonObject.getString("curfupweek").trim();
+                                                    String fupNo = str.length() > 1 ? str.substring(str.length() - 1) : str;
+                                                    Log.d("FUP-NO", "onChanged: " + fupNo);
+                                                    switch (fupNo) {
+                                                        case "1":
+                                                            nSeries = "st";
+                                                            break;
+                                                        case "2":
+                                                            nSeries = "nd";
+                                                            break;
+                                                        case "3":
+                                                            nSeries = "rd";
+                                                            break;
+                                                        default:
+                                                            nSeries = "th";
+                                                    }
+                                                    bi.wmError.setText(bi.wmError.getText() + "\n" + fupNo + nSeries + " Follow-up scheduled for this week");
+
+                                                }
+                                            }
                                         }
                                     } else {
 
