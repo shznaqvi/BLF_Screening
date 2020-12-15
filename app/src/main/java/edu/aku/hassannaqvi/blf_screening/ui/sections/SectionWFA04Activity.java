@@ -2,6 +2,8 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.jetbrains.annotations.NotNull;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
@@ -32,33 +36,26 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
 
     private void setupSkips() {
+        radioGroupListener(bi.wfa401, bi.llGrpsec401);
+        radioGroupListener(bi.wfa406, bi.llGrpsec402);
+    }
 
-        bi.wfa401.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa40102.getId()) {
-                Clear.clearAllFields(bi.llGrpsec401);
-            }
-        });
 
-        bi.wfa406.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa40602.getId()) {
-                Clear.clearAllFields(bi.llGrpsec402);
-            }
-        });
-
+    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
     }
 
 
     public void BtnContinue() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionWFA05Activity.class));
-            }
+        if (!formValidation()) return;
+        try {
+            SaveDraft();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, SectionWFA05Activity.class));
         }
     }
 

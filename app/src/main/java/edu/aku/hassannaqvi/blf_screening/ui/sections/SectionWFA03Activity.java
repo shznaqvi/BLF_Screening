@@ -58,7 +58,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
 
     public void BtnContinue() {
-        if (formValidation()) {
+        if (!formValidation()) return;
             try {
                 SaveDraft();
             } catch (Exception e) {
@@ -68,7 +68,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this, SectionWFA04Activity.class));
             }
-        }
     }
 
 
