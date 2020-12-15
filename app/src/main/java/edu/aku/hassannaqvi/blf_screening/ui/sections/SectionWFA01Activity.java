@@ -364,9 +364,9 @@ public class SectionWFA01Activity extends AppCompatActivity {
                                             }
                                         } else {
 
-                                            Toast.makeText(SectionWFA01Activity.this, "Child not found.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SectionWFA01Activity.this, "Child follow-up not found.", Toast.LENGTH_SHORT).show();
                                             bi.llsectionwfa01.setVisibility(View.GONE);
-                                            bi.wmError.setText("Child not found.");
+                                            bi.wmError.setText("Child follow-up not found.");
                                             bi.wmError.setVisibility(View.VISIBLE);
                                             // CONTINUE VISIBLE
                                             bi.btnContinue.setVisibility(View.GONE);
