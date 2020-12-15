@@ -32,13 +32,7 @@ public class SectionWFCActivity extends AppCompatActivity {
     }
 
     private void setupSkips() {
-
-        bi.wfc101.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfc10101.getId()) {
-                Clear.clearAllFields(bi.llgrpsec1101);
-            }
-        });
-
+        bi.wfc101.setOnCheckedChangeListener((group, i) -> Clear.clearAllFields(bi.llgrpsec1101));
     }
 
 

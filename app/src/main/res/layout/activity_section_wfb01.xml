@@ -395,6 +395,7 @@
                             android:layout_alignTop="@id/qtxt_wfi07"
                             android:layout_alignBottom="@id/qtxt_wfi07"
                             android:text="@string/Q_wfi07" />
+
                     </RelativeLayout>
 
                     <LinearLayout
@@ -431,8 +432,11 @@
                             android:tag="wfi0796"
                             android:text='@{wfi0796.checked ? wfi0796x.getText().toString() : ""}'
                             android:visibility='@{wfi0796.checked? View.VISIBLE : View.GONE}' />
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -466,6 +470,7 @@
                             android:layout_alignTop="@id/qtxt_wfb1081a"
                             android:layout_alignBottom="@id/qtxt_wfb1081a"
                             android:text="@string/Q_wfb1081a" />
+
                     </RelativeLayout>
 
                     <RadioGroup
@@ -500,7 +505,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility='@{wfb1081a02.checked? View.GONE : View.VISIBLE}'>
+                android:visibility='@{wfb1081a02.checked ? View.GONE : View.VISIBLE}'>
 
 
                 <!-- wfb1081b  Radio   -->
@@ -533,6 +538,7 @@
                                 android:layout_alignTop="@id/qtxt_wfb1081b"
                                 android:layout_alignBottom="@id/qtxt_wfb1081b"
                                 android:text="@string/Q_wfb1081b" />
+
                         </RelativeLayout>
 
                         <RadioGroup
@@ -554,8 +560,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/wfb1081b02" />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -654,6 +663,7 @@
                             android:layout_alignTop="@id/qtxt_wfb1081d"
                             android:layout_alignBottom="@id/qtxt_wfb1081d"
                             android:text="@string/Q_wfb1081d" />
+
                     </RelativeLayout>
 
                     <RadioGroup
@@ -722,8 +732,11 @@
                             android:tag="wfb1081d96"
                             android:text='@{wfb1081d96.checked ? wfb1081d96x.getText().toString() : ""}'
                             android:visibility='@{wfb1081d96.checked? View.VISIBLE : View.GONE}' />
+
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 

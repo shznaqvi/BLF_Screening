@@ -2,6 +2,8 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.jetbrains.annotations.NotNull;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
@@ -32,13 +36,12 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
 
     private void setupSkips() {
+        radioGroupListener(bi.wfa507, bi.fldGrpCVwfa508);
+    }
 
-        bi.wfa507.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa50702.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfa508);
-            }
-        });
 
+    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
     }
 
 

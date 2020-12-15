@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,23 +35,23 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        bi.wfb101.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfb10102.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfb102);
+        bi.wfb101.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfb102);
+        });
+
+        bi.wfb1081a.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.llgrpsecb01);
+            Clear.clearAllFields(bi.fldGrpCVwfb1081d);
+            bi.llgrpsecb01.setVisibility(View.GONE);
+            bi.fldGrpCVwfb1081d.setVisibility(View.GONE);
+            if (i == bi.wfb1081a01.getId()) {
+                bi.llgrpsecb01.setVisibility(View.VISIBLE);
+            } else if (i == bi.wfb1081a02.getId()) {
+                bi.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
             }
         });
 
-        bi.wfb1081a.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfb1081a02.getId()) {
-                Clear.clearAllFields(bi.llgrpsecb01);
-            }
-        });
-
-        bi.wfb1081b.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfb1081b02.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfb1081c);
-            }
-        });
+        bi.wfb1081b.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.fldGrpCVwfb1081c));
 
     }
 

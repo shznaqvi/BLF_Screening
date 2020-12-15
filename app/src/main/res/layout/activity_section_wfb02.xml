@@ -77,8 +77,11 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/wfb20102" />
+
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -86,7 +89,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfb202"
                 style="@style/cardView"
-                android:visibility='@{wfb20101.checked? View.GONE : View.VISIBLE}'>
+                android:visibility='@{wfb20102.checked ? View.VISIBLE : View.GONE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,6 +116,7 @@
                             android:layout_alignTop="@id/qtxt_wfb202"
                             android:layout_alignBottom="@id/qtxt_wfb202"
                             android:text="@string/Q_wfb202" />
+
                     </RelativeLayout>
 
                     <EditText
@@ -120,14 +124,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/wfb202" />
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
             <!-- wfb203  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfb203"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{wfb20102.checked ? View.VISIBLE : View.GONE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,6 +161,7 @@
                             android:layout_alignTop="@id/qtxt_wfb203"
                             android:layout_alignBottom="@id/qtxt_wfb203"
                             android:text="@string/Q_wfb203" />
+
                     </RelativeLayout>
 
                     <RadioGroup
@@ -194,8 +202,11 @@
                             android:tag="wfb20396"
                             android:text='@{wfb20396.checked ? wfb20396x.getText().toString() : ""}'
                             android:visibility='@{wfb20396.checked? View.VISIBLE : View.GONE}' />
+
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -229,6 +240,7 @@
                             android:layout_alignTop="@id/qtxt_wfb204"
                             android:layout_alignBottom="@id/qtxt_wfb204"
                             android:text="@string/Q_wfb204" />
+
                     </RelativeLayout>
 
                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -242,7 +254,9 @@
                         app:maxValue="30"
                         app:minValue="1"
                         app:type="range" />
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -357,6 +371,7 @@
                             android:layout_alignTop="@id/qtxt_wfb206"
                             android:layout_alignBottom="@id/qtxt_wfb206"
                             android:text="@string/Q_wfb206" />
+
                     </RelativeLayout>
 
                     <EditText
@@ -364,7 +379,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/wfb206" />
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -398,6 +415,7 @@
                             android:layout_alignTop="@id/qtxt_wfb207"
                             android:layout_alignBottom="@id/qtxt_wfb207"
                             android:text="@string/Q_wfb207" />
+
                     </RelativeLayout>
 
                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -411,7 +429,9 @@
                         app:maxValue="30"
                         app:minValue="1"
                         app:type="range" />
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 

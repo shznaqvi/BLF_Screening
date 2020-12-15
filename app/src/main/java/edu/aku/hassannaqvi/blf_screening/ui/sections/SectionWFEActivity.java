@@ -31,13 +31,7 @@ public class SectionWFEActivity extends AppCompatActivity {
     }
 
     private void setupSkips() {
-
-        bi.wfe101.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfe10102.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfe102);
-            }
-        });
-
+        bi.wfe101.setOnCheckedChangeListener((group, i) -> Clear.clearAllFields(bi.fldGrpCVwfe102));
     }
 
 

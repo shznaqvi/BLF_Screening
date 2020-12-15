@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,12 +34,22 @@ public class SectionWFB02Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        bi.wfb201.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfb20101.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfb202);
-            }
+        bi.wfb201.setOnCheckedChangeListener((group, i) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfb202);
+            Clear.clearAllFields(bi.fldGrpCVwfb203);
         });
 
+        bi.wfb205.setOnCheckedChangeListener((group, i) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfb206);
+            Clear.clearAllFields(bi.fldGrpCVwfb207);
+            bi.fldGrpCVwfb206.setVisibility(View.GONE);
+            bi.fldGrpCVwfb207.setVisibility(View.GONE);
+            if (i == bi.wfb20503.getId() || i == bi.wfb20504.getId()) {
+                bi.fldGrpCVwfb206.setVisibility(View.VISIBLE);
+            } else {
+                bi.fldGrpCVwfb207.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 
