@@ -43,16 +43,15 @@ public class SectionWFA02Activity extends AppCompatActivity {
 
 
     public void BtnContinue() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionWFA03Activity.class));
-            }
+        if (!formValidation()) return;
+        try {
+            SaveDraft();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, SectionWFA03Activity.class));
         }
     }
 

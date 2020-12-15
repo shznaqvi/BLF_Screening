@@ -2649,6 +2649,7 @@
                             android:layout_alignTop="@id/qtxt_sf20"
                             android:layout_alignBottom="@id/qtxt_sf20"
                             android:text="@string/Q_sf20" />
+
                     </RelativeLayout>
 
                     <TextView
@@ -2659,10 +2660,10 @@
                         android:gravity="center_vertical|center_horizontal"
                         android:textColor="@color/colorPrimaryLight"
                         android:textSize="24sp"
-                        android:textStyle="bold"
+                        android:textStyle="bold" />
 
-                        />
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
