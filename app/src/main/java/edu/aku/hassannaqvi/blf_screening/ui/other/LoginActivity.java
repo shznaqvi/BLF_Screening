@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         if (!db.checkUsers()) {
-            //bi.btnSignin.setVisibility(View.GONE);
+            bi.btnSignin.setVisibility(View.GONE);
             bi.syncData.setVisibility(View.VISIBLE);
             callUsersWorker();
         }
@@ -241,7 +241,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (workInfo.getState() != null &&
                                 workInfo.getState() == WorkInfo.State.RUNNING) {
                             bi.pbarMR.setVisibility(View.VISIBLE);
-                            //bi.btnSignin.setVisibility(View.GONE);
+                            bi.btnSignin.setVisibility(View.GONE);
                             bi.syncData.setVisibility(View.GONE);
 
                         }
