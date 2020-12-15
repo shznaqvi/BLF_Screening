@@ -2,6 +2,8 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
+
+import org.jetbrains.annotations.NotNull;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
@@ -32,85 +36,24 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
 
     private void setupSkips() {
+        radioGroupListener(bi.wfa301, bi.llGrpseca301);
+        radioGroupListener(bi.wfa307, bi.llGrpseca303);
+        radioGroupListener(bi.wfa310, bi.llGrpseca304);
+        radioGroupListener(bi.wfa313, bi.llGrpseca305);
+        radioGroupListener(bi.wfa316, bi.llGrpseca306);
+        radioGroupListener(bi.wfa319, bi.llGrpseca307);
+        radioGroupListener(bi.wfa322, bi.fldGrpCVwfa323);
+        radioGroupListener(bi.wfa324, bi.llGrpseca308);
+        radioGroupListener(bi.wfa327, bi.fldGrpCVwfa328);
+        radioGroupListener(bi.wfa329, bi.llGrpseca309);
+        radioGroupListener(bi.wfa333, bi.llGrpseca310);
+        radioGroupListener(bi.wfa336, bi.llGrpseca311);
 
-        bi.wfa301.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa30102.getId()) {
-                Clear.clearAllFields(bi.llGrpseca301);
-            }
-        });
+    }
 
-        bi.wfa304.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa30402.getId()) {
-                Clear.clearAllFields(bi.llGrpseca302);
-            }
-        });
 
-        bi.wfa307.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa30702.getId()) {
-                Clear.clearAllFields(bi.llGrpseca303);
-            }
-        });
-
-        bi.wfa310.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa31002.getId()) {
-                Clear.clearAllFields(bi.llGrpseca304);
-            }
-        });
-
-        bi.wfa313.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa31302.getId()) {
-                Clear.clearAllFields(bi.llGrpseca305);
-            }
-        });
-
-        bi.wfa316.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa31602.getId()) {
-                Clear.clearAllFields(bi.llGrpseca306);
-            }
-        });
-
-        bi.wfa319.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa31902.getId()) {
-                Clear.clearAllFields(bi.llGrpseca307);
-            }
-        });
-
-        bi.wfa322.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa32202.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfa323);
-            }
-        });
-
-        bi.wfa324.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa32402.getId()) {
-                Clear.clearAllFields(bi.llGrpseca308);
-            }
-        });
-
-        bi.wfa327.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa32702.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfa328);
-            }
-        });
-
-        bi.wfa329.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa32902.getId()) {
-                Clear.clearAllFields(bi.llGrpseca309);
-            }
-        });
-
-        bi.wfa333.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa33302.getId()) {
-                Clear.clearAllFields(bi.llGrpseca310);
-            }
-        });
-
-        bi.wfa336.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa33602.getId()) {
-                Clear.clearAllFields(bi.llGrpseca311);
-            }
-        });
-
+    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
     }
 
 
