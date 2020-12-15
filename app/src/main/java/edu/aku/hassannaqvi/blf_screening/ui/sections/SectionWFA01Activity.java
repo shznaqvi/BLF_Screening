@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -57,28 +60,38 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkips();
         //getIntentClass();
+
     }
+
 
     private void setupSkips() {
 
-        bi.wfa107.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfa10701.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfa108);
+        bi.wfa107.setOnCheckedChangeListener((group, checkedId) -> Clear.clearAllFields(bi.fldGrpCVwfa108));
+        bi.wfa108.setOnCheckedChangeListener((group, checkedId) -> Clear.clearAllFields(bi.llGrpseca01));
+        //followupNo = Integer.parseInt(bi.wfa105.getText().toString());
+
+        bi.wfa101.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (TextUtils.isEmpty(bi.wfa101.getText()))
+                    return;
+                Clear.clearAllFields(bi.llsectionwfa01);
+                bi.llsectionwfa01.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
             }
         });
-
-        bi.wfa108.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.wfa10802.getId()) {
-                Clear.clearAllFields(bi.llGrpseca01);
-            }
-        });
-
-
-/*
-        followupNo = Integer.parseInt(bi.wfa105.getText().toString());
-*/
 
     }
+
+
 
 /*    public Class<?> getIntentClass() {
         switch (followupNo) {
@@ -100,17 +113,15 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
 
     public void BtnContinue() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class));
-
-            }
+        if (!formValidation()) return;
+        try {
+            SaveDraft();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class));
         }
     }
 
