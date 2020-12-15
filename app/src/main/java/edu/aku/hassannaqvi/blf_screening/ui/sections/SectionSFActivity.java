@@ -120,6 +120,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 bi.sf1702.setChecked(true);
                 */
                 bi.fldGrpCVsf18.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVsf18);
                 EligibilityFlag = false;
                 bi.Flag01.setChecked(false);
                 bi.Flag02.setChecked(true);
@@ -146,6 +147,7 @@ public class SectionSFActivity extends AppCompatActivity {
             //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
         } else {
             bi.sf1702.setChecked(true);
+            Clear.clearAllFields(bi.fldGrpCVsf18);
             bi.fldGrpCVsf18.setVisibility(View.GONE);
             //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
 
@@ -348,7 +350,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
                 //
                 bi.fldGrpCVsf20.setVisibility(View.GONE);
-                bi.sf20.setText(null);
+                Clear.clearAllFields(bi.fldGrpCVsf20);
 
                 //}
             }
@@ -381,7 +383,7 @@ public class SectionSFActivity extends AppCompatActivity {
 
                 //
                 bi.fldGrpCVsf20.setVisibility(View.GONE);
-                bi.sf20.setText(null);
+                Clear.clearAllFields(bi.fldGrpCVsf20);
 
                 //}
             }

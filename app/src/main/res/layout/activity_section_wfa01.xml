@@ -54,6 +54,7 @@
                             android:layout_alignTop="@id/qtxt_wfa101"
                             android:layout_alignBottom="@id/qtxt_wfa101"
                             android:text="@string/Q_wfa101" />
+
                     </RelativeLayout>
 
                     <LinearLayout
@@ -71,7 +72,6 @@
                             android:hint="###-##-##"
                             android:inputType="number"
                             app:mask="###-##-##"
-
                             app:required="true" />
 
                         <ImageButton
@@ -93,6 +93,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -508,6 +509,7 @@
                                 android:layout_alignTop="@id/qtxt_wfa107"
                                 android:layout_alignBottom="@id/qtxt_wfa107"
                                 android:text="@string/Q_wfa107" />
+
                         </RelativeLayout>
 
                         <RadioGroup
@@ -529,8 +531,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/wfa10702" />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 
@@ -586,8 +591,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/wfa10802" />
+
                         </RadioGroup>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 

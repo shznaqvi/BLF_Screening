@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,9 +34,30 @@ public class SectionWFA02Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        bi.wfa201.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.wfa20101.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVwfa202);
+        bi.wfa201.setOnCheckedChangeListener((group, id) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfa202);
+            bi.fldGrpCVwfa202.setVisibility(View.VISIBLE);
+            if (id == bi.wfa20101.getId()) {
+                bi.fldGrpCVwfa202.setVisibility(View.GONE);
+            }
+        });
+
+        bi.wfa203.setOnCheckedChangeListener((group, id) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfa204);
+            bi.fldGrpCVwfa204.setVisibility(View.VISIBLE);
+            if (id == bi.wfa20302.getId()) {
+                bi.fldGrpCVwfa204.setVisibility(View.GONE);
+            }
+        });
+
+        bi.wfa204.setOnCheckedChangeListener((group, id) -> {
+            Clear.clearAllFields(bi.fldGrpCVwfa205);
+            Clear.clearAllFields(bi.fldGrpCVwfa206);
+            bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
+            bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
+            if (bi.wfa20401.isChecked() && bi.wfa20301.isChecked()) {
+                bi.fldGrpCVwfa205.setVisibility(View.GONE);
+                bi.fldGrpCVwfa206.setVisibility(View.GONE);
             }
         });
 
@@ -43,16 +65,15 @@ public class SectionWFA02Activity extends AppCompatActivity {
 
 
     public void BtnContinue() {
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionWFA03Activity.class));
-            }
+        if (!formValidation()) return;
+        try {
+            SaveDraft();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, SectionWFA03Activity.class));
         }
     }
 
