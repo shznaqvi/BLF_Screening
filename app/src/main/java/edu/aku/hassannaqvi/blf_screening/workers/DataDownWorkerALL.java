@@ -30,19 +30,31 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.PROJECT_NAME;
 
-public class DataUpWorkerSL extends Worker {
+public class DataDownWorkerALL extends Worker {
 
     private static final Object APP_NAME = PROJECT_NAME;
-    private final String TAG = "DataWorker()";
+    private final String TAG = "DataWorkerEN()";
+
+    // to be initialised by workParams
+    private final Context mContext;
     HttpURLConnection urlConnection;
-    private Context mContext;
+    private String uploadTable;
+    private String uploadColumns;
+    private String uploadWhere;
     private URL serverURL = null;
     private ProgressDialog pd;
     private int length;
     private Data data;
+    private String nTitle = "Enrolment";
 
-    public DataUpWorkerSL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public DataDownWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
+        mContext = context;
+        uploadTable = workerParams.getInputData().getString("table");
+        //uploadColumns = workerParams.getInputData().getString("columns");
+        uploadWhere = workerParams.getInputData().getString("where");
+
+
     }
 
     /*
@@ -60,19 +72,17 @@ public class DataUpWorkerSL extends Worker {
     public Result doWork() {
 
         Log.d(TAG, "doWork: Starting");
-        displayNotification("Screening Log", "Starting Sync");
+        displayNotification(nTitle, "Starting upload");
 
         StringBuilder result = new StringBuilder();
 
         URL url = null;
         try {
             if (serverURL == null) {
-                url = new URL(MainApp._HOST_URL + "scrlog.php");
+                url = new URL(MainApp._HOST_URL + "getData.php");
             } else {
                 url = serverURL;
             }
-            setProgressAsync(new Data.Builder().putString("pud", "Connecting to server...").build());
-
             Log.d(TAG, "doWork: Connecting...");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(100000 /* milliseconds */);
@@ -93,27 +103,26 @@ public class DataUpWorkerSL extends Worker {
             JSONObject jsonTable = new JSONObject();
             JSONArray jsonParam = new JSONArray();
 
-            jsonTable.put("table", "screenlog");
-            jsonSync.put(MainApp.formsSL.toJSONObject());
+            jsonTable.put("table", uploadTable);
+            //jsonTable.put("select", uploadColumns);
+            jsonTable.put("filter", uploadWhere);
+            //jsonSync.put(uploadData);
             jsonParam
-                    .put(jsonTable)
-                    .put(jsonSync);
-            setProgressAsync(new Data.Builder().putString("pud", "Connected...").build());
+                    .put(jsonTable);
+            // .put(jsonSync);
 
-            Log.d(TAG, "Upload Begins: " + jsonParam.toString());
+            Log.d(TAG, "Upload Begins: " + jsonTable.toString());
 
 
-            wr.writeBytes(String.valueOf(jsonParam));
+            wr.writeBytes(String.valueOf(jsonTable));
             wr.flush();
             wr.close();
-            setProgressAsync(new Data.Builder().putString("pud", "Status Code: " + urlConnection.getResponseCode()).build());
 
             Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
 
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
-                displayNotification("Screen Log", "Connection Established");
-                setProgressAsync(new Data.Builder().putString("pud", "Connection established...").build());
+                displayNotification(nTitle, "Connection Established");
 
                 length = urlConnection.getContentLength();
                 Log.d(TAG, "Content Length: " + length);
@@ -127,33 +136,26 @@ public class DataUpWorkerSL extends Worker {
                     result.append(line);
 
                 }
-                displayNotification("Screening Log", "Received Data");
-                setProgressAsync(new Data.Builder().putString("pud", "Received Data!").build());
-                Log.d(TAG, "doWork(SL): " + result.toString());
+                displayNotification(nTitle, "Received Data");
+                Log.d(TAG, "doWork(EN): " + result.toString());
             } else {
 
                 Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
-                setProgressAsync(new Data.Builder().putString("pud", "Server failure!").build());
 
                 data = new Data.Builder()
                         .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
                 return Result.failure(data);
             }
-
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doWork (Timeout): " + e.getMessage());
-            setProgressAsync(new Data.Builder().putString("pud", "(Timeout): " + e.getMessage()).build());
-
-            displayNotification("SL No", "Timeout Error: " + e.getMessage());
+            displayNotification(nTitle, "Timeout Error: " + e.getMessage());
             data = new Data.Builder()
                     .putString("error", String.valueOf(e.getMessage())).build();
             return Result.failure(data);
 
         } catch (IOException | JSONException e) {
             Log.d(TAG, "doWork (IO Error): " + e.getMessage());
-            setProgressAsync(new Data.Builder().putString("pud", "(IO Error): " + e.getMessage()).build());
-
-            displayNotification("SL No", "IO Error: " + e.getMessage());
+            displayNotification(nTitle, "IO Error: " + e.getMessage());
             data = new Data.Builder()
                     .putString("error", String.valueOf(e.getMessage())).build();
 
@@ -165,28 +167,35 @@ public class DataUpWorkerSL extends Worker {
 
         //Do something with the JSON string
         if (result != null) {
-            displayNotification("SL NO", "Starting Data Processing");
+            displayNotification(nTitle, "Starting Data Processing");
 
             //String json = result.toString();
             /*if (json.length() > 0) {*/
-            displayNotification("SL NO", "Data Size: " + result.length());
+            displayNotification(nTitle, "Data Size: " + result.length());
 
 
             // JSONArray jsonArray = new JSONArray(json);
 
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
-            data = new Data.Builder()
-                    .putString("slno", String.valueOf(result)).build();
+            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 BYTES
+            if (result.toString().length() > 10240) {
+                data = new Data.Builder()
+                        .putString("data", String.valueOf(result).substring(0, (10240 - 1) / 8)).build();
+            } else {
 
+                data = new Data.Builder()
+                        .putString("data", String.valueOf(result)).build();
+            }
 
-            displayNotification("SL No", " SL NO received successfully");
+            displayNotification(nTitle, "Uploaded successfully");
+            Log.d(TAG, "doWork: " + result);
             return Result.success(data);
 
         } else {
             data = new Data.Builder()
                     .putString("error", String.valueOf(result)).build();
-            displayNotification("SL No", "Error Received");
+            displayNotification(nTitle, "Error Received");
             return Result.failure(data);
         }
 

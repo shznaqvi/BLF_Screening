@@ -126,8 +126,13 @@ public class SectionWFFActivity extends AppCompatActivity {
                                                 @Override
                                                 public void run() {
                                                     //Do something after 100ms
-                                                    oF = new Intent(SectionWFFActivity.this, MainActivity.class);
-                                                    startActivity(oF);
+                                                    /*oF = new Intent(SectionWFFActivity.this, MainActivity.class);
+                                                    startActivity(oF);*/
+
+                                                    Intent intent = new Intent();
+                                                    intent.putExtra("mrno", formsWF.getWfa101());
+                                                    setResult(1, intent);
+                                                    finish();//finishing activity
                                                 }
                                             }, 3500);
 

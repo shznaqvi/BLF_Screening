@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.blf_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
+import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FollowUpsList;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN01Activity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
@@ -368,6 +369,9 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.secWFF:
                 oF = new Intent(this, SectionWFFActivity.class);
                 break;
+            case R.id.openFups:
+                oF = new Intent(this, FollowUpsList.class);
+                break;
             case R.id.databaseBtn:
                 oF = new Intent(this, AndroidDatabaseManager.class);
                 break;
@@ -389,5 +393,9 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
         } else {
             bi.recordSummary.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void openFups(View view) {
+
     }
 }

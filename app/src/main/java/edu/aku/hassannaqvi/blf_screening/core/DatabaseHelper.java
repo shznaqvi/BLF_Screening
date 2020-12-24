@@ -76,6 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Toast.makeText(mContext, "Upgrading Database to version " + newVersion + "...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, "Upgrading Database to version " + newVersion + "...", Toast.LENGTH_SHORT).show();
 
         switch (oldVersion) {
             case 1:
