@@ -116,7 +116,7 @@ public class FollowUpsList extends AppCompatActivity {
                 AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation);
 
         recyclerView.setLayoutAnimation(controller);
-        recyclerView.getAdapter().notifyDataSetChanged();
+//        recyclerView.getAdapter().notifyDataSetChanged();
         recyclerView.scheduleLayoutAnimation();
 
 
