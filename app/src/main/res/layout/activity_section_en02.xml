@@ -135,8 +135,8 @@
                         android:hint="###"
                         android:inputType="number"
                         android:maxLength="3"
-                        app:maxValue="130"
-                        app:minValue="40"
+                        app:maxValue="170"
+                        app:minValue="80"
                         app:type="range" />
 
                 </LinearLayout>
@@ -184,8 +184,8 @@
                         android:hint="##"
                         android:inputType="number"
                         android:maxLength="2"
-                        app:maxValue="20"
-                        app:minValue="10"
+                        app:maxValue="70"
+                        app:minValue="30"
                         app:type="range" />
 
                 </LinearLayout>

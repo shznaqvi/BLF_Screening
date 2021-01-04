@@ -176,10 +176,10 @@ public class LoginActivity extends AppCompatActivity {
                 .setConstraints(mConstraints)
                 .build();
 
-        WorkManager.getInstance().enqueue(usersWorkRequest1);
+        WorkManager.getInstance(this).enqueue(usersWorkRequest1);
 
 
-        WorkManager.getInstance().getWorkInfoByIdLiveData(usersWorkRequest1.getId())
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(usersWorkRequest1.getId())
                 .observe(this, new Observer<WorkInfo>() {
                             @Override
                             public void onChanged(WorkInfo workInfo) {
@@ -188,7 +188,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                 );
 
-        WorkManager.getInstance().getWorkInfoByIdLiveData(usersWorkRequest1.getId())
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(usersWorkRequest1.getId())
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
                     public void onChanged(@Nullable WorkInfo workInfo) {
