@@ -63,7 +63,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     }
 
-
     private void setupSkips() {
 
         bi.wfa107.setOnCheckedChangeListener((group, checkedId) -> Clear.clearAllFields(bi.fldGrpCVwfa108));
@@ -91,9 +90,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     }
 
-
-
-/*    public Class<?> getIntentClass() {
+    /*    public Class<?> getIntentClass() {
         switch (followupNo) {
             case 1:
             case 2:
@@ -111,7 +108,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
     }*/
 
-
     public void BtnContinue() {
         if (!formValidation()) return;
         try {
@@ -125,12 +121,10 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
     }
 
-
     public void BtnEnd() {
         oF = new Intent(this, MainActivity.class);
         startActivity(oF);
     }
-
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
@@ -147,7 +141,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
     }
 
-
     private void SaveDraft() {
 
         formsWF = new FormsWF();
@@ -157,7 +150,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         formsWF.setAppversion(MainApp.appInfo.getAppVersion());
         formsWF.setUsername(MainApp.userName);
 
-        setGPS(this);
+        MainApp.setGPS(this);
 
         String[] swf1 = bi.wfa10401.getText().toString().split("-");
         String wfa10401 = swf1[0];
@@ -229,12 +222,10 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     }
 
-
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
 
     }
-
 
     private void setGPS(Activity activity) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
@@ -265,11 +256,12 @@ public class SectionWFA01Activity extends AppCompatActivity {
     }
 
     public void FetchFollowups(View view) {
+
         /*MainApp.sf2 = bi.sf2.getText().toString();
-        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();
-*/
+        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();*/
 
         if (formValidation()) {
+
             bi.checkMR.setVisibility(View.GONE);
             bi.pbarMR.setVisibility(View.VISIBLE);
 
@@ -282,13 +274,14 @@ public class SectionWFA01Activity extends AppCompatActivity {
 */
             // Sending data to Worker class
 
-       /*
+            /*
 
 
         final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
                 .setInputData(data)
                 .build();
 */
+
             JSONObject json = new JSONObject();
             try {
                 json.put("table", "fetchMR");
@@ -304,6 +297,8 @@ public class SectionWFA01Activity extends AppCompatActivity {
                     .putString("json", json.toString())
                     .build();
 
+            Toast.makeText(this, "Data = "+data, Toast.LENGTH_LONG).show();
+
             Constraints constraints = new Constraints.Builder()
                     .setRequiredNetworkType(NetworkType.CONNECTED)
                     .build();
@@ -311,7 +306,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
             final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchFollowupWorker.class).setInputData(data).setConstraints(constraints).build();
             WorkManager.getInstance().enqueue(workRequest1);
-
 
             WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest1.getId())
                     .observe(this, new Observer<WorkInfo>() {
@@ -394,6 +388,5 @@ public class SectionWFA01Activity extends AppCompatActivity {
                     });
         }
     }
-
 
 }

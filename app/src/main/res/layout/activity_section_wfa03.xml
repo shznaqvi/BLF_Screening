@@ -140,12 +140,13 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa303_title1  Title   -->
+                <!-- wfa303title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa303_title1"
+                    android:id="@+id/fldGrpCVwfa303title1"
                     style="@style/cardView">
 
                     <LinearLayout
+                        android:id="@+id/ll_wfa303"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -173,89 +174,10 @@
                         </RelativeLayout>
 
                         <LinearLayout
+                            android:id="@+id/fldGrpWfa303"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="@string/wfa30301" />
-
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/wfa30301"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:hint="@string/wfa30301"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="59"
-                                    app:minValue="1"
-                                    app:type="range" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="@string/wfa30302" />
-
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/wfa30302"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:hint="@string/wfa30302"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="23"
-                                    app:minValue="1"
-                                    app:type="range" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="@string/wfa30303" />
-
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/wfa30303"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:hint="@string/wfa30303"
-                                    android:inputType="number"
-                                    android:maxLength="2"
-                                    app:maxValue="29"
-                                    app:minValue="1"
-                                    app:type="range" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
+                            android:orientation="vertical" />
 
                     </LinearLayout>
 
@@ -376,9 +298,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa306_title1  Title   -->
+                <!-- wfa306title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa306_title1"
+                    android:id="@+id/fldGrpCVwfa306title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -612,9 +534,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa309_title1  Title   -->
+                <!-- wfa309title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa309_title1"
+                    android:id="@+id/fldGrpCVwfa309title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -823,9 +745,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa312_title1  Title   -->
+                <!-- wfa312title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa312_title1"
+                    android:id="@+id/fldGrpCVwfa312title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -1059,9 +981,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa315_title1  Title   -->
+                <!-- wfa315title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa315_title1"
+                    android:id="@+id/fldGrpCVwfa315title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -1536,7 +1458,7 @@
             </androidx.cardview.widget.CardView>
 
 
-            <!-- wfa323_title1  Title   -->
+            <!-- wfa323title1  Title   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa323"
                 style="@style/cardView"
@@ -1770,9 +1692,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa326_title1  Title   -->
+                <!-- wfa326title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa326_title1"
+                    android:id="@+id/fldGrpCVwfa326title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -2148,9 +2070,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa332_title1  Title   -->
+                <!-- wfa332title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa332_title1"
+                    android:id="@+id/fldGrpCVwfa332title1"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -2358,9 +2280,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wfa335_title1  Title   -->
+                <!-- wfa335title1  Title   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVwfa335_title1"
+                    android:id="@+id/fldGrpCVwfa335title1"
                     style="@style/cardView">
 
                     <LinearLayout

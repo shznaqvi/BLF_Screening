@@ -43,22 +43,46 @@ public class SectionWFA02Activity extends AppCompatActivity {
         });
 
         bi.wfa203.setOnCheckedChangeListener((group, id) -> {
+
             Clear.clearAllFields(bi.fldGrpCVwfa204);
             Clear.clearAllFields(bi.fldGrpCVwfa205);
+            Clear.clearAllFields(bi.fldGrpCVwfa206);
             bi.fldGrpCVwfa204.setVisibility(View.VISIBLE);
             bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
+            bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
+
             if (id == bi.wfa20302.getId()) {
                 bi.fldGrpCVwfa204.setVisibility(View.GONE);
                 bi.fldGrpCVwfa205.setVisibility(View.GONE);
+                bi.fldGrpCVwfa206.setVisibility(View.GONE);
             }
+
         });
 
         bi.wfa204.setOnCheckedChangeListener((group, id) -> {
-            Clear.clearAllFields(bi.fldGrpCVwfa205);
-            bi.fldGrpCVwfa205.setVisibility(View.GONE);
-            if (id == bi.wfa20402.getId()) {
-                bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
+
+            if (bi.wfa203.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "select a radio for wfa203 first", Toast.LENGTH_LONG).show();
+            } else {
+
+                if (bi.wfa20301.isChecked() && id == bi.wfa20401.getId()) {
+                    Clear.clearAllFields(bi.fldGrpCVwfa205);
+                    Clear.clearAllFields(bi.fldGrpCVwfa206);
+                    bi.fldGrpCVwfa205.setVisibility(View.GONE);
+                    bi.fldGrpCVwfa206.setVisibility(View.GONE);
+                } else if (bi.wfa20301.isChecked() && id == bi.wfa20402.getId()) {
+                    bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
+                } else if (bi.wfa20303.isChecked() && id == bi.wfa20401.getId()) {
+                    Clear.clearAllFields(bi.fldGrpCVwfa205);
+                    bi.fldGrpCVwfa205.setVisibility(View.GONE);
+                    bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
+                } else if (bi.wfa20303.isChecked() && id == bi.wfa20402.getId()) {
+                    bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
+                }
             }
+
         });
 
     }

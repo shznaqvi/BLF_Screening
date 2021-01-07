@@ -1,41 +1,136 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.jetbrains.annotations.NotNull;
+import org.xmlpull.v1.XmlPullParser;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa03Binding;
+import edu.aku.hassannaqvi.blf_screening.databinding.WfaCardLayoutBinding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
 public class SectionWFA03Activity extends AppCompatActivity {
 
     ActivitySectionWfa03Binding bi;
     Intent oF = null;
+    ArrayList<View> wfa303;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfa03);
         bi.setCallback(this);
         setupSkips();
+
+
+        TextWatcher textwatcher = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Toast.makeText(getApplicationContext(), ""+ getCurrentFocus(), Toast.LENGTH_SHORT).show();
+
+                int id = getCurrentFocus().getId();
+
+                // Main Parent Linear Layout
+                bi.fldGrpCVwfa303title1.setVisibility(View.GONE);
+                // Card Under Parent Linear Layout
+                bi.fldGrpWfa303.removeAllViews();
+
+                wfa303 = new ArrayList<>();
+
+                if (!bi.wfa302.isRangeTextValidate())
+                    return;
+
+                for (int i = 0; i < Integer.parseInt(bi.wfa302.getText().toString()); i++) {
+                    ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(SectionWFA03Activity.this).inflate(R.layout.wfa_card_layout, bi.fldGrpWfa303, false);
+                    bi.fldGrpWfa303.addView(view);
+                    wfa303.add(view);
+                }
+
+                bi.fldGrpCVwfa303title1.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        bi.wfa302.addTextChangedListener(textwatcher);
     }
 
+    /*public void CreateCardViewProgrammatically(){
+
+        cardview = new CardView(context);
+        layoutparams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        cardview.setLayoutParams(layoutparams);
+        cardview.setRadius(15);
+        cardview.setPadding(25, 25, 25, 25);
+        cardview.setCardBackgroundColor(Color.MAGENTA);
+        cardview.setMaxCardElevation(30);
+        cardview.setMaxCardElevation(6);
+        textview = new TextView(context);
+        textview.setLayoutParams(layoutparams);
+        textview.setText("CardView Programmatically");
+        textview.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+        textview.setTextColor(Color.WHITE);
+        textview.setPadding(25,25,25,25);
+        textview.setGravity(Gravity.CENTER);
+        cardview.addView(textview);
+        relativeLayout.addView(cardview);
+    }*/
 
     private void setupSkips() {
+
         radioGroupListener(bi.wfa301, bi.llGrpseca301);
         radioGroupListener(bi.wfa307, bi.llGrpseca303);
         radioGroupListener(bi.wfa310, bi.llGrpseca304);
@@ -48,7 +143,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
         radioGroupListener(bi.wfa329, bi.llGrpseca309);
         radioGroupListener(bi.wfa333, bi.llGrpseca310);
         radioGroupListener(bi.wfa336, bi.llGrpseca311);
-
     }
 
 
@@ -59,15 +153,15 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
     public void BtnContinue() {
         if (!formValidation()) return;
-            try {
-                SaveDraft();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionWFA04Activity.class));
-            }
+        try {
+            SaveDraft();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            startActivity(new Intent(this, SectionWFA04Activity.class));
+        }
     }
 
 
@@ -98,9 +192,13 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa302(bi.wfa302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa302.getText().toString());
 
-        MainApp.formsWF.setWfa30301(bi.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30301.getText().toString());
-        MainApp.formsWF.setWfa30302(bi.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30302.getText().toString());
-        MainApp.formsWF.setWfa30303(bi.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30303.getText().toString());
+        for (View view : wfa303) {
+            WfaCardLayoutBinding bind = DataBindingUtil.bind(view);
+            MainApp.formsWF.setWfa30301(bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString());
+            MainApp.formsWF.setWfa30302(bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString());
+            MainApp.formsWF.setWfa30303(bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString());
+        }
+
 
         MainApp.formsWF.setWfa304(bi.wfa30401.isChecked() ? "1"
                 : bi.wfa30402.isChecked() ? "2"
@@ -216,7 +314,17 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
+            return false;
+        }
+
+        /*if (Integer.parseInt(bi.wfa30301.getText().toString()) == 0 && Integer.parseInt(bi.wfa30302.getText().toString()) == 0 && Integer.parseInt(bi.wfa30303.getText().toString()) == 0) {
+            Toast.makeText(this, "Sum of minutes, hours and days cannot be zero", Toast.LENGTH_LONG).show();
+            return false;
+        }*/
+
+        return true;
 
     }
 

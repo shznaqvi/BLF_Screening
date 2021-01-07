@@ -176,7 +176,7 @@
                             android:id="@+id/wfa20296mx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/wfa20296m"
                             android:tag="wfa20296m"
                             android:text='@{wfa20296m.checked ? wfa20296mx.getText().toString() : ""}'
@@ -210,7 +210,7 @@
                             android:id="@+id/wfa20296bx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/wfa20296b"
                             android:tag="wfa20296b"
                             android:text='@{wfa20296b.checked ? wfa20296bx.getText().toString() : ""}'
