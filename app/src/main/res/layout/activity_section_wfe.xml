@@ -1,4 +1,6 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/tools">
 
     <data>
 
@@ -118,11 +120,22 @@
                             android:text="@string/Q_wfe102" />
                     </RelativeLayout>
 
+                    <!--<EditText
+                        android:id="@+id/wfe102"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/wfe102" />-->
+
                     <EditText
                         android:id="@+id/wfe102"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/wfe102" />
+                        android:inputType="text|textNoSuggestions"
+                        android:hint="BL-99-9999-XXX"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

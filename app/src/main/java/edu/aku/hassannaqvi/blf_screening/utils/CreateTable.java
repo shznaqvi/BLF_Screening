@@ -1,13 +1,16 @@
 package edu.aku.hassannaqvi.blf_screening.utils;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.BLRandomContract.BLRandomTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract.DistrictsTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 
 public final class CreateTable {
 
@@ -146,6 +149,52 @@ public final class CreateTable {
             + BLRandomTable.COLUMN_HH_SELECTED_STRUCT + " TEXT,"
             + BLRandomTable.COLUMN_RANDOMDT + " TEXT,"
             + BLRandomTable.COLUMN_SNO_HH + " TEXT );";
+
+
+    public static final String SQL_CREATE_DISEASES = "CREATE TABLE " + DiseasesContract.DiseasesTable.TABLE_NAME + " (" +
+            DiseasesContract.DiseasesTable.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            DiseasesContract.DiseasesTable.COLUMN_UID + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_UUID + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_Q_NO + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_SYSDATE + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_SYNCED + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_SYNCED_DATE + " TEXT " +
+            ");";
+
+
+    public static final String SQL_CREATE_EPISODES = "CREATE TABLE " + EpisodesContract.EpisodesTable.TABLE_NAME + " (" +
+            EpisodesContract.EpisodesTable.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            EpisodesContract.EpisodesTable.COLUMN_UID + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_UUID + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_DUID + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_MINUTES + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_HOURS + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_DAYS + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_SECONDS + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_SYSDATE + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_SYNCED + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_SYNCED_DATE + " TEXT " +
+            ");";
+
+
+
+
+    public static final String SQL_CREATE_CHILD_FOLLOWUP = "CREATE TABLE " + childFollowupContract.childFollowupTable.TABLE_NAME + " (" +
+            childFollowupContract.childFollowupTable.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            childFollowupContract.childFollowupTable.COLUMN_STUDYID + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_MRNO + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_FUPDT + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_FUPWEEK + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_CHNAME + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_MNAME + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_MRNO_M + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_S1Q501 + " TEXT " +
+            ");";
+
+
+
+
 
 /*    public static final String SQL_ALTER_CHILD_TABLE = "ALTER TABLE " +
             ChildTable.TABLE_NAME + " ADD COLUMN " +

@@ -17,7 +17,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
@@ -26,12 +29,15 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
+import edu.aku.hassannaqvi.blf_screening.models.FollowUps;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
+import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_VERSION;
@@ -43,6 +49,9 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FOR
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSWF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VERSIONAPP;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISEASES;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_EPISODES;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_CHILD_FOLLOWUP;
 
 
 /**
@@ -71,6 +80,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_DISTRICTS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
+        db.execSQL(SQL_CREATE_DISEASES);
+        db.execSQL(SQL_CREATE_EPISODES);
+        db.execSQL(SQL_CREATE_CHILD_FOLLOWUP);
     }
 
     @Override
@@ -1671,4 +1683,162 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+
+    public long insertDisease(String disease) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        //values.put(DiseasesContract.DiseasesTable.COLUMN_UID, MainApp.formsWF.get_ID());
+        values.put(DiseasesContract.DiseasesTable.COLUMN_Q_NO, disease);
+        values.put(DiseasesContract.DiseasesTable.COLUMN_UUID, MainApp.formsWF.get_UID());
+        values.put(DiseasesContract.DiseasesTable.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                DiseasesContract.DiseasesTable.TABLE_NAME,
+                DiseasesContract.DiseasesTable.COLUMN_NAME_NULLABLE,
+                values);
+
+        if (newRowId > 0) {
+            String uid = MainApp.formsWF.getDeviceID() + newRowId;
+            long index = updatesFormsWFDiseases(DiseasesContract.DiseasesTable.COLUMN_UID, uid, newRowId);
+            if (index < 0)
+                newRowId = 0;
+        }
+
+        return newRowId;
+    }
+
+    //Generic update FormColumn
+    public int updatesFormsWFDiseases(String column, String value, long id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = DiseasesContract.DiseasesTable.ID + " =? ";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        return db.update(DiseasesContract.DiseasesTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public String getDiseaseUID(String tableName, long id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select uid from diseases where id = '" + id + "'", null);
+        res.moveToFirst();
+        String formUID = res.getString(res.getColumnIndex("uid"));
+        return formUID;
+
+    }
+
+    public long insertEpisode(WFA303Model wfa303Model, String duid) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        //values.put(DiseasesContract.DiseasesTable.COLUMN_UID, MainApp.formsWF.get_ID());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_MINUTES, wfa303Model.getWfa30301());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_HOURS, wfa303Model.getWfa30302());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_DAYS, wfa303Model.getWfa30303());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_SECONDS, wfa303Model.getWfa30304());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_DUID, duid);
+        values.put(EpisodesContract.EpisodesTable.COLUMN_UUID, MainApp.formsWF.get_UID());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                EpisodesContract.EpisodesTable.TABLE_NAME,
+                EpisodesContract.EpisodesTable.COLUMN_NAME_NULLABLE,
+                values);
+
+        if (newRowId > 0) {
+            String uid = MainApp.formsWF.getDeviceID() + newRowId;
+            long index = updatesFormsWFEpisode(EpisodesContract.EpisodesTable.COLUMN_UID, uid, newRowId);
+            if (index < 0)
+                newRowId = 0;
+        }
+
+        return newRowId;
+    }
+
+    //Generic update FormColumn
+    public int updatesFormsWFEpisode(String column, String value, long id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = EpisodesContract.EpisodesTable.ID + " =? ";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        return db.update(EpisodesContract.EpisodesTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int syncFollowups(JSONArray followupsList) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(childFollowupContract.childFollowupTable.TABLE_NAME, null, null);
+
+        int insertCount = 0;
+
+        try {
+            for (int i = 0; i < followupsList.length(); i++) {
+
+                JSONObject jsonObjectFollowup = followupsList.getJSONObject(i);
+
+                FollowUps followups = new FollowUps();
+                followups.Sync(jsonObjectFollowup);
+                ContentValues values = new ContentValues();
+
+                values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO, followups.getMrno().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_STUDYID, followups.getStudyid().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDT, followups.getFupdt().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_FUPWEEK, followups.getFupweek().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_CHNAME, followups.getChName().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_MNAME, followups.getmName().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, followups.getMrno_m().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT, followups.getFupdonedt().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, followups.getS1q501().trim());
+
+
+                long rowID = db.insert(childFollowupContract.childFollowupTable.TABLE_NAME, null, values);
+
+
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncFollowups(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    public Cursor getFollowups(String mrno) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + " '", null);
+
+
+
+        return result;
+    }
 }

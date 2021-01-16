@@ -2,12 +2,19 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
+import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -22,6 +29,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
     ActivitySectionWfb01Binding bi;
     Intent oF = null;
+    String week;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,34 @@ public class SectionWFB01Activity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkips();
 
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+
+
+        TextWatcher textwatcher = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!bi.wfb104.getText().toString().equals("") && !bi.wfb105.getText().toString().equals("") && Integer.parseInt(bi.wfb105.getText().toString()) < Integer.parseInt(bi.wfb104.getText().toString())) {
+                    bi.fldGrpCVwfi07.setVisibility(View.VISIBLE);
+                } else {
+                    Clear.clearAllFields(bi.fldGrpCVwfi07);
+                    bi.fldGrpCVwfi07.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        // Type MHD
+        bi.wfb105.addTextChangedListener(textwatcher);
     }
 
 
@@ -65,7 +101,12 @@ public class SectionWFB01Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFB02Activity.class));
+
+                if (week.equals("6") || week.equals("7") || week.equals("8") || week.equals("14") || week.equals("18") || week.equals("19")) {
+                    startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week));
+                } else {
+                    startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week));
+                }
             }
         }
     }
@@ -113,6 +154,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         //    MainApp.formsWF.setWfi06(bi.wfi06.getText().toString().trim().isEmpty() ? "-1" : bi.wfa504.getText().toString());
 
         MainApp.formsWF.setWfi0601(bi.wfi0601.getText().toString().trim().isEmpty() ? "-1" : bi.wfi0601.getText().toString());
+        MainApp.formsWF.setwfi0602(bi.wfi0602.getText().toString().trim().isEmpty() ? "-1" : bi.wfi0602.getText().toString());
 
         MainApp.formsWF.setWfi0701(bi.wfi0701.isChecked() ? "1" : "-1");
         MainApp.formsWF.setWfi0702(bi.wfi0702.isChecked() ? "2" : "-1");
@@ -147,7 +189,10 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) { return false; }
+
+        return true;
 
     }
 

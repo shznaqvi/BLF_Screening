@@ -256,7 +256,7 @@
                         android:inputType="number"
                         android:maxLength="2"
                         app:maxValue="30"
-                        app:minValue="1"
+                        app:minValue="0"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -303,7 +303,7 @@
                         android:inputType="number"
                         android:maxLength="2"
                         app:maxValue="30"
-                        app:minValue="1"
+                        app:minValue="0"
                         app:type="range" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -350,6 +350,31 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="Sachets" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/wfi0602"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Enter Sachets"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:maxValue="30"
+                            app:minValue="0"
+                            app:type="range" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@string/wfi0601" />
 
                         <EditText
@@ -368,7 +393,8 @@
             <!-- wfi07  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfi07"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"

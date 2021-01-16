@@ -1,46 +1,29 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
+import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.jetbrains.annotations.NotNull;
-import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
@@ -48,13 +31,17 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa03Binding;
 import edu.aku.hassannaqvi.blf_screening.databinding.WfaCardLayoutBinding;
+import edu.aku.hassannaqvi.blf_screening.models.SubModel;
+import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
 public class SectionWFA03Activity extends AppCompatActivity {
 
     ActivitySectionWfa03Binding bi;
     Intent oF = null;
-    ArrayList<View> wfa303;
+    ArrayMap<String, Integer> myIDs = new ArrayMap<>();
+    ArrayList<SubModel> disease;
+    String week, delivery_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,27 +61,138 @@ public class SectionWFA03Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                Toast.makeText(getApplicationContext(), ""+ getCurrentFocus(), Toast.LENGTH_SHORT).show();
+                EditTextPicker edt;
+                CardView cv;
+                LinearLayout ll;
 
-                int id = getCurrentFocus().getId();
+                String type;
 
-                // Main Parent Linear Layout
-                bi.fldGrpCVwfa303title1.setVisibility(View.GONE);
-                // Card Under Parent Linear Layout
-                bi.fldGrpWfa303.removeAllViews();
-
-                wfa303 = new ArrayList<>();
-
-                if (!bi.wfa302.isRangeTextValidate())
-                    return;
-
-                for (int i = 0; i < Integer.parseInt(bi.wfa302.getText().toString()); i++) {
-                    ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(SectionWFA03Activity.this).inflate(R.layout.wfa_card_layout, bi.fldGrpWfa303, false);
-                    bi.fldGrpWfa303.addView(view);
-                    wfa303.add(view);
+                if (bi.wfa302.isFocused()) {
+                    edt = bi.wfa302;
+                    cv = bi.fldGrpCVwfa303title1;
+                    ll = bi.llwfa303;
+                    type = "MHD";
+                } else if (bi.wfa305.isFocused()) {
+                    edt = bi.wfa305;
+                    cv = bi.fldGrpCVwfa306title1;
+                    ll = bi.llwfa306;
+                    type = "MHD";
+                } else if (bi.wfa311.isFocused()) {
+                    edt = bi.wfa311;
+                    cv = bi.fldGrpCVwfa312title1;
+                    ll = bi.llwfa312;
+                    type = "MHD";
+                } else if (bi.wfa308.isFocused()) {
+                    edt = bi.wfa308;
+                    cv = bi.fldGrpCVwfa309title1;
+                    ll = bi.llwfa309;
+                    type = "MS";
+                } else if (bi.wfa325.isFocused()) {
+                    edt = bi.wfa325;
+                    cv = bi.fldGrpCVwfa326title1;
+                    ll = bi.llwfa326;
+                    type = "MS";
+                } else if (bi.wfa314.isFocused()) {
+                    edt = bi.wfa314;
+                    cv = bi.fldGrpCVwfa315title1;
+                    ll = bi.llwfa315;
+                    type = "MH";
+                } else if (bi.wfa331.isFocused()) {
+                    edt = bi.wfa331;
+                    cv = bi.fldGrpCVwfa332title1;
+                    ll = bi.llwfa332;
+                    type = "HD";
+                } else if (bi.wfa334.isFocused()) {
+                    edt = bi.wfa334;
+                    cv = bi.fldGrpCVwfa335title1;
+                    ll = bi.llwfa335;
+                    type = "HD";
+                } else if (bi.wfa317.isFocused()) {
+                    edt = bi.wfa317;
+                    cv = bi.fldGrpCVwfa318title1;
+                    ll = bi.llwfa318;
+                    type = "D";
+                } else if (bi.wfa320.isFocused()) {
+                    edt = bi.wfa320;
+                    cv = bi.fldGrpCVwfa321title1;
+                    ll = bi.llwfa321;
+                    type = "D";
+                } else if (bi.wfa337.isFocused()) {
+                    edt = bi.wfa337;
+                    cv = bi.fldGrpCVwfa338title1;
+                    ll = bi.llwfa338;
+                    type = "S";
+                } else {
+                    edt = null;
+                    cv = null;
+                    ll = null;
+                    type = "MHD0";
                 }
 
-                bi.fldGrpCVwfa303title1.setVisibility(View.VISIBLE);
+                if (s.length() > 0) {
+
+                    if (!edt.isRangeTextValidate())
+                        return;
+
+                    /*for (int i = 1; i <= Integer.parseInt(edt.getText().toString()); i++) {
+                        String et        = getCurrentFocus().toString();
+                        String result    = et.substring(et.lastIndexOf("/") + 1);
+                        String etReplace = result.replace("}", "");
+                        String etID      = "wfa" + (Integer.parseInt(etReplace.substring(3, etReplace.length())) + 1);
+                        Toast.makeText(getApplicationContext(), "" + etID.trim(), Toast.LENGTH_SHORT).show();
+                    }*/
+
+                    ll.removeAllViews();
+                    cv.setVisibility(View.GONE);
+
+                    for (int i = 1; i <= Integer.parseInt(edt.getText().toString()); i++) {
+
+                        ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(SectionWFA03Activity.this).inflate(R.layout.wfa_card_layout, ll, false);
+                        ll.addView(view);
+
+                        CardView cv2 = (CardView) view.getChildAt(0);
+                        LinearLayout ll2 = (LinearLayout) cv2.getChildAt(0);
+
+                        if (type.equals("MHD")) {
+                            LinearLayout ll_S = (LinearLayout) ll2.getChildAt(3);
+                            ll_S.setVisibility(View.GONE);
+                        } else if (type.equals("MS")) {
+                            LinearLayout ll_H = (LinearLayout) ll2.getChildAt(1);
+                            LinearLayout ll_D = (LinearLayout) ll2.getChildAt(2);
+                            ll_H.setVisibility(View.GONE);
+                            ll_D.setVisibility(View.GONE);
+                        } else if (type.equals("MH")) {
+                            LinearLayout ll_D = (LinearLayout) ll2.getChildAt(2);
+                            LinearLayout ll_S = (LinearLayout) ll2.getChildAt(3);
+                            ll_D.setVisibility(View.GONE);
+                            ll_S.setVisibility(View.GONE);
+                        } else if (type.equals("HD")) {
+                            LinearLayout ll_M = (LinearLayout) ll2.getChildAt(0);
+                            LinearLayout ll_S = (LinearLayout) ll2.getChildAt(3);
+                            ll_M.setVisibility(View.GONE);
+                            ll_S.setVisibility(View.GONE);
+                        } else if (type.equals("D")) {
+                            LinearLayout ll_M = (LinearLayout) ll2.getChildAt(0);
+                            LinearLayout ll_H = (LinearLayout) ll2.getChildAt(1);
+                            LinearLayout ll_S = (LinearLayout) ll2.getChildAt(3);
+                            ll_M.setVisibility(View.GONE);
+                            ll_H.setVisibility(View.GONE);
+                            ll_S.setVisibility(View.GONE);
+                        } else if (type.equals("S")) {
+                            LinearLayout ll_M = (LinearLayout) ll2.getChildAt(0);
+                            LinearLayout ll_H = (LinearLayout) ll2.getChildAt(1);
+                            LinearLayout ll_D = (LinearLayout) ll2.getChildAt(2);
+                            ll_M.setVisibility(View.GONE);
+                            ll_H.setVisibility(View.GONE);
+                            ll_D.setVisibility(View.GONE);
+                        }
+                    }
+                    cv.setVisibility(View.VISIBLE);
+                } else {
+                    if (ll != null) {
+                        ll.removeAllViews();
+                    }
+                }
             }
 
             @Override
@@ -102,7 +200,32 @@ public class SectionWFA03Activity extends AppCompatActivity {
             }
         };
 
+        // Type MHD
         bi.wfa302.addTextChangedListener(textwatcher);
+        bi.wfa305.addTextChangedListener(textwatcher);
+        bi.wfa311.addTextChangedListener(textwatcher);
+
+        // Type MS
+        bi.wfa308.addTextChangedListener(textwatcher);
+        bi.wfa325.addTextChangedListener(textwatcher);
+
+        // Type MH
+        bi.wfa314.addTextChangedListener(textwatcher);
+
+        // Type HD
+        bi.wfa331.addTextChangedListener(textwatcher);
+        bi.wfa334.addTextChangedListener(textwatcher);
+
+        // Type D
+        bi.wfa317.addTextChangedListener(textwatcher);
+        bi.wfa320.addTextChangedListener(textwatcher);
+
+        // Type S
+        bi.wfa337.addTextChangedListener(textwatcher);
+
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
     }
 
     /*public void CreateCardViewProgrammatically(){
@@ -145,7 +268,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
         radioGroupListener(bi.wfa336, bi.llGrpseca311);
     }
 
-
     public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
         rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
     }
@@ -160,7 +282,12 @@ public class SectionWFA03Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA04Activity.class));
+
+            /*if (week.equals("6") || week.equals("10") || week.equals("14") || week.equals("20")) {
+                startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
+            }*/
+
+            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
         }
     }
 
@@ -175,9 +302,25 @@ public class SectionWFA03Activity extends AppCompatActivity {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFA03, MainApp.formsWF.sWFA03toString());
         if (updcount == 1) {
+            for (byte i = 0; i < disease.size(); i++) {
+                long rowValue = db.insertDisease(disease.get(i).getDisease());
+                if (rowValue > 0) {
+                    String duid = db.getDiseaseUID("diseases", rowValue);
+                    for (byte j = 0; j < disease.get(i).getSubmodel().size(); j++) {
+                        long epValue = db.insertEpisode(disease.get(i).getSubmodel().get(j), duid);
+                        if (epValue < 0) {
+                            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_LONG).show();
+                            return false;
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, "Updating Database... ERROR! Loop", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            }
             return true;
         } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Updating Database... ERROR! IF", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -192,23 +335,15 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa302(bi.wfa302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa302.getText().toString());
 
-        for (View view : wfa303) {
-            WfaCardLayoutBinding bind = DataBindingUtil.bind(view);
-            MainApp.formsWF.setWfa30301(bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString());
-            MainApp.formsWF.setWfa30302(bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString());
-            MainApp.formsWF.setWfa30303(bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString());
-        }
-
-
         MainApp.formsWF.setWfa304(bi.wfa30401.isChecked() ? "1"
                 : bi.wfa30402.isChecked() ? "2"
                 : "-1");
 
         MainApp.formsWF.setWfa305(bi.wfa305.getText().toString().trim().isEmpty() ? "-1" : bi.wfa305.getText().toString());
 
-        MainApp.formsWF.setWfa30601(bi.wfa30601.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30601.getText().toString());
+        /*MainApp.formsWF.setWfa30601(bi.wfa30601.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30601.getText().toString());
         MainApp.formsWF.setWfa30602(bi.wfa30602.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30602.getText().toString());
-        MainApp.formsWF.setWfa30603(bi.wfa30603.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30603.getText().toString());
+        MainApp.formsWF.setWfa30603(bi.wfa30603.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30603.getText().toString());*/
 
         MainApp.formsWF.setWfa307(bi.wfa30701.isChecked() ? "1"
                 : bi.wfa30702.isChecked() ? "2"
@@ -216,8 +351,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa308(bi.wfa308.getText().toString().trim().isEmpty() ? "-1" : bi.wfa308.getText().toString());
 
-        MainApp.formsWF.setWfa30901(bi.wfa30901.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30901.getText().toString());
-        MainApp.formsWF.setWfa30902(bi.wfa30902.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30902.getText().toString());
+        /*MainApp.formsWF.setWfa30901(bi.wfa30901.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30901.getText().toString());
+        MainApp.formsWF.setWfa30902(bi.wfa30902.getText().toString().trim().isEmpty() ? "-1" : bi.wfa30902.getText().toString());*/
 
         MainApp.formsWF.setWfa310(bi.wfa31001.isChecked() ? "1"
                 : bi.wfa31002.isChecked() ? "2"
@@ -225,9 +360,9 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa311(bi.wfa311.getText().toString().trim().isEmpty() ? "-1" : bi.wfa311.getText().toString());
 
-        MainApp.formsWF.setWfa31201(bi.wfa31201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31201.getText().toString());
+        /*MainApp.formsWF.setWfa31201(bi.wfa31201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31201.getText().toString());
         MainApp.formsWF.setWfa31202(bi.wfa31202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31202.getText().toString());
-        MainApp.formsWF.setWfa31203(bi.wfa31203.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31203.getText().toString());
+        MainApp.formsWF.setWfa31203(bi.wfa31203.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31203.getText().toString());*/
 
         MainApp.formsWF.setWfa313(bi.wfa31301.isChecked() ? "1"
                 : bi.wfa31302.isChecked() ? "2"
@@ -235,8 +370,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa314(bi.wfa314.getText().toString().trim().isEmpty() ? "-1" : bi.wfa314.getText().toString());
 
-        MainApp.formsWF.setWfa31501(bi.wfa31501.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31501.getText().toString());
-        MainApp.formsWF.setWfa31502(bi.wfa31502.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31502.getText().toString());
+        /*MainApp.formsWF.setWfa31501(bi.wfa31501.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31501.getText().toString());
+        MainApp.formsWF.setWfa31502(bi.wfa31502.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31502.getText().toString());*/
 
         MainApp.formsWF.setWfa316(bi.wfa31601.isChecked() ? "1"
                 : bi.wfa31602.isChecked() ? "2"
@@ -244,7 +379,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa317(bi.wfa317.getText().toString().trim().isEmpty() ? "-1" : bi.wfa317.getText().toString());
 
-        MainApp.formsWF.setWfa318(bi.wfa318.getText().toString().trim().isEmpty() ? "-1" : bi.wfa318.getText().toString());
+        //MainApp.formsWF.setWfa318(bi.wfa318.getText().toString().trim().isEmpty() ? "-1" : bi.wfa318.getText().toString());
 
         MainApp.formsWF.setWfa319(bi.wfa31901.isChecked() ? "1"
                 : bi.wfa31902.isChecked() ? "2"
@@ -252,15 +387,11 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa320(bi.wfa320.getText().toString().trim().isEmpty() ? "-1" : bi.wfa320.getText().toString());
 
-        MainApp.formsWF.setWfa321(bi.wfa321.getText().toString().trim().isEmpty() ? "-1" : bi.wfa321.getText().toString());
+        //MainApp.formsWF.setWfa321(bi.wfa321.getText().toString().trim().isEmpty() ? "-1" : bi.wfa321.getText().toString());
 
         MainApp.formsWF.setWfa322(bi.wfa32201.isChecked() ? "1"
                 : bi.wfa32202.isChecked() ? "2"
                 : "-1");
-
-        MainApp.formsWF.setWfa32301(bi.wfa32301.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32301.getText().toString());
-        MainApp.formsWF.setWfa32302(bi.wfa32302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32302.getText().toString());
-        MainApp.formsWF.setWfa32303(bi.wfa32303.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32303.getText().toString());
 
         MainApp.formsWF.setWfa324(bi.wfa32401.isChecked() ? "1"
                 : bi.wfa32402.isChecked() ? "2"
@@ -268,8 +399,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa325(bi.wfa325.getText().toString().trim().isEmpty() ? "-1" : bi.wfa325.getText().toString());
 
-        MainApp.formsWF.setWfa32601(bi.wfa32601.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32601.getText().toString());
-        MainApp.formsWF.setWfa32602(bi.wfa32602.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32602.getText().toString());
+        //MainApp.formsWF.setWfa32601(bi.wfa32601.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32601.getText().toString());
+        //MainApp.formsWF.setWfa32602(bi.wfa32602.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32602.getText().toString());
 
         MainApp.formsWF.setWfa327(bi.wfa32701.isChecked() ? "1"
                 : bi.wfa32702.isChecked() ? "2"
@@ -288,8 +419,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa331(bi.wfa331.getText().toString().trim().isEmpty() ? "-1" : bi.wfa331.getText().toString());
 
-        MainApp.formsWF.setWfa33201(bi.wfa33201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33201.getText().toString());
-        MainApp.formsWF.setWfa33202(bi.wfa33202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33202.getText().toString());
+        /*MainApp.formsWF.setWfa33201(bi.wfa33201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33201.getText().toString());
+        MainApp.formsWF.setWfa33202(bi.wfa33202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33202.getText().toString());*/
 
         MainApp.formsWF.setWfa333(bi.wfa33301.isChecked() ? "1"
                 : bi.wfa33302.isChecked() ? "2"
@@ -297,35 +428,377 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa334(bi.wfa334.getText().toString().trim().isEmpty() ? "-1" : bi.wfa334.getText().toString());
 
-        MainApp.formsWF.setWfa33501(bi.wfa33501.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33501.getText().toString());
-        MainApp.formsWF.setWfa33502(bi.wfa33502.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33502.getText().toString());
+        /*MainApp.formsWF.setWfa33501(bi.wfa33501.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33501.getText().toString());
+        MainApp.formsWF.setWfa33502(bi.wfa33502.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33502.getText().toString());*/
 
         MainApp.formsWF.setWfa336(bi.wfa33601.isChecked() ? "1"
                 : bi.wfa33602.isChecked() ? "2"
                 : "-1");
 
         MainApp.formsWF.setWfa337(bi.wfa337.getText().toString().trim().isEmpty() ? "-1" : bi.wfa337.getText().toString());
-
-        MainApp.formsWF.setWfa338(bi.wfa338.getText().toString().trim().isEmpty() ? "-1" : bi.wfa338.getText().toString());
-
+        //MainApp.formsWF.setWfa338(bi.wfa338.getText().toString().trim().isEmpty() ? "-1" : bi.wfa338.getText().toString());
         MainApp.formsWF.setWfa339(bi.wfa339.getText().toString().trim().isEmpty() ? "-1" : bi.wfa339.getText().toString());
+
+        // Minutes Hours and Days
+        disease = new ArrayList<>();
+        int wfa303Count = bi.llwfa303.getChildCount();
+        if (wfa303Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa303Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa303.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa303", subModels));
+        }
+
+        int wfa306Count = bi.llwfa306.getChildCount();
+        if (wfa306Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa306Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa306.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa306", subModels));
+        }
+
+
+        int wfa309Count = bi.llwfa309.getChildCount();
+        if (wfa309Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa309Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa309.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa309", subModels));
+        }
+
+        int wfa312Count = bi.llwfa312.getChildCount();
+        if (wfa312Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa312Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa312.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa312", subModels));
+        }
+
+
+        int wfa315Count = bi.llwfa315.getChildCount();
+        if (wfa315Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa315Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa315.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa315", subModels));
+        }
+
+        int wfa318Count = bi.llwfa318.getChildCount();
+        if (wfa318Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa318Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa318.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa318", subModels));
+        }
+
+
+        int wfa321Count = bi.llwfa321.getChildCount();
+        if (wfa321Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa321Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa321.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa321", subModels));
+        }
+
+        if (bi.wfa32201.isChecked()) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            subModels.add(
+                    new WFA303Model(
+                            MainApp.formsWF.getSysdate(),
+                            bi.wfa32301.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32301.getText().toString(),
+                            bi.wfa32302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32302.getText().toString(),
+                            bi.wfa32303.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32303.getText().toString(),
+                            bi.wfa32304.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32303.getText().toString()
+                    )
+            );
+            disease.add(new SubModel("wfa323", subModels));
+        }
+
+        int wfa326Count = bi.llwfa326.getChildCount();
+        if (wfa326Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa326Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa326.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa326", subModels));
+        }
+
+        int wfa332Count = bi.llwfa332.getChildCount();
+        if (wfa332Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa332Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa332.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa332", subModels));
+        }
+
+        int wfa335Count = bi.llwfa335.getChildCount();
+        if (wfa335Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa335Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa335.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa335", subModels));
+        }
+
+        int wfa338Count = bi.llwfa338.getChildCount();
+        if (wfa338Count > 0) {
+            ArrayList<WFA303Model> subModels = new ArrayList<>();
+            for (int i = 0; i < wfa338Count; i++) {
+                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa338.getChildAt(i));
+                if (bind != null) {
+                    subModels.add(
+                            new WFA303Model(
+                                    MainApp.formsWF.getSysdate(),
+                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
+                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
+                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
+                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
+                            )
+                    );
+                }
+            }
+            disease.add(new SubModel("wfa338", subModels));
+        }
 
     }
 
 
     private boolean formValidation() {
 
+        if (!checkZeroFilled(bi.llwfa303)) {
+            Toast.makeText(getApplicationContext(), "WFA303: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa306)) {
+            Toast.makeText(getApplicationContext(), "WFA306: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa309)) {
+            Toast.makeText(getApplicationContext(), "WFA309: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa312)) {
+            Toast.makeText(getApplicationContext(), "WFA312: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa315)) {
+            Toast.makeText(getApplicationContext(), "WFA315: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa318)) {
+            Toast.makeText(getApplicationContext(), "WFA318: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa321)) {
+            Toast.makeText(getApplicationContext(), "WFA321: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa323)) {
+            Toast.makeText(getApplicationContext(), "WFA323: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa326)) {
+            Toast.makeText(getApplicationContext(), "WFA326: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa332)) {
+            Toast.makeText(getApplicationContext(), "WFA332: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa335)) {
+            Toast.makeText(getApplicationContext(), "WFA335: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (!checkZeroFilled(bi.llwfa338)) {
+            Toast.makeText(getApplicationContext(), "WFA338: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
 
-        /*if (Integer.parseInt(bi.wfa30301.getText().toString()) == 0 && Integer.parseInt(bi.wfa30302.getText().toString()) == 0 && Integer.parseInt(bi.wfa30303.getText().toString()) == 0) {
-            Toast.makeText(this, "Sum of minutes, hours and days cannot be zero", Toast.LENGTH_LONG).show();
-            return false;
-        }*/
-
         return true;
+    }
 
+    public boolean checkZeroFilled(LinearLayout ll) {
+
+        for (int i = 0; i < ll.getChildCount(); i++) {
+
+            int total, M, H, D, S;
+
+            ConstraintLayout cl = (ConstraintLayout) ll.getChildAt(i);
+            CardView cv = (CardView) cl.getChildAt(0);
+            LinearLayout llp = (LinearLayout) cv.getChildAt(0);
+
+            LinearLayout llM = (LinearLayout) llp.getChildAt(0);
+            LinearLayout llH = (LinearLayout) llp.getChildAt(1);
+            LinearLayout llD = (LinearLayout) llp.getChildAt(2);
+            LinearLayout llS = (LinearLayout) llp.getChildAt(3);
+            EditTextPicker etM = (EditTextPicker) llM.getChildAt(1);
+            EditTextPicker etH = (EditTextPicker) llH.getChildAt(1);
+            EditTextPicker etD = (EditTextPicker) llD.getChildAt(1);
+            EditTextPicker etS = (EditTextPicker) llS.getChildAt(1);
+
+            if (etM.getText().toString().trim().isEmpty()) {
+                M = 0;
+            } else {
+                M = Integer.parseInt(etM.getText().toString());
+            }
+            if (etH.getText().toString().trim().isEmpty()) {
+                H = 0;
+            } else {
+                H = Integer.parseInt(etH.getText().toString());
+            }
+            if (etD.getText().toString().trim().isEmpty()) {
+                D = 0;
+            } else {
+                D = Integer.parseInt(etD.getText().toString());
+            }
+            if (etS.getText().toString().trim().isEmpty()) {
+                S = 0;
+            } else {
+                S = Integer.parseInt(etS.getText().toString());
+            }
+            total = M + H + D + S;
+
+            if (total == 0) {
+                ll.setFocusable(true);
+                ll.setFocusableInTouchMode(true);
+                ll.requestFocus();
+                return false;
+            }
+        }
+        return true;
     }
 
 

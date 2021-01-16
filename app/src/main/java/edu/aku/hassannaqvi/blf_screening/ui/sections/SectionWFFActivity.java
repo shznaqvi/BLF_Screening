@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,6 +21,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -47,6 +51,12 @@ public class SectionWFFActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wff);
         bi.setCallback(this);
         setupSkips();
+
+        EditText BLEditText = (EditText) bi.wfi02;
+        SimpleMaskFormatter f = new SimpleMaskFormatter("LL-NN-NNNN-LLL");
+        MaskTextWatcher mtw = new MaskTextWatcher(BLEditText, f);
+        BLEditText.addTextChangedListener(mtw);
+        BLEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
     }
 
 
@@ -63,12 +73,12 @@ public class SectionWFFActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (UpdateDB()) {
-   /*             finish();
-                startActivity(new Intent(this, MainActivity.class));*/
-                bi.pBar3.setVisibility(View.VISIBLE);
 
-                UploadData();
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
 
+                /*bi.pBar3.setVisibility(View.VISIBLE);
+                UploadData();*/
             }
         }
     }

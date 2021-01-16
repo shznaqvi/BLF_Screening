@@ -179,6 +179,7 @@ public class FormsWF extends LiveData<FormsWF> {
     public String wfb105 = "";
     public String wfi06 = "";
     public String wfi0601 = "";
+    public String wfi0602 = "";
     public String wfi07 = "";
     public String wfi0701 = "";
     public String wfi0702 = "";
@@ -1561,6 +1562,15 @@ public class FormsWF extends LiveData<FormsWF> {
         this.wfi0601 = wfi0601;
     }
 
+
+    public String getwfi0602() {
+        return wfi0602;
+    }
+
+    public void setwfi0602(String wfi0602) {
+        this.wfi0602 = wfi0602;
+    }
+
     public String getWfi07() {
         return wfi07;
     }
@@ -2623,6 +2633,7 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfb105", wfb105)
                     .put("wfi06", wfi06)
                     .put("wfi0601", wfi0601)
+                    .put("wfi0602", wfi0602)
                     .put("wfi07", wfi07)
                     .put("wfi0701", wfi0701)
                     .put("wfi0702", wfi0702)
@@ -3049,6 +3060,7 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfb105 = json.getString("wfb105");
                 this.wfi06 = json.getString("wfi06");
                 this.wfi0601 = json.getString("wfi0601");
+                this.wfi0602 = json.getString("wfi0602");
                 this.wfi07 = json.getString("wfi07");
                 this.wfi0701 = json.getString("wfi0701");
                 this.wfi0702 = json.getString("wfi0702");

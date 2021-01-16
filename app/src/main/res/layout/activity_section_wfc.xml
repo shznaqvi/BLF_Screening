@@ -140,8 +140,8 @@
                             android:hint="@string/wfc102"
                             android:inputType="number"
                             android:maxLength="2"
-                            app:maxValue="65"
-                            app:minValue="40"
+                            app:maxValue="80"
+                            app:minValue="35"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

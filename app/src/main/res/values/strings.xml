@@ -799,6 +799,7 @@
     <string name="wfa30301">Minutes</string>
     <string name="wfa30302">Hours</string>
     <string name="wfa30303">Days</string>
+    <string name="wfa30304">Seconds</string>
     <string name="wfa304">Did the child had hypothermia since last visit</string>
     <string name="wfa30401">Yes</string>
     <string name="wfa30402">No</string>

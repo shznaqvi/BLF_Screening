@@ -638,12 +638,38 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfa40902" />
 
-                            <RadioButton
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility='@{wfa40902.checked? View.VISIBLE : View.GONE}'>
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Specify Date" />
+
+                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                                    android:id="@+id/wfa40902x"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:gravity="center"
+                                    android:hint="DD-MM-YYYY"
+                                    app:dateFormat="dd-MM-yyyy"
+                                    app:maxDate="CR_DATE"
+                                    app:minDate="14/09/2020"
+                                    android:text='@{wfa40902.checked ? wfa40902x.getText().toString() : ""}'/>
+
+                            </LinearLayout>
+
+                            <!--<RadioButton
                                 android:id="@+id/wfa40903"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfa40903" />
-
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/wfa40903x"
                                 android:layout_width="match_parent"
@@ -657,13 +683,11 @@
                                 app:maxValue="29"
                                 app:minValue="1"
                                 app:type="range" />
-
                             <RadioButton
                                 android:id="@+id/wfa40904"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfa40904" />
-
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/wfa40904x"
                                 android:layout_width="match_parent"
@@ -677,13 +701,11 @@
                                 app:maxValue="11"
                                 app:minValue="1"
                                 app:type="range" />
-
                             <RadioButton
                                 android:id="@+id/wfa40905"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfa40905" />
-
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/wfa40905x"
                                 android:layout_width="match_parent"
@@ -696,7 +718,8 @@
                                 android:visibility='@{wfa40905.checked? View.VISIBLE : View.GONE}'
                                 app:maxValue="2021"
                                 app:minValue="2020"
-                                app:type="range" />
+                                app:type="range" />-->
+
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

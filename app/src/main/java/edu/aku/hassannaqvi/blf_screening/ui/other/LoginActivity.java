@@ -13,6 +13,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -53,6 +55,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import edu.aku.hassannaqvi.blf_screening.CONSTANTS;
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.core.AppInfo;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -114,9 +117,9 @@ public class LoginActivity extends AppCompatActivity {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         if (!db.checkUsers()) {
-            bi.btnSignin.setVisibility(View.GONE);
+            //bi.btnSignin.setVisibility(View.GONE);
             bi.syncData.setVisibility(View.VISIBLE);
-            callUsersWorker();
+            //callUsersWorker();
         }
 
         bi.txtinstalldate.setText(MainApp.appInfo.getAppInfo());
@@ -337,8 +340,23 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void onSyncDataClick(View view) {
+    /*public void onSyncDataClick(View view) {
         callUsersWorker();
+    }*/
+
+
+    public void onSyncDataClick(View view) {
+        //TODO implement
+
+        // Require permissions INTERNET & ACCESS_NETWORK_STATE
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            startActivity(new Intent(this, SyncActivity.class).putExtra(CONSTANTS.SYNC_LOGIN, true));
+        } else {
+            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 /*    private void populateAutoComplete() {

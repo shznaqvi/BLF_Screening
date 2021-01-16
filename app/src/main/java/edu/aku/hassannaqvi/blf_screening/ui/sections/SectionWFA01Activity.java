@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -33,6 +35,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -52,6 +55,8 @@ public class SectionWFA01Activity extends AppCompatActivity {
     private final String TAG = "SectionWFA01Activity";
     ActivitySectionWfa01Binding bi;
     Intent oF = null;
+    DatabaseHelper db;
+    String delivery_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkips();
         //getIntentClass();
-
     }
 
     private void setupSkips() {
@@ -117,7 +121,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class));
+            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date));
         }
     }
 
@@ -255,10 +259,10 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
     }
 
-    public void FetchFollowups(View view) {
+    /*public void FetchFollowups(View view) {
 
-        /*MainApp.sf2 = bi.sf2.getText().toString();
-        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();*/
+     *//*MainApp.sf2 = bi.sf2.getText().toString();
+        MainApp.scrdt = bi.sf101.getText().toString() + " " + bi.sf102.getText().toString();*//*
 
         if (formValidation()) {
 
@@ -268,19 +272,15 @@ public class SectionWFA01Activity extends AppCompatActivity {
             bi.wmError.setVisibility(View.GONE);
             bi.wmError.setText(null);
 
-            /*bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -3, "d"));
+            *//*bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -3, "d"));
 
             bi.sf6a01.setMaxDate(bi.sf101.getText().toString().replace("-", "/"));
-*/
+*//*
             // Sending data to Worker class
 
-            /*
-
-
-        final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
+            *//*final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
                 .setInputData(data)
-                .build();
-*/
+                .build();*//*
 
             JSONObject json = new JSONObject();
             try {
@@ -386,6 +386,91 @@ public class SectionWFA01Activity extends AppCompatActivity {
                             }
                         }
                     });
+        }
+    }*/
+
+
+    public void FetchFollowups(View view) {
+
+        if (formValidation()) {
+
+            bi.checkMR.setVisibility(View.GONE);
+            bi.pbarMR.setVisibility(View.VISIBLE);
+            bi.wmError.setVisibility(View.GONE);
+            bi.wmError.setText(null);
+
+            String mrno = bi.wfa101.getText().toString();
+            db = MainApp.appInfo.getDbHelper();
+            Cursor followups = db.getFollowups(mrno);
+
+            //oast.makeText(this, "" + mrno, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "" + followups.getCount(), Toast.LENGTH_SHORT).show();
+
+            if (followups.getCount() > 0) {
+
+                //Toast.makeText(this, "" + followups.getString(followups.getColumnIndex("s1q501")), Toast.LENGTH_SHORT).show();
+
+                followups.moveToFirst();
+
+                bi.wmError.setVisibility(View.GONE);
+                bi.pbarMR.setVisibility(View.GONE);
+                bi.checkMR.setVisibility(View.VISIBLE);
+
+
+                if (!followups.getString(followups.getColumnIndex("fupweek")).equals("") && followups.getString(followups.getColumnIndex("fupweek")) != null) {
+
+                    if (!followups.getString(followups.getColumnIndex("fupdt")).equals("") && followups.getString(followups.getColumnIndex("fupdt")) != null) {
+
+
+                        String str = followups.getString(followups.getColumnIndex("s1q501"));
+                        delivery_date = str.replace("-", "/");
+                        bi.wfa10401.setMinDate(delivery_date);
+                        bi.wfa11001.setMinDate(delivery_date);
+
+                        Toast.makeText(SectionWFA01Activity.this, "Child followup found.", Toast.LENGTH_SHORT).show();
+
+                        bi.wfa102.setText(followups.getString(followups.getColumnIndex("studyid")));
+                        bi.wfa103.setText(followups.getString(followups.getColumnIndex("chName")));
+                        bi.wfa105.setText(followups.getString(followups.getColumnIndex("fupweek")));
+                        bi.llsectionwfa01.setVisibility(View.VISIBLE);
+                        // CONTINUE VISIBLE
+                        bi.btnContinue.setVisibility(View.VISIBLE);
+                        bi.btnEnd.setVisibility(View.GONE);
+                        // Clear.clearAllFields(bi.llsectionwfa01);
+                    } else {
+                        Toast.makeText(SectionWFA01Activity.this, followups.getString(followups.getColumnIndex("fupweek")), Toast.LENGTH_SHORT).show();
+                        bi.llsectionwfa01.setVisibility(View.GONE);
+
+                        // CONTINUE VISIBLE
+                        bi.btnContinue.setVisibility(View.GONE);
+                        bi.btnEnd.setVisibility(View.VISIBLE);
+                        Clear.clearAllFields(bi.llsectionwfa01);
+                        bi.wmError.setText(followups.getString(followups.getColumnIndex("fupweek")));
+                        bi.wmError.setVisibility(View.VISIBLE);
+
+                    }
+
+                } else {
+
+                    Toast.makeText(SectionWFA01Activity.this, "Child follow-up not found.", Toast.LENGTH_SHORT).show();
+                    bi.llsectionwfa01.setVisibility(View.GONE);
+                    bi.wmError.setText("Child follow-up not found.");
+                    bi.wmError.setVisibility(View.VISIBLE);
+                    // CONTINUE VISIBLE
+                    bi.btnContinue.setVisibility(View.GONE);
+                    bi.btnEnd.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(bi.llsectionwfa01);
+                }
+
+            } else {
+
+                bi.pbarMR.setVisibility(View.GONE);
+                bi.checkMR.setVisibility(View.VISIBLE);
+                //String message = workInfo.getOutputData().getString("error");
+                bi.wmError.setText("error");
+                bi.wmError.setVisibility(View.VISIBLE);
+
+            }
         }
     }
 

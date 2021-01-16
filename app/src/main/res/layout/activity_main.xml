@@ -291,7 +291,6 @@
                                 android:radius="2dp"
                                 android:text="@string/database"
                                 android:textColor="@color/black_overlay" />
-                            <!--                            android:visibility=""-->
 
                         </LinearLayout>
 

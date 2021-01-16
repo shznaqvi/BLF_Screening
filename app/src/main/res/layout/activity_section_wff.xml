@@ -1,4 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -121,11 +122,34 @@
                             android:text="@string/Q_wfi02" />
                     </RelativeLayout>
 
+                    <!--<EditText
+                        android:id="@+id/wfi02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/wfi02" />-->
+
+
+                    <!--<com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/wfi02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="ST-99-9999-XXX"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        app:mask="ST-##-####-###"
+                        app:required="true" />-->
+
                     <EditText
                         android:id="@+id/wfi02"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/wfi02" />
+                        android:inputType="text|textNoSuggestions"
+                        android:hint="ST-99-9999-XXX"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center" />
 
                 </LinearLayout>
 

@@ -26,6 +26,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
+import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 
 /**
  * Created by ali.azaz on 7/14/2017.
@@ -60,7 +61,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "VersionApp":
                 position = 1;
                 break;
-            case "Districts":
+            case "childFollowup":
                 position = 2;
                 break;
         }
@@ -91,7 +92,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "VersionApp":
                 position = 1;
                 break;
-            case "Districts":
+
+            case "childFollowup":
                 position = 2;
                 break;
         }
@@ -119,9 +121,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable.SERVER_URI);
                     position = 1;
                     break;
-                case "Districts":
+
+                case "childFollowup":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = DistrictsContract.DistrictsTable.TABLE_NAME;
+                    tableName = childFollowupContract.childFollowupTable.TABLE_NAME;
                     position = 2;
                     break;
             }
@@ -132,7 +135,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
 
             switch (syncClass) {
                 case "Users":
-                case "Districts":
+                case "childFollowup":
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
                     urlConnection.setDoInput(true);
@@ -206,11 +209,18 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             if (insertCount == 1) jsonArray.put("1");
                             position = 1;
                             break;
-                     /*   case "Districts":
+                        case "childFollowup":
+                            jsonArray = new JSONArray(result);
+                            insertCount = db.syncFollowups(jsonArray);
+                            if (insertCount == 1) jsonArray.put("1");
+                            position = 2;
+                            break;
+                       /*case "Districts":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncDistricts(jsonArray);
                             position = 2;
-                            break;*/
+                            break;
+                       */
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

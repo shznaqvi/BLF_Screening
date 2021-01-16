@@ -2,11 +2,15 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -28,6 +32,12 @@ public class SectionWFEActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfe);
         bi.setCallback(this);
         setupSkips();
+
+        EditText BLEditText = (EditText) bi.wfe102;
+        SimpleMaskFormatter f = new SimpleMaskFormatter("LL-NN-NNNN-LLL");
+        MaskTextWatcher mtw = new MaskTextWatcher(BLEditText, f);
+        BLEditText.addTextChangedListener(mtw);
+        BLEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
     }
 
     private void setupSkips() {

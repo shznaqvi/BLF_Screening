@@ -25,6 +25,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
     ActivitySectionWfa04Binding bi;
     Intent oF = null;
+    String week, delivery_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,13 @@ public class SectionWFA04Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfa04);
         bi.setCallback(this);
         setupSkips();
+
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
+
+        bi.wfa40201.setMinDate(delivery_date);
+        bi.wfa40802.setMinDate(delivery_date);
     }
 
 
@@ -55,7 +63,14 @@ public class SectionWFA04Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA05Activity.class));
+
+            /*if (week.equals("6") || week.equals("10") || week.equals("20")) {
+                startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week));
+            } else {
+                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week));
+            }*/
+
+            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week));
         }
     }
 
@@ -127,13 +142,8 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa409(bi.wfa40901.isChecked() ? "1"
                 : bi.wfa40902.isChecked() ? "2"
-                : bi.wfa40903.isChecked() ? "3"
-                : bi.wfa40904.isChecked() ? "4"
-                : bi.wfa40905.isChecked() ? "5"
                 : "-1");
-        MainApp.formsWF.setWfa40903x(bi.wfa40903x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40903x.getText().toString());
-        MainApp.formsWF.setWfa40904x(bi.wfa40904x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40904x.getText().toString());
-        MainApp.formsWF.setWfa40905x(bi.wfa40905x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40905x.getText().toString());
+        MainApp.formsWF.setWfa40903x(bi.wfa40902x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40902x.getText().toString());
 
     }
 
