@@ -23,7 +23,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
     ActivitySectionWfa02Binding bi;
     Intent oF = null;
 
-    String week, delivery_date;
+    String week, delivery_date, fupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        fupdate = intent.getStringExtra("fupdate");
     }
 
 
@@ -103,7 +104,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
+            startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
         }
     }
 

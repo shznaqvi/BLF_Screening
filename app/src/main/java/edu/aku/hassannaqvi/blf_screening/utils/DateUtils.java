@@ -88,6 +88,12 @@ public class DateUtils {
         return new SimpleDateFormat(format).format(cal.getTime()); //"dd-MM-yyyy HH:mm"
     }
 
+    public static String addDaysByDate(Calendar cal, String format, int day) {
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.DAY_OF_YEAR, day);
+        return new SimpleDateFormat(format).format(cal.getTime()); //"dd-MM-yyyy HH:mm"
+    }
+
     public static String getMonthsBack(String format, int month) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(cal.getTime());
@@ -232,5 +238,15 @@ public class DateUtils {
         cal.add(Calendar.YEAR, year);
         cal.add(Calendar.MONTH, month);
         return new SimpleDateFormat(format).format(cal.getTime()); //"dd-MM-yyyy HH:mm"
+    }
+
+
+    public static String getNextDate(String givenDate) throws ParseException {
+        final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        final Date date = format.parse(givenDate);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return format.format(calendar.getTime());
     }
 }

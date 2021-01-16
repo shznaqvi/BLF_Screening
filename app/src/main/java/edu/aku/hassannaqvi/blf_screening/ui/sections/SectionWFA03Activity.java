@@ -41,7 +41,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
     Intent oF = null;
     ArrayMap<String, Integer> myIDs = new ArrayMap<>();
     ArrayList<SubModel> disease;
-    String week, delivery_date;
+    String week, delivery_date, fupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,6 +226,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        fupdate = intent.getStringExtra("fupdate");
+        bi.wfa32302.setVisibility(View.GONE);
     }
 
     /*public void CreateCardViewProgrammatically(){
@@ -287,7 +289,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                 startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
             }*/
 
-            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
+            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
         }
     }
 
@@ -683,42 +685,41 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
     private boolean formValidation() {
 
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
+            return false;
+        }
+
         if (!checkZeroFilled(bi.llwfa303)) {
             Toast.makeText(getApplicationContext(), "WFA303: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa306)) {
             Toast.makeText(getApplicationContext(), "WFA306: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa309)) {
             Toast.makeText(getApplicationContext(), "WFA309: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa312)) {
             Toast.makeText(getApplicationContext(), "WFA312: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa315)) {
             Toast.makeText(getApplicationContext(), "WFA315: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa318)) {
             Toast.makeText(getApplicationContext(), "WFA318: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa321)) {
             Toast.makeText(getApplicationContext(), "WFA321: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
 
-        if (!checkZeroFilled(bi.llwfa323)) {
+
+        if (bi.wfa32301.getText().toString().trim().equals("0") && bi.wfa32302.getText().toString().trim().equals("0") && bi.wfa32303.getText().toString().trim().equals("0")) {
             Toast.makeText(getApplicationContext(), "WFA323: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -727,23 +728,16 @@ public class SectionWFA03Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "WFA326: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa332)) {
             Toast.makeText(getApplicationContext(), "WFA332: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa335)) {
             Toast.makeText(getApplicationContext(), "WFA335: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (!checkZeroFilled(bi.llwfa338)) {
             Toast.makeText(getApplicationContext(), "WFA338: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            return false;
-        }
-
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
 

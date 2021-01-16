@@ -14,6 +14,8 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.util.Arrays;
+
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -26,9 +28,21 @@ public class SectionWFEActivity extends AppCompatActivity {
     ActivitySectionWfeBinding bi;
     Intent oF = null;
 
+    String week, delivery_date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
+
+        String[] weekarray = { "6", "10", "18" };
+        if (!Arrays.asList(weekarray).contains(week)) {
+            startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week));
+        }
+
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfe);
         bi.setCallback(this);
         setupSkips();
@@ -54,7 +68,7 @@ public class SectionWFEActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFFActivity.class));
+                startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week));
             }
         }
     }

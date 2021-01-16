@@ -33,6 +33,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +46,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa01Binding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.FetchFollowupWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF;
@@ -57,6 +59,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
     Intent oF = null;
     DatabaseHelper db;
     String delivery_date;
+    String fupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +95,28 @@ public class SectionWFA01Activity extends AppCompatActivity {
             }
         });
 
+
+        bi.wfa10401.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    Toast.makeText(getApplicationContext(), "" + charSequence.toString().trim(), Toast.LENGTH_LONG).show();
+
+                    String str = charSequence.toString().trim();
+                    String strDate = str.replace("-", "/");
+                    bi.wfa11001.setMaxDate(strDate);
+                    fupdate = strDate;
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
     }
 
     /*    public Class<?> getIntentClass() {
@@ -121,7 +146,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date));
+            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
         }
     }
 
@@ -421,10 +446,17 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
                     if (!followups.getString(followups.getColumnIndex("fupdt")).equals("") && followups.getString(followups.getColumnIndex("fupdt")) != null) {
 
-
                         String str = followups.getString(followups.getColumnIndex("s1q501"));
                         delivery_date = str.replace("-", "/");
+
                         bi.wfa10401.setMinDate(delivery_date);
+
+                        try {
+                            bi.wfa10401.setMinDate(DateUtils.getNextDate(delivery_date));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
                         bi.wfa11001.setMinDate(delivery_date);
 
                         Toast.makeText(SectionWFA01Activity.this, "Child followup found.", Toast.LENGTH_SHORT).show();

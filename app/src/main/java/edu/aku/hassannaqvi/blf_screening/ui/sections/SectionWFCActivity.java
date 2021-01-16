@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.util.Arrays;
+
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -22,9 +24,21 @@ public class SectionWFCActivity extends AppCompatActivity {
     ActivitySectionWfcBinding bi;
     Intent oF = null;
 
+    String week, delivery_date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
+
+        String[] weekarray = { "2", "4", "6", "10", "14", "18", "20" };
+        if (!Arrays.asList(weekarray).contains(week)) {
+            startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week));
+        }
+
         setContentView(R.layout.activity_section_wfc);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfc);
         bi.setCallback(this);
@@ -45,8 +59,7 @@ public class SectionWFCActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFDActivity.class));
-
+                startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week));
             }
         }
     }

@@ -25,7 +25,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
     ActivitySectionWfa04Binding bi;
     Intent oF = null;
-    String week, delivery_date;
+    String week, delivery_date, fupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +37,13 @@ public class SectionWFA04Activity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        fupdate = intent.getStringExtra("fupdate");
 
         bi.wfa40201.setMinDate(delivery_date);
+        bi.wfa40201.setMaxDate(fupdate);
+
         bi.wfa40802.setMinDate(delivery_date);
+        bi.wfa40802.setMaxDate(fupdate);
     }
 
 

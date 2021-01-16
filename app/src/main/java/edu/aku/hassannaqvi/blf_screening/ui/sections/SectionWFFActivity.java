@@ -30,11 +30,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWffBinding;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerALL;
 
@@ -45,9 +48,21 @@ public class SectionWFFActivity extends AppCompatActivity {
     ActivitySectionWffBinding bi;
     Intent oF = null;
 
+    String week, delivery_date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
+
+        String[] weekarray = { "6", "7", "8", "14", "18", "19", "20" };
+        if (!Arrays.asList(weekarray).contains(week)) {
+            startActivity(new Intent(this, EndingActivity.class).putExtra("week", week).putExtra("complete", true));
+        }
+
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wff);
         bi.setCallback(this);
         setupSkips();
@@ -75,7 +90,7 @@ public class SectionWFFActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
                 /*bi.pBar3.setVisibility(View.VISIBLE);
                 UploadData();*/

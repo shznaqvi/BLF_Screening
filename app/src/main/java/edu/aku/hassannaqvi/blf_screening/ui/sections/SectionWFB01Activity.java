@@ -18,6 +18,8 @@ import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.util.Arrays;
+
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -29,17 +31,25 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
     ActivitySectionWfb01Binding bi;
     Intent oF = null;
-    String week;
+    String week, delivery_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb01);
-        bi.setCallback(this);
-        setupSkips();
 
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
+        delivery_date = intent.getStringExtra("delivery_date");
+
+        String[] weekarray = { "1", "2", "3", "4", "5", "6" };
+        if (!Arrays.asList(weekarray).contains(week)) {
+            startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week));
+        }
+
+
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb01);
+        bi.setCallback(this);
+        setupSkips();
 
 
         TextWatcher textwatcher = new TextWatcher() {
@@ -102,11 +112,13 @@ public class SectionWFB01Activity extends AppCompatActivity {
             if (UpdateDB()) {
                 finish();
 
-                if (week.equals("6") || week.equals("7") || week.equals("8") || week.equals("14") || week.equals("18") || week.equals("19")) {
+                /*if (week.equals("6") || week.equals("7") || week.equals("8") || week.equals("14") || week.equals("18") || week.equals("19")) {
                     startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week));
                 } else {
                     startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week));
-                }
+                }*/
+
+                startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week));
             }
         }
     }

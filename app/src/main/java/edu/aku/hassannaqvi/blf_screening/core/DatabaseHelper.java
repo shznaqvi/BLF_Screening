@@ -1834,11 +1834,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getFollowups(String mrno) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + " '", null);
-
-
-
+        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + "'", null);
         return result;
     }
 }
