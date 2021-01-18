@@ -239,8 +239,11 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/wfa30402" />
+
                     </RadioGroup>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
@@ -329,6 +332,7 @@
                                 android:layout_alignTop="@id/qtxt_wfa306"
                                 android:layout_alignBottom="@id/qtxt_wfa306"
                                 android:text="@string/Q_wfa306" />
+
                         </RelativeLayout>
 
                         <LinearLayout

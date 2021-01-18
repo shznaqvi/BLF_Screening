@@ -256,21 +256,22 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
     private void setupSkips() {
 
-        radioGroupListener(bi.wfa301, bi.llGrpseca301);
-        radioGroupListener(bi.wfa307, bi.llGrpseca303);
-        radioGroupListener(bi.wfa310, bi.llGrpseca304);
-        radioGroupListener(bi.wfa313, bi.llGrpseca305);
-        radioGroupListener(bi.wfa316, bi.llGrpseca306);
-        radioGroupListener(bi.wfa319, bi.llGrpseca307);
-        radioGroupListener(bi.wfa322, bi.fldGrpCVwfa323);
-        radioGroupListener(bi.wfa324, bi.llGrpseca308);
-        radioGroupListener(bi.wfa327, bi.fldGrpCVwfa328);
-        radioGroupListener(bi.wfa329, bi.llGrpseca309);
-        radioGroupListener(bi.wfa333, bi.llGrpseca310);
-        radioGroupListener(bi.wfa336, bi.llGrpseca311);
+        rgListener(bi.wfa301, bi.llGrpseca301);
+        rgListener(bi.wfa304, bi.llGrpseca302);
+        rgListener(bi.wfa307, bi.llGrpseca303);
+        rgListener(bi.wfa310, bi.llGrpseca304);
+        rgListener(bi.wfa313, bi.llGrpseca305);
+        rgListener(bi.wfa316, bi.llGrpseca306);
+        rgListener(bi.wfa319, bi.llGrpseca307);
+        rgListener(bi.wfa322, bi.fldGrpCVwfa323);
+        rgListener(bi.wfa324, bi.llGrpseca308);
+        rgListener(bi.wfa327, bi.fldGrpCVwfa328);
+        rgListener(bi.wfa329, bi.llGrpseca309);
+        rgListener(bi.wfa333, bi.llGrpseca310);
+        rgListener(bi.wfa336, bi.llGrpseca311);
     }
 
-    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+    public void rgListener(@NotNull RadioGroup rg, ViewGroup vg) {
         rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
     }
 

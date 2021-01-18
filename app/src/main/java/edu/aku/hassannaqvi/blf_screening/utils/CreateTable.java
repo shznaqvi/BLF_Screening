@@ -108,9 +108,9 @@ public final class CreateTable {
             + FormsWFTable.COLUMN_SWFD + " TEXT,"
             + FormsWFTable.COLUMN_SWFE + " TEXT,"
             + FormsWFTable.COLUMN_SWFF + " TEXT,"
-//            + FormsWFTable.COLUMN_ENDINGDATETIME + " TEXT,"
-           /* + FormsWFTable.COLUMN_ISTATUS + " TEXT,"
-            + FormsWFTable.COLUMN_ISTATUS96x + " TEXT,"*/
+            + FormsWFTable.COLUMN_ENDINGDATETIME + " TEXT,"
+            + FormsWFTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsWFTable.COLUMN_ISTATUS96x + " TEXT,"
             + FormsWFTable.COLUMN_SYNCED + " TEXT,"
             + FormsWFTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
