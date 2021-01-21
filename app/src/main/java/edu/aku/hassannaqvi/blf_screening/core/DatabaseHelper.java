@@ -14,10 +14,11 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
@@ -30,6 +31,8 @@ import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
+import edu.aku.hassannaqvi.blf_screening.models.Diseases;
+import edu.aku.hassannaqvi.blf_screening.models.Episodes;
 import edu.aku.hassannaqvi.blf_screening.models.FollowUps;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
@@ -958,74 +961,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFormsEN;
     }
 
-    public Collection<FormsWF> getUnsyncedFormsWF() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                FormsWFTable._ID,
-                FormsWFTable.COLUMN_UID,
-                FormsWFTable.COLUMN_SYSDATE,
-//                FormsWFTable.COLUMN_ISTATUS,
-                //               FormsWFTable.COLUMN_ISTATUS96x,
-//                FormsWFTable.COLUMN_ENDINGDATETIME,
-                FormsWFTable.COLUMN_SWFA01,
-                FormsWFTable.COLUMN_SWFA02,
-                FormsWFTable.COLUMN_SWFA03,
-                FormsWFTable.COLUMN_SWFA04,
-                FormsWFTable.COLUMN_SWFA05,
-                FormsWFTable.COLUMN_SWFB01,
-                FormsWFTable.COLUMN_SWFB02,
-                FormsWFTable.COLUMN_SWFC,
-                FormsWFTable.COLUMN_SWFD,
-                FormsWFTable.COLUMN_SWFE,
-                FormsWFTable.COLUMN_SWFF,
-                FormsWFTable.COLUMN_GPSLAT,
-                FormsWFTable.COLUMN_GPSLNG,
-                FormsWFTable.COLUMN_GPSDATE,
-                FormsWFTable.COLUMN_GPSACC,
-                FormsWFTable.COLUMN_DEVICETAGID,
-                FormsWFTable.COLUMN_DEVICEID,
-                FormsWFTable.COLUMN_APPVERSION,
-        };
-
-        String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " == '' ";
-        // String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-        String orderBy = FormsWFTable.COLUMN_ID + " ASC";
-
-        Collection<FormsWF> allFormsWF = new ArrayList<>();
-        try {
-            c = db.query(
-                    FormsWFTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
-                FormsWF formsWF = new FormsWF();
-                allFormsWF.add(formsWF.Hydrate(c));
-            }
-        } catch (SQLiteException e) {
-
-            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFormsWF;
-    }
-
 
     public Collection<FormsSL> getTodayFormsSL(String sysdate) {
 
@@ -1683,6 +1618,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    //Generic Un-Synced Forms
+    public void updateSyncedFormsDisease(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(DiseasesContract.DiseasesTable.COLUMN_SYNCED, true);
+        values.put(DiseasesContract.DiseasesTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = DiseasesContract.DiseasesTable.ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                DiseasesContract.DiseasesTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    //Generic Un-Synced Forms
+    public void updateSyncedFormsEpisode(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(EpisodesContract.EpisodesTable.COLUMN_SYNCED, true);
+        values.put(EpisodesContract.EpisodesTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = EpisodesContract.EpisodesTable.ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                EpisodesContract.EpisodesTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
 
     public long insertDisease(String disease) {
 
@@ -1695,6 +1670,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DiseasesContract.DiseasesTable.COLUMN_Q_NO, disease);
         values.put(DiseasesContract.DiseasesTable.COLUMN_UUID, MainApp.formsWF.get_UID());
         values.put(DiseasesContract.DiseasesTable.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
+        values.put(DiseasesContract.DiseasesTable.COLUMN_DEVICE_ID, MainApp.formsWF.getDeviceID());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -1729,10 +1705,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public String getDiseaseUID(String tableName, long id) {
+    public String getDiseaseUID(String tableName, long _id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select uid from diseases where id = '" + id + "'", null);
+        Cursor res = db.rawQuery("select uid from " + tableName + " where _id = '" + _id + "'", null);
         res.moveToFirst();
         String formUID = res.getString(res.getColumnIndex("uid"));
         return formUID;
@@ -1754,6 +1730,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(EpisodesContract.EpisodesTable.COLUMN_DUID, duid);
         values.put(EpisodesContract.EpisodesTable.COLUMN_UUID, MainApp.formsWF.get_UID());
         values.put(EpisodesContract.EpisodesTable.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
+        values.put(EpisodesContract.EpisodesTable.COLUMN_DEVICE_ID, MainApp.formsWF.getDeviceID());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -1834,7 +1811,211 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getFollowups(String mrno) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + "'", null);
+        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + "' and (fupdonedt is null or fupdonedt = null or fupdonedt = 'null' or fupdonedt = '') order by id asc limit 1", null);
         return result;
+    }
+
+    public Collection<FormsWF> getUnsyncedFormsWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsWFTable._ID,
+                FormsWFTable.COLUMN_UID,
+                FormsWFTable.COLUMN_SYSDATE,
+                FormsWFTable.COLUMN_ISTATUS,
+                FormsWFTable.COLUMN_ISTATUS96x,
+                FormsWFTable.COLUMN_ENDINGDATETIME,
+
+                FormsWFTable.COLUMN_SWFA01,
+                FormsWFTable.COLUMN_SWFA02,
+                FormsWFTable.COLUMN_SWFA03,
+                FormsWFTable.COLUMN_SWFA04,
+                FormsWFTable.COLUMN_SWFA05,
+                FormsWFTable.COLUMN_SWFB01,
+                FormsWFTable.COLUMN_SWFB02,
+                FormsWFTable.COLUMN_SWFC,
+                FormsWFTable.COLUMN_SWFD,
+                FormsWFTable.COLUMN_SWFE,
+                FormsWFTable.COLUMN_SWFF,
+                FormsWFTable.COLUMN_GPSLAT,
+                FormsWFTable.COLUMN_GPSLNG,
+                FormsWFTable.COLUMN_GPSDATE,
+                FormsWFTable.COLUMN_GPSACC,
+                FormsWFTable.COLUMN_DEVICETAGID,
+                FormsWFTable.COLUMN_DEVICEID,
+                FormsWFTable.COLUMN_APPVERSION,
+        };
+
+        String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsWFTable.COLUMN_ID + " ASC";
+
+        Collection<FormsWF> allFormsWF = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsWFTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                FormsWF formsWF = new FormsWF();
+                allFormsWF.add(formsWF.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFormsWF;
+    }
+
+    public Collection<Diseases> getUnsyncedDiseasesWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                DiseasesContract.DiseasesTable.ID,
+                DiseasesContract.DiseasesTable.COLUMN_UID,
+                DiseasesContract.DiseasesTable.COLUMN_UUID,
+                DiseasesContract.DiseasesTable.COLUMN_SYSDATE,
+                DiseasesContract.DiseasesTable.COLUMN_Q_NO,
+                DiseasesContract.DiseasesTable.COLUMN_DEVICE_ID,
+                //DiseasesContract.DiseasesTable.COLUMN_MR_NO,
+                //DiseasesContract.DiseasesTable.COLUMN_STUDYID,
+        };
+
+        String whereClause = DiseasesContract.DiseasesTable.COLUMN_SYNCED + " is null OR " + DiseasesContract.DiseasesTable.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = DiseasesContract.DiseasesTable.ID + " ASC";
+
+        Collection<Diseases> allDiseases = new ArrayList<>();
+        try {
+            c = db.query(
+                    DiseasesContract.DiseasesTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            c.moveToFirst();
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                Diseases DiseasesWF = new Diseases();
+                allDiseases.add(DiseasesWF.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDiseases;
+    }
+
+    public Collection<Episodes> getUnsyncedEpisodesWF() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                EpisodesContract.EpisodesTable.ID,
+                EpisodesContract.EpisodesTable.COLUMN_UID,
+                EpisodesContract.EpisodesTable.COLUMN_UUID,
+                EpisodesContract.EpisodesTable.COLUMN_DUID,
+                EpisodesContract.EpisodesTable.COLUMN_SYSDATE,
+                EpisodesContract.EpisodesTable.COLUMN_MINUTES,
+                EpisodesContract.EpisodesTable.COLUMN_HOURS,
+                EpisodesContract.EpisodesTable.COLUMN_DAYS,
+                EpisodesContract.EpisodesTable.COLUMN_SECONDS,
+                EpisodesContract.EpisodesTable.COLUMN_DEVICE_ID,
+        };
+
+        String whereClause = EpisodesContract.EpisodesTable.COLUMN_SYNCED + " is null OR " + EpisodesContract.EpisodesTable.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = EpisodesContract.EpisodesTable.ID + " ASC";
+
+        Collection<Episodes> allEpisodes = new ArrayList<>();
+        try {
+            c = db.query(
+                    EpisodesContract.EpisodesTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                Episodes EpisodesWF = new Episodes();
+                allEpisodes.add(EpisodesWF.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allEpisodes;
+    }
+
+
+    public void updateChildFollowup(int id) {
+
+        /*SQLiteDatabase db = this.getWritableDatabase();
+        String fupdonedt = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date().getTime());
+        db.rawQuery("update childFollowup set fupdonedt = fupdonedt where id = " + id + " and (fupdonedt is null or fupdonedt = null or fupdonedt = 'null' or fupdonedt = '')", null);*/
+
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        String fupdonedt = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date().getTime());
+
+        values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT, fupdonedt);
+
+        String where = childFollowupContract.childFollowupTable.ID + " = ?";
+        String[] whereArgs = {String.valueOf(id)};
+
+        int count = db.update(
+                childFollowupContract.childFollowupTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
     }
 }

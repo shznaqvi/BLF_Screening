@@ -227,7 +227,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         fupdate = intent.getStringExtra("fupdate");
-        bi.wfa32302.setVisibility(View.GONE);
+        bi.llwfa32304.setVisibility(View.GONE);
     }
 
     /*public void CreateCardViewProgrammatically(){
@@ -285,11 +285,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-
-            /*if (week.equals("6") || week.equals("10") || week.equals("14") || week.equals("20")) {
-                startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date));
-            }*/
-
             startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
         }
     }

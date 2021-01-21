@@ -158,7 +158,8 @@ public final class CreateTable {
             DiseasesContract.DiseasesTable.COLUMN_Q_NO + " TEXT, " +
             DiseasesContract.DiseasesTable.COLUMN_SYSDATE + " TEXT, " +
             DiseasesContract.DiseasesTable.COLUMN_SYNCED + " TEXT, " +
-            DiseasesContract.DiseasesTable.COLUMN_SYNCED_DATE + " TEXT " +
+            DiseasesContract.DiseasesTable.COLUMN_SYNCED_DATE + " TEXT, " +
+            DiseasesContract.DiseasesTable.COLUMN_DEVICE_ID + " TEXT " +
             ");";
 
 
@@ -173,7 +174,8 @@ public final class CreateTable {
             EpisodesContract.EpisodesTable.COLUMN_SECONDS + " TEXT, " +
             EpisodesContract.EpisodesTable.COLUMN_SYSDATE + " TEXT, " +
             EpisodesContract.EpisodesTable.COLUMN_SYNCED + " TEXT, " +
-            EpisodesContract.EpisodesTable.COLUMN_SYNCED_DATE + " TEXT " +
+            EpisodesContract.EpisodesTable.COLUMN_SYNCED_DATE + " TEXT, " +
+            EpisodesContract.EpisodesTable.COLUMN_DEVICE_ID + " TEXT " +
             ");";
 
 

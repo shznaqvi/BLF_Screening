@@ -45,6 +45,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa01Binding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.FetchFollowupWorker;
@@ -60,6 +61,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
     DatabaseHelper db;
     String delivery_date;
     String fupdate;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,9 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkips();
         //getIntentClass();
+
+        /*db.resetAll();
+        Toast.makeText(this, "Updated: " + new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()), Toast.LENGTH_SHORT).show();*/
     }
 
     private void setupSkips() {
@@ -146,7 +151,17 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, bi.wfa10802.isChecked() ? MainActivity.class : SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
+            if (bi.wfa10702.isChecked()) {
+
+                Toast.makeText(this, "A1: " + col_id, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id));
+            } else {
+                if (bi.wfa10802.isChecked()) {
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id));
+                } else {
+                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id));
+                }
+            }
         }
     }
 
@@ -189,17 +204,17 @@ public class SectionWFA01Activity extends AppCompatActivity {
         MainApp.formsWF.setWfa10402(wfa10402);
         MainApp.formsWF.setWfa10403(wfa10403);
 
-        swf1 = bi.wfa10404.getText().toString().split(":");
-        String wfa10404 = swf1[0];
-        String wfa10405 = swf1[1];
-        MainApp.formsWF.setWfa10404(wfa10404);
-        MainApp.formsWF.setWfa10405(wfa10405);
-
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
 
         formsWF.setWfa102(bi.wfa102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa102.getText().toString());
 
         formsWF.setWfa103(bi.wfa103.getText().toString().trim().isEmpty() ? "-1" : bi.wfa103.getText().toString());
+
+        swf1 = bi.wfa10404.getText().toString().split(":");
+        String wfa10404 = swf1[0];
+        String wfa10405 = swf1[1];
+        MainApp.formsWF.setWfa10404(wfa10404);
+        MainApp.formsWF.setWfa10405(wfa10405);
 
         formsWF.setWfa105(bi.wfa105.getText().toString());
 
@@ -230,17 +245,33 @@ public class SectionWFA01Activity extends AppCompatActivity {
                 : "-1");
         formsWF.setWfa10996x(bi.wfa10996x.getText().toString().trim().isEmpty() ? "-1" : bi.wfa10996x.getText().toString());
 
-        String[] swf10 = bi.wfa11001.getText().toString().split("-");
-        String wfa11001 = swf10[0];
-        String wfa11002 = swf10[1];
-        String wfa11003 = swf10[2];
+        String wfa11001;
+        String wfa11002;
+        String wfa11003;
+        if (bi.wfa11001.getText().toString().trim().isEmpty()) {
+            wfa11001 = "-1";
+            wfa11002 = "-1";
+            wfa11003 = "-1";
+        } else {
+            String[] swf10 = bi.wfa11001.getText().toString().split("-");
+            wfa11001 = swf10[0];
+            wfa11002 = swf10[1];
+            wfa11003 = swf10[2];
+        }
         MainApp.formsWF.setWfa11001(wfa11001);
         MainApp.formsWF.setWfa11002(wfa11002);
         MainApp.formsWF.setWfa11003(wfa11003);
 
-        swf10 = bi.wfa11004.getText().toString().split(":");
-        String wfa11004 = swf10[0];
-        String wfa11005 = swf10[1];
+        String wfa11004;
+        String wfa11005;
+        if (bi.wfa11004.getText().toString().trim().isEmpty()) {
+            wfa11004 = "-1";
+            wfa11005 = "-1";
+        } else {
+            String[] swf10 = bi.wfa11004.getText().toString().split(":");
+            wfa11004 = swf10[0];
+            wfa11005 = swf10[1];
+        }
         MainApp.formsWF.setWfa11004(wfa11004);
         MainApp.formsWF.setWfa11005(wfa11005);
 
@@ -441,7 +472,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
                 bi.pbarMR.setVisibility(View.GONE);
                 bi.checkMR.setVisibility(View.VISIBLE);
 
-
+                col_id = Integer.parseInt(followups.getString(followups.getColumnIndex("id")));
                 if (!followups.getString(followups.getColumnIndex("fupweek")).equals("") && followups.getString(followups.getColumnIndex("fupweek")) != null) {
 
                     if (!followups.getString(followups.getColumnIndex("fupdt")).equals("") && followups.getString(followups.getColumnIndex("fupdt")) != null) {

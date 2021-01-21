@@ -41,10 +41,10 @@ public class SectionWFB01Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
 
-        String[] weekarray = { "1", "2", "3", "4", "5", "6" };
+        /*String[] weekarray = { "1", "2", "3", "4", "5", "6" };
         if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week));
-        }
+        }*/
 
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb01);

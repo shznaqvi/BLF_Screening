@@ -1198,11 +1198,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/bottom">
 
                         <TextView
@@ -1223,130 +1225,114 @@
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:id="@+id/llwfa323"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
 
-                            <androidx.cardview.widget.CardView
-                                style="@style/cardView"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/wfa30301" />
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wfa32301"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/wfa30301"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                app:maxValue="59"
+                                app:minValue="0"
+                                app:type="range" />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="@string/wfa32301" />
+                        </LinearLayout>
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/wfa32301"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:hint="@string/wfa32301"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="59"
-                                        app:minValue="0"
-                                        app:type="range" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                                </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/wfa30302" />
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wfa32302"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/wfa30302"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                app:maxValue="23"
+                                app:minValue="0"
+                                app:type="range" />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="@string/wfa32302" />
+                        </LinearLayout>
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/wfa32302"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:hint="@string/wfa32302"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="23"
-                                        app:minValue="0"
-                                        app:type="range" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                                </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/wfa30303" />
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wfa32303"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="@string/wfa30303"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                app:maxValue="10"
+                                app:minValue="0"
+                                app:type="range" />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="@string/wfa32303" />
+                        </LinearLayout>
 
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/wfa32303"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:hint="@string/wfa32303"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="10"
-                                        app:minValue="0"
-                                        app:type="range" />
+                        <LinearLayout
+                            android:id="@+id/llwfa32304"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                                </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Seconds" />
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:visibility="gone">
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wfa32304"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:hint="Seconds"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                app:maxValue="59"
+                                app:minValue="0"
+                                app:type="range" />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:text="@string/wfa32303" />
-
-                                    <com.edittextpicker.aliazaz.EditTextPicker
-                                        android:id="@+id/wfa32304"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:hint="@string/wfa32303"
-                                        android:inputType="number"
-                                        android:maxLength="2"
-                                        app:maxValue="59"
-                                        app:minValue="0"
-                                        app:type="range" />
-
-                                </LinearLayout>
-
-                            </androidx.cardview.widget.CardView>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -1355,7 +1341,7 @@
             </androidx.cardview.widget.CardView>
 
 
-            <!-- wfa324  Radio   -->
+            <!-- wfa324   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa324"
                 style="@style/cardView">

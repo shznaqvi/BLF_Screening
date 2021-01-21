@@ -104,10 +104,20 @@ public class SectionWFA04Activity extends AppCompatActivity {
                 : bi.wfa40102.isChecked() ? "2"
                 : "-1");
 
-        String[] swf402 = bi.wfa40201.getText().toString().split("-");
-        String wfa40201 = swf402[0];
-        String wfa40202 = swf402[1];
-        String wfa40203 = swf402[2];
+        String wfa40201;
+        String wfa40202;
+        String wfa40203;
+        if (bi.wfa40201.getText().toString().trim().isEmpty()) {
+            wfa40201 = "-1";
+            wfa40202 = "-1";
+            wfa40203 = "-1";
+        } else {
+            String[] swf402 = bi.wfa40201.getText().toString().split("-");
+            wfa40201 = swf402[0];
+            wfa40202 = swf402[1];
+            wfa40203 = swf402[2];
+        }
+
         MainApp.formsWF.setWfa40201(wfa40201);
         MainApp.formsWF.setWfa40202(wfa40202);
         MainApp.formsWF.setWfa40203(wfa40203);
@@ -136,10 +146,20 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
         MainApp.formsWF.setWfa40801(bi.wfa40801.getText().toString().trim().isEmpty() ? "-1" : bi.wfa40801.getText().toString());
 
-        String[] swf408 = bi.wfa40802.getText().toString().split("-");
-        String wfa40802 = swf408[0];
-        String wfa40803 = swf408[1];
-        String wfa40804 = swf408[2];
+        String wfa40802;
+        String wfa40803;
+        String wfa40804;
+        if (bi.wfa40802.getText().toString().trim().isEmpty()) {
+            wfa40802 = "-1";
+            wfa40803 = "-1";
+            wfa40804 = "-1";
+        } else {
+            String[] swf408 = bi.wfa40802.getText().toString().split("-");
+            wfa40802 = swf408[0];
+            wfa40803 = swf408[1];
+            wfa40804 = swf408[2];
+        }
+
         MainApp.formsWF.setWfa40803(wfa40802);
         MainApp.formsWF.setWfa40804(wfa40803);
         MainApp.formsWF.setWfa40805(wfa40804);

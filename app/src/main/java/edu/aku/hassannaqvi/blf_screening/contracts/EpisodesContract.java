@@ -14,7 +14,7 @@ public class EpisodesContract {
         public static final String TABLE_NAME = "episodes";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
-        public static final String ID = "id";
+        public static final String ID = "_id";
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
         public static final String COLUMN_DUID = "duid";
@@ -23,6 +23,7 @@ public class EpisodesContract {
         public static final String COLUMN_DAYS = "days";
         public static final String COLUMN_SECONDS = "seconds";
         public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_DEVICE_ID = "deviceid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
 

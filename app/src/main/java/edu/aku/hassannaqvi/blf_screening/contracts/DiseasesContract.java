@@ -14,13 +14,12 @@ public class DiseasesContract {
         public static final String TABLE_NAME = "diseases";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
-        public static final String ID = "id";
+        public static final String ID = "_id";
         public static final String COLUMN_UID = "uid";
         public static final String COLUMN_UUID = "uuid";
-        public static final String COLUMN_STUDYID = "study_id";
-        public static final String COLUMN_MR_NO = "mr_no";
         public static final String COLUMN_Q_NO = "q_no";
         public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_DEVICE_ID = "deviceid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
 

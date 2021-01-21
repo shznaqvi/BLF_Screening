@@ -16,6 +16,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa02Binding;
+import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
 public class SectionWFA02Activity extends AppCompatActivity {
@@ -23,7 +24,10 @@ public class SectionWFA02Activity extends AppCompatActivity {
     ActivitySectionWfa02Binding bi;
     Intent oF = null;
 
-    String week, delivery_date, fupdate;
+    String week;
+    String delivery_date;
+    String fupdate;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         fupdate = intent.getStringExtra("fupdate");
+        col_id = intent.getIntExtra("col_id", 0);
     }
 
 
@@ -104,7 +109,12 @@ public class SectionWFA02Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate));
+
+            if (bi.wfa20302.isChecked()) {
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id));
+            } else {
+                startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id));
+            }
         }
     }
 

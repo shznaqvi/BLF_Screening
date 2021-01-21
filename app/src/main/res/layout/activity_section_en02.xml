@@ -283,8 +283,8 @@
                         android:hint="##.#"
                         android:inputType="number"
                         app:mask="##.#"
-                        app:maxValue="35.0"
-                        app:minValue="12.0"
+                        app:maxValue="40.0"
+                        app:minValue="25.0"
                         app:pattern="^(\\d{2,2}\\.\\d{1,1})$"
                         app:type="range" />
 

@@ -6,20 +6,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.validatorcrawler.aliazaz.Validator
-import edu.aku.hassannaqvi.blf_screening.CONSTANTS.Companion.FSTATUS_END_FLAG
 import edu.aku.hassannaqvi.blf_screening.R
+import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper
 import edu.aku.hassannaqvi.blf_screening.core.MainApp
 import edu.aku.hassannaqvi.blf_screening.core.MainApp.appInfo
 import edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityEndingBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class EndingActivity : AppCompatActivity() {
 
     lateinit var bi: ActivityEndingBinding
-    var form = "";
+    var form: String? = ""
+    var col_id: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,10 +28,17 @@ class EndingActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending)
         bi.callback = this
 
-        val check = intent.getBooleanExtra("complete", false);
-        form  = intent.getStringExtra("form").toString();
+        //val data = intent.getBundleExtra("bundle")
+        //val check = data?.getBoolean("complete", false) ?: false
+        //form = data?.getString("form")
+        //col_id = data?.getInt("col_id", 0)
 
-        //Toast.makeText(this, "" + form, Toast.LENGTH_LONG).show();
+
+        val check = intent.getBooleanExtra("complete", false);
+        form               = intent.getStringExtra("form");
+        col_id             = intent.getIntExtra("col_id", 0);
+
+        //Toast.makeText(this, "Ending: " + col_id, Toast.LENGTH_LONG).show();
 
         if (check) {
             bi.a0601.isEnabled = true
@@ -44,16 +51,15 @@ class EndingActivity : AppCompatActivity() {
             bi.a0608.isEnabled = false
             bi.a0696.isEnabled = false
         } else {
-            val bool = intent.getIntExtra(FSTATUS_END_FLAG, 0)
             bi.a0601.isEnabled = false
-            bi.a0602.isEnabled = bool == 1
-            bi.a0603.isEnabled = bool == 1
-            bi.a0604.isEnabled = bool == 1
-            bi.a0605.isEnabled = bool == 1
-            bi.a0606.isEnabled = bool == 1
-            bi.a0607.isEnabled = bool == 2
-            bi.a0608.isEnabled = bool == 1
-            bi.a0696.isEnabled = bool == 1
+            bi.a0602.isEnabled = true
+            bi.a0603.isEnabled = true
+            bi.a0604.isEnabled = true
+            bi.a0605.isEnabled = true
+            bi.a0606.isEnabled = true
+            bi.a0607.isEnabled = true
+            bi.a0608.isEnabled = true
+            bi.a0696.isEnabled = true
         }
     }
 
@@ -81,17 +87,21 @@ class EndingActivity : AppCompatActivity() {
         }
     }
 
-
     private fun updateDB(): Boolean {
 
         val db = appInfo.dbHelper
         var updcount = 0;
         if (form == "FP") {
             updcount = db.updateEndingWF()
+            if (col_id == 0) {
+                Toast.makeText(this, "Followup not Updated", Toast.LENGTH_SHORT).show()
+            } else {
+                db.updateChildFollowup(col_id);
+                Toast.makeText(this, "Followup Updated", Toast.LENGTH_SHORT).show()
+            }
         } else {
             updcount = db.updateEndingSF()
         }
-
 
         return if (updcount == 1) {
             true

@@ -32,11 +32,18 @@ import java.util.List;
 import edu.aku.hassannaqvi.blf_screening.CONSTANTS;
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.adapter.SyncListAdapter;
+import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySyncBinding;
+import edu.aku.hassannaqvi.blf_screening.models.Diseases;
+import edu.aku.hassannaqvi.blf_screening.models.Episodes;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
+import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
 import edu.aku.hassannaqvi.blf_screening.sync.GetAllData;
 import edu.aku.hassannaqvi.blf_screening.sync.SyncAllData;
@@ -147,6 +154,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             new SyncDevice(this, false).execute();
 //  *******************************************************Forms*********************************
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
+
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
@@ -155,11 +163,42 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             new SyncAllData(
                     this,
                     "Forms",
-                    "updateSyncedForms",
-                    FormsSL.class,
+                    "updateSyncedFormsWF",
+                    FormsWF.class,
                     MainApp._HOST_URL + MainApp._SERVER_URL,
-                    FormsSLContract.FormsSLTable.TABLE_NAME,
-                    db.getUnsyncedFormsSL(), 0, syncListAdapter, uploadlist
+                    FormsWFContract.FormsWFTable.TABLE_NAME,
+                    db.getUnsyncedFormsWF(), 0, syncListAdapter, uploadlist
+            ).execute();
+
+
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Diseases",
+                    "updateSyncedFormsDisease",
+                    Diseases.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    DiseasesContract.DiseasesTable.TABLE_NAME,
+                    db.getUnsyncedDiseasesWF(), 1, syncListAdapter, uploadlist
+            ).execute();
+
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Episodes",
+                    "updateSyncedFormsEpisode",
+                    Episodes.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    EpisodesContract.EpisodesTable.TABLE_NAME,
+                    db.getUnsyncedEpisodesWF(), 2, syncListAdapter, uploadlist
             ).execute();
 
             bi.noDataItem.setVisibility(View.GONE);
