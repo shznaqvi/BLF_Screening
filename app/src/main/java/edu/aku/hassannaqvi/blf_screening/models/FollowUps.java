@@ -111,15 +111,14 @@ public class FollowUps {
 
     public FollowUps Hydrate(JSONObject fup) throws JSONException {
 
-        this.mrno = fup.getString("mrno");
-        this.studyid = fup.getString("studyid");
-        this.fupdt = fup.getString("fupdt");
-        this.fupweek = fup.getString("fupweek");
-        this.chName = fup.getString("chName");
-        this.mName = fup.getString("mName");
-        this.mrno_m = fup.getString("mrno_m");
-        this.fupdonedt = fup.getString("fupdonedt");
-        this.s1q501 = fup.getString("s1q501");
+        this.mrno = fup.getString("sl4");
+        this.studyid = fup.getString("sf20");
+        this.fupdt = fup.getString("curfupdt");
+        this.fupweek = fup.getString("curfupweek");
+        this.chName = fup.getString("s1q3");
+        this.mrno_m = fup.getString("sl4");
+        this.mName = fup.getString("sl5");
+        this.s1q501 = fup.getString("sf6a");
 
         return this;
     }
@@ -136,7 +135,6 @@ public class FollowUps {
             json.put(childFollowupContract.childFollowupTable.COLUMN_CHNAME, this.chName == null ? JSONObject.NULL : this.chName);
             json.put(childFollowupContract.childFollowupTable.COLUMN_MNAME, this.mName == null ? JSONObject.NULL : this.mName);
             json.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, this.mrno_m == null ? JSONObject.NULL : this.mrno_m);
-            json.put(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT, this.fupdonedt == null ? JSONObject.NULL : this.fupdonedt);
             json.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, this.s1q501 == null ? JSONObject.NULL : this.s1q501);
             return json;
         } catch (JSONException e) {
@@ -154,7 +152,6 @@ public class FollowUps {
         this.chName = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_CHNAME);
         this.mName = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_MNAME);
         this.mrno_m = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_MRNO_M);
-        this.fupdonedt = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT);
         this.s1q501 = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_S1Q501);
 
         return this;

@@ -24,6 +24,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
     Intent oF = null;
 
     String week, delivery_date;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        col_id = intent.getIntExtra("col_id", 0);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb02);
         bi.setCallback(this);
@@ -69,7 +71,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week));
+                startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week).putExtra("col_id", col_id));
             }
         }
     }

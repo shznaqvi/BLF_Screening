@@ -61,7 +61,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "VersionApp":
                 position = 1;
                 break;
-            case "childFollowup":
+            case "fetchMR":
                 position = 2;
                 break;
         }
@@ -93,7 +93,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 position = 1;
                 break;
 
-            case "childFollowup":
+            case "fetchMR":
                 position = 2;
                 break;
         }
@@ -122,9 +122,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     position = 1;
                     break;
 
-                case "childFollowup":
+                case "fetchMR":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = childFollowupContract.childFollowupTable.TABLE_NAME;
+                    tableName = "fetchMR";
                     position = 2;
                     break;
             }
@@ -133,22 +133,35 @@ public class GetAllData extends AsyncTask<String, String, String> {
             urlConnection.setReadTimeout(100000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
 
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("charset", "utf-8");
+            urlConnection.setUseCaches(false);
+
+            // Starts the query
+            urlConnection.connect();
+            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+            JSONObject json = new JSONObject();
+
             switch (syncClass) {
                 case "Users":
-                case "childFollowup":
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setDoOutput(true);
-                    urlConnection.setDoInput(true);
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("charset", "utf-8");
-                    urlConnection.setUseCaches(false);
-
-                    // Starts the query
-                    urlConnection.connect();
-                    DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-                    JSONObject json = new JSONObject();
                     try {
                         json.put("table", tableName);
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                    Log.d(TAG, "downloadUrl: " + json.toString());
+                    wr.writeBytes(json.toString());
+                    wr.flush();
+                    wr.close();
+                    break;
+
+                case "fetchMR":
+                    try {
+                        json.put("table", tableName);
+                        json.put("filter","curfupdt is not null");
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }
@@ -209,10 +222,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             if (insertCount == 1) jsonArray.put("1");
                             position = 1;
                             break;
-                        case "childFollowup":
+                        case "fetchMR":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncFollowups(jsonArray);
-                            if (insertCount == 1) jsonArray.put("1");
                             position = 2;
                             break;
                        /*case "Districts":

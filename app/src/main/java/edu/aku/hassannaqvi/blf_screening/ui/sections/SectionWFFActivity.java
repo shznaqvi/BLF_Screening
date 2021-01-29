@@ -49,6 +49,7 @@ public class SectionWFFActivity extends AppCompatActivity {
     Intent oF = null;
 
     String week, delivery_date;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +58,12 @@ public class SectionWFFActivity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        col_id = intent.getIntExtra("col_id", 0);
 
-        /*String[] weekarray = { "6", "7", "8", "14", "18", "19", "20" };
+        String[] weekarray = { "6", "7", "8", "14", "18", "19", "20" };
         if (!Arrays.asList(weekarray).contains(week)) {
-            startActivity(new Intent(this, EndingActivity.class).putExtra("week", week).putExtra("complete", true).putExtra("form", "FP"));
-        }*/
+            startActivity(new Intent(this, EndingActivity.class).putExtra("week", week).putExtra("complete", true).putExtra("form", "FP").putExtra("col_id", col_id));
+        }
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wff);
         bi.setCallback(this);
@@ -90,7 +92,7 @@ public class SectionWFFActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("week", week).putExtra("complete", true).putExtra("form", "FP"));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("week", week).putExtra("complete", true).putExtra("form", "FP").putExtra("col_id", col_id));
 
                 /*bi.pBar3.setVisibility(View.VISIBLE);
                 UploadData();*/

@@ -374,7 +374,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                         list.add(model);
                     }
 
-                    new GetAllData(mContext, "childFollowup", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "fetchMR", syncListAdapter, list).execute();
 
                 }
 

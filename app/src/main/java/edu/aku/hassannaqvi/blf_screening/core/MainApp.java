@@ -120,11 +120,11 @@ public class MainApp extends Application {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-/*            MainApp.form.setGpsLat(GPSPref.getString("Latitude", "0"));
-            MainApp.form.setGpsLng(GPSPref.getString("Longitude", "0"));
-            MainApp.form.setGpsAcc(GPSPref.getString("Accuracy", "0"));
-//            MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-            MainApp.form.setGpsDT(date); // Timestamp is converted to date above*/
+            MainApp.formsWF.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.formsWF.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.formsWF.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+            //MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.formsWF.setGpsDT(date); // Timestamp is converted to date above*/
 
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());

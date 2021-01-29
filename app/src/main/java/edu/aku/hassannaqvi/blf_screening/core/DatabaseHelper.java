@@ -1773,6 +1773,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int insertCount = 0;
 
+        Toast.makeText(mContext, "followups length: " + followupsList.length(), Toast.LENGTH_LONG).show();
+
         try {
             for (int i = 0; i < followupsList.length(); i++) {
 
@@ -1780,8 +1782,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 FollowUps followups = new FollowUps();
                 followups.Sync(jsonObjectFollowup);
-                ContentValues values = new ContentValues();
 
+                /*if (checkFollowup(followups.getMrno().trim(), followups.getFupdt().trim(), followups.getFupweek().trim())) {
+                    continue;
+                }*/
+
+                ContentValues values = new ContentValues();
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO, followups.getMrno().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_STUDYID, followups.getStudyid().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDT, followups.getFupdt().trim());
@@ -1789,8 +1795,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(childFollowupContract.childFollowupTable.COLUMN_CHNAME, followups.getChName().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MNAME, followups.getmName().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, followups.getMrno_m().trim());
-                values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT, followups.getFupdonedt().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, followups.getS1q501().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_STATUS, 0);
 
 
                 long rowID = db.insert(childFollowupContract.childFollowupTable.TABLE_NAME, null, values);
@@ -1808,10 +1814,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    public boolean checkFollowup (String mrno, String date, String week) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from childFollowup where sf5 = '"+ mrno +"' and curfupdt = '" + date + "' and curfupweek = '"+ week +"'", null);
+
+        if (result.getCount() > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
     public Cursor getFollowups(String mrno) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result = db.rawQuery("select * from childFollowup where mrno = '" + mrno + "' and (fupdonedt is null or fupdonedt = null or fupdonedt = 'null' or fupdonedt = '') order by id asc limit 1", null);
+        Cursor result = db.rawQuery("select * from childFollowup where sf5 = '" + mrno + "' and status = 0 order by id asc limit 1", null);
         return result;
     }
 
@@ -1995,23 +2013,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void updateChildFollowup(int id) {
 
-        /*SQLiteDatabase db = this.getWritableDatabase();
-        String fupdonedt = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date().getTime());
-        db.rawQuery("update childFollowup set fupdonedt = fupdonedt where id = " + id + " and (fupdonedt is null or fupdonedt = null or fupdonedt = 'null' or fupdonedt = '')", null);*/
-
-
-
         SQLiteDatabase db = this.getReadableDatabase();
-
         ContentValues values = new ContentValues();
 
-        String fupdonedt = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date().getTime());
-
-        values.put(childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT, fupdonedt);
-
+        values.put(childFollowupContract.childFollowupTable.COLUMN_STATUS, 1);
         String where = childFollowupContract.childFollowupTable.ID + " = ?";
         String[] whereArgs = {String.valueOf(id)};
-
         int count = db.update(
                 childFollowupContract.childFollowupTable.TABLE_NAME,
                 values,

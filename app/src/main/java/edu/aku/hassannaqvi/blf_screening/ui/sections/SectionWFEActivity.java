@@ -29,6 +29,7 @@ public class SectionWFEActivity extends AppCompatActivity {
     Intent oF = null;
 
     String week, delivery_date;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,12 @@ public class SectionWFEActivity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        col_id = intent.getIntExtra("col_id", 0);
 
-        /*String[] weekarray = { "6", "10", "18" };
+        String[] weekarray = { "6", "10", "18" };
         if (!Arrays.asList(weekarray).contains(week)) {
-            startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week));
-        }*/
+            startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week).putExtra("col_id", col_id));
+        }
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfe);
         bi.setCallback(this);
@@ -68,7 +70,7 @@ public class SectionWFEActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week));
+                startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week).putExtra("col_id", col_id));
             }
         }
     }

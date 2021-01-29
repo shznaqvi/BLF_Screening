@@ -477,7 +477,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
-                                android:hint="@string/wfa40702" />
+                                android:hint="@string/wfa40702"
+                                android:tag="-1"/>
 
                         </LinearLayout>
 
@@ -498,7 +499,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="3"
-                                android:hint="@string/wfa40703" />
+                                android:hint="@string/wfa40703"
+                                android:tag="-1"/>
 
                         </LinearLayout>
 
@@ -640,10 +642,11 @@
 
 
                             <LinearLayout
+                                android:id="@+id/llwfa40902"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:visibility='@{wfa40902.checked? View.VISIBLE : View.GONE}'>
+                                android:visibility="gone">
 
                                 <TextView
                                     android:layout_width="0dp"

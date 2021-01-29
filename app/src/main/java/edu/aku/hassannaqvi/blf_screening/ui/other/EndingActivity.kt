@@ -35,8 +35,8 @@ class EndingActivity : AppCompatActivity() {
 
 
         val check = intent.getBooleanExtra("complete", false);
-        form               = intent.getStringExtra("form");
-        col_id             = intent.getIntExtra("col_id", 0);
+        form = intent.getStringExtra("form");
+        col_id = intent.getIntExtra("col_id", 0);
 
         //Toast.makeText(this, "Ending: " + col_id, Toast.LENGTH_LONG).show();
 
@@ -91,16 +91,12 @@ class EndingActivity : AppCompatActivity() {
 
         val db = appInfo.dbHelper
         var updcount = 0;
-        if (form == "FP") {
-            updcount = db.updateEndingWF()
-            if (col_id == 0) {
-                Toast.makeText(this, "Followup not Updated", Toast.LENGTH_SHORT).show()
-            } else {
-                db.updateChildFollowup(col_id);
-                Toast.makeText(this, "Followup Updated", Toast.LENGTH_SHORT).show()
-            }
+        updcount = db.updateEndingWF()
+        if (col_id == 0) {
+            Toast.makeText(this, "Followup not updated", Toast.LENGTH_SHORT).show()
         } else {
-            updcount = db.updateEndingSF()
+            db.updateChildFollowup(col_id);
+            Toast.makeText(this, "Followup updated", Toast.LENGTH_SHORT).show()
         }
 
         return if (updcount == 1) {

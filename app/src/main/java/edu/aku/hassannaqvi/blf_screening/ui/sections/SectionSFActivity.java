@@ -712,6 +712,8 @@ public class SectionSFActivity extends AppCompatActivity {
                 : bi.sf1802.isChecked() ? "2"
                 : "-1");
 
+        MainApp.formsSF.setsf18Reason(bi.sf18Reason.getText().toString().trim());
+
         MainApp.formsSF.setSf1901(MainApp.userName);
         //MainApp.formsSF.setSf1902(bi.setSf1902.getText().toString());
 
@@ -769,6 +771,7 @@ public class SectionSFActivity extends AppCompatActivity {
     }
 
     private boolean FetchMR() {
+
         bi.wmError.setVisibility(View.GONE);
         bi.wmError.setText(null);
 
@@ -796,7 +799,6 @@ public class SectionSFActivity extends AppCompatActivity {
                 .observe(this, new Observer<WorkInfo>() {
                     @Override
                     public void onChanged(@Nullable WorkInfo workInfo) {
-
 
                         if (workInfo.getState() != null &&
                                 workInfo.getState() == WorkInfo.State.SUCCEEDED) {
@@ -918,6 +920,7 @@ public class SectionSFActivity extends AppCompatActivity {
                             }
                             //bi.sl2.setText(message);
                         }
+
                         if (workInfo.getState() != null &&
                                 workInfo.getState() == WorkInfo.State.FAILED) {
                             bi.pbarMR.setVisibility(View.GONE);
@@ -925,7 +928,6 @@ public class SectionSFActivity extends AppCompatActivity {
                             String message = workInfo.getOutputData().getString("error");
                             bi.wmError.setText(message);
                             bi.wmError.setVisibility(View.VISIBLE);
-
                         }
                     }
                 });

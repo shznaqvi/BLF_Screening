@@ -191,7 +191,8 @@ public final class CreateTable {
             childFollowupContract.childFollowupTable.COLUMN_MNAME + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_MRNO_M + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT + " TEXT, " +
-            childFollowupContract.childFollowupTable.COLUMN_S1Q501 + " TEXT " +
+            childFollowupContract.childFollowupTable.COLUMN_S1Q501 + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_STATUS + " INTEGER " +
             ");";
 
 

@@ -15,15 +15,16 @@ public class childFollowupContract {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String ID = "id"; // Auto Increament
-        public static final String COLUMN_STUDYID = "studyid";
-        public static final String COLUMN_MRNO = "mrno";
-        public static final String COLUMN_FUPDT = "fupdt";
-        public static final String COLUMN_FUPWEEK = "fupweek";
-        public static final String COLUMN_CHNAME = "chName";
-        public static final String COLUMN_MNAME = "mName";
-        public static final String COLUMN_MRNO_M = "mrno_m";
+        public static final String COLUMN_STUDYID = "sf20";
+        public static final String COLUMN_MRNO = "sf5";
+        public static final String COLUMN_FUPDT = "curfupdt";
+        public static final String COLUMN_FUPWEEK = "curfupweek";
+        public static final String COLUMN_CHNAME = "s1q3";
+        public static final String COLUMN_MNAME = "sl5";
+        public static final String COLUMN_MRNO_M = "sl4";
         public static final String COLUMN_FUPDONEDT = "fupdonedt";
-        public static final String COLUMN_S1Q501 = "s1q501";
+        public static final String COLUMN_S1Q501 = "sf6a";
+        public static final String COLUMN_STATUS = "status";
 
         public static String PATH = "childFollowup";
         public static final String CONTENT_TYPE =

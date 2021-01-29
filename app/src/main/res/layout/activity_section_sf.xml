@@ -2515,8 +2515,15 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="@string/sf1802" />
-
                             </RadioGroup>
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/sf18Reason"
+                                style="@style/EditTextAlpha"
+                                android:hint="@string/specify"
+                                android:tag="k10696"
+                                android:text='@{sf1802.checked? sf18Reason.getText().toString() : ""}'
+                                android:visibility='@{sf1802.checked? View.VISIBLE : View.GONE}' />
 
                         </LinearLayout>
 

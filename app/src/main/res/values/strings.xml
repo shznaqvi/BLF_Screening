@@ -562,6 +562,7 @@
     <string name="sf18">Consent signed?</string>
     <string name="sf1801">Yes</string>
     <string name="sf1802">No</string>
+    <string name="sf1803">Reason</string>
     <string name="sf19">Interviewer Name and ID</string>
     <string name="sf1901">Name</string>
     <string name="sf1902">ID</string>
@@ -833,13 +834,13 @@
     <string name="wfa316">Did the child had any Episodes of vomiting since last visit</string>
     <string name="wfa31601">Yes</string>
     <string name="wfa31602">No</string>
-    <string name="wfa317">Vomiting episodes (in numbers)</string>
-    <string name="wfa318">Duration (in days)</string>
+    <string name="wfa317">Vomiting episodes (in days)</string>
+    <string name="wfa318">How many episodes per day (in number)</string>
     <string name="wfa319">Did the child had any Episodes of diarrhea since last visit</string>
     <string name="wfa31901">Yes</string>
     <string name="wfa31902">No</string>
-    <string name="wfa320">Diarrhea episodes (in numbers)</string>
-    <string name="wfa321">How long (in days)</string>
+    <string name="wfa320">Diarrhea episodes (in days)</string>
+    <string name="wfa321">How many episodes per day (in number)</string>
     <string name="wfa322">History of Lethargy</string>
     <string name="wfa32201">Yes</string>
     <string name="wfa32202">No</string>
@@ -1023,7 +1024,7 @@
     <string name="wfb20504">Withdrawal from study</string>
     <string name="wfb20596">Others (specify)</string>
     <string name="wfb206">Reason of refusal or withdrawal</string>
-    <string name="wfb207">Total sachets given at this visit</string>
+    <string name="wfb207">Total sachets received at this visit</string>
 
     <string name="sectionci_mainheading">Section C: Section I To be assessed in Week2, 4, 6, 10, 14, 18 and 20</string>
     <string name="wfc101">Status of Anthropometry</string>

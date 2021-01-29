@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class SectionWFA05Activity extends AppCompatActivity {
     Intent oF = null;
 
     String week, delivery_date;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,34 @@ public class SectionWFA05Activity extends AppCompatActivity {
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
+        col_id = intent.getIntExtra("col_id", 0);
     }
 
 
     private void setupSkips() {
         radioGroupListener(bi.wfa507, bi.fldGrpCVwfa508);
+
+
+        bi.wfa51401.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
+            if (isChecked) {
+                Clear.clearAllFields(bi.wfa51402);
+                Clear.clearAllFields(bi.wfa51403);
+                Clear.clearAllFields(bi.wfa51404);
+            }
+        });
+
+
+        bi.wfa51402.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) { Clear.clearAllFields(bi.wfa51401); }
+        });
+
+        bi.wfa51403.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) { Clear.clearAllFields(bi.wfa51401); }        });
+
+        bi.wfa51404.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) { Clear.clearAllFields(bi.wfa51401); }
+        });
     }
 
 
@@ -60,7 +85,7 @@ public class SectionWFA05Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week));
+                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week).putExtra("col_id", col_id));
             }
         }
     }

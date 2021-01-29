@@ -69,10 +69,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfa01);
         bi.setCallback(this);
         setupSkips();
-        //getIntentClass();
-
-        /*db.resetAll();
-        Toast.makeText(this, "Updated: " + new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()), Toast.LENGTH_SHORT).show();*/
     }
 
     private void setupSkips() {
@@ -334,7 +330,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 *//*
             // Sending data to Worker class
 
-            *//*final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(FetchMotherMRWorker.class)
+            *//*final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder({"table":"fetchMR","filter":"curfupdt is not null"}.class)
                 .setInputData(data)
                 .build();*//*
 
@@ -473,11 +469,11 @@ public class SectionWFA01Activity extends AppCompatActivity {
                 bi.checkMR.setVisibility(View.VISIBLE);
 
                 col_id = Integer.parseInt(followups.getString(followups.getColumnIndex("id")));
-                if (!followups.getString(followups.getColumnIndex("fupweek")).equals("") && followups.getString(followups.getColumnIndex("fupweek")) != null) {
+                if (!followups.getString(followups.getColumnIndex("curfupweek")).equals("") && followups.getString(followups.getColumnIndex("curfupweek")) != null) {
 
-                    if (!followups.getString(followups.getColumnIndex("fupdt")).equals("") && followups.getString(followups.getColumnIndex("fupdt")) != null) {
+                    if (!followups.getString(followups.getColumnIndex("curfupdt")).equals("") && followups.getString(followups.getColumnIndex("curfupdt")) != null) {
 
-                        String str = followups.getString(followups.getColumnIndex("s1q501"));
+                        String str = followups.getString(followups.getColumnIndex("sf6a"));
                         delivery_date = str.replace("-", "/");
 
                         bi.wfa10401.setMinDate(delivery_date);
@@ -492,23 +488,23 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
                         Toast.makeText(SectionWFA01Activity.this, "Child followup found.", Toast.LENGTH_SHORT).show();
 
-                        bi.wfa102.setText(followups.getString(followups.getColumnIndex("studyid")));
-                        bi.wfa103.setText(followups.getString(followups.getColumnIndex("chName")));
-                        bi.wfa105.setText(followups.getString(followups.getColumnIndex("fupweek")));
+                        bi.wfa102.setText(followups.getString(followups.getColumnIndex("sf20")));
+                        bi.wfa103.setText(followups.getString(followups.getColumnIndex("s1q3")));
+                        bi.wfa105.setText(followups.getString(followups.getColumnIndex("curfupweek")));
                         bi.llsectionwfa01.setVisibility(View.VISIBLE);
                         // CONTINUE VISIBLE
                         bi.btnContinue.setVisibility(View.VISIBLE);
                         bi.btnEnd.setVisibility(View.GONE);
                         // Clear.clearAllFields(bi.llsectionwfa01);
                     } else {
-                        Toast.makeText(SectionWFA01Activity.this, followups.getString(followups.getColumnIndex("fupweek")), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SectionWFA01Activity.this, followups.getString(followups.getColumnIndex("curfupweek")), Toast.LENGTH_SHORT).show();
                         bi.llsectionwfa01.setVisibility(View.GONE);
 
                         // CONTINUE VISIBLE
                         bi.btnContinue.setVisibility(View.GONE);
                         bi.btnEnd.setVisibility(View.VISIBLE);
                         Clear.clearAllFields(bi.llsectionwfa01);
-                        bi.wmError.setText(followups.getString(followups.getColumnIndex("fupweek")));
+                        bi.wmError.setText(followups.getString(followups.getColumnIndex("curfupweek")));
                         bi.wmError.setVisibility(View.VISIBLE);
 
                     }
@@ -530,7 +526,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
                 bi.pbarMR.setVisibility(View.GONE);
                 bi.checkMR.setVisibility(View.VISIBLE);
                 //String message = workInfo.getOutputData().getString("error");
-                bi.wmError.setText("error");
+                bi.wmError.setText("MR No not found");
                 bi.wmError.setVisibility(View.VISIBLE);
 
             }

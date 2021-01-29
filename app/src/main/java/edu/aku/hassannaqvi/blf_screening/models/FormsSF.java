@@ -65,6 +65,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf17 = "";
     public String sfFlag = "";
     public String sf18 = "";
+    public String sf18Reason = "";
     public String sf1901 = "";
 /*
     public String sf1902 = "";
@@ -542,6 +543,15 @@ public String sf20 = "";
         return this;
     }
 
+
+    public String getsf18Reason() {
+        return sf18Reason;
+    }
+
+    public void setsf18Reason(String sf18Reason) {
+        this.sf18Reason = sf18Reason;
+    }
+
     public String getSf1901() {
         return sf1901;
     }
@@ -801,6 +811,7 @@ public String sf20 = "";
                     .put("sf17", sf17)
                     .put("sfFlag", sfFlag)
                     .put("sf18", sf18)
+                    .put("sf18Reason", sf18Reason)
                     .put("sf1901", sf1901)
 /*
                     .put("sf1902", sf1902)
@@ -907,6 +918,7 @@ public String sf20 = "";
                 this.sf17 = json.getString("sf17");
                 this.sfFlag = json.getString("sfFlag");
                 this.sf18 = json.getString("sf18");
+                this.sf18Reason = json.getString("sf18Reason");
                 this.sf1901 = json.getString("sf1901");
 /*
                 this.sf1902 = json.getString("sf1902");

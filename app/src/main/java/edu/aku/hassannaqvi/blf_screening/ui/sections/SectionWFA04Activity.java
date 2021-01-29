@@ -2,13 +2,21 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
+import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -26,6 +34,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
     ActivitySectionWfa04Binding bi;
     Intent oF = null;
     String week, delivery_date, fupdate;
+    int col_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +47,48 @@ public class SectionWFA04Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         fupdate = intent.getStringExtra("fupdate");
+        col_id = intent.getIntExtra("col_id", 0);
 
         bi.wfa40201.setMinDate(delivery_date);
         bi.wfa40201.setMaxDate(fupdate);
 
         bi.wfa40802.setMinDate(delivery_date);
         bi.wfa40802.setMaxDate(fupdate);
+
+
+
+        TextWatcher textwatcher = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                bi.wfa40902x.setMinDate(String.valueOf(s.toString().replace("-", "/")));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
+
+        bi.wfa40802.addTextChangedListener(textwatcher);
     }
 
 
     private void setupSkips() {
         radioGroupListener(bi.wfa401, bi.llGrpsec401);
         radioGroupListener(bi.wfa406, bi.llGrpsec402);
+
+        bi.wfa409.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.llwfa40902);
+            bi.llwfa40902.setVisibility(View.GONE);
+            if (i == bi.wfa40902.getId()) {
+                bi.llwfa40902.setVisibility(View.VISIBLE);
+            } else {
+                Clear.clearAllFields(bi.wfa40902x);
+                bi.llwfa40902.setVisibility(View.GONE);
+            }
+        });
     }
 
 
@@ -74,7 +113,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
                 startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week));
             }*/
 
-            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week));
+            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week).putExtra("col_id", col_id));
         }
     }
 
