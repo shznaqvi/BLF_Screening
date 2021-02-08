@@ -10,6 +10,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
 import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 
 public final class CreateTable {
@@ -198,8 +199,26 @@ public final class CreateTable {
 
 
 
+    public static final String SQL_CREATE_WFB108 = "CREATE TABLE " + WFB108Contract.WFB108Table.TABLE_NAME + " (" +
+            WFB108Contract.WFB108Table.ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            WFB108Contract.WFB108Table.COLUMN_UID + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_UUID + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_SYSDATE + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_DEVICE_ID + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_A + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_B + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_C + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_D + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_D5X + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_D96X + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_DAY_NO + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_SYNCED + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_SYNCED_DATE + " TEXT " +
+            ");";
 
-/*    public static final String SQL_ALTER_CHILD_TABLE = "ALTER TABLE " +
+
+
+        /*public static final String SQL_ALTER_CHILD_TABLE = "ALTER TABLE " +
             ChildTable.TABLE_NAME + " ADD COLUMN " +
             ChildTable.COLUMN_SYSDATE + " TEXT";*/
 }

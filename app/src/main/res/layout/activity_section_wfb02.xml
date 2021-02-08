@@ -88,8 +88,7 @@
             <!-- wfb202  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfb202"
-                style="@style/cardView"
-                android:visibility='@{wfb20102.checked ? View.VISIBLE : View.GONE}'>
+                style="@style/cardView">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -133,8 +132,7 @@
             <!-- wfb203  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfb203"
-                style="@style/cardView"
-                android:visibility='@{wfb20102.checked ? View.VISIBLE : View.GONE}'>
+                style="@style/cardView">
 
                 <LinearLayout
                     android:layout_width="match_parent"

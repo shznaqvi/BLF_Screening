@@ -67,12 +67,6 @@
                             android:text="@string/wfc10101" />
 
                         <RadioButton
-                            android:id="@+id/wfc10102"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/wfc10102" />
-
-                        <RadioButton
                             android:id="@+id/wfc10196"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

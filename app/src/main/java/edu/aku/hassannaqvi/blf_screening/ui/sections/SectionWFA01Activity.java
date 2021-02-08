@@ -62,6 +62,8 @@ public class SectionWFA01Activity extends AppCompatActivity {
     String delivery_date;
     String fupdate;
     int col_id;
+    int wfa106;
+    private String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,15 +149,21 @@ public class SectionWFA01Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            if (bi.wfa10702.isChecked()) {
 
+            if (bi.wfa10601.isChecked()) {
+                wfa106 = 1;
+            } else {
+                wfa106 = 0;
+            }
+
+            if (bi.wfa10702.isChecked()) {
                 Toast.makeText(this, "A1: " + col_id, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
             } else {
                 if (bi.wfa10802.isChecked()) {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
                 } else {
-                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id));
+                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
                 }
             }
         }
@@ -199,6 +207,11 @@ public class SectionWFA01Activity extends AppCompatActivity {
         MainApp.formsWF.setWfa10401(wfa10401);
         MainApp.formsWF.setWfa10402(wfa10402);
         MainApp.formsWF.setWfa10403(wfa10403);
+
+        String str = bi.wfa10401.getText().toString().trim();
+        FD = str.replace("-", "/");
+
+        Toast.makeText(this, "" + FD, Toast.LENGTH_LONG).show();
 
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
 

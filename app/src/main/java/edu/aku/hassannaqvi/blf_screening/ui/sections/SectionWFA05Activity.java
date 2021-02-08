@@ -29,6 +29,8 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
     String week, delivery_date;
     int col_id;
+    int wfa106;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class SectionWFA05Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         col_id = intent.getIntExtra("col_id", 0);
+        wfa106 = intent.getIntExtra("wfa106", 0);
+        FD = intent.getStringExtra("FD");
     }
 
 
@@ -85,7 +89,7 @@ public class SectionWFA05Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week).putExtra("col_id", col_id));
+                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
             }
         }
     }

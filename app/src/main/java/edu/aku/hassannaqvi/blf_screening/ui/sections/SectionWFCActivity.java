@@ -26,6 +26,7 @@ public class SectionWFCActivity extends AppCompatActivity {
 
     String week, delivery_date;
     int col_id;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +36,11 @@ public class SectionWFCActivity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         col_id = intent.getIntExtra("col_id", 0);
+        FD = intent.getStringExtra("FD");
 
         String[] weekarray = { "2", "4", "6", "10", "14", "18", "20" };
         if (!Arrays.asList(weekarray).contains(week)) {
-            startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week).putExtra("col_id", col_id));
+            startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
         }
 
         setContentView(R.layout.activity_section_wfc);
@@ -61,7 +63,7 @@ public class SectionWFCActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week).putExtra("col_id", col_id));
+                startActivity(new Intent(this, SectionWFDActivity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
             }
         }
     }
@@ -88,7 +90,6 @@ public class SectionWFCActivity extends AppCompatActivity {
     private void SaveDraft() {
 
         MainApp.formsWF.setWfc101(bi.wfc10101.isChecked() ? "1"
-                : bi.wfc10102.isChecked() ? "2"
                 : bi.wfc10196.isChecked() ? "96"
                 : "-1");
         MainApp.formsWF.setWfc10196x(bi.wfc10196x.getText().toString().trim().isEmpty() ? "-1" : bi.wfc10196x.getText().toString());

@@ -1002,8 +1002,7 @@
     <string name="wfb1081d02">Sepsis</string>
     <string name="wfb1081d03">Apnea</string>
     <string name="wfb1081d04">Feeding intolerance</string>
-    <string name="wfb1081d05">Missed</string>
-    <string name="wfb1081d06">(specify)</string>
+    <string name="wfb1081d05">Missed (specify)</string>
     <string name="wfb1081d96">Others (specify)</string>
 
     <string name="sectionbii_mainheading">Section BII: Visit Outcome</string>

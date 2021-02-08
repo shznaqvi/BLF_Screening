@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <!-- wfa301  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa301"
@@ -84,7 +83,6 @@
 
             </androidx.cardview.widget.CardView>
 
-
             <LinearLayout
                 android:id="@+id/llGrpseca301"
                 android:layout_width="match_parent"
@@ -97,7 +95,6 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVwfa302"
                     style="@style/cardView">
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,7 +132,8 @@
                             android:maxLength="2"
                             app:maxValue="10"
                             app:minValue="1"
-                            app:type="range" />
+                            app:type="range"/>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -172,21 +170,17 @@
                                 android:text="@string/Q_wfa303" />
                         </RelativeLayout>
 
-
                         <LinearLayout
                             android:id="@+id/llwfa303"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical" />
-
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
-
 
             <!-- wfa304  Radio   -->
             <androidx.cardview.widget.CardView
@@ -245,7 +239,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca302"
@@ -503,7 +496,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa310  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa310"
@@ -559,7 +551,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca304"
@@ -769,7 +760,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa313  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa313"
@@ -824,7 +814,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca305"
@@ -926,7 +915,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa316  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa316"
@@ -981,7 +969,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca306"
@@ -1153,7 +1140,7 @@
                                     android:inputType="number"
                                     android:maxLength="2"
                                     app:maxValue="10"
-                                    app:minValue="0"
+                                    app:minValue="1"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1193,7 +1180,6 @@
 
 
             </LinearLayout>
-
 
             <!-- wfa319  Radio   -->
             <androidx.cardview.widget.CardView
@@ -1249,7 +1235,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca307"
@@ -1469,7 +1454,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa322  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa322"
@@ -1524,7 +1508,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <!-- wfa323title1  Title   -->
             <androidx.cardview.widget.CardView
@@ -1677,7 +1660,6 @@
 
             </androidx.cardview.widget.CardView>
 
-
             <!-- wfa324   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa324"
@@ -1732,7 +1714,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca308"
@@ -1834,7 +1815,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa327  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa327"
@@ -1890,7 +1870,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-
             <!-- wfa328  Input-Numeric   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa328"
@@ -1938,7 +1917,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
 
             <!-- wfa329  Radio   -->
             <androidx.cardview.widget.CardView
@@ -1994,7 +1972,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca309"
@@ -2159,7 +2136,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa333  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa333"
@@ -2214,7 +2190,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca310"
@@ -2316,7 +2291,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa336  Radio   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa336"
@@ -2371,7 +2345,6 @@
                     </RadioGroup>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <LinearLayout
                 android:id="@+id/llGrpseca311"
@@ -2473,7 +2446,6 @@
 
             </LinearLayout>
 
-
             <!-- wfa339  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVwfa339"
@@ -2513,7 +2485,6 @@
                         android:hint="@string/wfa339" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
 
             <!--EndButton LinearLayout-->
             <LinearLayout

@@ -26,6 +26,7 @@ public class SectionWFDActivity extends AppCompatActivity {
 
     String week, delivery_date;
     int col_id;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,13 @@ public class SectionWFDActivity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         col_id = intent.getIntExtra("col_id", 0);
+        FD = intent.getStringExtra("FD");
 
-        String[] weekarray = { "6", "10", "14", "18" };
+
+        Toast.makeText(this, "DD: " + delivery_date, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "FD: " + FD, Toast.LENGTH_LONG).show();
+
+        String[] weekarray = { "6", "10", "14", "18", "20" };
         if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFEActivity.class).putExtra("week", week).putExtra("col_id", col_id));
         }
@@ -44,6 +50,39 @@ public class SectionWFDActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfd);
         bi.setCallback(this);
         setupSkips();
+
+
+        bi.wfd102a01x.setMinDate(delivery_date);
+        bi.wfd102b01x.setMinDate(delivery_date);
+        bi.wfd102c01x.setMinDate(delivery_date);
+        bi.wfd102d01x.setMinDate(delivery_date);
+        bi.wfd102e01x.setMinDate(delivery_date);
+        bi.wfd102f01x.setMinDate(delivery_date);
+        bi.wfd102g01x.setMinDate(delivery_date);
+        bi.wfd102h01x.setMinDate(delivery_date);
+        bi.wfd102i01x.setMinDate(delivery_date);
+        bi.wfd102j01x.setMinDate(delivery_date);
+        bi.wfd102k01x.setMinDate(delivery_date);
+        bi.wfd102l01x.setMinDate(delivery_date);
+        bi.wfd102m01x.setMinDate(delivery_date);
+        bi.wfd102n01x.setMinDate(delivery_date);
+        bi.wfd102o01x.setMinDate(delivery_date);
+
+        bi.wfd102a01x.setMaxDate(FD);
+        bi.wfd102b01x.setMaxDate(FD);
+        bi.wfd102c01x.setMaxDate(FD);
+        bi.wfd102d01x.setMaxDate(FD);
+        bi.wfd102e01x.setMaxDate(FD);
+        bi.wfd102f01x.setMaxDate(FD);
+        bi.wfd102g01x.setMaxDate(FD);
+        bi.wfd102h01x.setMaxDate(FD);
+        bi.wfd102i01x.setMaxDate(FD);
+        bi.wfd102j01x.setMaxDate(FD);
+        bi.wfd102k01x.setMaxDate(FD);
+        bi.wfd102l01x.setMaxDate(FD);
+        bi.wfd102m01x.setMaxDate(FD);
+        bi.wfd102n01x.setMaxDate(FD);
+        bi.wfd102o01x.setMaxDate(FD);
     }
 
     private void setupSkips() {

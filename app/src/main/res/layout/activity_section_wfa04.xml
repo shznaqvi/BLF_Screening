@@ -89,8 +89,7 @@
                 android:id="@+id/llGrpsec401"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{wfa40102.checked? View.GONE : View.VISIBLE}'>
+                android:orientation="vertical">
 
 
                 <!-- wfa402  Title   -->
@@ -139,7 +138,8 @@
                                 android:hint="DD-MM-YYYY"
                                 app:dateFormat="dd-MM-yyyy"
                                 app:maxDate="CR_DATE"
-                                app:minDate="14/09/2020" />
+                                app:minDate="14/09/2020"
+                                android:selectAllOnFocus="false"/>
 
                         </LinearLayout>
 
@@ -402,8 +402,7 @@
                 android:id="@+id/llGrpsec402"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{wfa40602.checked? View.GONE : View.VISIBLE}'>
+                android:orientation="vertical">
 
 
                 <!-- wfa407  Title   -->
@@ -639,35 +638,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfa40902" />
-
-
-                            <LinearLayout
-                                android:id="@+id/llwfa40902"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:visibility="gone">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Specify Date" />
-
-                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                    android:id="@+id/wfa40902x"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="3"
-                                    android:gravity="center"
-                                    android:hint="DD-MM-YYYY"
-                                    app:dateFormat="dd-MM-yyyy"
-                                    app:maxDate="CR_DATE"
-                                    app:minDate="14/09/2020"
-                                    android:text='@{wfa40902.checked ? wfa40902x.getText().toString() : ""}'/>
-
-                            </LinearLayout>
-
                             <!--<RadioButton
                                 android:id="@+id/wfa40903"
                                 android:layout_width="match_parent"
@@ -724,7 +694,21 @@
                                 app:type="range" />-->
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfa40902x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="DD-MM-YYYY"
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="14/09/2020"
+                            android:text='@{wfa40902.checked ? wfa40902x.getText().toString() : ""}'
+                            android:visibility='@{wfa40902.checked? View.VISIBLE : View.GONE}'/>
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
 

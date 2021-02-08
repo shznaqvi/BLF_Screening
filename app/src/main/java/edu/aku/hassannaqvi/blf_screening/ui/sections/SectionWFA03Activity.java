@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
+import android.nfc.cardemulation.CardEmulation;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,6 +44,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
     ArrayList<SubModel> disease;
     String week, delivery_date, fupdate;
     int col_id;
+    int wfa106;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,16 +121,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
                 if (s.length() > 0) {
 
                     if (!edt.isRangeTextValidate())
-                        return;
 
-                    /*for (int i = 1; i <= Integer.parseInt(edt.getText().toString()); i++) {
-                        String et        = getCurrentFocus().toString();
-                        String result    = et.substring(et.lastIndexOf("/") + 1);
-                        String etReplace = result.replace("}", "");
-                        String etID      = "wfa" + (Integer.parseInt(etReplace.substring(3, etReplace.length())) + 1);
-                        Toast.makeText(getApplicationContext(), "" + etID.trim(), Toast.LENGTH_SHORT).show();
-                    }*/
-
+                    Clear.clearAllFields(ll);
                     ll.removeAllViews();
                     cv.setVisibility(View.GONE);
 
@@ -175,9 +170,14 @@ public class SectionWFA03Activity extends AppCompatActivity {
                         }
                     }
                     cv.setVisibility(View.VISIBLE);
+                    Toast.makeText(getApplicationContext(), "Length is not Zero", Toast.LENGTH_LONG).show();
                 } else {
                     if (ll != null) {
+                        Clear.clearAllFields(ll);
                         ll.removeAllViews();
+                        cv.setVisibility(View.GONE);
+
+                        Toast.makeText(getApplicationContext(), "Length is Zero", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -215,6 +215,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
         delivery_date = intent.getStringExtra("delivery_date");
         fupdate = intent.getStringExtra("fupdate");
         col_id = intent.getIntExtra("col_id", 0);
+        wfa106 = intent.getIntExtra("wfa106", 0);
+        FD = intent.getStringExtra("FD");
 
         bi.llwfa31204.setVisibility(View.GONE);
 
@@ -229,49 +231,49 @@ public class SectionWFA03Activity extends AppCompatActivity {
         bi.llwfa32304.setVisibility(View.GONE);
     }
 
-    /*public void CreateCardViewProgrammatically(){
-
-        cardview = new CardView(context);
-        layoutparams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        cardview.setLayoutParams(layoutparams);
-        cardview.setRadius(15);
-        cardview.setPadding(25, 25, 25, 25);
-        cardview.setCardBackgroundColor(Color.MAGENTA);
-        cardview.setMaxCardElevation(30);
-        cardview.setMaxCardElevation(6);
-        textview = new TextView(context);
-        textview.setLayoutParams(layoutparams);
-        textview.setText("CardView Programmatically");
-        textview.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-        textview.setTextColor(Color.WHITE);
-        textview.setPadding(25,25,25,25);
-        textview.setGravity(Gravity.CENTER);
-        cardview.addView(textview);
-        relativeLayout.addView(cardview);
-    }*/
-
     private void setupSkips() {
 
-        rgListener(bi.wfa301, bi.llGrpseca301);
-        rgListener(bi.wfa304, bi.llGrpseca302);
-        rgListener(bi.wfa307, bi.llGrpseca303);
-        rgListener(bi.wfa310, bi.llGrpseca304);
-        rgListener(bi.wfa313, bi.llGrpseca305);
-        rgListener(bi.wfa316, bi.llGrpseca306);
-        rgListener(bi.wfa319, bi.llGrpseca307);
-        rgListener(bi.wfa322, bi.fldGrpCVwfa323);
-        rgListener(bi.wfa324, bi.llGrpseca308);
-        rgListener(bi.wfa327, bi.fldGrpCVwfa328);
-        rgListener(bi.wfa329, bi.llGrpseca309);
-        rgListener(bi.wfa333, bi.llGrpseca310);
-        rgListener(bi.wfa336, bi.llGrpseca311);
+        // same layout style
+        radioGroupListener(bi.wfa301, bi.llGrpseca301);
+        radioGroupListener(bi.wfa304, bi.llGrpseca302);
+        radioGroupListener(bi.wfa307, bi.llGrpseca303);
+        radioGroupListener(bi.wfa310, bi.llGrpseca304);
+        radioGroupListener(bi.wfa313, bi.llGrpseca305);
+        radioGroupListener(bi.wfa316, bi.llGrpseca306);
+        radioGroupListener(bi.wfa319, bi.llGrpseca307);
+        radioGroupListener(bi.wfa324, bi.llGrpseca308);
+        radioGroupListener(bi.wfa333, bi.llGrpseca310);
+        radioGroupListener(bi.wfa336, bi.llGrpseca311);
+
+        // different layout style
+        radioGroupListener(bi.wfa329, bi.llGrpseca309);
+        radioGroupListener(bi.wfa322, bi.fldGrpCVwfa323);
+        radioGroupListener(bi.wfa327, bi.fldGrpCVwfa328);
     }
 
-    public void rgListener(@NotNull RadioGroup rg, ViewGroup vg) {
-        rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
+    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> {
+
+            Clear.clearAllFields(vg);
+
+            if (vg == bi.llGrpseca301
+                    || vg == bi.llGrpseca302
+                    || vg == bi.llGrpseca303
+                    || vg == bi.llGrpseca304
+                    || vg == bi.llGrpseca305
+                    || vg == bi.llGrpseca306
+                    || vg == bi.llGrpseca307
+                    || vg == bi.llGrpseca308
+                    || vg == bi.llGrpseca310
+                    || vg == bi.llGrpseca311) {
+
+                vg.getChildAt(1).setVisibility(View.GONE);
+                Toast.makeText(this, "302 to 311", Toast.LENGTH_SHORT).show();
+            } else if (vg == bi.llGrpseca309) {
+                vg.getChildAt(2).setVisibility(View.GONE);
+                Toast.makeText(this, "309", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -284,7 +286,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id));
+            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
         }
     }
 
@@ -311,7 +313,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Updating Database... ERROR! Loop", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_LONG).show();
                     return false;
                 }
             }
@@ -685,69 +687,62 @@ public class SectionWFA03Activity extends AppCompatActivity {
             return false;
         }
 
-        if (!checkZeroFilled(bi.llwfa303)) {
+        CardView cardWfa303 = (CardView) bi.llwfa303.getParent().getParent();
+        if (cardWfa303.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa303)) {
             Toast.makeText(getApplicationContext(), "WFA303: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Visibility: " + cardWfa303.getVisibility(), Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!checkZeroFilled(bi.llwfa306)) {
+        CardView cardWfa306 = (CardView) bi.llwfa306.getParent().getParent();
+        if (cardWfa306.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa306)) {
             Toast.makeText(getApplicationContext(), "WFA306: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!checkZeroFilled(bi.llwfa309)) {
+        CardView cardWfa309 = (CardView) bi.llwfa309.getParent().getParent();
+        if (cardWfa309.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa309)) {
             Toast.makeText(getApplicationContext(), "WFA309: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        /*if (!checkZeroFilled(bi.llwfa312)) {
-            Toast.makeText(getApplicationContext(), "WFA312: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            return false;
-        }*/
-        if (!checkZeroFilled(bi.llwfa315)) {
+        CardView cardWfa315 = (CardView) bi.llwfa315.getParent().getParent();
+        if (cardWfa315.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa315)) {
             Toast.makeText(getApplicationContext(), "WFA315: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        /*if (!checkZeroFilled(bi.llwfa318)) {
-            Toast.makeText(getApplicationContext(), "WFA318: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        if (!checkZeroFilled(bi.llwfa321)) {
-            Toast.makeText(getApplicationContext(), "WFA321: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            return false;
-        }*/
-
 
         if (bi.wfa31201.getText().toString().trim().equals("0") && bi.wfa31202.getText().toString().trim().equals("0") && bi.wfa31203.getText().toString().trim().equals("0")) {
             Toast.makeText(getApplicationContext(), "WFA318: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (bi.wfa31803.getText().toString().trim().equals("0")) {
             Toast.makeText(getApplicationContext(), "WFA318: number of days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (bi.wfa32103.getText().toString().trim().equals("0")) {
             Toast.makeText(getApplicationContext(), "WFA321: number of days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-
         if (bi.wfa32301.getText().toString().trim().equals("0") && bi.wfa32302.getText().toString().trim().equals("0") && bi.wfa32303.getText().toString().trim().equals("0")) {
             Toast.makeText(getApplicationContext(), "WFA323: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
 
-        if (!checkZeroFilled(bi.llwfa326)) {
+        CardView cardWfa326 = (CardView) bi.llwfa326.getParent().getParent();
+        if (cardWfa326.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa326)) {
             Toast.makeText(getApplicationContext(), "WFA326: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!checkZeroFilled(bi.llwfa332)) {
+        CardView cardWfa332 = (CardView) bi.llwfa332.getParent().getParent();
+        if (cardWfa332.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa332)) {
             Toast.makeText(getApplicationContext(), "WFA332: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!checkZeroFilled(bi.llwfa335)) {
+        CardView cardWfa335 = (CardView) bi.llwfa335.getParent().getParent();
+        if (cardWfa335.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa335)) {
             Toast.makeText(getApplicationContext(), "WFA335: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!checkZeroFilled(bi.llwfa338)) {
+        CardView cardWfa338 = (CardView) bi.llwfa338.getParent().getParent();
+        if (cardWfa338.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa338)) {
             Toast.makeText(getApplicationContext(), "WFA338: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }

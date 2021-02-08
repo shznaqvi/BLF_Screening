@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
 import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 import edu.aku.hassannaqvi.blf_screening.models.Diseases;
 import edu.aku.hassannaqvi.blf_screening.models.Episodes;
@@ -41,6 +42,7 @@ import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
+import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_VERSION;
@@ -55,6 +57,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VER
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISEASES;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_EPISODES;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_CHILD_FOLLOWUP;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_WFB108;
 
 
 /**
@@ -86,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_DISEASES);
         db.execSQL(SQL_CREATE_EPISODES);
         db.execSQL(SQL_CREATE_CHILD_FOLLOWUP);
+        db.execSQL(SQL_CREATE_WFB108);
     }
 
     @Override
@@ -1490,7 +1494,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
@@ -1536,7 +1539,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return alc;
         }
     }
-
 
     //Generic Un-Synced Forms
     public void updateSyncedFormsSL(String id) {
@@ -1658,7 +1660,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-
     public long insertDisease(String disease) {
 
         // Gets the data repository in write mode
@@ -1687,6 +1688,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return newRowId;
+    }
+
+    public long insertWFB108(WFB108 wfb108, int day) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        //values.put(DiseasesContract.DiseasesTable.COLUMN_Q_NO, wfb108);
+        values.put(WFB108Contract.WFB108Table.COLUMN_UUID, MainApp.formsWF.get_UID());
+        values.put(WFB108Contract.WFB108Table.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
+        values.put(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID, MainApp.formsWF.getDeviceID());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A, wfb108.getWfb1081a());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_B, wfb108.getWfb1081b());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_C, wfb108.getWfb1081c());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D, wfb108.getWfb1081d());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D5X, wfb108.getWfb1081d5());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D96X, wfb108.getWfb1081d96());
+        values.put(WFB108Contract.WFB108Table.COLUMN_DAY_NO, day);
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                WFB108Contract.WFB108Table.TABLE_NAME,
+                WFB108Contract.WFB108Table.COLUMN_NAME_NULLABLE,
+                values);
+
+        if (newRowId > 0) {
+            String uid = MainApp.formsWF.getDeviceID() + newRowId;
+            long index = updateWFB108(WFB108Contract.WFB108Table.COLUMN_UID, uid, newRowId);
+            if (index < 0)
+                newRowId = 0;
+        }
+
+        return newRowId;
+    }
+
+    //Generic update FormColumn
+    public int updateWFB108(String column, String value, long id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = WFB108Contract.WFB108Table.ID + " =? ";
+        String[] selectionArgs = {String.valueOf(id)};
+
+        return db.update(WFB108Contract.WFB108Table.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
     }
 
     //Generic update FormColumn
@@ -2009,7 +2062,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allEpisodes;
     }
-
 
     public void updateChildFollowup(int id) {
 

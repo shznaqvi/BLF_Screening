@@ -22,9 +22,10 @@ public class SectionWFB02Activity extends AppCompatActivity {
 
     ActivitySectionWfb02Binding bi;
     Intent oF = null;
-
     String week, delivery_date;
     int col_id;
+    int wfa106;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +35,49 @@ public class SectionWFB02Activity extends AppCompatActivity {
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         col_id = intent.getIntExtra("col_id", 0);
+        wfa106 = intent.getIntExtra("wfa106", 0);
+        FD = intent.getStringExtra("FD");
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfb02);
         bi.setCallback(this);
         setupSkips();
+
+        if (wfa106 == 1) {
+            bi.fldGrpCVwfb203.setVisibility(View.GONE);
+            bi.fldGrpCVwfb204.setVisibility(View.GONE);
+        } else {
+            bi.fldGrpCVwfb203.setVisibility(View.VISIBLE);
+            bi.fldGrpCVwfb204.setVisibility(View.VISIBLE);
+        }
     }
 
 
     private void setupSkips() {
 
         bi.wfb201.setOnCheckedChangeListener((group, i) -> {
+
             Clear.clearAllFields(bi.fldGrpCVwfb202);
-            Clear.clearAllFields(bi.fldGrpCVwfb203);
+            bi.fldGrpCVwfb202.setVisibility(View.GONE);
+
+            if (wfa106 == 0) {
+                Clear.clearAllFields(bi.fldGrpCVwfb203);
+                bi.fldGrpCVwfb203.setVisibility(View.GONE);
+            }
+
+            if (i == bi.wfb20101.getId()) {
+                bi.fldGrpCVwfb202.setVisibility(View.VISIBLE);
+                if (wfa106 == 0) {
+                    bi.fldGrpCVwfb203.setVisibility(View.VISIBLE);
+                }
+            } else {
+                Clear.clearAllFields(bi.fldGrpCVwfb202);
+                bi.fldGrpCVwfb202.setVisibility(View.GONE);
+                if (wfa106 == 0) {
+                    Clear.clearAllFields(bi.fldGrpCVwfb203);
+                    bi.fldGrpCVwfb203.setVisibility(View.GONE);
+                }
+            }
+
         });
 
         bi.wfb205.setOnCheckedChangeListener((group, i) -> {
@@ -71,7 +103,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week).putExtra("col_id", col_id));
+                startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
             }
         }
     }

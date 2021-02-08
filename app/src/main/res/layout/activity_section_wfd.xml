@@ -141,25 +141,25 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102a01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102a01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102a01x"
-                                android:text='@{wfd102a01.checked ? wfd102a01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102a01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102a02"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102a02" />
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102a01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102a01x"
+                            android:text='@{wfd102a01.checked ? wfd102a01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102a01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -207,25 +207,26 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102b01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102b01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102b01x"
-                                android:text='@{wfd102b01.checked ? wfd102b01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102b01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102b02"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102b02" />
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102b01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102b01x"
+                            android:text='@{wfd102b01.checked ? wfd102b01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102b01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -273,19 +274,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102c01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102c01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102c01x"
-                                android:text='@{wfd102c01.checked ? wfd102c01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102c01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102c02"
                                 android:layout_width="match_parent"
@@ -293,6 +281,19 @@
                                 android:text="@string/wfd102c02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102c01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102c01x"
+                            android:text='@{wfd102c01.checked ? wfd102c01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102c01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -342,19 +343,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102d01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102d01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102d01x"
-                                android:text='@{wfd102d01.checked ? wfd102d01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102d01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102d02"
                                 android:layout_width="match_parent"
@@ -362,6 +350,19 @@
                                 android:text="@string/wfd102d02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102d01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102d01x"
+                            android:text='@{wfd102d01.checked ? wfd102d01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102d01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -411,19 +412,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102e01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102e01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102e01x"
-                                android:text='@{wfd102e01.checked ? wfd102e01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102e01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102e02"
                                 android:layout_width="match_parent"
@@ -431,6 +419,19 @@
                                 android:text="@string/wfd102e02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102e01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102e01x"
+                            android:text='@{wfd102e01.checked ? wfd102e01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102e01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -480,19 +481,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102f01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102f01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102f01x"
-                                android:text='@{wfd102f01.checked ? wfd102f01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102f01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102f02"
                                 android:layout_width="match_parent"
@@ -500,6 +488,19 @@
                                 android:text="@string/wfd102f02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102f01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102f01x"
+                            android:text='@{wfd102f01.checked ? wfd102f01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102f01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -549,19 +550,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102g01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102g01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102g01x"
-                                android:text='@{wfd102g01.checked ? wfd102g01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102g01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102g02"
                                 android:layout_width="match_parent"
@@ -569,6 +557,19 @@
                                 android:text="@string/wfd102g02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102g01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102g01x"
+                            android:text='@{wfd102g01.checked ? wfd102g01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102g01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -618,19 +619,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102h01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102h01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102h01x"
-                                android:text='@{wfd102h01.checked ? wfd102h01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102h01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102h02"
                                 android:layout_width="match_parent"
@@ -638,6 +626,19 @@
                                 android:text="@string/wfd102h02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102h01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102h01x"
+                            android:text='@{wfd102h01.checked ? wfd102h01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102h01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -687,19 +688,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102i01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102i01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102i01x"
-                                android:text='@{wfd102i01.checked ? wfd102i01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102i01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102i02"
                                 android:layout_width="match_parent"
@@ -707,6 +695,19 @@
                                 android:text="@string/wfd102i02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102i01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102i01x"
+                            android:text='@{wfd102i01.checked ? wfd102i01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102i01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -756,18 +757,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102j01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102j01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102j01x"
-                                android:text='@{wfd102j01.checked ? wfd102j01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102j01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
 
                             <RadioButton
                                 android:id="@+id/wfd102j02"
@@ -777,6 +766,18 @@
 
                         </RadioGroup>
 
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102j01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102j01x"
+                            android:text='@{wfd102j01.checked ? wfd102j01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102j01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -825,6 +826,13 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102k01" />
 
+
+                            <RadioButton
+                                android:id="@+id/wfd102k02"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wfd102k02" />
+
                             <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                 android:id="@+id/wfd102k01x"
                                 android:layout_width="match_parent"
@@ -837,12 +845,6 @@
                                 app:dateFormat="dd-MM-yyyy"
                                 app:maxDate="CR_DATE"
                                 app:minDate="01/11/2015" />
-
-                            <RadioButton
-                                android:id="@+id/wfd102k02"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/wfd102k02" />
 
                         </RadioGroup>
 
@@ -894,19 +896,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102l01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102l01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102l01x"
-                                android:text='@{wfd102l01.checked ? wfd102l01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102l01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102l02"
                                 android:layout_width="match_parent"
@@ -914,6 +903,19 @@
                                 android:text="@string/wfd102l02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102l01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102l01x"
+                            android:text='@{wfd102l01.checked ? wfd102l01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102l01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -963,20 +965,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102m01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102m01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102m01x"
-                                android:text='@{wfd102m01.checked ? wfd102m01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102m01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
-
                             <RadioButton
                                 android:id="@+id/wfd102m02"
                                 android:layout_width="match_parent"
@@ -984,6 +972,19 @@
                                 android:text="@string/wfd102m02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102m01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102m01x"
+                            android:text='@{wfd102m01.checked ? wfd102m01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102m01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -1033,19 +1034,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102n01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102n01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102n01x"
-                                android:text='@{wfd102n01.checked ? wfd102n01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102n01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102n02"
                                 android:layout_width="match_parent"
@@ -1053,6 +1041,19 @@
                                 android:text="@string/wfd102n02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102n01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102n01x"
+                            android:text='@{wfd102n01.checked ? wfd102n01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102n01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -1102,19 +1103,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/wfd102o01" />
 
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                                android:id="@+id/wfd102o01x"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:hint="@string/date"
-                                android:tag="wfd102o01x"
-                                android:text='@{wfd102o01.checked ? wfd102o01x.getText().toString() : ""}'
-                                android:visibility='@{wfd102o01.checked? View.VISIBLE : View.GONE}'
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE"
-                                app:minDate="01/11/2015" />
-
                             <RadioButton
                                 android:id="@+id/wfd102o02"
                                 android:layout_width="match_parent"
@@ -1122,6 +1110,19 @@
                                 android:text="@string/wfd102o02" />
 
                         </RadioGroup>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/wfd102o01x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="@string/date"
+                            android:tag="wfd102o01x"
+                            android:text='@{wfd102o01.checked ? wfd102o01x.getText().toString() : ""}'
+                            android:visibility='@{wfd102o01.checked? View.VISIBLE : View.GONE}'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="01/11/2015" />
 
                     </LinearLayout>
 
@@ -1158,6 +1159,7 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="Save"
                     android:textColor="@color/white" />
+
             </LinearLayout>
 
 

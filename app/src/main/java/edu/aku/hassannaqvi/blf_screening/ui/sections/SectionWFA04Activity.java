@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ public class SectionWFA04Activity extends AppCompatActivity {
     Intent oF = null;
     String week, delivery_date, fupdate;
     int col_id;
+    int wfa106;
+    String FD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,8 @@ public class SectionWFA04Activity extends AppCompatActivity {
         delivery_date = intent.getStringExtra("delivery_date");
         fupdate = intent.getStringExtra("fupdate");
         col_id = intent.getIntExtra("col_id", 0);
+        wfa106 = intent.getIntExtra("wfa106", 0);
+        FD = intent.getStringExtra("FD");
 
         bi.wfa40201.setMinDate(delivery_date);
         bi.wfa40201.setMaxDate(fupdate);
@@ -76,25 +81,47 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
 
     private void setupSkips() {
-        radioGroupListener(bi.wfa401, bi.llGrpsec401);
-        radioGroupListener(bi.wfa406, bi.llGrpsec402);
+        radioGroupListener(bi.wfa401, bi.wfa40102, bi.llGrpsec401);
+        radioGroupListener(bi.wfa406, bi.wfa40602, bi.llGrpsec402);
 
-        bi.wfa409.setOnCheckedChangeListener((radioGroup, i) -> {
-            Clear.clearAllFields(bi.llwfa40902);
-            bi.llwfa40902.setVisibility(View.GONE);
+        /*bi.wfa409.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.wfa40902x);
+            bi.wfa40902x.setVisibility(View.GONE);
             if (i == bi.wfa40902.getId()) {
-                bi.llwfa40902.setVisibility(View.VISIBLE);
+                bi.wfa40902x.setVisibility(View.VISIBLE);
             } else {
                 Clear.clearAllFields(bi.wfa40902x);
-                bi.llwfa40902.setVisibility(View.GONE);
+                bi.wfa40902x.setVisibility(View.GONE);
+            }
+        });*/
+    }
+
+
+    public void radioGroupListener(@NotNull RadioGroup rg, RadioButton rb, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> {
+
+            /*if (rg == bi.wfa401) {
+                bi.wfa403.requestFocus();
+            }*/
+
+            if (i == rb.getId()){
+                Clear.clearAllFields(vg);
+                vg.setVisibility(View.GONE);
+            } else {
+                vg.setVisibility(View.VISIBLE);
             }
         });
     }
 
 
-    public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
-        rg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(vg));
-    }
+    /*public void radioGroupListener(@NotNull RadioGroup rg, ViewGroup vg) {
+        rg.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(vg);
+            if (vg == bi.llGrpsec401) {
+                vg.getChildAt(1).setVisibility(View.GONE);
+            }
+        });
+    }*/
 
 
     public void BtnContinue() {
@@ -106,14 +133,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-
-            /*if (week.equals("6") || week.equals("10") || week.equals("20")) {
-                startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week));
-            } else {
-                startActivity(new Intent(this, SectionWFB01Activity.class).putExtra("week", week));
-            }*/
-
-            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week).putExtra("col_id", col_id));
+            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
         }
     }
 
