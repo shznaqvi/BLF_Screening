@@ -427,10 +427,10 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (!checkWFB108(bi.llwfb108)) {
+        /*if (!checkWFB108(bi.llwfb108)) {
             Toast.makeText(this, "Please provide value for WFB108D", Toast.LENGTH_LONG).show();
             return false;
-        }
+        }*/
 
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
