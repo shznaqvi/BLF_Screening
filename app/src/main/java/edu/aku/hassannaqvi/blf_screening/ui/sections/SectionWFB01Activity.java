@@ -27,8 +27,13 @@ import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import org.threeten.bp.DateTimeUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -102,9 +107,12 @@ public class SectionWFB01Activity extends AppCompatActivity {
         // Type MHD
         bi.wfb105.addTextChangedListener(textwatcher);
 
-        String date1 = "01-01-2020";
-        String date2 = "03-01-2020";
-        //wfa108Days = date2 - date1;
+        String strDate1 = "01-01-2020";
+        String strDate2 = "03-01-2020";
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy");
+
+
 
         wfa108Days = 3;
 
@@ -201,7 +209,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
             */
             cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", i));
 
-            cardBinding.wfb1081d.setOnCheckedChangeListener((group, id) -> {
+            /*cardBinding.wfb1081d.setOnCheckedChangeListener((group, id) -> {
 
                 if (id == cardBinding.wfb1081d05.getId()) {
                     cardBinding.wfb1081d05x.setVisibility(View.VISIBLE);
@@ -217,7 +225,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
                     cardBinding.wfb1081d05x.setVisibility(View.GONE);
                     cardBinding.wfb1081d96x.setVisibility(View.GONE);
                 }
-            });
+            });*/
 
             ll.addView(cardBinding.getRoot());
         }
