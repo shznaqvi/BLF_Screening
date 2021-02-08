@@ -37,8 +37,6 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfb01Binding;
 import edu.aku.hassannaqvi.blf_screening.databinding.Wfb108CardBinding;
-import edu.aku.hassannaqvi.blf_screening.models.SubModel;
-import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
 import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 import edu.aku.hassannaqvi.blf_screening.models.WFBSubModel;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
@@ -113,7 +111,8 @@ public class SectionWFB01Activity extends AppCompatActivity {
         LinearLayout ll;
         ll = bi.llwfb108;
         for (int i = 1; i <= wfa108Days; i++) {
-            ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(SectionWFB01Activity.this).inflate(R.layout.wfb108_card, ll, false);
+
+            ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(this).inflate(R.layout.wfb108_card, ll, false);
             Wfb108CardBinding cardBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.wfb108_card, null, false);
 
 
@@ -131,16 +130,16 @@ public class SectionWFB01Activity extends AppCompatActivity {
             LinearLayout ll_inner_inner = (LinearLayout) cv_inner.getChildAt(0);
             RelativeLayout rl = (RelativeLayout) ll_inner_inner.getChildAt(0);
             TextView tv_a = (TextView) rl.getChildAt(0);
-            tv_a.setText("Day " + i + ":Have u given the supplement");*/
+            tv_a.setText("Day " + i + ":Have u given the supplement");
+            RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
+            */
 
             cardBinding.qtxtWfb1081a.setText(String.format(Locale.ENGLISH, "Day %d :Have u given the supplement", i));
-
-//            RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
             cardBinding.wfb1081a.setOnCheckedChangeListener((group, id) -> {
                 if (id == cardBinding.wfb1081a02.getId()) {
+                    cardBinding.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
                     Clear.clearAllFields(cardBinding.llgrpsecb01);
                     cardBinding.llgrpsecb01.setVisibility(View.GONE);
-                    cardBinding.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
                 } else {
                     cardBinding.llgrpsecb01.setVisibility(View.VISIBLE);
                     Clear.clearAllFields(cardBinding.fldGrpCVwfb1081d);
@@ -155,14 +154,15 @@ public class SectionWFB01Activity extends AppCompatActivity {
             LinearLayout qc_ll = (LinearLayout) qb_cv2.getChildAt(0);
             RelativeLayout qc_rl = (RelativeLayout) qc_ll.getChildAt(0);
             TextView tv_c = (TextView) qc_rl.getChildAt(0);
-            tv_c.setText("Day " + i + ":If partial, why?");*/
-            cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d :How much quantity have you given?", i));
-            /*RelativeLayout qb_rl = (RelativeLayout) qb_ll.getChildAt(0);
+            tv_c.setText("Day " + i + ":If partial, why?");
+            RelativeLayout qb_rl = (RelativeLayout) qb_ll.getChildAt(0);
             TextView tv_b = (TextView) qb_rl.getChildAt(0);
-            tv_b.setText("Day " + i + ":How much quantity have you given?");*/
+            tv_b.setText("Day " + i + ":How much quantity have you given?");
+            RadioGroup qb_rg = (RadioGroup) qb_ll.getChildAt(1);*/
+
+            cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d :How much quantity have you given?", i));
             cardBinding.qtxtWfb1081c.setText(String.format(Locale.ENGLISH, "Day %d :If partial, why?", i));
 
-//            RadioGroup qb_rg = (RadioGroup) qb_ll.getChildAt(1);
             cardBinding.wfb1081b.setOnCheckedChangeListener((group, id) -> {
                 if (id == cardBinding.wfb1081b01.getId()) {
                     Clear.clearAllFields(cardBinding.fldGrpCVwfb1081c);
@@ -180,10 +180,8 @@ public class SectionWFB01Activity extends AppCompatActivity {
             tv_d.setText("Day " + i + ":If not given, state reason?");
             RadioGroup qd_rg = (RadioGroup) qd_ll.getChildAt(1);
             EditText et1 = (EditText) qd_rg.getChildAt(5);
-            EditText et2 = (EditText) qd_rg.getChildAt(7);*/
-            cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", i));
-
-            /*qd_rg.setOnCheckedChangeListener((group, id) -> {
+            EditText et2 = (EditText) qd_rg.getChildAt(7);
+            qd_rg.setOnCheckedChangeListener((group, id) -> {
 
                 if (id == 2131232219) {
                     et1.setVisibility(View.VISIBLE);
@@ -199,12 +197,64 @@ public class SectionWFB01Activity extends AppCompatActivity {
                     et1.setVisibility(View.GONE);
                     et2.setVisibility(View.GONE);
                 }
-            });*/
+            });
+            */
+            cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", i));
 
+            cardBinding.wfb1081d.setOnCheckedChangeListener((group, id) -> {
+
+                if (id == cardBinding.wfb1081d05.getId()) {
+                    cardBinding.wfb1081d05x.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(cardBinding.wfb1081d96x);
+                    cardBinding.wfb1081d96x.setVisibility(View.GONE);
+                } else if (id == cardBinding.wfb1081d96.getId()) {
+                    cardBinding.wfb1081d96x.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(cardBinding.wfb1081d05x);
+                    cardBinding.wfb1081d05x.setVisibility(View.GONE);
+                } else {
+                    Clear.clearAllFields(cardBinding.wfb1081d05x);
+                    Clear.clearAllFields(cardBinding.wfb1081d96x);
+                    cardBinding.wfb1081d05x.setVisibility(View.GONE);
+                    cardBinding.wfb1081d96x.setVisibility(View.GONE);
+                }
+            });
 
             ll.addView(cardBinding.getRoot());
-
         }
+
+
+
+        /*for (int j = 0; j < bi.llwfb108.getChildCount(); j++) {
+            Wfb108CardBinding cardBinding = DataBindingUtil.bind(bi.llwfb108.getChildAt(j));
+
+            if (cardBinding != null) {
+                cardBinding.qtxtWfb1081a.setText(String.format(Locale.ENGLISH, "Day %d :Have u given the supplement", j));
+                cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d :How much quantity have you given?", j));
+                cardBinding.qtxtWfb1081c.setText(String.format(Locale.ENGLISH, "Day %d :If partial, why?", j));
+                cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", j));
+
+                cardBinding.wfb1081a.setOnCheckedChangeListener((group, id) -> {
+                    if (id == cardBinding.wfb1081a02.getId()) {
+                        //cardBinding.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
+                        Clear.clearAllFields(cardBinding.llgrpsecb01);
+                        //cardBinding.llgrpsecb01.setVisibility(View.GONE);
+                    } else {
+                        //cardBinding.llgrpsecb01.setVisibility(View.VISIBLE);
+                        Clear.clearAllFields(cardBinding.fldGrpCVwfb1081d);
+                        //cardBinding.fldGrpCVwfb1081d.setVisibility(View.GONE);
+                    }
+                });
+
+                cardBinding.wfb1081b.setOnCheckedChangeListener((group, id) -> {
+                    if (id == cardBinding.wfb1081b01.getId()) {
+                        Clear.clearAllFields(cardBinding.fldGrpCVwfb1081c);
+                        cardBinding.fldGrpCVwfb1081c.setVisibility(View.GONE);
+                    } else {
+                        cardBinding.fldGrpCVwfb1081c.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        }*/
 
     }
 

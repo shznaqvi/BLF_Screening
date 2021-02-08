@@ -28,6 +28,7 @@ android {
             versionCode code
             versionName "1.0"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            multiDexEnabled true //add this line
         }
     } else {
         throw new GradleException("Could not read version.properties!")
@@ -108,6 +109,8 @@ dependencies {
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
 
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3' //enter the latest version
 }
 repositories {
     mavenCentral()

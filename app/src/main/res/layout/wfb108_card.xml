@@ -288,8 +288,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/wfb1081d05"
-                                android:visibility='@{wfb1081d05.checked? View.VISIBLE : View.GONE}'
-                                android:text='@{wfb1081d05.checked ? wfb1081d05x.getText().toString() : ""}' />
+                                android:tag="wfb1081d05"
+                                android:visibility="gone"/>
 
                             <RadioButton
                                 android:id="@+id/wfb1081d96"
@@ -302,8 +302,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/wfb1081d96"
-                                android:visibility='@{wfb1081d96.checked? View.VISIBLE : View.GONE}'
-                                android:text='@{wfb1081d96.checked ? wfb1081d96x.getText().toString() : ""}'/>
+                                android:tag="wfb1081d96"
+                                android:visibility="gone"/>
 
                         </RadioGroup>
 
