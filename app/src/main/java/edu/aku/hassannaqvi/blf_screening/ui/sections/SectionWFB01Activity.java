@@ -29,6 +29,7 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
@@ -67,7 +68,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
 
-        String[] weekarray = {"1", "2", "3", "4", "5", "6", "20"};
+        String[] weekarray = {"1", "2", "3", "4", "5", "6", "20", "10"};
         if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
         }
@@ -113,10 +114,10 @@ public class SectionWFB01Activity extends AppCompatActivity {
         ll = bi.llwfb108;
         for (int i = 1; i <= wfa108Days; i++) {
             ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(SectionWFB01Activity.this).inflate(R.layout.wfb108_card, ll, false);
-            //view.setId(i + 1);
-            ll.addView(view);
+            Wfb108CardBinding cardBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.wfb108_card, null, false);
 
-            CardView cv_outer = (CardView) view.getChildAt(0);
+
+            /*CardView cv_outer = (CardView) view.getChildAt(0);
             LinearLayout ll_outer = (LinearLayout) cv_outer.getChildAt(0);
 
             // Card 1
@@ -130,67 +131,59 @@ public class SectionWFB01Activity extends AppCompatActivity {
             LinearLayout ll_inner_inner = (LinearLayout) cv_inner.getChildAt(0);
             RelativeLayout rl = (RelativeLayout) ll_inner_inner.getChildAt(0);
             TextView tv_a = (TextView) rl.getChildAt(0);
-            tv_a.setText("Day " + i + ":Have u given the supplement");
-            RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
-            rg.setOnCheckedChangeListener((group, id) -> {
-                /*int selectedId = group.getCheckedRadioButtonId();
-                RadioButton radiochecked = (RadioButton) findViewById(selectedId);*/
-                /*Toast.makeText(getApplicationContext(), "ID: " + id, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "RID: " + radiochecked.getId(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Value: " + radiochecked.getText().toString().trim(), Toast.LENGTH_SHORT).show();*/
+            tv_a.setText("Day " + i + ":Have u given the supplement");*/
 
+            cardBinding.qtxtWfb1081a.setText(String.format(Locale.ENGLISH, "Day %d :Have u given the supplement", i));
 
-
-                if (id == 2131232206) {
-                    Clear.clearAllFields(ll_inner);
-                    ll_inner.setVisibility(View.GONE);
+//            RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
+            cardBinding.wfb1081a.setOnCheckedChangeListener((group, id) -> {
+                if (id == cardBinding.wfb1081a02.getId()) {
+                    Clear.clearAllFields(cardBinding.llgrpsecb01);
+                    cardBinding.llgrpsecb01.setVisibility(View.GONE);
+                    cardBinding.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
                 } else {
-                    ll_inner.setVisibility(View.VISIBLE);
+                    cardBinding.llgrpsecb01.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(cardBinding.fldGrpCVwfb1081d);
+                    cardBinding.fldGrpCVwfb1081d.setVisibility(View.GONE);
                 }
             });
 
             // 2 elaboration
-            CardView qb_cv = (CardView) ll_inner.getChildAt(0);
+            /*CardView qb_cv = (CardView) ll_inner.getChildAt(0);
             CardView qb_cv2 = (CardView) ll_inner.getChildAt(1);
             LinearLayout qb_ll = (LinearLayout) qb_cv.getChildAt(0);
             LinearLayout qc_ll = (LinearLayout) qb_cv2.getChildAt(0);
             RelativeLayout qc_rl = (RelativeLayout) qc_ll.getChildAt(0);
             TextView tv_c = (TextView) qc_rl.getChildAt(0);
-            tv_c.setText("Day " + i + ":If partial, why?");
-            RelativeLayout qb_rl = (RelativeLayout) qb_ll.getChildAt(0);
+            tv_c.setText("Day " + i + ":If partial, why?");*/
+            cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d :How much quantity have you given?", i));
+            /*RelativeLayout qb_rl = (RelativeLayout) qb_ll.getChildAt(0);
             TextView tv_b = (TextView) qb_rl.getChildAt(0);
-            tv_b.setText("Day " + i + ":How much quantity have you given?");
+            tv_b.setText("Day " + i + ":How much quantity have you given?");*/
+            cardBinding.qtxtWfb1081c.setText(String.format(Locale.ENGLISH, "Day %d :If partial, why?", i));
 
-            RadioGroup qb_rg = (RadioGroup) qb_ll.getChildAt(1);
-            qb_rg.setOnCheckedChangeListener((group, id) -> {
-
-                /*int selectedId = group.getCheckedRadioButtonId();
-                RadioButton radiochecked = (RadioButton) findViewById(selectedId);*/
-
-                if (id == 2131232208) {
-                    Clear.clearAllFields(qb_cv2);
-                    qb_cv2.setVisibility(View.GONE);
+//            RadioGroup qb_rg = (RadioGroup) qb_ll.getChildAt(1);
+            cardBinding.wfb1081b.setOnCheckedChangeListener((group, id) -> {
+                if (id == cardBinding.wfb1081b01.getId()) {
+                    Clear.clearAllFields(cardBinding.fldGrpCVwfb1081c);
+                    cardBinding.fldGrpCVwfb1081c.setVisibility(View.GONE);
                 } else {
-                    qb_cv2.setVisibility(View.VISIBLE);
+                    cardBinding.fldGrpCVwfb1081c.setVisibility(View.VISIBLE);
                 }
             });
 
 
             // 3 elaboration
-            LinearLayout qd_ll = (LinearLayout) cv_inner2.getChildAt(0);
+            /*LinearLayout qd_ll = (LinearLayout) cv_inner2.getChildAt(0);
             RelativeLayout qd_rl = (RelativeLayout) qd_ll.getChildAt(0);
             TextView tv_d = (TextView) qd_rl.getChildAt(0);
             tv_d.setText("Day " + i + ":If not given, state reason?");
             RadioGroup qd_rg = (RadioGroup) qd_ll.getChildAt(1);
             EditText et1 = (EditText) qd_rg.getChildAt(5);
-            EditText et2 = (EditText) qd_rg.getChildAt(7);
+            EditText et2 = (EditText) qd_rg.getChildAt(7);*/
+            cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", i));
 
-            int finalI = i;
-            qd_rg.setOnCheckedChangeListener((group, id) -> {
-
-                /*int selectedId = group.getCheckedRadioButtonId();
-                RadioButton radiochecked = (RadioButton) findViewById(selectedId);*/
-
+            /*qd_rg.setOnCheckedChangeListener((group, id) -> {
 
                 if (id == 2131232219) {
                     et1.setVisibility(View.VISIBLE);
@@ -206,37 +199,12 @@ public class SectionWFB01Activity extends AppCompatActivity {
                     et1.setVisibility(View.GONE);
                     et2.setVisibility(View.GONE);
                 }
-            });
+            });*/
 
+
+            ll.addView(cardBinding.getRoot());
 
         }
-
-
-        /*View.OnClickListener btnclick = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                switch (view.getId()) {
-
-                    //first button click
-                    case 1:
-                        break;
-                    //Second button click
-                    case 2:
-                        break;
-                    case 3:
-                        //third button click
-                        break;
-                    case 4:
-                        //fourth button click
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-        };*/
 
     }
 
@@ -439,7 +407,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         return true;
     }
 
-    public boolean checkWFB108 (LinearLayout ll) {
+    public boolean checkWFB108(LinearLayout ll) {
 
         ConstraintLayout cl_WFB108 = (ConstraintLayout) ll.getChildAt(0);
         CardView cv_WFB108 = (CardView) cl_WFB108.getChildAt(0);
