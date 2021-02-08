@@ -191,6 +191,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
                 /*int selectedId = group.getCheckedRadioButtonId();
                 RadioButton radiochecked = (RadioButton) findViewById(selectedId);*/
 
+
                 if (id == 2131232219) {
                     et1.setVisibility(View.VISIBLE);
                     Clear.clearAllFields(et2);

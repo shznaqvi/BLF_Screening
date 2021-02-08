@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -282,7 +288,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/wfb1081d05"
-                                android:visibility="gone"/>
+                                android:tag="wfb1081d05"
+                                android:text='@{wfb1081d05.checked ? wfb1081d05x.getText().toString() : ""}'
+                                android:visibility='@{wfb1081d05.checked? View.VISIBLE : View.GONE}' />
 
                             <RadioButton
                                 android:id="@+id/wfb1081d96"
@@ -295,7 +303,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/wfb1081d96"
-                                android:visibility="gone"/>
+                                android:tag="wfb1081d96"
+                                android:text='@{wfb1081d96.checked ? wfb1081d96x.getText().toString() : ""}'
+                                android:visibility='@{wfb1081d96.checked? View.VISIBLE : View.GONE}' />
 
                         </RadioGroup>
 
