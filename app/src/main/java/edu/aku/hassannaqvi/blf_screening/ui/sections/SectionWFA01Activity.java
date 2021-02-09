@@ -214,10 +214,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
 
-        MainApp.mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
-        MainApp.formsWF.setMR(MainApp.mrno);
-        MainApp.followUpDate = bi.wfa10401.getText().toString().trim().isEmpty() ? "00-00-0000" : bi.wfa10401.getText().toString().trim();
-        MainApp.formsWF.setFollowUpDate(MainApp.followUpDate);
+        mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
 
         formsWF.setWfa102(bi.wfa102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa102.getText().toString());
 

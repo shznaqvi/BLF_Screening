@@ -24,6 +24,7 @@ public class childFollowupContract {
         public static final String COLUMN_MRNO_M = "sl4";
         public static final String COLUMN_FUPDONEDT = "fupdonedt";
         public static final String COLUMN_S1Q501 = "sf6a";
+        public static final String COLUMN_P_FOLLOWUP_DATE = "pFollowUpDate";
         public static final String COLUMN_STATUS = "status";
 
         public static String PATH = "childFollowup";
