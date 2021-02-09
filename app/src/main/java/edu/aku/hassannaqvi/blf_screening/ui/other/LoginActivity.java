@@ -45,6 +45,8 @@ import androidx.work.WorkManager;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -872,6 +874,35 @@ public class LoginActivity extends AppCompatActivity {
         MainApp.IMEI = getDeviceId(this);
 
     }
+
+    // START QR-CODE
+
+    public void QRCode(View view) {
+
+        // INTENT TO START QR-CODE CAMERA
+        new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
+    }
+
+    // Get the results:
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+
+
+                // TODO: SET CODE TO EDIT TEXT FIELD
+                bi.wfe102.setText(result.getContents());
+
+
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    // END QR-CODE
 }
-
-
