@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.content.Intent;
-import android.nfc.cardemulation.CardEmulation;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -46,7 +45,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     String FD;
-    String mrno;
+    String pFollowUpDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,7 +217,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
-        mrno = intent.getStringExtra("mrno");
+        pFollowUpDate = intent.getStringExtra("pFollowUpDate");
 
         bi.llwfa31204.setVisibility(View.GONE);
 
@@ -288,7 +287,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
         }
     }
 

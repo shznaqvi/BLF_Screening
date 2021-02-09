@@ -4,20 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
-import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -38,7 +33,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     String FD;
-    String mrno;
+    String pFollowUpDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +49,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
-        mrno = intent.getStringExtra("mrno");
+        pFollowUpDate = intent.getStringExtra("pFollowUpDate");
 
         bi.wfa40201.setMinDate(delivery_date);
         bi.wfa40201.setMaxDate(fupdate);
@@ -71,7 +66,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                bi.wfa40902x.setMinDate(String.valueOf(s.toString().replace("-", "/")));
+                bi.wfa40902x.setMinDate(s.toString().replace("-", "/"));
             }
 
             @Override
@@ -135,7 +130,7 @@ public class SectionWFA04Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date).putExtra("mrno", mrno));
+            startActivity(new Intent(this, SectionWFA05Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date).putExtra("pFollowUpDate", pFollowUpDate));
         }
     }
 

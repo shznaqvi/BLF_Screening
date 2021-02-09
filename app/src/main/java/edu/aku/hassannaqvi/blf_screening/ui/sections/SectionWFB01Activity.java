@@ -2,21 +2,15 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,17 +18,13 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
-import com.edittextpicker.aliazaz.EditTextPicker;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
-
-import org.threeten.bp.DateTimeUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -44,12 +34,9 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfb01Binding;
 import edu.aku.hassannaqvi.blf_screening.databinding.Wfb108CardBinding;
-import edu.aku.hassannaqvi.blf_screening.models.FollowUps;
 import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 import edu.aku.hassannaqvi.blf_screening.models.WFBSubModel;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
-import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
-import io.reactivex.disposables.CompositeDisposable;
 
 public class SectionWFB01Activity extends AppCompatActivity {
 
@@ -60,9 +47,9 @@ public class SectionWFB01Activity extends AppCompatActivity {
     int wfa106;
     long wfa108Days;
     String FD;
-    String mrno;
+    private final ArrayList<View> collectionOfViews = new ArrayList();
     ArrayList<WFBSubModel> wfb108;
-    private ArrayList<View> collectionOfViews = new ArrayList();
+    String pFollowUpDate;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -75,7 +62,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
-        mrno = intent.getStringExtra("mrno");
+        pFollowUpDate = intent.getStringExtra("pFollowUpDate");
 
         String[] weekarray = {"1", "2", "3", "4", "5", "6", "20", "10"};
         if (!Arrays.asList(weekarray).contains("1")) {
@@ -112,17 +99,17 @@ public class SectionWFB01Activity extends AppCompatActivity {
         // Type MHD
         bi.wfb105.addTextChangedListener(textwatcher);
 
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        Cursor pFollowup = db.getFollowup(mrno);
 
-        if (pFollowup.getCount() > 0) {
-            Toast.makeText(this, "Yes Value: ", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "No Value: ", Toast.LENGTH_LONG).show();
-        }
+        String[] wfb108 = pFollowUpDate.split("-");
+        String day = wfb108[2];
+        String month = wfb108[1];
+        String year = wfb108[0];
+        String pFD = day + "-" + month + "-" + year;
 
-        String startDate= "01-01-2019";
-        String endDate= "05-01-2019";
+        //String startDate= "01-01-2019";
+        //String endDate= "05-01-2019";
+        String startDate = pFD;
+        String endDate = FD;
         Date date1;
         Date date2;
         SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
@@ -147,7 +134,12 @@ public class SectionWFB01Activity extends AppCompatActivity {
             wfa108Days = 1;
         }
 
-        Toast.makeText(this, "Value: " + mrno, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "pFD: " + pFD, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "FD: " + FD, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "diff: " + diff, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "diff: " + wfa108Days, Toast.LENGTH_LONG).show();
+
+        //Toast.makeText(this, "Value: " + mrno, Toast.LENGTH_LONG).show();
         //Calendar strDate1 = DateUtils.getCalendarDate( "2021/01/01");
         //Calendar strDate2 = DateUtils.getCalendarDate( "2021/01/03");
 
@@ -504,11 +496,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
             }
         }
 
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
-            return false;
-        }
-
-        return true;
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
     public boolean checkWFB108(LinearLayout ll, int position) {
