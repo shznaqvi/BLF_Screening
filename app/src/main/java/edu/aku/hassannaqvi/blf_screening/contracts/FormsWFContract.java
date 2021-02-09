@@ -21,6 +21,7 @@ public class FormsWFContract {
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_MR_NO = "mrno";
+        public static final String COLUMN_FOLLOWUP_DATE = "followUpDate";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
