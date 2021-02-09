@@ -81,6 +81,8 @@ public class MainApp extends Application {
     public static LiveData<FormsSL> liveForms = new MutableLiveData<>();
 
     public static String userName = "0000";
+    public static String mrno = "000-00-00";
+    public static String followUpDate = "00-00-0000";
     public static UsersContract user;
     public static FormsSL formsSL;
     public static FormsSF formsSF;

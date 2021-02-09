@@ -46,6 +46,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     String FD;
+    String mrno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -217,6 +218,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
+        mrno = intent.getStringExtra("mrno");
 
         bi.llwfa31204.setVisibility(View.GONE);
 
@@ -286,7 +288,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
+            startActivity(new Intent(this, SectionWFA04Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
         }
     }
 

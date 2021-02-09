@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -33,6 +34,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -42,9 +44,11 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfb01Binding;
 import edu.aku.hassannaqvi.blf_screening.databinding.Wfb108CardBinding;
+import edu.aku.hassannaqvi.blf_screening.models.FollowUps;
 import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 import edu.aku.hassannaqvi.blf_screening.models.WFBSubModel;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class SectionWFB01Activity extends AppCompatActivity {
@@ -54,8 +58,9 @@ public class SectionWFB01Activity extends AppCompatActivity {
     String week, delivery_date;
     int col_id;
     int wfa106;
-    int wfa108Days;
+    long wfa108Days;
     String FD;
+    String mrno;
     ArrayList<WFBSubModel> wfb108;
     private ArrayList<View> collectionOfViews = new ArrayList();
 
@@ -70,6 +75,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
+        mrno = intent.getStringExtra("mrno");
 
         String[] weekarray = {"1", "2", "3", "4", "5", "6", "20", "10"};
         if (!Arrays.asList(weekarray).contains("1")) {
@@ -103,18 +109,52 @@ public class SectionWFB01Activity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         };
-
         // Type MHD
         bi.wfb105.addTextChangedListener(textwatcher);
 
-        String strDate1 = "01-01-2020";
-        String strDate2 = "03-01-2020";
+        DatabaseHelper db = MainApp.appInfo.getDbHelper();
+        Cursor pFollowup = db.getFollowup(mrno);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        if (pFollowup.getCount() > 0) {
+            Toast.makeText(this, "Yes Value: ", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "No Value: ", Toast.LENGTH_LONG).show();
+        }
+
+        String startDate= "01-01-2019";
+        String endDate= "05-01-2019";
+        Date date1;
+        Date date2;
+        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            date1 = dates.parse(startDate);
+        } catch (ParseException e) {
+            date1 = null;
+            e.printStackTrace();
+        }
+        try {
+            date2 = dates.parse(endDate);
+        } catch (ParseException e) {
+            date2 = null;
+            e.printStackTrace();
+        }
+
+        long difference = Math.abs(date1.getTime() - date2.getTime());
+        long diff = difference / (24 * 60 * 60 * 1000);
+        if (diff > 0) {
+            wfa108Days = diff;
+        } else {
+            wfa108Days = 1;
+        }
+
+        Toast.makeText(this, "Value: " + mrno, Toast.LENGTH_LONG).show();
+        //Calendar strDate1 = DateUtils.getCalendarDate( "2021/01/01");
+        //Calendar strDate2 = DateUtils.getCalendarDate( "2021/01/03");
+
+        //wfa108Days = strDate2.getTime() - strDate1.getTime();
 
 
-
-        wfa108Days = 3;
+        //wfa108Days = 3;
 
         LinearLayout ll;
         ll = bi.llwfb108;
@@ -308,17 +348,14 @@ public class SectionWFB01Activity extends AppCompatActivity {
         int updcount = db.updatesFormsWFColumn(FormsWFContract.FormsWFTable.COLUMN_SWFB01, MainApp.formsWF.sWFB01toString());
         if (updcount == 1) {
 
-            for (byte i = 0; i < wfb108.size(); i++) {
-
-                for (byte j = 0; j < wfb108.get(i).getSubmodel2().size(); j++) {
-                    int day = j + 1;
-                    long rowValue = db.insertWFB108(wfb108.get(i).getSubmodel2().get(j), day);
-                    if (rowValue < 0) {
-                        Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_LONG).show();
-                        return false;
-                    }
+            int index = 0;
+            for (byte j = 0; j < wfb108.get(index).getSubmodel2().size(); j++) {
+                int day = j + 1;
+                long rowValue = db.insertWFB108(wfb108.get(index).getSubmodel2().get(j), day);
+                if (rowValue < 0) {
+                    Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_LONG).show();
+                    return false;
                 }
-
             }
             return true;
         } else {
@@ -505,7 +542,6 @@ public class SectionWFB01Activity extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(this, "You can't go back", Toast.LENGTH_SHORT).show();
     }
-
 
 
 }

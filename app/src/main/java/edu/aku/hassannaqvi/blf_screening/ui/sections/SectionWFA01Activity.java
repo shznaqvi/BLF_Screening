@@ -64,6 +64,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     private String FD;
+    private String mrno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,12 +159,12 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
             if (bi.wfa10702.isChecked()) {
                 Toast.makeText(this, "A1: " + col_id, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
             } else {
                 if (bi.wfa10802.isChecked()) {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
                 } else {
-                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD));
+                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
                 }
             }
         }
@@ -211,9 +212,12 @@ public class SectionWFA01Activity extends AppCompatActivity {
         String str = bi.wfa10401.getText().toString().trim();
         FD = str.replace("-", "/");
 
-        Toast.makeText(this, "" + FD, Toast.LENGTH_LONG).show();
-
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
+
+        MainApp.mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
+        MainApp.formsWF.setMR(MainApp.mrno);
+        MainApp.followUpDate = bi.wfa10401.getText().toString().trim().isEmpty() ? "00-00-0000" : bi.wfa10401.getText().toString().trim();
+        MainApp.formsWF.setFollowUpDate(MainApp.followUpDate);
 
         formsWF.setWfa102(bi.wfa102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa102.getText().toString());
 

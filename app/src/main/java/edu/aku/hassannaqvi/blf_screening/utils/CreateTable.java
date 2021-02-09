@@ -92,6 +92,7 @@ public final class CreateTable {
             + FormsWFTable.COLUMN_DEVICEID + " TEXT,"
             + FormsWFTable.COLUMN_DEVICETAGID + " TEXT,"
             + FormsWFTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsWFTable.COLUMN_MR_NO + " TEXT,"
             + FormsWFTable.COLUMN_UID + " TEXT,"
             + FormsWFTable.COLUMN_GPSLAT + " TEXT,"
             + FormsWFTable.COLUMN_GPSLNG + " TEXT,"

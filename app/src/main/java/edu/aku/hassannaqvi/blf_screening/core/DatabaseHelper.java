@@ -328,6 +328,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsWFTable.COLUMN_PROJECT_NAME, formWF.getProjectName());
         values.put(FormsWFTable.COLUMN_UID, formWF.get_UID());
         values.put(FormsWFTable.COLUMN_SYSDATE, formWF.getSysdate());
+        values.put(FormsWFTable.COLUMN_MR_NO, formWF.getMR());
     /*    values.put(FormsWFTable.COLUMN_ISTATUS, formSF.getIstatus());
         values.put(FormsWFTable.COLUMN_ISTATUS96x, formSF.getIstatus96x());*/
 //        values.put(FormsWFTable.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
@@ -1883,6 +1884,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from childFollowup where sf5 = '" + mrno + "' and status = 0 order by id asc limit 1", null);
+        return result;
+    }
+
+    public Cursor getFollowup(String mrno) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from formsWf where mrno = '" + mrno + "' order by _id desc limit 1", null);
         return result;
     }
 
