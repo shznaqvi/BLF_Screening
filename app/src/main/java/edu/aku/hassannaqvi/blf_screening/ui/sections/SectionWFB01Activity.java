@@ -72,7 +72,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         FD = intent.getStringExtra("FD");
 
         String[] weekarray = {"1", "2", "3", "4", "5", "6", "20", "10"};
-        if (!Arrays.asList(weekarray).contains(week)) {
+        if (!Arrays.asList(weekarray).contains("1")) {
             startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
         }
 
@@ -142,7 +142,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
             RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
             */
 
-            cardBinding.qtxtWfb1081a.setText(String.format(Locale.ENGLISH, "Day %d :Have u given the supplement", i));
+            cardBinding.qtxtWfb1081a.setText(String.format(Locale.ENGLISH, "Day %d: Have u given the supplement", i));
             cardBinding.wfb1081a.setOnCheckedChangeListener((group, id) -> {
                 if (id == cardBinding.wfb1081a02.getId()) {
                     cardBinding.fldGrpCVwfb1081d.setVisibility(View.VISIBLE);
@@ -168,8 +168,8 @@ public class SectionWFB01Activity extends AppCompatActivity {
             tv_b.setText("Day " + i + ":How much quantity have you given?");
             RadioGroup qb_rg = (RadioGroup) qb_ll.getChildAt(1);*/
 
-            cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d :How much quantity have you given?", i));
-            cardBinding.qtxtWfb1081c.setText(String.format(Locale.ENGLISH, "Day %d :If partial, why?", i));
+            cardBinding.qtxtWfb1081b.setText(String.format(Locale.ENGLISH, "Day %d: How much quantity have you given?", i));
+            cardBinding.qtxtWfb1081c.setText(String.format(Locale.ENGLISH, "Day %d: If partial, why?", i));
 
             cardBinding.wfb1081b.setOnCheckedChangeListener((group, id) -> {
                 if (id == cardBinding.wfb1081b01.getId()) {
@@ -207,7 +207,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
                 }
             });
             */
-            cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d :If not given, state reason?", i));
+            cardBinding.qtxtWfb1081d.setText(String.format(Locale.ENGLISH, "Day %d: If not given, state reason?", i));
 
             /*cardBinding.wfb1081d.setOnCheckedChangeListener((group, id) -> {
 
@@ -226,6 +226,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
                     cardBinding.wfb1081d96x.setVisibility(View.GONE);
                 }
             });*/
+
 
             ll.addView(cardBinding.getRoot());
         }
@@ -458,6 +459,14 @@ public class SectionWFB01Activity extends AppCompatActivity {
             return false;
         }*/
 
+        for (int i = 0; i < wfa108Days; i++) {
+
+            if (!checkWFB108(bi.llwfb108, i)) {
+                Toast.makeText(this, "WFB108D is empty", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
@@ -465,9 +474,9 @@ public class SectionWFB01Activity extends AppCompatActivity {
         return true;
     }
 
-    public boolean checkWFB108(LinearLayout ll) {
+    public boolean checkWFB108(LinearLayout ll, int position) {
 
-        ConstraintLayout cl_WFB108 = (ConstraintLayout) ll.getChildAt(0);
+        ConstraintLayout cl_WFB108 = (ConstraintLayout) ll.getChildAt(position);
         CardView cv_WFB108 = (CardView) cl_WFB108.getChildAt(0);
         LinearLayout lli_WFB108 = (LinearLayout) cv_WFB108.getChildAt(0);
         CardView cvi_WFB108 = (CardView) lli_WFB108.getChildAt(2);
@@ -479,8 +488,12 @@ public class SectionWFB01Activity extends AppCompatActivity {
         EditText ed2 = (EditText) rg.getChildAt(7);
 
         if (rb1.isChecked() && ed1.getText().toString().trim().isEmpty()) {
+            ed1.setError("Please fill it");
+            ed1.requestFocus();
             return false;
         } else if (rb2.isChecked() && ed2.getText().toString().trim().isEmpty()) {
+            ed2.setError("Please fill it");
+            ed2.requestFocus();
             return false;
         }
 
@@ -492,5 +505,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(this, "You can't go back", Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
