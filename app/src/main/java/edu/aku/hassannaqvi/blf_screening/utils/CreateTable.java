@@ -92,7 +92,6 @@ public final class CreateTable {
             + FormsWFTable.COLUMN_DEVICEID + " TEXT,"
             + FormsWFTable.COLUMN_DEVICETAGID + " TEXT,"
             + FormsWFTable.COLUMN_SYSDATE + " TEXT,"
-            + FormsWFTable.COLUMN_MR_NO + " TEXT,"
             + FormsWFTable.COLUMN_UID + " TEXT,"
             + FormsWFTable.COLUMN_GPSLAT + " TEXT,"
             + FormsWFTable.COLUMN_GPSLNG + " TEXT,"
@@ -194,6 +193,7 @@ public final class CreateTable {
             childFollowupContract.childFollowupTable.COLUMN_MRNO_M + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_S1Q501 + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_STATUS + " INTEGER " +
             ");";
 

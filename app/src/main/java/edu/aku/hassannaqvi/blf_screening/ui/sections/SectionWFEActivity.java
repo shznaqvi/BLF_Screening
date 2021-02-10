@@ -38,21 +38,21 @@ public class SectionWFEActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfe);
+        bi.setCallback(this);
+        setupSkips();
+
+
         Intent intent = getIntent();
         week = intent.getStringExtra("week");
         delivery_date = intent.getStringExtra("delivery_date");
         col_id = intent.getIntExtra("col_id", 0);
 
-        String[] weekarray = { "6", "10", "18" };
+        String[] weekarray = {"6", "10", "18"};
         if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFFActivity.class).putExtra("week", week).putExtra("col_id", col_id));
         }
-
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wfe);
-        bi.setCallback(this);
-        setupSkips();
-
-        EditText BLEditText = (EditText) bi.wfe102;
+        EditText BLEditText = bi.wfe102;
         SimpleMaskFormatter f = new SimpleMaskFormatter("LL-NN-NNNN-LLL");
         MaskTextWatcher mtw = new MaskTextWatcher(BLEditText, f);
         BLEditText.addTextChangedListener(mtw);

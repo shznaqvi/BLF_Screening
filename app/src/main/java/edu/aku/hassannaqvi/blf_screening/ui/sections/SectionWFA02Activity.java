@@ -30,7 +30,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     String FD;
-    String mrno;
+    String pFollowUpDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class SectionWFA02Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
-        mrno = intent.getStringExtra("mrno");
+        pFollowUpDate = intent.getStringExtra("pFollowUpDate");
     }
 
 
@@ -117,9 +117,9 @@ public class SectionWFA02Activity extends AppCompatActivity {
             finish();
 
             if (bi.wfa20302.isChecked()) {
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
             } else {
-                startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+                startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
             }
         }
     }

@@ -328,7 +328,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsWFTable.COLUMN_PROJECT_NAME, formWF.getProjectName());
         values.put(FormsWFTable.COLUMN_UID, formWF.get_UID());
         values.put(FormsWFTable.COLUMN_SYSDATE, formWF.getSysdate());
-        values.put(FormsWFTable.COLUMN_MR_NO, formWF.getMR());
     /*    values.put(FormsWFTable.COLUMN_ISTATUS, formSF.getIstatus());
         values.put(FormsWFTable.COLUMN_ISTATUS96x, formSF.getIstatus96x());*/
 //        values.put(FormsWFTable.COLUMN_ENDINGDATETIME, formSF.getEndingdatetime());
@@ -1850,6 +1849,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MNAME, followups.getmName().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, followups.getMrno_m().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, followups.getS1q501().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE, followups.getpFollowUpDate().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_STATUS, 0);
 
 

@@ -22,6 +22,7 @@ public class FollowUps {
     String mrno_m;
     String fupdonedt;
     String s1q501;
+    String pFollowUpDate;
 
     public FollowUps() {
         // Default Constructor
@@ -107,6 +108,14 @@ public class FollowUps {
         return this;
     }
 
+    public String getpFollowUpDate() {
+        return pFollowUpDate;
+    }
+
+    public void setpFollowUpDate(String pFollowUpDate) {
+        this.pFollowUpDate = pFollowUpDate;
+    }
+
 
 
     public FollowUps Hydrate(JSONObject fup) throws JSONException {
@@ -119,6 +128,7 @@ public class FollowUps {
         this.mrno_m = fup.getString("sl4");
         this.mName = fup.getString("sl5");
         this.s1q501 = fup.getString("sf6a");
+        this.pFollowUpDate = fup.getString("pFollowUpDate");
 
         return this;
     }
@@ -136,6 +146,7 @@ public class FollowUps {
             json.put(childFollowupContract.childFollowupTable.COLUMN_MNAME, this.mName == null ? JSONObject.NULL : this.mName);
             json.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, this.mrno_m == null ? JSONObject.NULL : this.mrno_m);
             json.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, this.s1q501 == null ? JSONObject.NULL : this.s1q501);
+            json.put(childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE, this.pFollowUpDate == null ? JSONObject.NULL : this.pFollowUpDate);
             return json;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -153,6 +164,7 @@ public class FollowUps {
         this.mName = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_MNAME);
         this.mrno_m = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_MRNO_M);
         this.s1q501 = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_S1Q501);
+        this.pFollowUpDate = jsonObject.getString(childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE);
 
         return this;
     }

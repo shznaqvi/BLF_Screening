@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,28 +14,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.work.Constraints;
-import androidx.work.Data;
-import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkManager;
 
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -48,7 +34,6 @@ import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
-import edu.aku.hassannaqvi.blf_screening.workers.FetchFollowupWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF;
 
@@ -64,7 +49,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
     int col_id;
     int wfa106;
     private String FD;
-    private String mrno;
+    String pFollowUpDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,12 +144,12 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
             if (bi.wfa10702.isChecked()) {
                 Toast.makeText(this, "A1: " + col_id, Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
             } else {
                 if (bi.wfa10802.isChecked()) {
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
                 } else {
-                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("mrno", mrno));
+                    startActivity(new Intent(this, SectionWFA02Activity.class).putExtra("week", bi.wfa105.getText().toString()).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
                 }
             }
         }
@@ -214,10 +199,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
 
-        MainApp.mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
-        MainApp.formsWF.setMR(MainApp.mrno);
-        MainApp.followUpDate = bi.wfa10401.getText().toString().trim().isEmpty() ? "00-00-0000" : bi.wfa10401.getText().toString().trim();
-        MainApp.formsWF.setFollowUpDate(MainApp.followUpDate);
+        //mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
 
         formsWF.setWfa102(bi.wfa102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa102.getText().toString());
 
@@ -491,7 +473,14 @@ public class SectionWFA01Activity extends AppCompatActivity {
                     if (!followups.getString(followups.getColumnIndex("curfupdt")).equals("") && followups.getString(followups.getColumnIndex("curfupdt")) != null) {
 
                         String str = followups.getString(followups.getColumnIndex("sf6a"));
+                        String str2 = followups.getString(followups.getColumnIndex("pFollowUpDate"));
                         delivery_date = str.replace("-", "/");
+
+                        String[] wfb108 = str2.split("-");
+                        String day = wfb108[2];
+                        String month = wfb108[1];
+                        String year = wfb108[0];
+                        pFollowUpDate = day + "/" + month + "/" + year;
 
                         bi.wfa10401.setMinDate(delivery_date);
 

@@ -227,8 +227,6 @@ public class FormsWF extends LiveData<FormsWF> {
     private String _UID = "";
     private String sysdate = "";
     private String username = ""; // Interviewer
-    private String MR = ""; // MR No
-    private String followUpDate = ""; // MR No
     private String istatus = ""; // Interview Status
     private String istatus96x = ""; // Interview Status
     private String endingdatetime = "";
@@ -437,14 +435,6 @@ public class FormsWF extends LiveData<FormsWF> {
 
     public void setDstudyid(String dstudyid) {
         Dstudyid = dstudyid;
-    }
-
-    public String getFollowUpDate() {
-        return followUpDate;
-    }
-
-    public void setFollowUpDate(String followUpDate) {
-        this.followUpDate = followUpDate;
     }
 
     //For section selection
@@ -2028,14 +2018,6 @@ public class FormsWF extends LiveData<FormsWF> {
         return this;
     }
 
-    public String getMR() {
-        return MR;
-    }
-
-    public FormsWF setMR(String MR) {
-        this.MR = MR;
-        return this;
-    }
 
     public String getAppversion() {
         return appversion;
