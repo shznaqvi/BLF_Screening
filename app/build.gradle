@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
     buildFeatures {
         dataBinding true
     }
@@ -106,7 +105,7 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
-    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
     implementation 'com.android.support:multidex:1.0.3' //enter the latest version
