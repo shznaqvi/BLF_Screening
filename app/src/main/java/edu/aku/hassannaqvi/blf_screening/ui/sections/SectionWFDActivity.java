@@ -19,6 +19,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfdBinding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 
+
 public class SectionWFDActivity extends AppCompatActivity {
 
     ActivitySectionWfdBinding bi;

@@ -175,8 +175,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
                     if (ll != null) {
                         Clear.clearAllFields(ll);
                         ll.removeAllViews();
+                        Clear.clearAllFields(cv);
                         cv.setVisibility(View.GONE);
-
                         Toast.makeText(getApplicationContext(), "Length is Zero", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -268,10 +268,25 @@ public class SectionWFA03Activity extends AppCompatActivity {
                     || vg == bi.llGrpseca310
                     || vg == bi.llGrpseca311) {
 
-                vg.getChildAt(1).setVisibility(View.GONE);
+                //vg.getChildAt(1).setVisibility(View.GONE);
+
+                CardView cv = (CardView) vg.getChildAt(1);
+                LinearLayout ll1 = (LinearLayout) cv.getChildAt(0);
+                LinearLayout ll2 = (LinearLayout) ll1.getChildAt(1);
+
+                if (vg != bi.llGrpseca304 && vg != bi.llGrpseca306 && vg != bi.llGrpseca307) {
+                    ll2.removeAllViews();
+                }
+
                 Toast.makeText(this, "302 to 311", Toast.LENGTH_SHORT).show();
             } else if (vg == bi.llGrpseca309) {
-                vg.getChildAt(2).setVisibility(View.GONE);
+                //vg.getChildAt(2).setVisibility(View.GONE);
+
+                CardView cv = (CardView) vg.getChildAt(2);
+                LinearLayout ll1 = (LinearLayout) cv.getChildAt(0);
+                LinearLayout ll2 = (LinearLayout) ll1.getChildAt(1);
+                ll2.removeAllViews();
+
                 Toast.makeText(this, "309", Toast.LENGTH_SHORT).show();
             }
         });
@@ -691,7 +706,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
         CardView cardWfa303 = (CardView) bi.llwfa303.getParent().getParent();
         if (cardWfa303.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa303)) {
             Toast.makeText(getApplicationContext(), "WFA303: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), "Visibility: " + cardWfa303.getVisibility(), Toast.LENGTH_LONG).show();
             return false;
         }
         CardView cardWfa306 = (CardView) bi.llwfa306.getParent().getParent();
