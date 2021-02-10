@@ -42,7 +42,7 @@ public class SectionWFDActivity extends AppCompatActivity {
         Toast.makeText(this, "DD: " + delivery_date, Toast.LENGTH_LONG).show();
         Toast.makeText(this, "FD: " + FD, Toast.LENGTH_LONG).show();
 
-        String[] weekarray = { "6", "10", "14", "18", "20" };
+        String[] weekarray = {"6", "10", "14", "18"};
         if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFEActivity.class).putExtra("week", week).putExtra("col_id", col_id));
         }

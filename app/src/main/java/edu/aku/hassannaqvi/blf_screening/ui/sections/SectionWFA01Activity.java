@@ -473,7 +473,14 @@ public class SectionWFA01Activity extends AppCompatActivity {
                     if (!followups.getString(followups.getColumnIndex("curfupdt")).equals("") && followups.getString(followups.getColumnIndex("curfupdt")) != null) {
 
                         String str = followups.getString(followups.getColumnIndex("sf6a"));
+                        String str2 = followups.getString(followups.getColumnIndex("pFollowUpDate"));
                         delivery_date = str.replace("-", "/");
+
+                        String[] wfb108 = str2.split("-");
+                        String day = wfb108[2];
+                        String month = wfb108[1];
+                        String year = wfb108[0];
+                        pFollowUpDate = day + "/" + month + "/" + year;
 
                         bi.wfa10401.setMinDate(delivery_date);
 

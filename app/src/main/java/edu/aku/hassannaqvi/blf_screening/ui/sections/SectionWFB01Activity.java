@@ -49,7 +49,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
     String FD;
     private final ArrayList<View> collectionOfViews = new ArrayList();
     ArrayList<WFBSubModel> wfb108;
-    String pFollowUpDate;
+    String pFD;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -62,10 +62,10 @@ public class SectionWFB01Activity extends AppCompatActivity {
         col_id = intent.getIntExtra("col_id", 0);
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
-        pFollowUpDate = intent.getStringExtra("pFollowUpDate");
+        pFD = intent.getStringExtra("pFollowUpDate");
 
-        String[] weekarray = {"1", "2", "3", "4", "5", "6", "20", "10"};
-        if (!Arrays.asList(weekarray).contains("1")) {
+        String[] weekarray = {"1", "2", "3", "4", "5", "6"};
+        if (!Arrays.asList(weekarray).contains(week)) {
             startActivity(new Intent(this, SectionWFB02Activity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
         }
 
@@ -99,20 +99,13 @@ public class SectionWFB01Activity extends AppCompatActivity {
         // Type MHD
         bi.wfb105.addTextChangedListener(textwatcher);
 
-
-        String[] wfb108 = pFollowUpDate.split("-");
-        String day = wfb108[2];
-        String month = wfb108[1];
-        String year = wfb108[0];
-        String pFD = day + "-" + month + "-" + year;
-
-        //String startDate= "01-01-2019";
-        //String endDate= "05-01-2019";
+        //String startDate= "01/01/2019";
+        //String endDate= "05/01/2019";
         String startDate = pFD;
         String endDate = FD;
         Date date1;
         Date date2;
-        SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dates = new SimpleDateFormat("dd/MM/yyyy");
         try {
             date1 = dates.parse(startDate);
         } catch (ParseException e) {

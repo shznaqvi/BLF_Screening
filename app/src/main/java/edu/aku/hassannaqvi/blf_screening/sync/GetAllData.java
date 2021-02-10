@@ -20,13 +20,11 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.adapter.SyncListAdapter;
-import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
-import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 
 /**
  * Created by ali.azaz on 7/14/2017.
@@ -38,8 +36,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
     private SyncListAdapter adapter;
     private List<SyncModel> list;
     private int position;
-    private String TAG = "", syncClass;
-    private Context mContext;
+    private final String syncClass;
+    private final Context mContext;
+    private String TAG = "";
     private ProgressDialog pd;
 
     public GetAllData(Context context, String syncClass) {
@@ -161,7 +160,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "fetchMR":
                     try {
                         json.put("table", tableName);
-                        json.put("filter","curfupdt is null");
+                        json.put("filter", "curfupdt is not null");
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }
