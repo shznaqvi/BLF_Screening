@@ -763,6 +763,51 @@ public class LoginActivity extends AppCompatActivity {
         });
     }*/
 
+    // Get the results:
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+
+
+                // TODO: SET CODE TO EDIT TEXT FIELD
+                //bi.wfe102.setText(result.getContents());
+
+
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void doPermissionGrantedStuffs() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        //MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+        MainApp.IMEI = getDeviceId(this);
+
+    }
+
+    // START QR-CODE
+
+    public void QRCode(View view) {
+
+        // INTENT TO START QR-CODE CAMERA
+        new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -811,26 +856,28 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = null;
             showProgress(false);
             if (!success) return;
-            LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            assert mlocManager != null;
-            if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
-                if ((musername.equals("dmu@aku") && mPassword.equals("aku?dmu")) ||
-                        (musername.equals("guest@aku") && mPassword.equals("aku1234")) || db.Login(musername, mPassword)
-                        || (musername.equals("test1234") && mPassword.equals("test1234"))) {
-                    MainApp.userName = musername;
-                    MainApp.admin = musername.contains("@");
-                    Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(iLogin);
+            //LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            //assert mlocManager != null;
+            //if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-                } else {
-                    bi.password.setError("Incorrect Password");
-                    bi.password.requestFocus();
-                    Toast.makeText(LoginActivity.this, musername + " " + mPassword, Toast.LENGTH_SHORT).show();
-                }
 
+            DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
+            if ((musername.equals("dmu@aku") && mPassword.equals("aku?dmu")) ||
+                    (musername.equals("guest@aku") && mPassword.equals("aku1234")) || db.Login(musername, mPassword)
+                    || (musername.equals("test1234") && mPassword.equals("test1234"))) {
+                MainApp.userName = musername;
+                MainApp.admin = musername.contains("@");
+                Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(iLogin);
 
             } else {
+                bi.password.setError("Incorrect Password");
+                bi.password.requestFocus();
+                Toast.makeText(LoginActivity.this, musername + " " + mPassword, Toast.LENGTH_SHORT).show();
+            }
+
+
+            /*} else {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         LoginActivity.this);
                 alertDialogBuilder
@@ -846,8 +893,7 @@ public class LoginActivity extends AppCompatActivity {
                         (dialog, id) -> dialog.cancel());
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
-
-            }
+            }*/
 
         }
 
@@ -856,51 +902,6 @@ public class LoginActivity extends AppCompatActivity {
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
-        }
-    }
-
-    private void doPermissionGrantedStuffs() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        //MainApp.IMEI = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
-        MainApp.IMEI = getDeviceId(this);
-
-    }
-
-    // START QR-CODE
-
-    public void QRCode(View view) {
-
-        // INTENT TO START QR-CODE CAMERA
-        new IntentIntegrator(this).initiateScan(); // `this` is the current Activity
-    }
-
-    // Get the results:
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-
-
-                // TODO: SET CODE TO EDIT TEXT FIELD
-                bi.wfe102.setText(result.getContents());
-
-
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

@@ -14,11 +14,9 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
@@ -39,6 +37,7 @@ import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
+import edu.aku.hassannaqvi.blf_screening.models.MWFB108;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
@@ -47,16 +46,16 @@ import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_BL_RANDOM;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_CHILD_FOLLOWUP;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISEASES;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISTRICTS;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_EPISODES;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSEN;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSSL;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FORMSWF;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VERSIONAPP;
-import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_DISEASES;
-import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_EPISODES;
-import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_CHILD_FOLLOWUP;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_WFB108;
 
 
@@ -66,7 +65,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_WFB
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private final String TAG = "DatabaseHelper";
-    private Context mContext;
+    private final Context mContext;
 
 
     public DatabaseHelper(Context context) {
@@ -1873,11 +1872,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor result = db.rawQuery("select * from childFollowup where sf5 = '"+ mrno +"' and curfupdt = '" + date + "' and curfupweek = '"+ week +"'", null);
 
-        if (result.getCount() > 0) {
-            return true;
-        }
-
-        return false;
+        return result.getCount() > 0;
     }
 
     public Cursor getFollowups(String mrno) {
@@ -2084,5 +2079,82 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 where,
                 whereArgs);
+    }
+
+
+    //Generic Un-Synced WFB108
+    public void updateSyncedFormsWFB108(String id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(WFB108Contract.WFB108Table.COLUMN_SYNCED, true);
+        values.put(WFB108Contract.WFB108Table.COLUMN_SYNCED_DATE, new Date().toString());
+
+        String where = WFB108Contract.WFB108Table.ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                WFB108Contract.WFB108Table.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public Collection<MWFB108> getUnsyncedWFB108() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                WFB108Contract.WFB108Table.ID,
+                WFB108Contract.WFB108Table.COLUMN_UID,
+                WFB108Contract.WFB108Table.COLUMN_UUID,
+                WFB108Contract.WFB108Table.COLUMN_SYSDATE,
+                WFB108Contract.WFB108Table.COLUMN_DEVICE_ID,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_A,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_B,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_C,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_D,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_D5X,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_D96X,
+                WFB108Contract.WFB108Table.COLUMN_DAY_NO,
+        };
+
+        String whereClause = WFB108Contract.WFB108Table.COLUMN_SYNCED + " is null OR " + WFB108Contract.WFB108Table.COLUMN_SYNCED + " == '' ";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = WFB108Contract.WFB108Table.ID + " ASC";
+
+        Collection<MWFB108> allWFB108 = new ArrayList<>();
+        try {
+            c = db.query(
+                    WFB108Contract.WFB108Table.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            c.moveToFirst();
+            while (c.moveToNext()) {
+                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                MWFB108 mwfb108 = new MWFB108();
+                allWFB108.add(mwfb108.Hydrate(c));
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allWFB108;
     }
 }

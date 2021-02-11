@@ -1,16 +1,11 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -184,7 +179,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         formsWF.setAppversion(MainApp.appInfo.getAppVersion());
         formsWF.setUsername(MainApp.userName);
 
-        MainApp.setGPS(this);
+        //MainApp.setGPS(this);
 
         String[] swf1 = bi.wfa10401.getText().toString().split("-");
         String wfa10401 = swf1[0];
@@ -282,7 +277,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     }
 
-    private void setGPS(Activity activity) {
+    /*private void setGPS(Activity activity) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
 
         try {
@@ -308,7 +303,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());
         }
-    }
+    }*/
 
     /*public void FetchFollowups(View view) {
 

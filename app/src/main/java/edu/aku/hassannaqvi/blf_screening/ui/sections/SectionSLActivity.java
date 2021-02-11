@@ -1,13 +1,9 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -196,7 +192,7 @@ public class SectionSLActivity extends AppCompatActivity {
         MainApp.formsSL.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.formsSL.setSl2(bi.sl2.getText().toString());
         MainApp.formsSL.setUsername(MainApp.userName);
-        setGPS(this);
+        //setGPS(this);
 
         String[] sl3 = bi.sl301.getText().toString().split("-");
 
@@ -236,7 +232,7 @@ public class SectionSLActivity extends AppCompatActivity {
         MainApp.formsSL.setSl10(bi.sl10.getText().toString());
 
         MainApp.formsSL.setSl11(bi.sl11.getText().toString());
-        MainApp.setGPS(this);
+        //MainApp.setGPS(this);
 
     }
 
@@ -245,7 +241,7 @@ public class SectionSLActivity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
-    private void setGPS(Activity activity) {
+    /*private void setGPS(Activity activity) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
 
         try {
@@ -271,7 +267,7 @@ public class SectionSLActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());
         }
-    }
+    }*/
 
     public void BtnEnd() {
         oF = new Intent(this, MainActivity.class);

@@ -34,16 +34,15 @@ import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
-import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
-import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.blf_screening.models.Diseases;
 import edu.aku.hassannaqvi.blf_screening.models.Episodes;
-import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
+import edu.aku.hassannaqvi.blf_screening.models.MWFB108;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
 import edu.aku.hassannaqvi.blf_screening.sync.GetAllData;
 import edu.aku.hassannaqvi.blf_screening.sync.SyncAllData;
@@ -201,6 +200,21 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     db.getUnsyncedEpisodesWF(), 2, syncListAdapter, uploadlist
             ).execute();
 
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "MWFB108",
+                    "updateSyncedFormsWFB108",
+                    MWFB108.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    WFB108Contract.WFB108Table.TABLE_NAME,
+                    db.getUnsyncedWFB108(), 3, syncListAdapter, uploadlist
+            ).execute();
+
             bi.noDataItem.setVisibility(View.GONE);
 
             uploadlistActivityCreated = false;
@@ -338,8 +352,8 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
     private class SyncData extends AsyncTask<Boolean, String, String> {
 
-        private Context mContext;
-        private String distID;
+        private final Context mContext;
+        private final String distID;
 
         private SyncData(Context mContext, String districtId) {
             this.mContext = mContext;

@@ -1,13 +1,9 @@
 package edu.aku.hassannaqvi.blf_screening.ui.sections;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -165,7 +161,7 @@ public class SectionEN01Activity extends AppCompatActivity {
         formsEN.setAppversion(MainApp.appInfo.getAppVersion());
         formsEN.setUsername(MainApp.userName);
 
-        setGPS(this);
+        //setGPS(this);
 
         formsEN.setS1q1(bi.s1q1.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1.getText().toString());
 
@@ -393,7 +389,7 @@ public class SectionEN01Activity extends AppCompatActivity {
         return false;
     }
 
-    private void setGPS(Activity activity) {
+    /*private void setGPS(Activity activity) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
 
         try {
@@ -419,6 +415,6 @@ public class SectionEN01Activity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());
         }
-    }
+    }*/
 
 }
