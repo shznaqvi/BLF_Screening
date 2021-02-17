@@ -96,11 +96,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
                     cv = bi.fldGrpCVwfa315title1;
                     ll = bi.llwfa315;
                     type = "MH";
-                } else if (bi.wfa331.isFocused()) {
-                    edt = bi.wfa331;
-                    cv = bi.fldGrpCVwfa332title1;
-                    ll = bi.llwfa332;
-                    type = "HD";
                 } else if (bi.wfa334.isFocused()) {
                     edt = bi.wfa334;
                     cv = bi.fldGrpCVwfa335title1;
@@ -200,7 +195,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
         bi.wfa314.addTextChangedListener(textwatcher);
 
         // Type HD
-        bi.wfa331.addTextChangedListener(textwatcher);
+        //bi.wfa331.addTextChangedListener(textwatcher);
         bi.wfa334.addTextChangedListener(textwatcher);
 
         // Type D
@@ -230,6 +225,12 @@ public class SectionWFA03Activity extends AppCompatActivity {
         bi.llwfa32104.setVisibility(View.GONE);
 
         bi.llwfa32304.setVisibility(View.GONE);
+
+
+        bi.llwfa33201.setVisibility(View.GONE); // Minutes
+        //bi.llwfa33202.setVisibility(View.GONE); // Hours
+        //bi.llwfa33203.setVisibility(View.GONE); // Days
+        bi.llwfa33204.setVisibility(View.GONE); // Seconds
     }
 
     private void setupSkips() {
@@ -285,7 +286,6 @@ public class SectionWFA03Activity extends AppCompatActivity {
                 CardView cv = (CardView) vg.getChildAt(2);
                 LinearLayout ll1 = (LinearLayout) cv.getChildAt(0);
                 LinearLayout ll2 = (LinearLayout) ll1.getChildAt(1);
-                ll2.removeAllViews();
 
                 Toast.makeText(this, "309", Toast.LENGTH_SHORT).show();
             }
@@ -566,7 +566,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                             bi.wfa31201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31201.getText().toString(),
                             bi.wfa31202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31202.getText().toString(),
                             bi.wfa31203.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31203.getText().toString(),
-                            bi.wfa31204.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31203.getText().toString()
+                            bi.wfa31204.getText().toString().trim().isEmpty() ? "-1" : bi.wfa31204.getText().toString()
                     )
             );
             disease.add(new SubModel("wfa312", subModels));
@@ -580,7 +580,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                             bi.wfa32101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32101.getText().toString(),
                             bi.wfa32102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32102.getText().toString(),
                             bi.wfa32103.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32103.getText().toString(),
-                            bi.wfa32104.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32103.getText().toString()
+                            bi.wfa32104.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32104.getText().toString()
                     )
             );
             disease.add(new SubModel("wfa321", subModels));
@@ -594,7 +594,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                             bi.wfa32101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32101.getText().toString(),
                             bi.wfa32102.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32102.getText().toString(),
                             bi.wfa32103.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32103.getText().toString(),
-                            bi.wfa32104.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32103.getText().toString()
+                            bi.wfa32104.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32104.getText().toString()
                     )
             );
             disease.add(new SubModel("wfa318", subModels));
@@ -608,7 +608,7 @@ public class SectionWFA03Activity extends AppCompatActivity {
                             bi.wfa32301.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32301.getText().toString(),
                             bi.wfa32302.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32302.getText().toString(),
                             bi.wfa32303.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32303.getText().toString(),
-                            bi.wfa32304.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32303.getText().toString()
+                            bi.wfa32304.getText().toString().trim().isEmpty() ? "-1" : bi.wfa32304.getText().toString()
                     )
             );
             disease.add(new SubModel("wfa323", subModels));
@@ -634,23 +634,18 @@ public class SectionWFA03Activity extends AppCompatActivity {
             disease.add(new SubModel("wfa326", subModels));
         }
 
-        int wfa332Count = bi.llwfa332.getChildCount();
-        if (wfa332Count > 0) {
+
+        if (bi.wfa32901.isChecked()) {
             ArrayList<WFA303Model> subModels = new ArrayList<>();
-            for (int i = 0; i < wfa332Count; i++) {
-                WfaCardLayoutBinding bind = DataBindingUtil.bind(bi.llwfa332.getChildAt(i));
-                if (bind != null) {
-                    subModels.add(
-                            new WFA303Model(
-                                    MainApp.formsWF.getSysdate(),
-                                    bind.wfa30301.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30301.getText().toString(),
-                                    bind.wfa30302.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30302.getText().toString(),
-                                    bind.wfa30303.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30303.getText().toString(),
-                                    bind.wfa30304.getText().toString().trim().isEmpty() ? "-1" : bind.wfa30304.getText().toString()
-                            )
-                    );
-                }
-            }
+            subModels.add(
+                    new WFA303Model(
+                            MainApp.formsWF.getSysdate(),
+                            bi.wfa33201.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33201.getText().toString(),
+                            bi.wfa33202.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33202.getText().toString(),
+                            bi.wfa33203.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33203.getText().toString(),
+                            bi.wfa33204.getText().toString().trim().isEmpty() ? "-1" : bi.wfa33204.getText().toString()
+                    )
+            );
             disease.add(new SubModel("wfa332", subModels));
         }
 
@@ -741,16 +736,17 @@ public class SectionWFA03Activity extends AppCompatActivity {
             return false;
         }
 
+        if (bi.wfa33202.getText().toString().trim().equals("0") && bi.wfa33203.getText().toString().trim().equals("0")) {
+            Toast.makeText(getApplicationContext(), "WFA332: sum of hours and days must be greater than 0", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
         CardView cardWfa326 = (CardView) bi.llwfa326.getParent().getParent();
         if (cardWfa326.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa326)) {
             Toast.makeText(getApplicationContext(), "WFA326: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
             return false;
         }
-        CardView cardWfa332 = (CardView) bi.llwfa332.getParent().getParent();
-        if (cardWfa332.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa332)) {
-            Toast.makeText(getApplicationContext(), "WFA332: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();
-            return false;
-        }
+
         CardView cardWfa335 = (CardView) bi.llwfa335.getParent().getParent();
         if (cardWfa335.getVisibility() == View.VISIBLE && !checkZeroFilled(bi.llwfa335)) {
             Toast.makeText(getApplicationContext(), "WFA335: sum of minutes, hours and days must be greater than 0", Toast.LENGTH_LONG).show();

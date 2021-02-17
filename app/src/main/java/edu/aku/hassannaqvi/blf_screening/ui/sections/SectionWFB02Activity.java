@@ -64,7 +64,7 @@ public class SectionWFB02Activity extends AppCompatActivity {
                 bi.fldGrpCVwfb203.setVisibility(View.GONE);
             }
 
-            if (i == bi.wfb20101.getId()) {
+            if (i == bi.wfb20102.getId()) {
                 bi.fldGrpCVwfb202.setVisibility(View.VISIBLE);
                 if (wfa106 == 0) {
                     bi.fldGrpCVwfb203.setVisibility(View.VISIBLE);

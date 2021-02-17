@@ -127,6 +127,9 @@ public class SectionWFB01Activity extends AppCompatActivity {
             wfa108Days = 1;
         }
 
+
+        bi.HeaderTextview.setText("Number of Days: " + wfa108Days);
+
         Toast.makeText(this, "pFD: " + pFD, Toast.LENGTH_LONG).show();
         Toast.makeText(this, "FD: " + FD, Toast.LENGTH_LONG).show();
         Toast.makeText(this, "diff: " + diff, Toast.LENGTH_LONG).show();

@@ -492,6 +492,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
                         bi.wfa102.setText(followups.getString(followups.getColumnIndex("sf20")));
                         bi.wfa103.setText(followups.getString(followups.getColumnIndex("s1q3")));
                         bi.wfa105.setText(followups.getString(followups.getColumnIndex("curfupweek")));
+                        bi.wfa105.setEnabled(true);
                         bi.llsectionwfa01.setVisibility(View.VISIBLE);
                         // CONTINUE VISIBLE
                         bi.btnContinue.setVisibility(View.VISIBLE);
