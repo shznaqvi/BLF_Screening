@@ -9,8 +9,6 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
-import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
 
 /**
@@ -156,20 +154,12 @@ public class FormsWF extends LiveData<FormsWF> {
     public String wfb103 = "";
     public String wfb104 = "";
     public String wfb105 = "";
-    public String wfi06 = "";
     public String wfi0601 = "";
     public String wfi0602 = "";
-    public String wfi07 = "";
     public String wfi0701 = "";
     public String wfi0702 = "";
     public String wfi0796 = "";
     public String wfi0796x = "";
-    public String wfb1081a = "";
-    public String wfb1081b = "";
-    public String wfb1081c = "";
-    public String wfb1081d = "";
-    public String wfb1081d05x = "";
-    public String wfb1081d96x = "";
     public String wfb201 = "";
     public String wfb202 = "";
     public String wfb203 = "";
@@ -1461,14 +1451,6 @@ public class FormsWF extends LiveData<FormsWF> {
         this.wfb105 = wfb105;
     }
 
-    public String getWfi06() {
-        return wfi06;
-    }
-
-    public void setWfi06(String wfi06) {
-        this.wfi06 = wfi06;
-    }
-
     public String getWfi0601() {
         return wfi0601;
     }
@@ -1484,14 +1466,6 @@ public class FormsWF extends LiveData<FormsWF> {
 
     public void setwfi0602(String wfi0602) {
         this.wfi0602 = wfi0602;
-    }
-
-    public String getWfi07() {
-        return wfi07;
-    }
-
-    public void setWfi07(String wfi07) {
-        this.wfi07 = wfi07;
     }
 
     public String getWfi0701() {
@@ -1524,54 +1498,6 @@ public class FormsWF extends LiveData<FormsWF> {
 
     public void setWfi0796x(String wfi0796x) {
         this.wfi0796x = wfi0796x;
-    }
-
-    public String getWfb1081a() {
-        return wfb1081a;
-    }
-
-    public void setWfb1081a(String wfb1081a) {
-        this.wfb1081a = wfb1081a;
-    }
-
-    public String getWfb1081b() {
-        return wfb1081b;
-    }
-
-    public void setWfb1081b(String wfb1081b) {
-        this.wfb1081b = wfb1081b;
-    }
-
-    public String getWfb1081c() {
-        return wfb1081c;
-    }
-
-    public void setWfb1081c(String wfb1081c) {
-        this.wfb1081c = wfb1081c;
-    }
-
-    public String getWfb1081d() {
-        return wfb1081d;
-    }
-
-    public void setWfb1081d(String wfb1081d) {
-        this.wfb1081d = wfb1081d;
-    }
-
-    public String getWfb1081d05x() {
-        return wfb1081d05x;
-    }
-
-    public void setWfb1081d05x(String wfb1081d05x) {
-        this.wfb1081d05x = wfb1081d05x;
-    }
-
-    public String getWfb1081d96x() {
-        return wfb1081d96x;
-    }
-
-    public void setWfb1081d96x(String wfb1081d96x) {
-        this.wfb1081d96x = wfb1081d96x;
     }
 
     public String getWfb201() {
@@ -2611,20 +2537,12 @@ public class FormsWF extends LiveData<FormsWF> {
                     .put("wfb103", wfb103)
                     .put("wfb104", wfb104)
                     .put("wfb105", wfb105)
-                    .put("wfi06", wfi06)
                     .put("wfi0601", wfi0601)
                     .put("wfi0602", wfi0602)
-                    .put("wfi07", wfi07)
                     .put("wfi0701", wfi0701)
                     .put("wfi0702", wfi0702)
                     .put("wfi0796", wfi0796)
-                    .put("wfi0796x", wfi0796x)
-                    .put("wfb1081a", wfb1081a)
-                    .put("wfb1081b", wfb1081b)
-                    .put("wfb1081c", wfb1081c)
-                    .put("wfb1081d", wfb1081d)
-                    .put("wfb1081d05x", wfb1081d05x)
-                    .put("wfb1081d96x", wfb1081d96x);
+                    .put("wfi0796x", wfi0796x);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -2679,6 +2597,7 @@ public class FormsWF extends LiveData<FormsWF> {
 
         try {
             json.put("wfd101", wfd101)
+                    .put("wfd10102x", wfd10102x)
                     .put("wfd102a", wfd102a)
                     .put("wfd102a01x", wfd102a01x)
                     .put("wfd102b", wfd102b)
@@ -2960,20 +2879,12 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfb103 = json.getString("wfb103");
                 this.wfb104 = json.getString("wfb104");
                 this.wfb105 = json.getString("wfb105");
-                this.wfi06 = json.getString("wfi06");
                 this.wfi0601 = json.getString("wfi0601");
                 this.wfi0602 = json.getString("wfi0602");
-                this.wfi07 = json.getString("wfi07");
                 this.wfi0701 = json.getString("wfi0701");
                 this.wfi0702 = json.getString("wfi0702");
                 this.wfi0796 = json.getString("wfi0796");
                 this.wfi0796x = json.getString("wfi0796x");
-                this.wfb1081a = json.getString("wfb1081a");
-                this.wfb1081b = json.getString("wfb1081b");
-                this.wfb1081c = json.getString("wfb1081c");
-                this.wfb1081d = json.getString("wfb1081d");
-                this.wfb1081d05x = json.getString("wfb1081d05x");
-                this.wfb1081d96x = json.getString("wfb1081d96x");
 
             } catch (JSONException e) {
                 e.printStackTrace();
