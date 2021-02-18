@@ -23,7 +23,7 @@ android {
         defaultConfig {
             applicationId "edu.aku.hassannaqvi.blf_screening"
             minSdkVersion 22
-            targetSdkVersion 30
+            targetSdkVersion 29
             versionCode code
             versionName "1.0"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -54,7 +54,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
@@ -105,7 +105,7 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.9'
     implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
-    implementation 'com.journeyapps:zxing-android-embedded:3.3.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
     implementation 'com.android.support:multidex:1.0.3' //enter the latest version

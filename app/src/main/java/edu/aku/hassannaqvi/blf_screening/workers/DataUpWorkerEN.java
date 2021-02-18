@@ -93,7 +93,7 @@ public class DataUpWorkerEN extends Worker {
             JSONArray jsonParam = new JSONArray();
 
             jsonTable.put("table", "formsEn");
-            jsonSync.put(MainApp.formsWF.toJSONObject());
+            jsonSync.put(MainApp.formsEN.toJSONObject());
             jsonParam
                     .put(jsonTable)
                     .put(jsonSync);
