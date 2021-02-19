@@ -122,7 +122,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         long difference = Math.abs(date1.getTime() - date2.getTime());
         long diff = difference / (24 * 60 * 60 * 1000);
         if (diff > 0) {
-            wfa108Days = diff;
+            wfa108Days = diff - 1;
         } else {
             wfa108Days = 1;
         }
