@@ -96,8 +96,38 @@ public class SectionWFB01Activity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         };
+
+
+        TextWatcher textwatcher2 = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.length() > 0) {
+
+                    if (Integer.parseInt(bi.wfi0602.getText().toString()) > 0) {
+                        bi.wfi0601.setVisibility(View.VISIBLE);
+                    } else {
+                        bi.wfi0601.setVisibility(View.GONE);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "length is 0", Toast.LENGTH_SHORT).show();
+                    bi.wfi0601.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
         // Type MHD
         bi.wfb105.addTextChangedListener(textwatcher);
+        bi.wfi0602.addTextChangedListener(textwatcher2);
+
 
         //String startDate= "01/01/2019";
         //String endDate= "05/01/2019";
@@ -122,7 +152,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
         long difference = Math.abs(date1.getTime() - date2.getTime());
         long diff = difference / (24 * 60 * 60 * 1000);
         if (diff > 0) {
-            wfa108Days = diff - 1;
+            wfa108Days = diff;
         } else {
             wfa108Days = 1;
         }
