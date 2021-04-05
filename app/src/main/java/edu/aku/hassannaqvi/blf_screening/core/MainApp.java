@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSES;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
@@ -42,8 +43,8 @@ import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 public class MainApp extends Application {
 
     public static final String TAG = "AppMain";
-    public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
-    //public static final String _IP = "http://f38158";// .TEST server
+    //public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
+    public static final String _IP = "http://f38158";// .TEST server
     public static final String _HOST_URL = MainApp._IP + "/blf/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
@@ -86,6 +87,7 @@ public class MainApp extends Application {
     public static FormsSF formsSF;
     public static FormsEN formsEN;
     public static FormsWF formsWF;
+    public static FormsSES formsSES;
     public static JSONObject jsonSL;
 
     public static String DeviceURL = "devices.php";

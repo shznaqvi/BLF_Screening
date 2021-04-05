@@ -1,0 +1,1430 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <!--<variable
+            name="form"
+            type="edu.aku.hassannaqvi.bovinelactoferrin.models.Form" />-->
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.blf_screening.ui.sections.SectionS4Activity" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/GrpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- se4q0  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q0"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q0"
+                            android:text="@string/se4q0" />
+
+                        <TextView
+                            android:id="@+id/q_se4q0"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q0"
+                            android:layout_alignBottom="@id/qtxt_se4q0"
+                            android:text="@string/Q_se4q0" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q001"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q001" />
+
+                        <RadioButton
+                            android:id="@+id/se4q002"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q002" />
+
+                        <RadioButton
+                            android:id="@+id/se4q003"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q003" />
+
+                        <RadioButton
+                            android:id="@+id/se4q004"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q004" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q1  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q1"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q1"
+                            android:text="@string/se4q1" />
+
+                        <TextView
+                            android:id="@+id/q_se4q1"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q1"
+                            android:layout_alignBottom="@id/qtxt_se4q1"
+                            android:text="@string/Q_se4q1" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q101"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q101" />
+
+                        <RadioButton
+                            android:id="@+id/se4q102"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q102" />
+
+                        <RadioButton
+                            android:id="@+id/se4q199"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q199" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q2  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q2"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q2"
+                            android:text="@string/se4q2" />
+
+                        <TextView
+                            android:id="@+id/q_se4q2"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q2"
+                            android:layout_alignBottom="@id/qtxt_se4q2"
+                            android:text="@string/Q_se4q2" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q201"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q201" />
+
+                        <RadioButton
+                            android:id="@+id/se4q202"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q202" />
+
+                        <RadioButton
+                            android:id="@+id/se4q203"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q203" />
+
+                        <RadioButton
+                            android:id="@+id/se4q299"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q299" />
+
+                        <RadioButton
+                            android:id="@+id/se4q296"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q296" />
+
+                        <EditText
+                            android:id="@+id/se4q296x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q296"
+                            android:tag="se4q296"
+                            android:text='@{se4q296.checked ? se4q296x.getText().toString() : ""}'
+                            android:visibility='@{se4q296.checked? View.VISIBLE : View.GONE}' />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q3  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q3"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q3"
+                            android:text="@string/se4q3" />
+
+                        <TextView
+                            android:id="@+id/q_se4q3"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q3"
+                            android:layout_alignBottom="@id/qtxt_se4q3"
+                            android:text="@string/Q_se4q3" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q301"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q301" />
+
+                        <RadioButton
+                            android:id="@+id/se4q302"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q302" />
+
+                        <RadioButton
+                            android:id="@+id/se4q399"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q399" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q4  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q4"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q4"
+                            android:text="@string/se4q4" />
+
+                        <TextView
+                            android:id="@+id/q_se4q4"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q4"
+                            android:layout_alignBottom="@id/qtxt_se4q4"
+                            android:text="@string/Q_se4q4" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q401"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q401" />
+
+                        <RadioButton
+                            android:id="@+id/se4q402"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q402" />
+
+                        <RadioButton
+                            android:id="@+id/se4q499"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q499" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q5  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q5"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q5"
+                            android:text="@string/se4q5" />
+
+                        <TextView
+                            android:id="@+id/q_se4q5"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q5"
+                            android:layout_alignBottom="@id/qtxt_se4q5"
+                            android:text="@string/Q_se4q5" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q501"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q501" />
+
+                        <RadioButton
+                            android:id="@+id/se4q502"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q502" />
+
+                        <RadioButton
+                            android:id="@+id/se4q599"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q599" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q6  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q6"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q6"
+                            android:text="@string/se4q6" />
+
+                        <TextView
+                            android:id="@+id/q_se4q6"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q6"
+                            android:layout_alignBottom="@id/qtxt_se4q6"
+                            android:text="@string/Q_se4q6" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q601"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q601" />
+
+                        <RadioButton
+                            android:id="@+id/se4q602"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q602" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q602x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q602"
+                            android:inputType="number"
+                            android:tag="se4q602"
+                            android:text='@{se4q602.checked ? se4q602x.getText().toString() : ""}'
+                            android:visibility='@{se4q602.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="2"
+                            app:minValue="1"
+                            app:maxValue="23"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q603"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q603" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q603x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q603"
+                            android:inputType="number"
+                            android:tag="se4q603"
+                            android:text='@{se4q603.checked ? se4q603x.getText().toString() : ""}'
+                            android:visibility='@{se4q603.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="2"
+                            app:minValue="1"
+                            app:maxValue="60"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q697"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q697" />
+
+                        <RadioButton
+                            android:id="@+id/se4q699"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q699" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q7  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q7"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q7"
+                            android:text="@string/se4q7" />
+
+                        <TextView
+                            android:id="@+id/q_se4q7"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q7"
+                            android:layout_alignBottom="@id/qtxt_se4q7"
+                            android:text="@string/Q_se4q7" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q701"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q701" />
+
+                        <RadioButton
+                            android:id="@+id/se4q702"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q702" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q8  CheckBox   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q8"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q8"
+                            android:text="@string/se4q8" />
+
+                        <TextView
+                            android:id="@+id/q_se4q8"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q8"
+                            android:layout_alignBottom="@id/qtxt_se4q8"
+                            android:text="@string/Q_se4q8" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/se4q8check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/se4q801"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q801" />
+
+                        <CheckBox
+                            android:id="@+id/se4q802"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q802" />
+
+                        <CheckBox
+                            android:id="@+id/se4q803"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q803" />
+
+                        <CheckBox
+                            android:id="@+id/se4q896"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q896" />
+
+                        <EditText
+                            android:id="@+id/se4q896x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q896"
+                            android:tag="se4q896"
+                            android:text='@{se4q896.checked ? se4q896x.getText().toString() : ""}'
+                            android:visibility='@{se4q896.checked? View.VISIBLE : View.GONE}' />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q9  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q9"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q9"
+                            android:text="@string/se4q9" />
+
+                        <TextView
+                            android:id="@+id/q_se4q9"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q9"
+                            android:layout_alignBottom="@id/qtxt_se4q9"
+                            android:text="@string/Q_se4q9" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q901"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q901" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q901x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q901"
+                            android:inputType="number"
+                            android:tag="se4q901"
+                            android:text='@{se4q901.checked ? se4q901x.getText().toString() : ""}'
+                            android:visibility='@{se4q901.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="2"
+                            app:minValue="1"
+                            app:maxValue="23"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q902"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q902" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q902x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q902"
+                            android:inputType="number"
+                            android:tag="se4q902"
+                            android:text='@{se4q902.checked ? se4q902x.getText().toString() : ""}'
+                            android:visibility='@{se4q902.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="1"
+                            app:minValue="1"
+                            app:maxValue="3"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q903"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q903" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q903x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q903"
+                            android:inputType="number"
+                            android:tag="se4q903"
+                            android:text='@{se4q903.checked ? se4q903x.getText().toString() : ""}'
+                            android:visibility='@{se4q903.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="1"
+                            app:minValue="1"
+                            app:maxValue="6"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q999"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q999" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q10  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q10"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q10"
+                            android:text="@string/se4q10" />
+
+                        <TextView
+                            android:id="@+id/q_se4q10"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q10"
+                            android:layout_alignBottom="@id/qtxt_se4q10"
+                            android:text="@string/Q_se4q10" />
+                    </RelativeLayout>
+
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/se4q10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/se4q10"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:minValue="1"
+                        app:maxValue="15"
+                        app:type="range"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q11  CheckBox   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q11"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q11"
+                            android:text="@string/se4q11" />
+
+                        <TextView
+                            android:id="@+id/q_se4q11"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q11"
+                            android:layout_alignBottom="@id/qtxt_se4q11"
+                            android:text="@string/Q_se4q11" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/se4q11check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/se4q1101"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1101" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1102"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1102" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1103"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1103" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1104"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1104" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1105"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1105" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1106"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1106" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1196"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1196" />
+
+                        <EditText
+                            android:id="@+id/se4q1196x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q1196"
+                            android:tag="se4q1196"
+                            android:text='@{se4q1196.checked ? se4q1196x.getText().toString() : ""}'
+                            android:visibility='@{se4q1196.checked? View.VISIBLE : View.GONE}' />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q12  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q12"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q12"
+                            android:text="@string/se4q12" />
+
+                        <TextView
+                            android:id="@+id/q_se4q12"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q12"
+                            android:layout_alignBottom="@id/qtxt_se4q12"
+                            android:text="@string/Q_se4q12" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q1201"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1201" />
+
+                        <RadioButton
+                            android:id="@+id/se4q1202"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1202" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q13  CheckBox   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q13"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q13"
+                            android:text="@string/se4q13" />
+
+                        <TextView
+                            android:id="@+id/q_se4q13"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q13"
+                            android:layout_alignBottom="@id/qtxt_se4q13"
+                            android:text="@string/Q_se4q13" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/se4q13check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/se4q1301"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1301" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1302"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1302" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1303"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1303" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1396"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1396" />
+
+                        <EditText
+                            android:id="@+id/se4q1396x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q1396"
+                            android:tag="se4q1396"
+                            android:text='@{se4q1396.checked ? se4q1396x.getText().toString() : ""}'
+                            android:visibility='@{se4q1396.checked? View.VISIBLE : View.GONE}' />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q14  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q14"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q14"
+                            android:text="@string/se4q14" />
+
+                        <TextView
+                            android:id="@+id/q_se4q14"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q14"
+                            android:layout_alignBottom="@id/qtxt_se4q14"
+                            android:text="@string/Q_se4q14" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q1401"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1401" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q1401x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q1401"
+                            android:inputType="number"
+                            android:tag="se4q1401"
+                            android:text='@{se4q1401.checked ? se4q1401x.getText().toString() : ""}'
+                            android:visibility='@{se4q1401.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="2"
+                            app:minValue="1"
+                            app:maxValue="23"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q1402"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1402" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q1402x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q1402"
+                            android:inputType="number"
+                            android:tag="se4q1402"
+                            android:text='@{se4q1402.checked ? se4q1402x.getText().toString() : ""}'
+                            android:visibility='@{se4q1402.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="1"
+                            app:minValue="1"
+                            app:maxValue="3"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q1403"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1403" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/se4q1403x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/se4q1403"
+                            android:inputType="number"
+                            android:tag="se4q1403"
+                            android:text='@{se4q1403.checked ? se4q1403x.getText().toString() : ""}'
+                            android:visibility='@{se4q1403.checked? View.VISIBLE : View.GONE}'
+                            android:maxLength="1"
+                            app:minValue="1"
+                            app:maxValue="6"
+                            app:type="range"/>
+
+                        <RadioButton
+                            android:id="@+id/se4q1499"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1499" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q15  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q15"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q15"
+                            android:text="@string/se4q15" />
+
+                        <TextView
+                            android:id="@+id/q_se4q15"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q15"
+                            android:layout_alignBottom="@id/qtxt_se4q15"
+                            android:text="@string/Q_se4q15" />
+                    </RelativeLayout>
+
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/se4q15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/se4q15"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:minValue="1"
+                        app:maxValue="15"
+                        app:type="range"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q16  CheckBox   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q16"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q16"
+                            android:text="@string/se4q16" />
+
+                        <TextView
+                            android:id="@+id/q_se4q16"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q16"
+                            android:layout_alignBottom="@id/qtxt_se4q16"
+                            android:text="@string/Q_se4q16" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/se4q16check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/se4q1601"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1601" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1602"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1602" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1603"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1603" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1605"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1605" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1606"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1606" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1696"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1696" />
+
+                        <EditText
+                            android:id="@+id/se4q1696x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q1696"
+                            android:tag="se4q1696"
+                            android:text='@{se4q1696.checked ? se4q1696x.getText().toString() : ""}'
+                            android:visibility='@{se4q1696.checked? View.VISIBLE : View.GONE}' />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q17  Radio   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q17"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q17"
+                            android:text="@string/se4q17" />
+
+                        <TextView
+                            android:id="@+id/q_se4q17"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q17"
+                            android:layout_alignBottom="@id/qtxt_se4q17"
+                            android:text="@string/Q_se4q17" />
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/se4q17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/se4q1701"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1701" />
+
+                        <RadioButton
+                            android:id="@+id/se4q1702"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1702" />
+
+                        <RadioButton
+                            android:id="@+id/se4q1799"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1799" />
+                    </RadioGroup>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- se4q18  CheckBox   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVse4q18"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_se4q18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se4q18"
+                            android:text="@string/se4q18" />
+
+                        <TextView
+                            android:id="@+id/q_se4q18"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se4q18"
+                            android:layout_alignBottom="@id/qtxt_se4q18"
+                            android:text="@string/Q_se4q18" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/se4q18check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="0">
+
+                        <CheckBox
+                            android:id="@+id/se4q1801"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1801" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1802"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1802" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1803"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1803" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1804"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1804" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1805"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1805" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1806"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1806" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1899"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1899" />
+
+                        <CheckBox
+                            android:id="@+id/se4q1896"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/se4q1896" />
+
+                        <EditText
+                            android:id="@+id/se4q1896x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/se4q1896"
+                            android:tag="se4q1896"
+                            android:text='@{se4q1896.checked ? se4q1896x.getText().toString() : ""}'
+                            android:visibility='@{se4q1896.checked? View.VISIBLE : View.GONE}' />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--EndButton LinearLayout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_End"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/red_overlay"
+                    android:onClick="@{() -> callback.BtnEnd()}"
+                    android:text="Cancel"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_Continue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/green_overlay"
+                    android:onClick="@{() -> callback.BtnContinue()}"
+                    android:text="Save"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

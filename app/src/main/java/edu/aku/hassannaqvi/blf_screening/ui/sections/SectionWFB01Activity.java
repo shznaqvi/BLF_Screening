@@ -37,6 +37,7 @@ import edu.aku.hassannaqvi.blf_screening.databinding.Wfb108CardBinding;
 import edu.aku.hassannaqvi.blf_screening.models.WFB108;
 import edu.aku.hassannaqvi.blf_screening.models.WFBSubModel;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 public class SectionWFB01Activity extends AppCompatActivity {
 
@@ -357,8 +358,8 @@ public class SectionWFB01Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        String form = "FP";
+        AppUtilsKt.openEndActivity(this, form);
     }
 
     private boolean UpdateDB() {

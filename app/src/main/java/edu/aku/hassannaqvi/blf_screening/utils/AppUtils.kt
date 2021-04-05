@@ -6,7 +6,9 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
@@ -45,7 +47,17 @@ fun getPermissionsList(context: Context): List<String> {
     return listPermissionsNeeded
 }
 
-fun openEndActivity(activity: Activity) {
+fun openEndActivity(activity: Activity, form: String) {
+
+    //Toast.makeText(activity, "Form: " + form, Toast.LENGTH_LONG).show()
+    /*val packageManager = activity.packageManager
+    try {
+        val info: ActivityInfo = packageManager.getActivityInfo(activity.componentName, 0)
+        Log.e("app", "Activity name:" + info.name)
+    } catch (e: PackageManager.NameNotFoundException) {
+        e.printStackTrace()
+    }*/
+
     val dialog = Dialog(activity)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.setContentView(R.layout.general_end_dialog)
@@ -58,8 +70,8 @@ fun openEndActivity(activity: Activity) {
     dialog.window!!.attributes = params
     dialog.findViewById<View>(R.id.btnOk).setOnClickListener { view: View? ->
         activity.finish()
-        activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra("complete", false))
-//                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        activity.startActivity(Intent(activity, EndingActivity::class.java).putExtra("form", form).putExtra("complete", false))
+        //.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { view: View? -> dialog.dismiss() }
 }

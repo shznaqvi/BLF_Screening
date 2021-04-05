@@ -3,8 +3,10 @@ package edu.aku.hassannaqvi.blf_screening.utils;
 import edu.aku.hassannaqvi.blf_screening.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.DistrictsContract.DistrictsTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.EnrollmentsContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSESContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
@@ -113,7 +115,8 @@ public final class CreateTable {
             + FormsWFTable.COLUMN_ISTATUS + " TEXT,"
             + FormsWFTable.COLUMN_ISTATUS96x + " TEXT,"
             + FormsWFTable.COLUMN_SYNCED + " TEXT,"
-            + FormsWFTable.COLUMN_SYNCED_DATE + " TEXT"
+            + FormsWFTable.COLUMN_SYNCED_DATE + " TEXT,"
+            + FormsWFTable.COLUMN_USERNAME + " TEXT"
             + " );";
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersTable.TABLE_NAME + "("
@@ -222,4 +225,32 @@ public final class CreateTable {
         /*public static final String SQL_ALTER_CHILD_TABLE = "ALTER TABLE " +
             ChildTable.TABLE_NAME + " ADD COLUMN " +
             ChildTable.COLUMN_SYSDATE + " TEXT";*/
+
+
+    public static final String SQL_CREATE_SES = "CREATE TABLE "
+            + FormsSESContract.FormsSESTable.TABLE_NAME + "("
+            + FormsSESContract.FormsSESTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsSESContract.FormsSESTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_UID + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_S1 + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_S2 + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_S3 + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_S4 + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_ENDINGDATETIME + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_ISTATUS96x + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_SYNCED + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_SYNCED_DATE + " TEXT,"
+            + FormsSESContract.FormsSESTable.COLUMN_USERNAME + " TEXT"
+            + " );";
+
+
+    public static final String SQL_CREATE_ENROLLMENT = "CREATE TABLE " + EnrollmentsContract.enrollmentsTable.TABLE_NAME + "("
+            + EnrollmentsContract.enrollmentsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + EnrollmentsContract.enrollmentsTable.COLUMN_S1Q2 + " TEXT"
+            + " );";
 }

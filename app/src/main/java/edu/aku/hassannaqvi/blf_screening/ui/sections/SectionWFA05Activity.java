@@ -20,6 +20,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa05Binding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 public class SectionWFA05Activity extends AppCompatActivity {
 
@@ -97,8 +98,8 @@ public class SectionWFA05Activity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        String form = "FP";
+        AppUtilsKt.openEndActivity(this, form);
     }
 
 

@@ -76,7 +76,7 @@
                             android:id="@+id/wfc10196x"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/wfc10196"
                             android:tag="wfc10196"
                             android:text='@{wfc10196.checked ? wfc10196x.getText().toString() : ""}'

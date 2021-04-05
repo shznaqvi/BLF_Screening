@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.blf_screening.databinding.WfaCardLayoutBinding;
 import edu.aku.hassannaqvi.blf_screening.models.SubModel;
 import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 public class SectionWFA03Activity extends AppCompatActivity {
 
@@ -308,8 +309,8 @@ public class SectionWFA03Activity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        String form = "FP";
+        AppUtilsKt.openEndActivity(this, form);
     }
 
 

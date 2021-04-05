@@ -137,18 +137,18 @@
                     <Button
                         android:id="@+id/srclog"
                         android:layout_width="0dp"
-                        android:layout_margin="4dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimaryDark"
                         android:drawableStart="@drawable/open_form"
                         android:drawablePadding="12dp"
-                        android:layout_weight="1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                        android:background="@color/colorPrimaryDark"
-
                         android:onClick="@{callback::openSpecificActivity}"
+
                         android:padding="8dp"
                         android:text="Open Screening Log"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@color/white" />
 
                     <Button
@@ -211,12 +211,39 @@
                         android:textColor="@color/white" />
 
                 </LinearLayout>
-<Button
-    android:id="@+id/openFups"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="@{callback::openSpecificActivity}"
-    android:text="Followups" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/formSES"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimaryDark"
+                        android:drawableStart="@drawable/open_form"
+                        android:drawablePadding="12dp"
+                        android:onClick="@{callback::openSpecificActivity}"
+                        android:padding="12dp"
+                        android:text="SES Form"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/openFups"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{callback::openSpecificActivity}"
+                    android:text="Followups" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -273,8 +300,8 @@
                                 android:padding="18dp"
                                 android:radius="2dp"
                                 android:text="@string/btnUpload"
-                                android:visibility="gone"
-                                android:textColor="@color/black_overlay" />
+                                android:textColor="@color/black_overlay"
+                                android:visibility="gone" />
 
                             <Button
                                 android:id="@+id/databaseBtn"

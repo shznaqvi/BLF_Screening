@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSESContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -41,6 +42,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySyncBinding;
 import edu.aku.hassannaqvi.blf_screening.models.Diseases;
 import edu.aku.hassannaqvi.blf_screening.models.Episodes;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSES;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.MWFB108;
 import edu.aku.hassannaqvi.blf_screening.models.SyncModel;
@@ -213,6 +215,23 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     MainApp._HOST_URL + MainApp._SERVER_URL,
                     WFB108Contract.WFB108Table.TABLE_NAME,
                     db.getUnsyncedWFB108(), 3, syncListAdapter, uploadlist
+            ).execute();
+
+
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+
+            new SyncAllData(
+                    this,
+                    "FormsSES",
+                    "updateSyncedFormsSES",
+                    FormsSES.class,
+                    MainApp._HOST_URL + MainApp._SERVER_URL,
+                    FormsSESContract.FormsSESTable.TABLE_NAME,
+                    db.getUnsyncedFormsSES(), 4, syncListAdapter, uploadlist
             ).execute();
 
             bi.noDataItem.setVisibility(View.GONE);
@@ -389,6 +408,15 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     }
 
                     new GetAllData(mContext, "fetchMR", syncListAdapter, list).execute();
+
+                    // Getting Followups
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+
+                    new GetAllData(mContext, "fetchEnrollments", syncListAdapter, list).execute();
 
                 }
 

@@ -137,6 +137,37 @@
             android:parentActivityName=".ui.other.MainActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.sections.SectionS1AActivity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sections.SectionS1BActivity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.sections.SectionS2Activity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sections.SectionS3AActivity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sections.SectionS3BActivity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sections.SectionS4Activity"
+            android:parentActivityName=".ui.other.MainActivity"
+            android:screenOrientation="portrait" />
+
         <service android:name=".utils.DownloadFileService" />
     </application>
 

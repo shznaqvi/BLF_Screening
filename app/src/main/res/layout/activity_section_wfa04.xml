@@ -201,7 +201,7 @@
                                 android:id="@+id/wfa40396x"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                 android:hint="@string/wfa40396"
                                 android:tag="wfa40396"
                                 android:text='@{wfa40396.checked ? wfa40396x.getText().toString() : ""}'

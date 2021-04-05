@@ -2189,6 +2189,7 @@ public class FormsWF extends LiveData<FormsWF> {
         this.synced = jsonObject.getString(FormsWFTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsWFTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsWFTable.COLUMN_APPVERSION);
+        this.username = jsonObject.getString(FormsWFTable.COLUMN_USERNAME);
         this.sWFA01 = jsonObject.getString(FormsWFTable.COLUMN_SWFA01);
         this.sWFA02 = jsonObject.getString(FormsWFTable.COLUMN_SWFA02);
         this.sWFA03 = jsonObject.getString(FormsWFTable.COLUMN_SWFA03);
@@ -2220,6 +2221,7 @@ public class FormsWF extends LiveData<FormsWF> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_APPVERSION));
+        this.username = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_USERNAME));
 
         this.sWFA01 = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA01));
         this.sWFA02 = cursor.getString(cursor.getColumnIndex(FormsWFTable.COLUMN_SWFA02));
@@ -2280,6 +2282,7 @@ public class FormsWF extends LiveData<FormsWF> {
             json.put(FormsWFTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
             json.put(FormsWFTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
             json.put(FormsWFTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+            json.put(FormsWFTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
 
             if (this.sWFA01 != null && !this.sWFA01.equals("")) {
                 json.put(FormsWFTable.COLUMN_SWFA01, new JSONObject(this.sWFA01));

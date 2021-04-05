@@ -33,6 +33,8 @@ import edu.aku.hassannaqvi.blf_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.ui.list_activity.FollowUpsList;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionEN01Activity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionS1AActivity;
+import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionS1BActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSFActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionSLActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.sections.SectionWFA01Activity;
@@ -333,9 +335,17 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.formEnr:
                 oF = new Intent(this, SectionEN01Activity.class);
                 break;
+
             case R.id.formWF:
                 oF = new Intent(this, SectionWFA01Activity.class);
                 break;
+
+
+            case R.id.formSES:
+                oF = new Intent(this, SectionS1AActivity.class);
+                break;
+
+
             case R.id.secWFA01:
                 oF = new Intent(this, SectionWFA01Activity.class);
                 break;

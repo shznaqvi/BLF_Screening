@@ -58,16 +58,13 @@ public class SectionSFActivity extends AppCompatActivity {
         setupSkip();
     }
 
-
     public void checkEligibility() {
         // Toast.makeText(this, "Checking Eligibility", Toast.LENGTH_SHORT).show();
         if (bi.llsectionsf01.getVisibility() == View.VISIBLE
-
                 && !bi.sf6.getText().toString().equals("")
                 && !bi.sf701.getText().toString().equals("")
                 && !bi.sf8.getText().toString().equals("")
-                && !bi.sf10.getText().toString().equals("")
-        ) {
+                && !bi.sf10.getText().toString().equals("")) {
 
             /*long days = 0;
 
@@ -100,8 +97,7 @@ public class SectionSFActivity extends AppCompatActivity {
                     && bi.sf1102.isChecked()
                     && bi.sf130101.isChecked()
                     /*&& bi.sf1401.isChecked()*/
-                    && bi.sf1602.isChecked()
-            ) {
+                    && bi.sf1602.isChecked()) {
                 /*bi.sf1701.setChecked(true);
                 bi.sf1702.setChecked(false);
                 */
@@ -135,9 +131,7 @@ public class SectionSFActivity extends AppCompatActivity {
                     && bi.sf1102.isChecked()
                     && bi.sf130101.isChecked()
                     && bi.sf1602.isChecked()*/
-                (EligibilityFlag || SfFlag)
-                        && bi.sf1401.isChecked()
-        ) {
+                (EligibilityFlag || SfFlag) && bi.sf1401.isChecked()) {
             bi.sf1701.setChecked(true);
             bi.fldGrpCVsf18.setVisibility(View.VISIBLE);
             //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
@@ -146,7 +140,6 @@ public class SectionSFActivity extends AppCompatActivity {
             Clear.clearAllFields(bi.fldGrpCVsf18);
             bi.fldGrpCVsf18.setVisibility(View.GONE);
             //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
-
         }
 
     }
@@ -389,14 +382,19 @@ public class SectionSFActivity extends AppCompatActivity {
 
             }
         });
-    }
 
+
+        bi.sf18.setOnCheckedChangeListener(((radioGroup, i) -> {
+            if (i == bi.sf1801.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVsf20);
+            }
+        }));
+    }
 
     private void Eligibility(boolean sf17Flag) {
         bi.sf1701.setChecked(sf17Flag);
         bi.sf1702.setChecked(!sf17Flag);
     }
-
 
     public void BtnContinue() {
         bi.pBar3.setVisibility(View.GONE);
@@ -413,7 +411,6 @@ public class SectionSFActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             bi.pBar3.setVisibility(View.VISIBLE);
-
             RetrieveSrcID();
             //startActivity(new Intent(this, EndingActivity.class));
         } else {
@@ -421,8 +418,8 @@ public class SectionSFActivity extends AppCompatActivity {
         }
     }
 
-
     private boolean RetrieveSrcID() {
+
         final OneTimeWorkRequest workRequest1 = new OneTimeWorkRequest.Builder(DataUpWorkerSF.class).build();
         WorkManager.getInstance().enqueue(workRequest1);
 
@@ -460,8 +457,9 @@ public class SectionSFActivity extends AppCompatActivity {
                                         if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
                                             db.updateSyncedFormsSL(jsonObject.getString("id"));  // UPDATE SYNCED
-                                            bi.sf20.setText(jsonObject.getString("study_id"));
-                                            bi.fldGrpCVsf20.setVisibility(View.VISIBLE);
+
+                                            /*bi.sf20.setText(jsonObject.getString("study_id"));
+                                            bi.fldGrpCVsf20.setVisibility(View.VISIBLE);*/
 
                                             bi.wmError.setText(
                                                     "Screening Form saved for MR No: " + bi.sf2.getText().toString()
@@ -502,6 +500,15 @@ public class SectionSFActivity extends AppCompatActivity {
                                             //   method.invoke(db, jsonObject.getString("id"));
 
                                             // sDuplicate++;
+                                        } else if (jsonObject.getString("status").equals("99") && jsonObject.getString("error").equals("99")) {
+
+                                            bi.wmError.setText(
+                                                    "This Study ID already exists, please try another"
+                                            );
+                                            bi.wmError.setTextColor(getResources().getColor(R.color.red));
+                                            bi.wmError.setVisibility(View.VISIBLE);
+                                            Toast.makeText(SectionSFActivity.this, "This Study ID already exists, please try another", Toast.LENGTH_LONG).show();
+
                                         } else {
                                             sSyncedError.append("\nError: ").append(jsonObject.getString("message"));
 
@@ -522,8 +529,8 @@ public class SectionSFActivity extends AppCompatActivity {
                             //bi.sl2.setText(message);
                         }
                         //mTextView1.append("\n" + workInfo.getState().name());
-                        if (workInfo.getState() != null &&
-                                workInfo.getState() == WorkInfo.State.FAILED) {
+                        if (workInfo.getState() != null && workInfo.getState() == WorkInfo.State.FAILED) {
+
                             bi.pBar3.setVisibility(View.GONE);
                             String message = workInfo.getOutputData().getString("error");
                             bi.wmError.setText(message);
@@ -534,7 +541,6 @@ public class SectionSFActivity extends AppCompatActivity {
                 });
         return false;
     }
-
 
     private boolean UpdateDB() {
 
@@ -550,7 +556,6 @@ public class SectionSFActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     private void SaveDraft() throws JSONException {
 
@@ -717,7 +722,6 @@ public class SectionSFActivity extends AppCompatActivity {
         //MainApp.setGPS(this);
     }
 
-
     private boolean formValidation() {
 
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
@@ -735,9 +739,9 @@ public class SectionSFActivity extends AppCompatActivity {
                 }
             }
         }
+
         return true;
     }
-
 
     public void BtnEnd() {
         oF = new Intent(this, MainActivity.class);
@@ -760,7 +764,6 @@ public class SectionSFActivity extends AppCompatActivity {
             bi.checkMR.setVisibility(View.GONE);
             bi.pbarMR.setVisibility(View.VISIBLE);
             FetchMR();
-
         }
 
     }
@@ -820,7 +823,8 @@ public class SectionSFActivity extends AppCompatActivity {
 
                                             // 72 hours passed
                                             if (jsonObject.getString("sl2").equals("88888")) {
-                                                if (bi.llsectionsf01.getVisibility() == View.VISIBLE) {
+                                                if (bi.llsectionsf01.getVisibility() == View.VISIBLE)
+                                                {
                                                     bi.llsectionsf01.setVisibility(View.GONE);
                                                     // bi.fldGrpsf5.setVisibility(View.VISIBLE);
                                                     bi.btnContinue.setVisibility(View.GONE);
@@ -928,8 +932,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 });
         return false;
     }
-
-
+    
     public void deleteName(View view) {
         if (bi.sf4.getText().toString().equals("99999") && (bi.sf3.getText().toString().contains("Mother") || bi.sf3.getText().toString().contains("Found"))) {
             bi.sf3.setText(null);

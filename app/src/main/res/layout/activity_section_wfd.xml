@@ -79,7 +79,7 @@
                             android:id="@+id/wfd10102x"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/wfd10102"
                             android:tag="wfd10102"
                             android:text='@{wfd10102.checked ? wfd10102x.getText().toString() : ""}'

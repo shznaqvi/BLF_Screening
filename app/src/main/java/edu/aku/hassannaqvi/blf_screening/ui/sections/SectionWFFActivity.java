@@ -41,6 +41,7 @@ import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWffBinding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerALL;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF;
@@ -199,8 +200,8 @@ public class SectionWFFActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        String form = "FP";
+        AppUtilsKt.openEndActivity(this, form);
     }
 
 

@@ -19,8 +19,10 @@ import java.util.Collection;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.DiseasesContract;
+import edu.aku.hassannaqvi.blf_screening.contracts.EnrollmentsContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.EpisodesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
+import edu.aku.hassannaqvi.blf_screening.contracts.FormsSESContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
@@ -31,9 +33,11 @@ import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionApp
 import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
 import edu.aku.hassannaqvi.blf_screening.contracts.childFollowupContract;
 import edu.aku.hassannaqvi.blf_screening.models.Diseases;
+import edu.aku.hassannaqvi.blf_screening.models.Enrollments;
 import edu.aku.hassannaqvi.blf_screening.models.Episodes;
 import edu.aku.hassannaqvi.blf_screening.models.FollowUps;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
+import edu.aku.hassannaqvi.blf_screening.models.FormsSES;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
@@ -57,6 +61,8 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_FOR
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_WFB108;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_SES;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_ENROLLMENT;
 
 
 /**
@@ -89,6 +95,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_EPISODES);
         db.execSQL(SQL_CREATE_CHILD_FOLLOWUP);
         db.execSQL(SQL_CREATE_WFB108);
+        db.execSQL(SQL_CREATE_SES);
+        db.execSQL(SQL_CREATE_ENROLLMENT);
     }
 
     @Override
@@ -337,6 +345,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsWFTable.COLUMN_DEVICETAGID, formWF.getDevicetagID());
         values.put(FormsWFTable.COLUMN_DEVICEID, formWF.getDeviceID());
         values.put(FormsWFTable.COLUMN_APPVERSION, formWF.getAppversion());
+        values.put(FormsWFTable.COLUMN_USERNAME, formWF.getUsername());
         values.put(FormsWFTable.COLUMN_SWFA01, formWF.getsWFA01());
         values.put(FormsWFTable.COLUMN_SWFA02, formWF.getsWFA02());
         values.put(FormsWFTable.COLUMN_SWFA03, formWF.getsWFA03());
@@ -810,7 +819,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSLTable.COLUMN_APPVERSION,
         };
 
-        String whereClause = FormsSLTable.COLUMN_SYNCED + " is null OR " + FormsSLTable.COLUMN_SYNCED + " == '' ";
+        String whereClause = FormsSLTable.COLUMN_SYNCED + " is null OR " + FormsSLTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -868,7 +877,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsSFTable.COLUMN_APPVERSION,
         };
 
-        String whereClause = FormsSFTable.COLUMN_SYNCED + " is null OR " + FormsSFTable.COLUMN_SYNCED + " == '' ";
+        String whereClause = FormsSFTable.COLUMN_SYNCED + " is null OR " + FormsSFTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -926,7 +935,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsS3Table.COLUMN_APPVERSION,
         };
 
-        String whereClause = FormsS3Table.COLUMN_SYNCED + " is null OR " + FormsS3Table.COLUMN_SYNCED + " == '' ";
+        String whereClause = FormsS3Table.COLUMN_SYNCED + " is null OR " + FormsS3Table.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -1920,7 +1929,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsWFTable.COLUMN_APPVERSION,
         };
 
-        String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " == '' ";
+        String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -1972,7 +1981,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 //DiseasesContract.DiseasesTable.COLUMN_STUDYID,
         };
 
-        String whereClause = DiseasesContract.DiseasesTable.COLUMN_SYNCED + " is null OR " + DiseasesContract.DiseasesTable.COLUMN_SYNCED + " == '' ";
+        String whereClause = DiseasesContract.DiseasesTable.COLUMN_SYNCED + " is null OR " + DiseasesContract.DiseasesTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -2028,7 +2037,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 EpisodesContract.EpisodesTable.COLUMN_DEVICE_ID,
         };
 
-        String whereClause = EpisodesContract.EpisodesTable.COLUMN_SYNCED + " is null OR " + EpisodesContract.EpisodesTable.COLUMN_SYNCED + " == '' ";
+        String whereClause = EpisodesContract.EpisodesTable.COLUMN_SYNCED + " is null OR " + EpisodesContract.EpisodesTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -2119,7 +2128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 WFB108Contract.WFB108Table.COLUMN_DAY_NO,
         };
 
-        String whereClause = WFB108Contract.WFB108Table.COLUMN_SYNCED + " is null OR " + WFB108Contract.WFB108Table.COLUMN_SYNCED + " == '' ";
+        String whereClause = WFB108Contract.WFB108Table.COLUMN_SYNCED + " is null OR " + WFB108Contract.WFB108Table.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
@@ -2156,5 +2165,175 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allWFB108;
+    }
+
+
+    ////  FORM SES
+    public Long addFormSES(FormsSES formSES) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FormsSESContract.FormsSESTable.COLUMN_PROJECT_NAME, formSES.getProjectName());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_UID, formSES.get_UID());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_SYSDATE, formSES.getSysdate());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_DEVICETAGID, formSES.getDevicetagID());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_DEVICEID, formSES.getDeviceID());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_APPVERSION, formSES.getAppversion());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_USERNAME, formSES.getUsername());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_S1, formSES.getS1());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_S2, formSES.getS2());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_S3, formSES.getS3());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_S4, formSES.getS4());
+
+        long newRowId;
+        newRowId = db.insert(
+                FormsSESContract.FormsSESTable.TABLE_NAME,
+                FormsSESContract.FormsSESTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+    //Generic update FormColumn
+    public int updatesFormsSES(String column, String value) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsSESContract.FormsSESTable.COLUMN_ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsSES.get_ID())};
+
+        return db.update(FormsSESContract.FormsSESTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    //Generic Un-Synced Form SES
+    public void updateSyncedFormsSES(String id) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FormsSESContract.FormsSESTable.COLUMN_SYNCED, true);
+        values.put(FormsSESContract.FormsSESTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+        String where = FormsSESContract.FormsSESTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsSESContract.FormsSESTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public Collection<FormsSES> getUnsyncedFormsSES() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = FormsSESContract.FormsSESTable.COLUMN_SYNCED + " is null OR " + FormsSESContract.FormsSESTable.COLUMN_SYNCED + " = ''";
+        // String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsSESContract.FormsSESTable.COLUMN_ID + " ASC";
+
+        Collection<FormsSES> allFromsSES = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsSESContract.FormsSESTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            c.moveToFirst();
+            for (int i = 0; i < c.getCount(); i++) {
+                Log.d(TAG, "getUnsyncedFormsSES: " + c.getCount());
+                FormsSES FromsSES = new FormsSES();
+                allFromsSES.add(FromsSES.Hydrate(c));
+                c.moveToNext();
+            }
+        } catch (SQLiteException e) {
+
+            Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFromsSES;
+    }
+
+    public int updateEndingSES() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsSESContract.FormsSESTable.COLUMN_ISTATUS, MainApp.formsSES.getIstatus());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_ISTATUS96x, MainApp.formsSES.getIstatus96x());
+        values.put(FormsSESContract.FormsSESTable.COLUMN_ENDINGDATETIME, MainApp.formsSES.getEndingdatetime());
+
+        // Which row to update, based on the ID
+        String selection = FormsSESContract.FormsSESTable.COLUMN_ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formsSES.get_ID())};
+
+        return db.update(FormsSESContract.FormsSESTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public Cursor checkMRNo(String mrno) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("select * from enrollments where s1q2 = '" + mrno + "' order by _id asc limit 1", null);
+        return result;
+    }
+
+    public int syncEnrollments(JSONArray enrollmentsList) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(EnrollmentsContract.enrollmentsTable.TABLE_NAME, null, null);
+
+        int insertCount = 0;
+
+        Toast.makeText(mContext, "Enrollments length: " + enrollmentsList.length(), Toast.LENGTH_LONG).show();
+
+        if (enrollmentsList.length() > 0) {
+
+            try {
+                for (int i = 0; i < enrollmentsList.length(); i++) {
+
+                    JSONObject jsonObjectEnrollments = enrollmentsList.getJSONObject(i);
+
+                    Enrollments enrollments = new Enrollments();
+                    enrollments.Sync(jsonObjectEnrollments);
+
+                    ContentValues values = new ContentValues();
+                    values.put(EnrollmentsContract.enrollmentsTable.COLUMN_S1Q2, enrollments.getMrno().trim());
+
+                    long rowID = db.insert(EnrollmentsContract.enrollmentsTable.TABLE_NAME, null, values);
+
+                    if (rowID != -1) insertCount++;
+                }
+
+            } catch (Exception e) {
+                Log.d(TAG, "syncEnrollments(e): " + e);
+                db.close();
+            } finally {
+                db.close();
+            }
+        }
+        return insertCount;
     }
 }

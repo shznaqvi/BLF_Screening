@@ -63,6 +63,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "fetchMR":
                 position = 2;
                 break;
+            case "fetchEnrollments":
+                position = 3;
+                break;
         }
         list.get(position).settableName(syncClass);
     }
@@ -91,9 +94,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "VersionApp":
                 position = 1;
                 break;
-
             case "fetchMR":
                 position = 2;
+                break;
+            case "fetchEnrollments":
+                position = 3;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -120,11 +125,15 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable.SERVER_URI);
                     position = 1;
                     break;
-
                 case "fetchMR":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
                     tableName = "fetchMR";
                     position = 2;
+                    break;
+                case "fetchEnrollments":
+                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
+                    tableName = "fetchEnrollments";
+                    position = 3;
                     break;
             }
 
@@ -146,6 +155,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
 
             switch (syncClass) {
                 case "Users":
+                case "fetchEnrollments":
                     try {
                         json.put("table", tableName);
                     } catch (JSONException e1) {
@@ -226,12 +236,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             insertCount = db.syncFollowups(jsonArray);
                             position = 2;
                             break;
-                       /*case "Districts":
+                        case "fetchEnrollments":
                             jsonArray = new JSONArray(result);
-                            insertCount = db.syncDistricts(jsonArray);
-                            position = 2;
+                            insertCount = db.syncEnrollments(jsonArray);
+                            position = 3;
                             break;
-                       */
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

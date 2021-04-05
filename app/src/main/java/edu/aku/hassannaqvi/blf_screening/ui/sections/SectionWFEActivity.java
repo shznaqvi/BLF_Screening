@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfeBinding;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
+import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 public class SectionWFEActivity extends AppCompatActivity {
 
@@ -80,8 +81,8 @@ public class SectionWFEActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
-        startActivity(oF);
+        String form = "FP";
+        AppUtilsKt.openEndActivity(this, form);
     }
 
 

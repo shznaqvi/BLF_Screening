@@ -70,7 +70,7 @@ public class FormsSF extends LiveData<FormsSF> {
 /*
     public String sf1902 = "";
 */
-public String sf20 = "";
+    public String sf20 = "";
     private String _ID = "";
     private String _UID = "";
     private String sysdate = "";
@@ -574,7 +574,7 @@ public String sf20 = "";
         return sf20;
     }
 
-    public FormsSF setSf20(String sf17) {
+    public FormsSF setSf20(String sf20) {
         this.sf20 = sf20;
         return this;
     }

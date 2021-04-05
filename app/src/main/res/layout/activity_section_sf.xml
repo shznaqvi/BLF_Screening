@@ -2629,7 +2629,8 @@
             <!-- sf20  Input-Numeric   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVsf20"
-                style="@style/cardView">
+                style="@style/cardView"
+                android:visibility='@{sf1801.checked ? View.VISIBLE : View.GONE}'>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -2659,7 +2660,7 @@
 
                     </RelativeLayout>
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/sf20"
                         android:layout_width="0dp"
                         android:layout_height="56dp"
@@ -2667,7 +2668,22 @@
                         android:gravity="center_vertical|center_horizontal"
                         android:textColor="@color/colorPrimaryLight"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold" />-->
+
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/sf20"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        app:maxValue="1100"
+                        app:minValue="1001"
+                        app:type="range"
+                        app:mask="####"
+                        app:required="true" />
 
                 </LinearLayout>
 

@@ -1323,4 +1323,873 @@
     <string name='Q_wf101'>wf101</string>
     <string name='Q_wfi02'>wfi02</string>
 
+
+
+    <!-- Socio Economic Status Form (SES) -->
+
+    <!-- Section 1 (SES) Start -->
+
+    <!-- Question Text Start -->
+    <string name='Q_se1q1'>se1q1</string>
+    <string name='Q_se1q10'>se1q10</string>
+    <string name='Q_se1q11'>se1q11</string>
+    <string name='Q_se1q12'>se1q12</string>
+    <string name='Q_se1q13'>se1q13</string>
+    <string name='Q_se1q1301'>se1q1301</string>
+    <string name='Q_se1q1302'>se1q1302</string>
+    <string name='Q_se1q1303'>se1q1303</string>
+    <string name='Q_se1q1304'>se1q1304</string>
+    <string name='Q_se1q1305'>se1q1305</string>
+    <string name='Q_se1q1306'>se1q1306</string>
+    <string name='Q_se1q1307'>se1q1307</string>
+    <string name='Q_se1q1308'>se1q1308</string>
+    <string name='Q_se1q1309'>se1q1309</string>
+    <string name='Q_se1q1310'>se1q1310</string>
+    <string name='Q_se1q1311'>se1q1311</string>
+    <string name='Q_se1q1312'>se1q1312</string>
+    <string name='Q_se1q1313'>se1q1313</string>
+    <string name='Q_se1q1314'>se1q1314</string>
+    <string name='Q_se1q1315'>se1q1315</string>
+    <string name='Q_se1q1316'>se1q1316</string>
+    <string name='Q_se1q1317'>se1q1317</string>
+    <string name='Q_se1q1318'>se1q1318</string>
+    <string name='Q_se1q1319'>se1q1318</string>
+    <string name='Q_se1q14'>se1q14</string>
+    <string name='Q_se1q1401'>se1q1401</string>
+    <string name='Q_se1q1402'>se1q1402</string>
+    <string name='Q_se1q1403'>se1q1403</string>
+    <string name='Q_se1q1404'>se1q1404</string>
+    <string name='Q_se1q1405'>se1q1405</string>
+    <string name='Q_se1q1406'>se1q1406</string>
+    <string name='Q_se1q1407'>se1q1407</string>
+    <string name='Q_se1q1408'>se1q1408</string>
+    <string name='Q_se1q1409'>se1q1409</string>
+    <string name='Q_se1q15'>se1q15</string>
+    <string name='Q_se1q16'>se1q16</string>
+    <string name='Q_se1q17'>se1q17</string>
+    <string name='Q_se1q18'>se1q18</string>
+    <string name='Q_se1q19'>se1q19</string>
+    <string name='Q_se1q2'>se1q2</string>
+    <string name='Q_se1q20'>se1q20</string>
+    <string name='Q_se1q21'>se1q21</string>
+    <string name='Q_se1q22'>se1q22</string>
+    <string name='Q_se1q23'>se1q23</string>
+    <string name='Q_se1q24'>se1q24</string>
+    <string name='Q_se1q25'>se1q25</string>
+    <string name='Q_se1q3'>se1q3</string>
+    <string name='Q_se1q4'>se1q4</string>
+    <string name='Q_se1q5'>se1q5</string>
+    <string name='Q_se1q6'>se1q6</string>
+    <string name='Q_se1q7'>se1q7</string>
+    <string name='Q_se1q8'>se1q8</string>
+    <string name='Q_se1q9'>se1q9</string>
+    <string name='Q_title'>title</string>
+    <!-- Question Text End -->
+
+    <string name="section1socioeconomicstatus_mainheading">Section 1: Socio Economic Status </string>
+
+    <string name="title">Instruction: This information will be collected by any knowledgeable member of the household at least 18 years old.</string>
+
+    <string name="se1q1">Mother tongue of the head of the household</string>
+    <string name="se1q101">Urdu</string>
+    <string name="se1q102">Sindhi</string>
+    <string name="se1q103">Kachi</string>
+    <string name="se1q104">Siraiki</string>
+    <string name="se1q105">Punjabi</string>
+    <string name="se1q106">Balochi</string>
+    <string name="se1q107">Pashto</string>
+    <string name="se1q108">Shina</string>
+    <string name="se1q109">Hindko</string>
+    <string name="se1q196">Other (specify)</string>
+
+    <string name="se1q2">Status of the Household</string>
+    <string name="se1q201">Own</string>
+    <string name="se1q202">Rented</string>
+    <string name="se1q296">Other (specify)</string>
+
+    <string name="se1q3">What is the main source of drinking water in your house hold?</string>
+    <string name="se1q3title1">Municipal Committee Water Connection</string>
+    <string name="se1q311">Piped into dwelling</string>
+    <string name="se1q312">Piped to yard/plot</string>
+    <string name="se1q313">Piped to neighbor</string>
+    <string name="se1q314">Public tap/standpipe</string>
+    <string name="se1q315">Tube well or borehole or suction pump</string>
+    <string name="se1q316">Hand pump</string>
+    <string name="se1q3title2">Dug Well</string>
+    <string name="se1q331">Protected Well</string>
+    <string name="se1q332">Unprotected well</string>
+    <string name="se1q3title3">Spring</string>
+    <string name="se1q341">Protected Spring</string>
+    <string name="se1q342">Unprotected Spring</string>
+    <string name="se1q351">Rainwater</string>
+    <string name="se1q361">Tanker Truck</string>
+    <string name="se1q371">Cart with small tank</string>
+    <string name="se1q381">Surface water (river, dam, lake, pond, canal, irrigation channel)</string>
+    <string name="se1q3title4">Packaged Water</string>
+    <string name="se1q391">Filtration plant</string>
+    <string name="se1q392">Bottled water</string>
+    <string name="se1q396">Other (specify)</string>
+
+    <string name="se1q4">Do you take any step to make the water safer to drink?</string>
+    <string name="se1q401">Yes</string>
+    <string name="se1q402">No</string>
+
+    <string name="se1q5">What do you usually do to make the water safe to drink?</string>
+    <string name="se1q501">Boil</string>
+    <string name="se1q502">Add bleach/chlorine</string>
+    <string name="se1q503">Strain through a cloth</string>
+    <string name="se1q504">Use water filter</string>
+    <string name="se1q505">Solar disinfection</string>
+    <string name="se1q506">Let it stand and settle</string>
+    <string name="se1q596">Other (specify)</string>
+
+    <string name="se1q6">What is the main source of water used by members of your household for other purposes such as cooking and hand washing?</string>
+    <string name="se1q6title1">Municipal Committee Water Connection</string>
+    <string name="se1q611">Piped into dwelling</string>
+    <string name="se1q612">Piped to yard/plot</string>
+    <string name="se1q613">Piped to neighbor</string>
+    <string name="se1q614">Public tap/standpipe</string>
+    <string name="se1q615">Tube well or borehole or suction pump</string>
+    <string name="se1q616">Hand pump</string>
+    <string name="se1q6title2">Dug Well</string>
+    <string name="se1q631">Protected Well</string>
+    <string name="se1q632">Unprotected well</string>
+    <string name="se1q6title3">Spring</string>
+    <string name="se1q641">Protected Spring</string>
+    <string name="se1q642">Unprotected Spring</string>
+    <string name="se1q651">Rainwater</string>
+    <string name="se1q661">Tanker Truck</string>
+    <string name="se1q671">Cart with small tank</string>
+    <string name="se1q681">Surface water (river, dam, lake, pond, canal, irrigation channel)</string>
+    <string name="se1q6title4">Packaged Water</string>
+    <string name="se1q691">Filtration plant</string>
+    <string name="se1q692">Bottled water</string>
+    <string name="se1q696">Other (specify)</string>
+
+    <string name="se1q7">What kind of toilet facility do members of your household usually use? If ‘Flush’ or ‘Pour’, probe: Where does it flush to?  If not possible to determine, ask permission to observe the facility.</string>
+    <string name="se1q7title1">Flush or Pour Flush Toilet</string>
+    <string name="se1q701">Flush to piped sewer system</string>
+    <string name="se1q702">Flush to septic tank</string>
+    <string name="se1q703">Flush to pit latrine</string>
+    <string name="se1q704">Flush to somewhere else</string>
+    <string name="se1q7title2">PIT Latrine</string>
+    <string name="se1q705">Ventilated improved PIT latrine</string>
+    <string name="se1q706">PIT latrine with slab</string>
+    <string name="se1q707">PIT latrine without slab/ open pit</string>
+    <string name="se1q708">Bucket toilet</string>
+    <string name="se1q709">No facility/bush/field</string>
+    <string name="se1q796">Other (specify)</string>
+
+    <string name="se1q8">Where is the toilet facility located?</string>
+    <string name="se1q801">In own dwelling</string>
+    <string name="se1q802">In own yard/plot</string>
+    <string name="se1q803">Elsewhere</string>
+
+    <string name="se1q9">Do you share this toilet facility with others who are not members of your household?</string>
+    <string name="se1q901">Yes</string>
+    <string name="se1q902">No</string>
+
+    <string name="se1q10">Do you share this facility only with members of other household that you know, or is the facility open to the use of the general public?</string>
+    <string name="se1q1001">Shared with known households (not public)</string>
+    <string name="se1q1002">Shared with general public</string>
+
+    <string name="se1q11">How many households in total use this toilet facility, including your own household?</string>
+    <string name="se1q1101">Less than 10 households</string>
+    <string name="se1q1110">Ten or more households</string>
+    <string name="se1q1198">Don’t Know</string>
+
+    <string name="se1q12">What is done to dispose stools of the youngest child?</string>
+    <string name="se1q1201">Child uses toilet/latrine</string>
+    <string name="se1q1202">Put/rinsed on into toilet or latrine</string>
+    <string name="se1q1203">Put/rinsed on into drain or ditch</string>
+    <string name="se1q1204">Thrown into garbage</string>
+    <string name="se1q1205">Left in open</string>
+    <string name="se1q1206">Buried</string>
+    <string name="se1q1296">Other (specify)</string>
+
+    <string name="se1q13">Does the household have (Probe for each to get multiple responses)</string>
+    <string name="se1q1301">Electronic Connection</string>
+    <string name="se1q1301a">YES</string>
+    <string name="se1q1301b">NO</string>
+    <string name="se1q1302">Radio</string>
+    <string name="se1q1302a">YES</string>
+    <string name="se1q1302b">NO</string>
+    <string name="se1q1303">Television</string>
+    <string name="se1q1303a">YES</string>
+    <string name="se1q1303b">NO</string>
+    <string name="se1q1304">Landline phone</string>
+    <string name="se1q1304a">YES</string>
+    <string name="se1q1304b">NO</string>
+    <string name="se1q1305">Refrigerator</string>
+    <string name="se1q1305a">YES</string>
+    <string name="se1q1305b">NO</string>
+    <string name="se1q1306">Cabinet/Almirah</string>
+    <string name="se1q1306a">YES</string>
+    <string name="se1q1306b">NO</string>
+    <string name="se1q1307">Chair</string>
+    <string name="se1q1307a">YES</string>
+    <string name="se1q1307b">NO</string>
+    <string name="se1q1308">Room Cooler</string>
+    <string name="se1q1308a">YES</string>
+    <string name="se1q1308b">NO</string>
+    <string name="se1q1309">Air Conditioner</string>
+    <string name="se1q1309a">YES</string>
+    <string name="se1q1309b">NO</string>
+    <string name="se1q1310">Washing Machine</string>
+    <string name="se1q1310a">YES</string>
+    <string name="se1q1310b">NO</string>
+    <string name="se1q1311">Water Pump</string>
+    <string name="se1q1311a">YES</string>
+    <string name="se1q1311b">NO</string>
+    <string name="se1q1312">Bed</string>
+    <string name="se1q1312a">YES</string>
+    <string name="se1q1312b">NO</string>
+    <string name="se1q1313">Clock</string>
+    <string name="se1q1313a">YES</string>
+    <string name="se1q1313b">NO</string>
+    <string name="se1q1314">Sofa</string>
+    <string name="se1q1314a">YES</string>
+    <string name="se1q1314b">NO</string>
+    <string name="se1q1315">Camera</string>
+    <string name="se1q1315a">YES</string>
+    <string name="se1q1315b">NO</string>
+    <string name="se1q1316">Sewing Machine</string>
+    <string name="se1q1316a">YES</string>
+    <string name="se1q1316b">NO</string>
+    <string name="se1q1317">Computer/Laptop</string>
+    <string name="se1q1317a">YES</string>
+    <string name="se1q1317b">NO</string>
+    <string name="se1q1318">Internet Connection</string>
+    <string name="se1q1318a">YES</string>
+    <string name="se1q1318b">NO</string>
+    <string name="se1q1319">Dish/Cable Network</string>
+    <string name="se1q1319a">YES</string>
+    <string name="se1q1319b">NO</string>
+
+    <string name="se1q14">Does any member of this household own (Probe for each to get multiple responses)</string>
+    <string name="se1q1401">Wristwatch</string>
+    <string name="se1q1401a">YES</string>
+    <string name="se1q1401b">NO</string>
+    <string name="se1q1402">Mobile phone</string>
+    <string name="se1q1402a">YES</string>
+    <string name="se1q1402b">NO</string>
+    <string name="se1q1403">Bicycle</string>
+    <string name="se1q1403a">YES</string>
+    <string name="se1q1403b">NO</string>
+    <string name="se1q1404">Motorcycle or Scooter</string>
+    <string name="se1q1404a">YES</string>
+    <string name="se1q1404b">NO</string>
+    <string name="se1q1405">Animal drawn cart</string>
+    <string name="se1q1405a">YES</string>
+    <string name="se1q1405b">NO</string>
+    <string name="se1q1406">Car or Truck or Bus</string>
+    <string name="se1q1406a">YES</string>
+    <string name="se1q1406b">NO</string>
+    <string name="se1q1407">Tractor</string>
+    <string name="se1q1407a">YES</string>
+    <string name="se1q1407b">NO</string>
+    <string name="se1q1408">Boat with a motor</string>
+    <string name="se1q1408a">YES</string>
+    <string name="se1q1408b">NO</string>
+    <string name="se1q1409">Boat without motor</string>
+    <string name="se1q1409a">YES</string>
+    <string name="se1q1409b">NO</string>
+
+    <string name="se1q15">What type of fuel do you usually use for cooking in your household?</string>
+    <string name="se1q1501">Electricity</string>
+    <string name="se1q1502">LPG</string>
+    <string name="se1q1503">Natural gas</string>
+    <string name="se1q1504">Biogas</string>
+    <string name="se1q1505">Kerosene</string>
+    <string name="se1q1506">Coal/Lignite</string>
+    <string name="se1q1507">Charcoal</string>
+    <string name="se1q1508">Wood</string>
+    <string name="se1q1509">Straw/Shrubs/Grass</string>
+    <string name="se1q1510">Animal Dung</string>
+    <string name="se1q1511">No Food cooked in the household</string>
+    <string name="se1q1596">Other (specify)</string>
+
+    <string name="se1q16">Is the cooking usually done in the house, in a separate room/space, or outdoors?</string>
+    <string name="se1q1601">In the house</string>
+    <string name="se1q1602">In a separate building</string>
+    <string name="se1q1603">Outdoors</string>
+    <string name="se1q1696">Other (specify)</string>
+
+    <string name="se1q17">Do you have a separate room which is used as a kitchen?</string>
+    <string name="se1q1701">Yes</string>
+    <string name="se1q1702">NO</string>
+
+    <string name="se1q18">Main material of the dwelling FLOOR  Record observation If observation is not possible, ask the respondent to determine the material of the dwelling floor</string>
+    <string name="se1q18title1">Natural Floor</string>
+    <string name="se1q1811">Mud/Clay/Earth/Sand</string>
+    <string name="se1q1812">Dung</string>
+    <string name="se1q18title2">Rudimentary/Floor</string>
+    <string name="se1q1821">Wood Planks</string>
+    <string name="se1q1822">Palm/Bamboo</string>
+    <string name="se1q18title3">Finished Floor</string>
+    <string name="se1q1831">Parquet or polished wood</string>
+    <string name="se1q1832">Vinyl or asphalt strips</string>
+    <string name="se1q1833">Ceramic tiles</string>
+    <string name="se1q1834">Cement</string>
+    <string name="se1q1835">Carpet</string>
+    <string name="se1q1836">Bricks</string>
+    <string name="se1q1837">Lime</string>
+    <string name="se1q1896">Other (Specify)</string>
+
+    <string name="se1q19">Main material of the ROOF  (Record observation)</string>
+    <string name="se1q19title">Natural Roofing</string>
+    <string name="se1q1911">No Roof</string>
+    <string name="se1q1912">Thatch/palm leaf</string>
+    <string name="se1q1913">Sod</string>
+    <string name="se1q19title2">Rudimentary Roofing</string>
+    <string name="se1q1921">Rustic mat</string>
+    <string name="se1q1922">Palm/Bamboo</string>
+    <string name="se1q1923">Wood Planks</string>
+    <string name="se1q1924">Cardboard</string>
+    <string name="se1q19title3">Finished Roofing</string>
+    <string name="se1q1931">Metal/Tin/CGI</string>
+    <string name="se1q1932">Wood</string>
+    <string name="se1q1933">Calamine/Cement fiber</string>
+    <string name="se1q1934">Ceramic tiles</string>
+    <string name="se1q1935">Cement RCC</string>
+    <string name="se1q1936">Roofing Shingles</string>
+    <string name="se1q1937">Bricks</string>
+    <string name="se1q1996">Other (specify)</string>
+
+    <string name="se1q20">How many rooms are used in the household for sleeping? Rooms</string>
+
+    <string name="se1q21">Does any member of this household own any agricultural land?</string>
+    <string name="se1q2101">Yes</string>
+    <string name="se1q2102">No</string>
+
+    <string name="se1q22">If yes, how many acres or canals of agricultural land do members of this household own?  If less than 1, record ‘00’</string>
+    <string name="se1q2201">Acres</string>
+    <string name="se1q2202">Canals</string>
+    <string name="se1q2298">Don’t Know</string>
+
+    <string name="se1q23">Do you have your own livestock, animals or poultry?</string>
+    <string name="se1q2301">Yes</string>
+    <string name="se1q2302">NO</string>
+
+    <string name="se1q24">If yes, how many livestock, animals or poultry does your household own?  Ask for each listed animals, one by one and observation by enumerator insert 000 if none  Record 999 for &gt;999</string>
+    <string name="se1q2401">Cows, Bulls</string>
+    <string name="se1q2402">Horses/Donkeys/Mules</string>
+    <string name="se1q2403">Goats</string>
+    <string name="se1q2404">Sheep</string>
+    <string name="se1q2405">Chicken/Poultry</string>
+    <string name="se1q2406">Buffalo</string>
+    <string name="se1q2407">Camels</string>
+
+    <string name="se1q25">Does any member of this household have a bank account?</string>
+    <string name="se1q2501">Yes</string>
+    <string name="se1q2502">No</string>
+    <string name="se1q2598">Don’t Know</string>
+
+    <!-- Section 1 (SES) End -->
+
+
+    <!-- Section 2 (MRH) End -->
+
+    <!-- Question Text Start -->
+    <string name='Q_se2q0'>se2q0</string>
+    <string name='Q_se2q1'>se2q1</string>
+    <string name='Q_se2q2'>se2q2</string>
+    <string name='Q_se2q3'>se2q3</string>
+    <string name='Q_se2q4'>se2q4</string>
+    <string name='Q_se2q5'>se2q5</string>
+    <string name='Q_se2q6'>se2q6</string>
+    <string name='Q_se2q7'>se2q7</string>
+    <string name='Q_se2q8'>se2q8</string>
+    <string name='Q_se2q9'>se2q9</string>
+    <string name='Q_se2q10'>se2q10</string>
+    <string name='Q_se2title'>se2title</string>
+    <!-- Question Text End -->
+
+    <string name="section2mothersreproductivehistory_mainheading">Section 2: Mother’s Reproductive History </string>
+
+    <string name="se2title">Ask this information from Mother. </string>
+
+    <string name="se2q0">Education level of the mother</string>
+    <string name="se2q001">None</string>
+    <string name="se2q002">Pre-Primary</string>
+    <string name="se2q003">Primary (1–5)</string>
+    <string name="se2q004">Middle (6–8)</string>
+    <string name="se2q005">Secondary (9–10)</string>
+    <string name="se2q006">Intermediate (9–10)</string>
+    <string name="se2q007">Graduation (9–10)</string>
+    <string name="se2q008">Masters</string>
+    <string name="se2q009">Ph.D</string>
+
+    <string name="se2q1">Marital Status of the mother</string>
+    <string name="se2q101">Married</string>
+    <string name="se2q102">Widowed</string>
+    <string name="se2q103">Divorced</string>
+    <string name="se2q104">Separated</string>
+
+    <string name="se2q2">Occupation of the mother</string>
+    <string name="se2q201">None</string>
+    <string name="se2q202">Unskilled Manual labor</string>
+    <string name="se2q203">Skilled Manual labor</string>
+    <string name="se2q204">Professional</string>
+    <string name="se2q205">Student</string>
+    <string name="se2q206">Housewife</string>
+    <string name="se2q207">Unemployed</string>
+
+    <string name="se2q3">Age at the time of marriage (years)</string>
+
+    <string name="se2q4">Number of pregnancies</string>
+
+    <string name="se2q5">Number of deliveries including last</string>
+
+    <string name="se2q6">Age of mother at the time of first birth</string>
+
+    <string name="se2q7">Type of delivery (Last)?</string>
+    <string name="se2q701">Spontaneous vaginal delivery</string>
+    <string name="se2q702">Assisted vaginal delivery (vacuum/forceps)</string>
+    <string name="se2q703">Caesarean Section</string>
+
+    <string name="se2q8">What is the birth order of the baby among siblings?</string>
+
+    <string name="se2q9">Did you ever have a preterm birth previously? (gestational age &lt; 37 weeks)</string>
+    <string name="se2q901">Yes</string>
+    <string name="se2q902">No</string>
+
+    <string name="se2q10">Did you ever have a low birth weight baby previously (&lt;2500gm)?</string>
+    <string name="se2q1001">Yes</string>
+    <string name="se2q1002">No</string>
+
+    <!-- Section 2 (MRH) End -->
+
+
+    <!-- Section 3 (ANC) End -->
+
+    <!-- Question Text Start -->
+    <string name='Q_se3q0'>se3q0</string>
+    <string name='Q_se3q1'>se3q1</string>
+    <string name='Q_se3q10'>se3q10</string>
+    <string name='Q_se3q11'>se3q11</string>
+    <string name='Q_se3q12'>se3q12</string>
+    <string name='Q_se3q13'>se3q13</string>
+    <string name='Q_se3q14'>se3q14</string>
+    <string name='Q_se3q15'>se3q15</string>
+    <string name='Q_se3q16'>se3q16</string>
+    <string name='Q_se3q17'>se3q17</string>
+    <string name='Q_se3q18'>se3q18</string>
+    <string name='Q_se3q19'>se3q19</string>
+    <string name='Q_se3q2'>se3q2</string>
+    <string name='Q_se3q20'>se3q20</string>
+    <string name='Q_se3q21'>se3q21</string>
+    <string name='Q_se3q22'>se3q22</string>
+    <string name='Q_se3q23'>se3q23</string>
+    <string name='Q_se3q24'>se3q24</string>
+    <string name='Q_se3q25'>se3q25</string>
+    <string name='Q_se3q26'>se3q26</string>
+    <string name='Q_se3q3'>se3q3</string>
+    <string name='Q_se3q4'>se3q4</string>
+    <string name='Q_se3q5'>se3q5</string>
+    <string name='Q_se3q501'>se3q501</string>
+    <string name='Q_se3q502'>se3q502</string>
+    <string name='Q_se3q503'>se3q503</string>
+    <string name='Q_se3q504'>se3q504</string>
+    <string name='Q_se3q505'>se3q505</string>
+    <string name='Q_se3q506'>se3q506</string>
+    <string name='Q_se3q507'>se3q507</string>
+    <string name='Q_se3q508'>se3q508</string>
+    <string name='Q_se3q509'>se3q509</string>
+    <string name='Q_se3q510'>se3q510</string>
+    <string name='Q_se3q511'>se3q511</string>
+    <string name='Q_se3q6'>se3q6</string>
+    <string name='Q_se3q7'>se3q7</string>
+    <string name='Q_se3q8'>se3q8</string>
+    <string name='Q_se3q9'>se3q9</string>
+    <string name='Q_se3title'>se3title</string>
+    <!-- Question Text End -->
+
+    <string name="section3antenatalcareanc_mainheading">Section 3: Antenatal Care (ANC): Antenatal Care (ANC)</string>
+
+    <string name="se3title">Ask this information from Mother.</string>
+
+    <string name="se3q0">Did you seek antenatal care for the last pregnancy?</string>
+    <string name="se3q001">Yes</string>
+    <string name="se3q002">No</string>
+
+    <string name="se3q1">Consulted for ANC with  Probe for responses  [Multiple Responses]</string>
+    <string name="se3q101">Gynaecologist</string>
+    <string name="se3q102">Other doctor</string>
+    <string name="se3q103">Nurse</string>
+    <string name="se3q104">CHW</string>
+    <string name="se3q105">LHW</string>
+    <string name="se3q106">CMW</string>
+    <string name="se3q107">LHV</string>
+    <string name="se3q108">TBA</string>
+    <string name="se3q196">Other (specify)</string>
+
+    <string name="se3q2">Place for ANC seeking  [Multiple Responses]</string>
+    <string name="se3q2title1">Home</string>
+    <string name="se3q201">Respondent’s home</string>
+    <string name="se3q202">Other home</string>
+    <string name="se3q2title2">Public Medical Sector</string>
+    <string name="se3q203">Government hospital</string>
+    <string name="se3q204">Government clinic</string>
+    <string name="se3q205">Mother and child health center</string>
+    <string name="se3q2961">Other public (specify)</string>
+    <string name="se3q2title3">Private Medical Sector</string>
+    <string name="se3q206">Private hospital</string>
+    <string name="se3q207">Private clinic</string>
+    <string name="se3q208">Private maternity home</string>
+    <string name="se3q2962">Other private (specify)</string>
+    <string name="se3q2963">Other (specify) Name of place</string>
+
+    <string name="se3q3">How many weeks or months pregnant were you when you first received antenatal care during last pregnancy?  Record in completed months or weeks. If “9 months” or later, record 9</string>
+    <string name="se3q301">Weeks</string>
+    <string name="se3q302">Months</string>
+    <string name="se3q399">Don’t know</string>
+
+    <string name="se3q4">How many times did you receive antenatal care during last pregnancy?  Probe to identify the number of times antenatal care was received. If a range is given, record the minimum number of times antenatal care received.</string>
+    <string name="se3q401">Number of times</string>
+    <string name="se3q499">Don’t know</string>
+
+    <string name="se3q5">As part of your antenatal care during your pregnancy, were any of the following done at least once:  (Ask about each option and circle all positive responses)</string>
+    <string name="se3q501">Were you weighted</string>
+    <string name="se3q501a">YES</string>
+    <string name="se3q501b">NO</string>
+    <string name="se3q502">Was your BP measured</string>
+    <string name="se3q502a">YES</string>
+    <string name="se3q502b">NO</string>
+    <string name="se3q503">Did you give urine sample</string>
+    <string name="se3q503a">YES</string>
+    <string name="se3q503b">NO</string>
+    <string name="se3q504">Did you give blood sample</string>
+    <string name="se3q504a">YES</string>
+    <string name="se3q504b">NO</string>
+    <string name="se3q505">Ultrasound</string>
+    <string name="se3q505a">YES</string>
+    <string name="se3q505b">NO</string>
+    <string name="se3q506">Received counseling on nutrition</string>
+    <string name="se3q506a">YES</string>
+    <string name="se3q506b">NO</string>
+    <string name="se3q507">Did you receive any maternal nutritional Supplement</string>
+    <string name="se3q507a">YES</string>
+    <string name="se3q507b">NO</string>
+    <string name="se3q508">Received counseling on breastfeeding</string>
+    <string name="se3q508a">YES</string>
+    <string name="se3q508b">NO</string>
+    <string name="se3q509">Received counseling on family planning</string>
+    <string name="se3q509a">YES</string>
+    <string name="se3q509b">NO</string>
+    <string name="se3q510">None of the above</string>
+    <string name="se3q510a">YES</string>
+    <string name="se3q510b">NO</string>
+    <string name="se3q511">Other(specify)</string>
+    <string name="se3q511a">YES</string>
+    <string name="se3q511b">NO</string>
+
+    <string name="se3q6">Did you receive tetanus injection during your last pregnancy?</string>
+    <string name="se3q601">Yes</string>
+    <string name="se3q602">NO</string>
+
+    <string name="se3q7">How many times did you receive tetanus injection during your last pregnancy?</string>
+    <string name="se3q701">Number of times</string>
+    <string name="se3q799">Don’t know</string>
+
+    <string name="se3q8">Did you receive iron folic acid (IFA) during your last pregnancy?</string>
+    <string name="se3q801">YES</string>
+    <string name="se3q802">NO</string>
+
+    <string name="se3q9">At what time of pregnancy did you start taking IFA?</string>
+    <string name="se3q901">1st Trimester</string>
+    <string name="se3q902">2nd Trimester</string>
+    <string name="se3q903">3rd Trimester</string>
+
+    <string name="se3q10">Who advised you to take any iron folic acid (IFA) while you were pregnant?</string>
+    <string name="se3q1001">Gynaecologist</string>
+    <string name="se3q1002">Other doctor</string>
+    <string name="se3q1003">Nurse</string>
+    <string name="se3q1004">CHW</string>
+    <string name="se3q1005">LHW</string>
+    <string name="se3q1006">CMW</string>
+    <string name="se3q1007">LHV</string>
+    <string name="se3q1008">TBA</string>
+    <string name="se3q1096">Other (Specify)</string>
+
+    <string name="se3q11">From Where did you get iron acid (IFA) while you were pregnant? </string>
+    <string name="se3q11title1">Public Medical Sector</string>
+    <string name="se3q1101">Government hospital</string>
+    <string name="se3q1102">Government health center</string>
+    <string name="se3q1103">Government health post</string>
+    <string name="se3q1104">Community Health worker</string>
+    <string name="se3q1105">Govt. mobile/ outreach clinic</string>
+    <string name="se3q11961">Other public medical</string>
+    <string name="se3q11title2">Private Medical Sector</string>
+    <string name="se3q1106">Private hospital/ Clinic</string>
+    <string name="se3q1107">Private physician</string>
+    <string name="se3q1108">Private pharmacy</string>
+    <string name="se3q1109">Community health worker( non-government)</string>
+    <string name="se3q1110">Non-govt. mobile clinic</string>
+    <string name="se3q11962">Other private medical (specify)</string>
+    <string name="se3q11title3">Other source</string>
+    <string name="se3q1111">Relative/Friends</string>
+    <string name="se3q1112">Shop/Market/Welfare Distribution</string>
+    <string name="se3q1113">Traditional Practitioner</string>
+    <string name="se3q11963">Other (specify)</string>
+
+    <string name="se3q12">How often did you take IFA during your last pregnancy?</string>
+    <string name="se3q1201">Daily</string>
+    <string name="se3q1202">Once a week</string>
+    <string name="se3q1203">Biweekly</string>
+    <string name="se3q1204">Monthly</string>
+    <string name="se3q1205">Rarely</string>
+
+    <string name="se3q13">How many months or days did you take IFA?</string>
+    <string name="se3q1301">Months</string>
+    <string name="se3q1302">Days</string>
+
+    <string name="se3q14">Have you ever taken multivitamin products during your last pregnancy?</string>
+    <string name="se3q1401">Yes</string>
+    <string name="se3q1402">No</string>
+
+    <string name="se3q15">Who advised to take any multivitamin products while you were pregnant?</string>
+    <string name="se3q1501">Gynaecologist</string>
+    <string name="se3q1502">Other doctor</string>
+    <string name="se3q1503">Nurse</string>
+    <string name="se3q1504">CHW</string>
+    <string name="se3q1505">LHW</string>
+    <string name="se3q1506">CMW</string>
+    <string name="se3q1507">LHV</string>
+    <string name="se3q1508">TBA</string>
+    <string name="se3q1596">Other (specify)</string>
+
+    <string name="se3q16">From Where did you get multivitamin products while you were pregnant?  [Multiple Responses]</string>
+    <string name="se3q16title1">Public Medical Sector</string>
+    <string name="se3q1601">Government hospital</string>
+    <string name="se3q1602">Government health center</string>
+    <string name="se3q1603">Government health post</string>
+    <string name="se3q1604">Community Health worker</string>
+    <string name="se3q1605">Govt. mobile/ outreach clinic</string>
+    <string name="se3q16961">Other public medical (specify)</string>
+    <string name="se3q16title2">Private Medical Sector</string>
+    <string name="se3q1606">Private hospital/ Clinic</string>
+    <string name="se3q1607">Private physician</string>
+    <string name="se3q1608">Private pharmacy</string>
+    <string name="se3q1609">Community health worker( non-government)</string>
+    <string name="se3q1610">Non-govt. mobile clinic</string>
+    <string name="se3q16962">Other private medical (specify)</string>
+    <string name="se3q16title3">Other source</string>
+    <string name="se3q1611">Relative/Friends</string>
+    <string name="se3q1612">Shop/Market/Welfare Distribution</string>
+    <string name="se3q1613">Traditional Practitioner</string>
+    <string name="se3q16963">Other (specify)</string>
+
+    <string name="se3q17">How often did you take Multivitamin products during your last pregnancy?</string>
+    <string name="se3q1701">Daily</string>
+    <string name="se3q1702">Once a week</string>
+    <string name="se3q1703">Biweekly</string>
+    <string name="se3q1704">Monthly</string>
+    <string name="se3q1705">Rarely</string>
+
+    <string name="se3q18">How many months or days did you take Multivitamin products?</string>
+    <string name="se3q1801">Months</string>
+    <string name="se3q1802">Days</string>
+
+    <string name="se3q19">Have you ever taken calcium tablets while you were pregnant?</string>
+    <string name="se3q1901">Yes</string>
+    <string name="se3q1902">No</string>
+
+    <string name="se3q20">Who advised to take calcium tables while you were pregnant?</string>
+    <string name="se3q2001">Gynaecologist</string>
+    <string name="se3q2002">Other doctor</string>
+    <string name="se3q2003">Nurse</string>
+    <string name="se3q2004">CHW</string>
+    <string name="se3q2005">LHW</string>
+    <string name="se3q2006">CMW</string>
+    <string name="se3q2007">LHV</string>
+    <string name="se3q2008">TBA</string>
+    <string name="se3q2096">Other (Specify)</string>
+
+    <string name="se3q21">From Where did you get calcium tables while you were pregnant?  [Multiple Responses]</string>
+    <string name="se3q21title1">Public Medical Sector</string>
+    <string name="se3q2101">Government hospital</string>
+    <string name="se3q2102">Government health center</string>
+    <string name="se3q2103">Government health post</string>
+    <string name="se3q2104">Community Health worker</string>
+    <string name="se3q2105">Govt. mobile/ outreach clinic</string>
+    <string name="se3q21961">Other public medical (specify)</string>
+    <string name="se3q21title2">Private Medical Sector</string>
+    <string name="se3q2106">Private hospital/ Clinic</string>
+    <string name="se3q2107">Private physician</string>
+    <string name="se3q2108">Private pharmacy</string>
+    <string name="se3q2109">Community health worker( non-government)</string>
+    <string name="se3q2110">Non-govt. mobile clinic</string>
+    <string name="se3q21962">Other private medical (specify)</string>
+    <string name="se3q21title3">Other source</string>
+    <string name="se3q2111">Relative/Friends</string>
+    <string name="se3q2112">Shop/Market/Welfare Distribution</string>
+    <string name="se3q2113">Traditional Practitioner</string>
+    <string name="se3q21963">Other (specify)</string>
+
+    <string name="se3q22">How often did you take calcium tablets during your last pregnancy?</string>
+    <string name="se3q2201">Daily</string>
+    <string name="se3q2202">Once a week</string>
+    <string name="se3q2203">Biweekly</string>
+    <string name="se3q2204">Monthly</string>
+    <string name="se3q2205">Rarely</string>
+
+    <string name="se3q23">How many months or days did you take calcium tablets?</string>
+    <string name="se3q2301">Months</string>
+    <string name="se3q2302">Days</string>
+
+    <string name="se3q24">Was deworming tablet given to you during your last pregnancy?</string>
+    <string name="se3q2401">Yes</string>
+    <string name="se3q2402">No</string>
+
+    <string name="se3q25">Did you use the deworming tablets?</string>
+    <string name="se3q2501">Yes</string>
+    <string name="se3q2502">No</string>
+
+    <string name="se3q26">Did you feel you had night blindness (difficulty in seeing clearly in dusk) during your last pregnancy?</string>
+    <string name="se3q2601">Yes</string>
+    <string name="se3q2602">No</string>
+    <string name="se3q2603">Don’t Know</string>
+
+    <!-- Section 3 (ANC) End -->
+
+
+    <!-- Section 4 (PNC) End -->
+
+    <!-- Question Text Start -->
+    <string name='Q_se4q0'>se4q0</string>
+    <string name='Q_se4q1'>se4q1</string>
+    <string name='Q_se4q10'>se4q10</string>
+    <string name='Q_se4q11'>se4q11</string>
+    <string name='Q_se4q12'>se4q12</string>
+    <string name='Q_se4q13'>se4q13</string>
+    <string name='Q_se4q14'>se4q14</string>
+    <string name='Q_se4q15'>se4q15</string>
+    <string name='Q_se4q16'>se4q16</string>
+    <string name='Q_se4q17'>se4q17</string>
+    <string name='Q_se4q18'>se4q18</string>
+    <string name='Q_se4q2'>se4q2</string>
+    <string name='Q_se4q3'>se4q3</string>
+    <string name='Q_se4q4'>se4q4</string>
+    <string name='Q_se4q5'>se4q5</string>
+    <string name='Q_se4q6'>se4q6</string>
+    <string name='Q_se4q7'>se4q7</string>
+    <string name='Q_se4q8'>se4q8</string>
+    <string name='Q_se4q9'>se4q9</string>
+    <!-- Question Text End -->
+
+    <string name="section4deliverypostnatalcarepnc_mainheading">Section 4. Delivery &amp; Post Natal Care (PNC)</string>
+
+    <string name="se4q0">Delivery Type</string>
+    <string name="se4q001">Normal Vaginal Delivery</string>
+    <string name="se4q002">Cesarean Section</string>
+    <string name="se4q003">Vacuum Assisted Delivery</string>
+    <string name="se4q004">Forceps Assisted Delivery </string>
+
+    <string name="se4q1">Did the baby cry immediately after birth?</string>
+    <string name="se4q101">Yes</string>
+    <string name="se4q102">No</string>
+    <string name="se4q199">Don’t Know</string>
+
+    <string name="se4q2">What was done to make the baby cry?</string>
+    <string name="se4q201">Stimulation</string>
+    <string name="se4q202">Mouth to mouth (resuscitation)</string>
+    <string name="se4q203">AMBU bagging</string>
+    <string name="se4q299">Don’t know</string>
+    <string name="se4q296">Other (Specify)</string>
+
+    <string name="se4q3">Within one hour after birth, was (name of child) put directly on the bare skin of your chest?</string>
+    <string name="se4q301">Yes</string>
+    <string name="se4q302">No</string>
+    <string name="se4q399">Don’t Know</string>
+
+    <string name="se4q4">Before being placed on the bare skin of your chest, was the baby wrapped up?</string>
+    <string name="se4q401">Yes</string>
+    <string name="se4q402">No</string>
+    <string name="se4q499">Don’t Know</string>
+
+    <string name="se4q5">Was (name) dried or wiped soon after birth?</string>
+    <string name="se4q501">Yes</string>
+    <string name="se4q502">No</string>
+    <string name="se4q599">Don’t Know</string>
+
+    <string name="se4q6">How long after the birth was (name) bathed for the first time?  If “immediately” or less than 1 hour, record ‘000’.  If less than 24 hours, record hours.  If “1 day” or “next day”, probe: About how many hours after the delivery?  If “24 hours”, probe to ensure best estimate of less than 24 hours or 1 day.  If 24 hours or more, record days</string>
+    <string name="se4q601">Immediately/less than 1 hour</string>
+    <string name="se4q602">Hours</string>
+    <string name="se4q603">Days</string>
+    <string name="se4q697">Never bathed</string>
+    <string name="se4q699">Don’t Know</string>
+
+    <string name="se4q7">Did anyone check on your health after delivery?</string>
+    <string name="se4q701">Yes</string>
+    <string name="se4q702">No</string>
+
+    <string name="se4q8">Who checked your health after delivery  [Multiple Responses]</string>
+    <string name="se4q801">Gynaecologist</string>
+    <string name="se4q802">Other doctor</string>
+    <string name="se4q803">Nurse</string>
+    <string name="se4q896">Other (specify)</string>
+
+    <string name="se4q9">How long after delivery did the first of these checks happen?  If less than one day, record hours.  If less than one week, record days.  Otherwise, record weeks.</string>
+    <string name="se4q901">Hours</string>
+    <string name="se4q902">Days</string>
+    <string name="se4q903">Weeks</string>
+    <string name="se4q999">Don’t Know</string>
+
+    <string name="se4q10">How many times such check happen?</string>
+
+    <string name="se4q11">Purpose of this check   [Multiple Responses]</string>
+    <string name="se4q1101">Counseling on Nutrition</string>
+    <string name="se4q1102">Counseling on IYCF &amp; Breast Feeding</string>
+    <string name="se4q1103">Counseling on Family Planning</string>
+    <string name="se4q1104">Assessment for complications</string>
+    <string name="se4q1105">Referral to Health facility</string>
+    <string name="se4q1106">Treatment for mother</string>
+    <string name="se4q1196">Other (specify)</string>
+
+    <string name="se4q12">Did anyone check on (name of child) health?</string>
+    <string name="se4q1201">Yes</string>
+    <string name="se4q1202">No</string>
+
+    <string name="se4q13">Who checked the child’s health after delivery?  [Multiple Responses]</string>
+    <string name="se4q1301">Paediatrician</string>
+    <string name="se4q1302">Other doctor</string>
+    <string name="se4q1303">Nurse</string>
+    <string name="se4q1396">Other (specify)</string>
+
+    <string name="se4q14">How long after delivery did the first of these checks happen?  If less than one day, record hours. If less than one week, record days. Otherwise, record weeks.</string>
+    <string name="se4q1401">Hours</string>
+    <string name="se4q1402">Days</string>
+    <string name="se4q1403">Weeks</string>
+    <string name="se4q1499">Don’t Know</string>
+
+    <string name="se4q15">How many times such check happen?</string>
+
+    <string name="se4q16">Purpose of this check   [Multiple Responses]</string>
+    <string name="se4q1601">Vaccination</string>
+    <string name="se4q1602">Polio Drops</string>
+    <string name="se4q1603">Assessment for complications</string>
+    <string name="se4q1605">Referral to Health facility</string>
+    <string name="se4q1606">Treatment for child</string>
+    <string name="se4q1696">Other (specify)</string>
+
+    <string name="se4q17">After the cord was cut and until it fell off, was anything applied to the cord?</string>
+    <string name="se4q1701">Yes</string>
+    <string name="se4q1702">No</string>
+    <string name="se4q1799">Don’t Know</string>
+
+    <string name="se4q18">What was mostly applied to the cord?  [Multiple Responses]</string>
+    <string name="se4q1801">Chlorhexidine</string>
+    <string name="se4q1802">Other antiseptic (alcohol, spirit, gentian violet)</string>
+    <string name="se4q1803">Oil/butter</string>
+    <string name="se4q1804">Surma</string>
+    <string name="se4q1805">Ash</string>
+    <string name="se4q1806">Animal dung</string>
+    <string name="se4q1899">Don’t know</string>
+    <string name="se4q1896">Other (specify)</string>
+
+    <!-- Section 4 (PNC) End -->
+
+
+
 </resources>

@@ -9,8 +9,7 @@ import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.blf_screening.R
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper
 import edu.aku.hassannaqvi.blf_screening.core.MainApp
-import edu.aku.hassannaqvi.blf_screening.core.MainApp.appInfo
-import edu.aku.hassannaqvi.blf_screening.core.MainApp.formsWF
+import edu.aku.hassannaqvi.blf_screening.core.MainApp.*
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivityEndingBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -84,6 +83,11 @@ class EndingActivity : AppCompatActivity() {
             formsWF.setIstatus(statusValue);
             formsWF.setIstatus96x(bi.a0696x.text.toString());
             formsWF.setEndingdatetime(SimpleDateFormat("dd-MM-yy HH:mm").format(Date().time));
+        } else if (form == "SES") {
+
+            formsSES.setIstatus(statusValue);
+            formsSES.setIstatus96x(bi.a0696x.text.toString());
+            formsSES.setEndingdatetime(SimpleDateFormat("dd-MM-yy HH:mm").format(Date().time));
         }
     }
 
@@ -91,7 +95,12 @@ class EndingActivity : AppCompatActivity() {
 
         val db = appInfo.dbHelper
         var updcount = 0;
-        updcount = db.updateEndingWF()
+
+        if (form == "FP") {
+            updcount = db.updateEndingWF()
+        } else if (form == "SES") {
+            updcount = db.updateEndingSES()
+        }
         if (col_id == 0) {
             Toast.makeText(this, "Followup not updated", Toast.LENGTH_SHORT).show()
         } else {
