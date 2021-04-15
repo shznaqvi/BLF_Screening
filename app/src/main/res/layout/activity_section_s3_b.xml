@@ -502,7 +502,7 @@
                         android:hint="@string/se3q1802"
                         android:inputType="number"
                         android:maxLength="2"
-                        app:minValue="1"
+                        app:minValue="0"
                         app:maxValue="29"
                         app:type="range" />
                 </LinearLayout>
@@ -970,7 +970,7 @@
                         android:hint="@string/se3q2302"
                         android:inputType="number"
                         android:maxLength="2"
-                        app:minValue="1"
+                        app:minValue="0"
                         app:maxValue="29"
                         app:type="range" />
                 </LinearLayout>

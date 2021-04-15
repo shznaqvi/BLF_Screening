@@ -285,12 +285,12 @@ public class SectionS3BActivity extends AppCompatActivity {
         }
 
         if (bi.se3q1801.getText().toString().equals("0") && bi.se3q1802.getText().toString().equals("0")) {
-            Toast.makeText(this, "The sum of months and days cannot be zero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The sum of days and months cannot be zero", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if (bi.se3q2301.getText().toString().equals("0") && bi.se3q2302.getText().toString().equals("0")) {
-            Toast.makeText(this, "The sum of months and days cannot be zero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The sum of days and months cannot be zero", Toast.LENGTH_SHORT).show();
             return false;
         }
 

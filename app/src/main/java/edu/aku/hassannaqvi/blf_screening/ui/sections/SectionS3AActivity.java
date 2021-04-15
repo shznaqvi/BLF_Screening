@@ -327,7 +327,12 @@ public class SectionS3AActivity extends AppCompatActivity {
         }
 
         if (bi.se3q1301.getText().toString().equals("0") && bi.se3q1302.getText().toString().equals("0")) {
-            Toast.makeText(this, "The sum of months and days cannot be zero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "The sum of days and months cannot be zero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (bi.se3q301x.getText().toString().equals("0") && bi.se3q301x.getText().toString().equals("0")) {
+            Toast.makeText(this, "The sum of days and months cannot be zero", Toast.LENGTH_SHORT).show();
             return false;
         }
 

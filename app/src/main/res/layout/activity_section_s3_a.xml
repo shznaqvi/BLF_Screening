@@ -393,13 +393,13 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/se3q301"
                         android:inputType="number"
+                        android:maxLength="1"
                         android:tag="se3q301"
                         android:text='@{se3q399.checked ? "" : se3q301x.getText().toString()}'
                         android:visibility='@{se3q399.checked? View.GONE : View.VISIBLE}'
-                        android:maxLength="1"
-                        app:minValue="1"
                         app:maxValue="3"
-                        app:type="range"/>
+                        app:minValue="0"
+                        app:type="range" />
 
                     <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/se3q302x"
@@ -407,30 +407,22 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/se3q302"
                         android:inputType="number"
+                        android:maxLength="1"
                         android:tag="se3q302"
                         android:text='@{se3q399.checked ? "" : se3q302x.getText().toString()}'
                         android:visibility='@{se3q399.checked? View.GONE : View.VISIBLE}'
-                        android:maxLength="1"
-                        app:minValue="1"
                         app:maxValue="9"
-                        app:type="range"/>
+                        app:minValue="0"
+                        app:type="range" />
 
-                    <LinearLayout
-                        android:id="@+id/se3q399check"
+                    <CheckBox
+                        android:id="@+id/se3q399"
+                        style="@style/checkbox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:tag="0">
+                        android:tag="-1"
+                        android:text="@string/se3q399" />
 
-                        <CheckBox
-                            android:id="@+id/se3q399"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            style="@style/checkbox"
-                            android:tag="-1"
-                            android:text="@string/se3q399" />
-
-                    </LinearLayout>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -484,13 +476,13 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/se3q401"
                             android:inputType="number"
+                            android:maxLength="2"
                             android:tag="se3q401"
                             android:text='@{se3q401.checked ? se3q401x.getText().toString() : ""}'
                             android:visibility='@{se3q401.checked? View.VISIBLE : View.GONE}'
-                            android:maxLength="2"
-                            app:minValue="1"
                             app:maxValue="15"
-                            app:type="range"/>
+                            app:minValue="1"
+                            app:type="range" />
 
                         <RadioButton
                             android:id="@+id/se3q499"
@@ -1202,13 +1194,13 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/se3q701"
                             android:inputType="number"
+                            android:maxLength="1"
                             android:tag="se3q701"
                             android:text='@{se3q701.checked ? se3q701x.getText().toString() : ""}'
                             android:visibility='@{se3q701.checked? View.VISIBLE : View.GONE}'
-                            android:maxLength="1"
-                            app:minValue="1"
                             app:maxValue="5"
-                            app:type="range"/>
+                            app:minValue="1"
+                            app:type="range" />
 
                         <RadioButton
                             android:id="@+id/se3q799"
@@ -1702,21 +1694,21 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bottom">
 
-                    <TextView
-                        android:id="@+id/qtxt_se3q13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/q_se3q13"
-                        android:text="@string/se3q13"/>
+                        <TextView
+                            android:id="@+id/qtxt_se3q13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_se3q13"
+                            android:text="@string/se3q13" />
 
-                    <TextView
-                        android:id="@+id/q_se3q13"
-                        style="@style/quesNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/qtxt_se3q13"
-                        android:layout_alignBottom="@id/qtxt_se3q13"
-                        android:text="@string/Q_se3q13" />
+                        <TextView
+                            android:id="@+id/q_se3q13"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_se3q13"
+                            android:layout_alignBottom="@id/qtxt_se3q13"
+                            android:text="@string/Q_se3q13" />
                     </RelativeLayout>
 
                     <com.edittextpicker.aliazaz.EditTextPicker
@@ -1737,7 +1729,7 @@
                         android:hint="@string/se3q1302"
                         android:inputType="number"
                         android:maxLength="2"
-                        app:minValue="1"
+                        app:minValue="0"
                         app:maxValue="29"
                         app:type="range" />
 
