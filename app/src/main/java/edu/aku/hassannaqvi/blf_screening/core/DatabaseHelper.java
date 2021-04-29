@@ -1901,33 +1901,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Collection<FormsWF> getUnsyncedFormsWF() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
-        String[] columns = {
-                FormsWFTable._ID,
-                FormsWFTable.COLUMN_UID,
-                FormsWFTable.COLUMN_SYSDATE,
-                FormsWFTable.COLUMN_ISTATUS,
-                FormsWFTable.COLUMN_ISTATUS96x,
-                FormsWFTable.COLUMN_ENDINGDATETIME,
-
-                FormsWFTable.COLUMN_SWFA01,
-                FormsWFTable.COLUMN_SWFA02,
-                FormsWFTable.COLUMN_SWFA03,
-                FormsWFTable.COLUMN_SWFA04,
-                FormsWFTable.COLUMN_SWFA05,
-                FormsWFTable.COLUMN_SWFB01,
-                FormsWFTable.COLUMN_SWFB02,
-                FormsWFTable.COLUMN_SWFC,
-                FormsWFTable.COLUMN_SWFD,
-                FormsWFTable.COLUMN_SWFE,
-                FormsWFTable.COLUMN_SWFF,
-                FormsWFTable.COLUMN_GPSLAT,
-                FormsWFTable.COLUMN_GPSLNG,
-                FormsWFTable.COLUMN_GPSDATE,
-                FormsWFTable.COLUMN_GPSACC,
-                FormsWFTable.COLUMN_DEVICETAGID,
-                FormsWFTable.COLUMN_DEVICEID,
-                FormsWFTable.COLUMN_APPVERSION,
-        };
+        String[] columns = null;
 
         String whereClause = FormsWFTable.COLUMN_SYNCED + " is null OR " + FormsWFTable.COLUMN_SYNCED + " = '' ";
         // String whereClause = null;
