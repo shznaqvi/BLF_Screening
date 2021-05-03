@@ -2906,7 +2906,7 @@ public class FormsWF extends LiveData<FormsWF> {
                 this.wfb201 = json.getString("wfb201");
                 this.wfb202 = json.getString("wfb202");
                 this.wfb203 = json.getString("wfb20396x");
-                this.wfb20396x = json.getString("");
+                this.wfb20396x = json.getString("wfb20396x");
                 this.wfb204 = json.getString("wfb204");
                 this.wfb205 = json.getString("wfb205");
                 this.wfb20596x = json.getString("wfb20596x");
