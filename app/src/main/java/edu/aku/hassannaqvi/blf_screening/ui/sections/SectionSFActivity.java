@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -28,7 +29,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract;
@@ -36,6 +40,8 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionSfBinding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
+import edu.aku.hassannaqvi.blf_screening.models.Sites;
+import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.DateUtils;
 import edu.aku.hassannaqvi.blf_screening.workers.DataUpWorkerSF;
@@ -45,10 +51,12 @@ import static edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt.contextBackActi
 
 public class SectionSFActivity extends AppCompatActivity {
     ActivitySectionSfBinding bi;
+    private DatabaseHelper db;
     Intent oF = null;
     private boolean EligibilityFlag;
     private String mmrno;
     private boolean SfFlag;
+    private List<String> siteName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,20 @@ public class SectionSFActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_sf);
         bi.setCallback(this);
         setupSkip();
+
+        db = MainApp.appInfo.getDbHelper();
+        siteName = new ArrayList<String>() {
+            {
+                add("....");
+            }
+        };
+
+        Collection<Sites> dc = db.getSites();
+        for (Sites s : dc) {
+            siteName.add(s.getSiteName());
+        }
+
+        bi.siteName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, siteName));
     }
 
     public void checkEligibility() {
@@ -583,6 +605,8 @@ public class SectionSFActivity extends AppCompatActivity {
         String sf105 = sf1[1];
         MainApp.formsSF.setSf104(sf104);
         MainApp.formsSF.setSf105(sf105);
+
+        MainApp.formsSF.setSfSite(bi.siteName.getSelectedItem().toString().trim());
 
         MainApp.formsSF.setSf2(bi.sf2.getText().toString());
         MainApp.formsSF.setSf3(bi.sf3.getText().toString());

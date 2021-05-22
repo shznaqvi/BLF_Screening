@@ -418,6 +418,15 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
                     new GetAllData(mContext, "fetchEnrollments", syncListAdapter, list).execute();
 
+                    // Getting Followups
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+
+                    new GetAllData(mContext, "Sites", syncListAdapter, list).execute();
+
                 }
 
                 listActivityCreated = false;

@@ -23,6 +23,8 @@ public class WFB108Contract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_DAY_NO      = "dayNo";
         public static final String COLUMN_WFB108_A    = "wfb108a";
+        public static final String COLUMN_WFB108_A2    = "wfb108a2";
+        public static final String COLUMN_WFB108_A296X    = "wfb108a296x";
         public static final String COLUMN_WFB108_B    = "wfb108b";
         public static final String COLUMN_WFB108_C    = "wfb108c";
         public static final String COLUMN_WFB108_D    = "wfb108d";

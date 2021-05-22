@@ -104,7 +104,7 @@
                 android:visibility="gone"
                 tools:visibility="visible">
 
-                <!-- s1q1  Input-Numeric   -->
+                <!-- s1q1 Input-Numeric   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVs1q1"
                     style="@style/cardView">
@@ -145,6 +145,46 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- study site   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVSiteName"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
+
+                            <TextView
+                                android:id="@+id/qtxt_s1qss"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_s1qss"
+                                android:text="@string/s1qss" />
+
+                            <TextView
+                                android:id="@+id/q_s1qss"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_s1qss"
+                                android:layout_alignBottom="@id/qtxt_s1qss"
+                                android:text="@string/Q_s1qss" />
+                        </RelativeLayout>
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/s1qss"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/s1qss"
+                            android:inputType="number" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- s1q3  Input   -->
                 <androidx.cardview.widget.CardView
@@ -908,6 +948,79 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <!-- s1q17a  Radio   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVs1q17a"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
+
+                            <TextView
+                                android:id="@+id/qtxt_s1q17a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_s1q17a"
+                                android:text="@string/s1q17a" />
+
+                            <TextView
+                                android:id="@+id/q_s1q17a"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_s1q17a"
+                                android:layout_alignBottom="@id/qtxt_s1q17a"
+                                android:text="@string/Q_s1q17a" />
+                        </RelativeLayout>
+
+                        <RadioGroup
+                            android:id="@+id/s1q17a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/s1q17a01"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wfa10601" />
+
+                            <RadioButton
+                                android:id="@+id/s1q17a02"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wfa10602" />
+
+                            <RadioButton
+                                android:id="@+id/s1q17a03"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wfa10602" />
+
+                            <RadioButton
+                                android:id="@+id/s1q17a96"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/s1q17a96" />
+
+                            <EditText
+                                android:id="@+id/s1q17a96x"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                android:hint="@string/s1q17a96"
+                                android:tag="wfa10696"
+                                android:text='@{s1q17a96.checked ? s1q17a96x.getText().toString() : ""}'
+                                android:visibility='@{s1q17a96.checked? View.VISIBLE : View.GONE}' />
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- s1q18  Radio   -->
                 <androidx.cardview.widget.CardView

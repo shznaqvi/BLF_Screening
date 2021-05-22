@@ -10,6 +10,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsSESContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.SitesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.WFB108Contract;
@@ -197,6 +198,7 @@ public final class CreateTable {
             childFollowupContract.childFollowupTable.COLUMN_FUPDONEDT + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_S1Q501 + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE + " TEXT, " +
+            childFollowupContract.childFollowupTable.COLUMN_STUDY_SITE + " TEXT, " +
             childFollowupContract.childFollowupTable.COLUMN_STATUS + " INTEGER " +
             ");";
 
@@ -210,6 +212,8 @@ public final class CreateTable {
             WFB108Contract.WFB108Table.COLUMN_SYSDATE + " TEXT, " +
             WFB108Contract.WFB108Table.COLUMN_DEVICE_ID + " TEXT, " +
             WFB108Contract.WFB108Table.COLUMN_WFB108_A + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_A2 + " TEXT, " +
+            WFB108Contract.WFB108Table.COLUMN_WFB108_A296X + " TEXT, " +
             WFB108Contract.WFB108Table.COLUMN_WFB108_B + " TEXT, " +
             WFB108Contract.WFB108Table.COLUMN_WFB108_C + " TEXT, " +
             WFB108Contract.WFB108Table.COLUMN_WFB108_D + " TEXT, " +
@@ -252,5 +256,10 @@ public final class CreateTable {
     public static final String SQL_CREATE_ENROLLMENT = "CREATE TABLE " + EnrollmentsContract.enrollmentsTable.TABLE_NAME + "("
             + EnrollmentsContract.enrollmentsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + EnrollmentsContract.enrollmentsTable.COLUMN_S1Q2 + " TEXT"
+            + " );";
+
+    public static final String SQL_CREATE_SITES = "CREATE TABLE " + SitesContract.sitesTable.TABLE_NAME + "("
+            + SitesContract.sitesTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + SitesContract.sitesTable.COLUMN_SITENAME + " TEXT"
             + " );";
 }

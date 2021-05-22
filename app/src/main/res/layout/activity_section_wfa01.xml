@@ -149,6 +149,49 @@
                 </androidx.cardview.widget.CardView>
 
 
+                <!-- study site   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVSiteName"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom">
+
+                            <TextView
+                                android:id="@+id/qtxt_s1qss"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/q_s1qss"
+                                android:text="@string/s1qss" />
+
+                            <TextView
+                                android:id="@+id/q_s1qss"
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/qtxt_s1qss"
+                                android:layout_alignBottom="@id/qtxt_s1qss"
+                                android:text="@string/Q_s1qss" />
+                        </RelativeLayout>
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/studySite"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/s1qss"
+                            android:inputType="number"
+                            android:enabled="false"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
                 <!-- wfa103  Input   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVwfa103"

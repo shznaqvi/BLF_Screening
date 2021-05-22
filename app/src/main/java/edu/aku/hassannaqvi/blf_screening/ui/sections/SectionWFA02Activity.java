@@ -65,15 +65,12 @@ public class SectionWFA02Activity extends AppCompatActivity {
 
             Clear.clearAllFields(bi.fldGrpCVwfa204);
             Clear.clearAllFields(bi.fldGrpCVwfa205);
-            Clear.clearAllFields(bi.fldGrpCVwfa206);
             bi.fldGrpCVwfa204.setVisibility(View.VISIBLE);
             bi.fldGrpCVwfa205.setVisibility(View.VISIBLE);
-            bi.fldGrpCVwfa206.setVisibility(View.VISIBLE);
 
             if (id == bi.wfa20302.getId()) {
                 bi.fldGrpCVwfa204.setVisibility(View.GONE);
                 bi.fldGrpCVwfa205.setVisibility(View.GONE);
-                bi.fldGrpCVwfa206.setVisibility(View.GONE);
             }
 
         });
@@ -117,11 +114,13 @@ public class SectionWFA02Activity extends AppCompatActivity {
         if (UpdateDB()) {
             finish();
 
-            if (bi.wfa20302.isChecked()) {
+            startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
+
+            /*if (bi.wfa20302.isChecked()) {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
             } else {
                 startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
-            }
+            }*/
         }
     }
 

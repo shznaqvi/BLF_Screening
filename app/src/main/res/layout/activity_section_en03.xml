@@ -186,6 +186,12 @@
                             android:text="@string/s3q206" />
 
                         <RadioButton
+                            android:id="@+id/s3q207"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/s3q207" />
+
+                        <RadioButton
                             android:id="@+id/s3q2096"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

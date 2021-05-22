@@ -71,6 +71,17 @@ public class SectionS4Activity extends AppCompatActivity {
             }
         });
 
+
+        //se4q3
+        bi.se4q3.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.se4q302.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVse4q4);
+                bi.fldGrpCVse4q4.setVisibility(View.GONE);
+            } else {
+                bi.fldGrpCVse4q4.setVisibility(View.VISIBLE);
+            }
+        });
+
         //se4q7
         bi.se4q7.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == bi.se4q702.getId()) {

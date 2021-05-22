@@ -66,6 +66,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
             case "fetchEnrollments":
                 position = 3;
                 break;
+            case "Sites":
+                position = 4;
+                break;
         }
         list.get(position).settableName(syncClass);
     }
@@ -99,6 +102,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 break;
             case "fetchEnrollments":
                 position = 3;
+                break;
+            case "Sites":
+                position = 4;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -135,6 +141,12 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     tableName = "fetchEnrollments";
                     position = 3;
                     break;
+
+                case "Sites":
+                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
+                    tableName = "sites";
+                    position = 4;
+                    break;
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -156,6 +168,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
             switch (syncClass) {
                 case "Users":
                 case "fetchEnrollments":
+                case "Sites":
                     try {
                         json.put("table", tableName);
                     } catch (JSONException e1) {
@@ -240,6 +253,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncEnrollments(jsonArray);
                             position = 3;
+                            break;
+                        case "Sites":
+                            jsonArray = new JSONArray(result);
+                            insertCount = db.syncSites(jsonArray);
+                            position = 4;
                             break;
                     }
 

@@ -158,7 +158,6 @@ public class SectionWFB01Activity extends AppCompatActivity {
             wfa108Days = 1;
         }
 
-
         bi.HeaderTextview.setText("Number of Days: " + wfa108Days);
 
         Toast.makeText(this, "pFD: " + pFD, Toast.LENGTH_LONG).show();
@@ -214,6 +213,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
                 }
             });
 
+            cardBinding.qtxtWfb1081a2.setText(String.format(Locale.ENGLISH, "Day %d: Medium of administrating study supplements", i));
             // 2 elaboration
             /*CardView qb_cv = (CardView) ll_inner.getChildAt(0);
             CardView qb_cv2 = (CardView) ll_inner.getChildAt(1);
@@ -417,7 +417,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
 
         wfb108 = new ArrayList<>();
         int wfb108INT = bi.llwfb108.getChildCount();
-        String wfb108a, wfb108b, wfb108c, wfb108d;
+        String wfb108a, wfb108a2, wfb108b, wfb108c, wfb108d;
 
         if (wfb108INT > 0) {
             ArrayList<WFB108> WFBsubModels = new ArrayList<>();
@@ -431,6 +431,18 @@ public class SectionWFB01Activity extends AppCompatActivity {
                         wfb108a = "2";
                     } else {
                         wfb108a = "-1";
+                    }
+
+                    if (bind.wfb1081a201.isChecked()) {
+                        wfb108a2 = "1";
+                    } else if (bind.wfb1081a202.isChecked()) {
+                        wfb108a2 = "2";
+                    } else if (bind.wfb1081a203.isChecked()) {
+                        wfb108a2 = "3";
+                    } else if (bind.wfb1081a296.isChecked()) {
+                        wfb108a2 = "96";
+                    } else {
+                        wfb108a2 = "-1";
                     }
 
                     if (bind.wfb1081b01.isChecked()) {
@@ -471,6 +483,8 @@ public class SectionWFB01Activity extends AppCompatActivity {
                             new WFB108(
                                     MainApp.formsWF.getSysdate(),
                                     wfb108a.trim().isEmpty() ? "-1" : wfb108a.trim(),
+                                    wfb108a2.trim().isEmpty() ? "-1" : wfb108a2.trim(),
+                                    bind.wfb1081a296x.getText().toString().trim().isEmpty() ? "-1" : bind.wfb1081a296x.getText().toString(),
                                     wfb108b.trim().isEmpty() ? "-1" : wfb108b.trim(),
                                     wfb108c.trim().isEmpty() ? "-1" : wfb108c.trim(),
                                     wfb108d.trim().isEmpty() ? "-1" : wfb108d.trim(),
@@ -531,6 +545,22 @@ public class SectionWFB01Activity extends AppCompatActivity {
         ConstraintLayout cl_WFB108 = (ConstraintLayout) ll.getChildAt(position);
         CardView cv_WFB108 = (CardView) cl_WFB108.getChildAt(0);
         LinearLayout lli_WFB108 = (LinearLayout) cv_WFB108.getChildAt(0);
+
+        // For A2 question start
+        LinearLayout ll_WFB108a2 = (LinearLayout) lli_WFB108.getChildAt(1);
+        CardView cv_WFB108a2 = (CardView) ll_WFB108a2.getChildAt(0);
+        LinearLayout ll_WFB108a2_inner = (LinearLayout) cv_WFB108a2.getChildAt(0);
+        RadioGroup rg_a2 = (RadioGroup) ll_WFB108a2_inner.getChildAt(1);
+        RadioButton rb_a2 = (RadioButton) rg_a2.getChildAt(3);
+        EditText ed_a2 = (EditText) rg_a2.getChildAt(4);
+        if (rb_a2.isChecked() && ed_a2.getText().toString().trim().isEmpty()) {
+            ed_a2.setError("Please fill it");
+            ed_a2.requestFocus();
+            return false;
+        }
+        // For A2 question end
+
+        // For D question start
         CardView cvi_WFB108 = (CardView) lli_WFB108.getChildAt(2);
         LinearLayout ll_inner_inner = (LinearLayout) cvi_WFB108.getChildAt(0);
         RadioGroup rg = (RadioGroup) ll_inner_inner.getChildAt(1);
@@ -548,6 +578,7 @@ public class SectionWFB01Activity extends AppCompatActivity {
             ed2.requestFocus();
             return false;
         }
+        // For D question end
 
         return true;
     }

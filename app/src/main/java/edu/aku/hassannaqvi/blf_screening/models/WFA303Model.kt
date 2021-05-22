@@ -6,5 +6,5 @@ data class WFA303Model(var sysdate: String, var wfa30301: String? = "-1", var wf
 data class SubModel(var disease: String, var submodel: ArrayList<WFA303Model>)
 
 
-data class WFB108(var sysdate: String, var wfb1081a: String? = "-1", var wfb1081b: String? = "-1", var wfb1081c: String? = "-1", var wfb1081d: String? = "-1", var wfb1081d5: String? = "-1", var wfb1081d96: String? = "-1")
+data class WFB108(var sysdate: String, var wfb1081a: String? = "-1", var wfb1081a2: String? = "-1", var wfb1081a296: String? = "-1", var wfb1081b: String? = "-1", var wfb1081c: String? = "-1", var wfb1081d: String? = "-1", var wfb1081d5: String? = "-1", var wfb1081d96: String? = "-1")
 data class WFBSubModel(var wfb108: String, var submodel2: ArrayList<WFB108>)

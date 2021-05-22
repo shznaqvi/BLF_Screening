@@ -19,6 +19,7 @@ public class FormsWF extends LiveData<FormsWF> {
 
     private final String projectName = "blf";
 
+    public String studySite = "";
     public String wfa101 = "";
     public String wfa102 = "";
     public String wfa103 = "";
@@ -434,6 +435,13 @@ public class FormsWF extends LiveData<FormsWF> {
     public FormsWF() {
     }
 
+    public String getStudySite() {
+        return studySite;
+    }
+
+    public void setStudySite(String studySite) {
+        this.studySite = studySite;
+    }
 
     public String getWfa101() {
         return wfa101;
@@ -2348,7 +2356,8 @@ public class FormsWF extends LiveData<FormsWF> {
         JSONObject json = new JSONObject();
 
         try {
-            json.put("wfa101", wfa101)
+            json.put("studySite", studySite)
+                    .put("wfa101", wfa101)
                     .put("wfa102", wfa102)
                     .put("wfa103", wfa103)
                     .put("wfa10401", wfa10401)
@@ -2680,6 +2689,7 @@ public class FormsWF extends LiveData<FormsWF> {
                 JSONObject json = null;
                 json = new JSONObject(string);
 
+                this.studySite = json.getString("studySite");
                 this.wfa101 = json.getString("wfa101");
                 this.wfa102 = json.getString("wfa102");
                 this.wfa103 = json.getString("wfa103");

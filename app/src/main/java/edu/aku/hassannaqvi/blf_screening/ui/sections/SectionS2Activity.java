@@ -72,9 +72,45 @@ public class SectionS2Activity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         };
-
         bi.se2q3.addTextChangedListener(textwatcher);
         bi.se2q4.addTextChangedListener(textwatcher);
+
+
+
+        TextWatcher textwatcher2 = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.length() > 0) {
+                    Toast.makeText(getApplication(), "Entered Value = " + s, Toast.LENGTH_SHORT).show();
+                    if (Integer.parseInt(s.toString()) == 1) {
+                        Clear.clearAllFields(bi.fldGrpCVse2q9);
+                        Clear.clearAllFields(bi.fldGrpCVse2q10);
+                        bi.fldGrpCVse2q9.setVisibility(View.GONE);
+                        bi.fldGrpCVse2q10.setVisibility(View.GONE);
+                    } else {
+                        bi.fldGrpCVse2q9.setVisibility(View.VISIBLE);
+                        bi.fldGrpCVse2q10.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    bi.fldGrpCVse2q9.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVse2q10.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        bi.se2q4.addTextChangedListener(textwatcher2);
+        bi.se2q5.addTextChangedListener(textwatcher2);
+
     }
 
     private void setupSkips() {

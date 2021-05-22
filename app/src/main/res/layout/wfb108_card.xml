@@ -91,6 +91,83 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <!-- wfb1081a2  Radio   -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fldGrpCVwfb1081a2"
+                        style="@style/cardView">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bottom">
+
+                                <TextView
+                                    android:id="@+id/qtxt_wfb1081a2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toEndOf="@id/q_wfb1081a2"
+                                    android:text="@string/wfb1081a2" />
+
+                                <TextView
+                                    android:id="@+id/q_wfb1081a2"
+                                    style="@style/quesNum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@id/qtxt_wfb1081a2"
+                                    android:layout_alignBottom="@id/qtxt_wfb1081a2"
+                                    android:text="@string/Q_wfb1081a2" />
+
+                            </RelativeLayout>
+
+                            <RadioGroup
+                                android:id="@+id/wfb1081a2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RadioButton
+                                    android:id="@+id/wfb1081a201"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/wfb1081a201" />
+
+                                <RadioButton
+                                    android:id="@+id/wfb1081a202"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/wfb1081a202" />
+
+                                <RadioButton
+                                    android:id="@+id/wfb1081a203"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/wfb1081a203" />
+
+                                <RadioButton
+                                    android:id="@+id/wfb1081a296"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/wfb1081a296" />
+
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/wfb1081a296x"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/wfb1081a296"
+                                    android:tag="wfb1081a296"
+                                    android:text='@{wfb1081a296.checked ? wfb1081a296x.getText().toString() : ""}'
+                                    android:visibility='@{wfb1081a296.checked? View.VISIBLE : View.GONE}' />
+
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                     <!-- wfb1081b  Radio   -->
                     <androidx.cardview.widget.CardView

@@ -27,6 +27,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsSFContract.FormsSFTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsSLContract.FormsSLTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract.FormsWFTable;
+import edu.aku.hassannaqvi.blf_screening.contracts.SitesContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.blf_screening.contracts.VersionAppContract.VersionAppTable;
@@ -42,6 +43,7 @@ import edu.aku.hassannaqvi.blf_screening.models.FormsSF;
 import edu.aku.hassannaqvi.blf_screening.models.FormsSL;
 import edu.aku.hassannaqvi.blf_screening.models.FormsWF;
 import edu.aku.hassannaqvi.blf_screening.models.MWFB108;
+import edu.aku.hassannaqvi.blf_screening.models.Sites;
 import edu.aku.hassannaqvi.blf_screening.models.Users;
 import edu.aku.hassannaqvi.blf_screening.models.VersionApp;
 import edu.aku.hassannaqvi.blf_screening.models.WFA303Model;
@@ -63,6 +65,7 @@ import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_VER
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_WFB108;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_SES;
 import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_ENROLLMENT;
+import static edu.aku.hassannaqvi.blf_screening.utils.CreateTable.SQL_CREATE_SITES;
 
 
 /**
@@ -97,6 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_WFB108);
         db.execSQL(SQL_CREATE_SES);
         db.execSQL(SQL_CREATE_ENROLLMENT);
+        db.execSQL(SQL_CREATE_SITES);
     }
 
     @Override
@@ -1710,6 +1714,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(WFB108Contract.WFB108Table.COLUMN_SYSDATE, MainApp.formsWF.getSysdate());
         values.put(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID, MainApp.formsWF.getDeviceID());
         values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A, wfb108.getWfb1081a());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A2, wfb108.getWfb1081a2());
+        values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A296X, wfb108.getWfb1081a296());
         values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_B, wfb108.getWfb1081b());
         values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_C, wfb108.getWfb1081c());
         values.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D, wfb108.getWfb1081d());
@@ -1858,6 +1864,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(childFollowupContract.childFollowupTable.COLUMN_MRNO_M, followups.getMrno_m().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_S1Q501, followups.getS1q501().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_P_FOLLOWUP_DATE, followups.getpFollowUpDate().trim());
+                values.put(childFollowupContract.childFollowupTable.COLUMN_STUDY_SITE, followups.getStudySite().trim());
                 values.put(childFollowupContract.childFollowupTable.COLUMN_STATUS, 0);
 
 
@@ -2094,6 +2101,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 WFB108Contract.WFB108Table.COLUMN_SYSDATE,
                 WFB108Contract.WFB108Table.COLUMN_DEVICE_ID,
                 WFB108Contract.WFB108Table.COLUMN_WFB108_A,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_A2,
+                WFB108Contract.WFB108Table.COLUMN_WFB108_A296X,
                 WFB108Contract.WFB108Table.COLUMN_WFB108_B,
                 WFB108Contract.WFB108Table.COLUMN_WFB108_C,
                 WFB108Contract.WFB108Table.COLUMN_WFB108_D,
@@ -2120,12 +2129,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     having,                    // don't filter by row groups
                     orderBy                    // The sort order
             );
-            c.moveToFirst();
+
+
+            //c.moveToFirst();
+
             while (c.moveToNext()) {
-                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+                Log.d(TAG, "WFB108 Records: " + c.getCount());
                 MWFB108 mwfb108 = new MWFB108();
                 allWFB108.add(mwfb108.Hydrate(c));
             }
+            // stuff
+            /*do {
+                Log.d(TAG, "WFB108 Records: " + c.getCount());
+                MWFB108 mwfb108 = new MWFB108();
+                allWFB108.add(mwfb108.Hydrate(c));
+
+            } while (c.moveToNext());*/
+
+
         } catch (SQLiteException e) {
 
             Toast.makeText(mContext, "ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -2309,5 +2330,82 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return insertCount;
+    }
+
+    public int syncSites(JSONArray sitesList) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SitesContract.sitesTable.TABLE_NAME, null, null);
+
+        int insertCount = 0;
+
+        Toast.makeText(mContext, "Sites length: " + sitesList.length(), Toast.LENGTH_LONG).show();
+
+        if (sitesList.length() > 0) {
+
+            try {
+                for (int i = 0; i < sitesList.length(); i++) {
+
+                    JSONObject jsonObjectSites = sitesList.getJSONObject(i);
+
+                    Sites sites = new Sites();
+                    sites.Sync(jsonObjectSites);
+
+                    ContentValues values = new ContentValues();
+                    values.put(SitesContract.sitesTable.COLUMN_SITENAME, sites.getSiteName().trim());
+
+                    long rowID = db.insert(SitesContract.sitesTable.TABLE_NAME, null, values);
+
+                    if (rowID != -1) insertCount++;
+                }
+
+            } catch (Exception e) {
+                Log.d(TAG, "syncSites(e): " + e);
+                db.close();
+            } finally {
+                db.close();
+            }
+        }
+        return insertCount;
+    }
+
+    public Collection<Sites> getSites() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                SitesContract.sitesTable.COLUMN_SITENAME
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = SitesContract.sitesTable.COLUMN_ID + " ASC";
+
+        Collection<Sites> allsites = new ArrayList<>();
+        try {
+            c = db.query(
+                    SitesContract.sitesTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allsites.add(new Sites().Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allsites;
     }
 }

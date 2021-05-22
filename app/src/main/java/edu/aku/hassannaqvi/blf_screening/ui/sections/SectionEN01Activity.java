@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -25,7 +26,10 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.blf_screening.R;
@@ -34,6 +38,7 @@ import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionEn01Binding;
 import edu.aku.hassannaqvi.blf_screening.models.FormsEN;
+import edu.aku.hassannaqvi.blf_screening.models.Sites;
 import edu.aku.hassannaqvi.blf_screening.workers.FetchChildMRWorker;
 
 import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsEN;
@@ -41,6 +46,7 @@ import static edu.aku.hassannaqvi.blf_screening.core.MainApp.formsEN;
 public class SectionEN01Activity extends AppCompatActivity {
 
     ActivitySectionEn01Binding bi;
+    private DatabaseHelper db;
     Intent oF = null;
 
     @Override
@@ -49,7 +55,6 @@ public class SectionEN01Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_en01);
         bi.setCallback(this);
         setupSkips();
-
     }
 
     private void setupSkips() {
@@ -163,6 +168,8 @@ public class SectionEN01Activity extends AppCompatActivity {
 
         //setGPS(this);
 
+        formsEN.setSfSite(bi.s1qss.getText().toString().trim().isEmpty() ? "-1" : bi.s1qss.getText().toString());
+
         formsEN.setS1q1(bi.s1q1.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1.getText().toString());
 
         formsEN.setS1q2(bi.s1q2.getText().toString().trim().isEmpty() ? "-1" : bi.s1q2.getText().toString());
@@ -203,6 +210,14 @@ public class SectionEN01Activity extends AppCompatActivity {
         formsEN.setS1q17(bi.s1q1701.isChecked() ? "1"
                 : bi.s1q1702.isChecked() ? "2"
                 : "-1");
+
+        formsEN.setS1q17a(bi.s1q17a01.isChecked() ? "1"
+                : bi.s1q17a02.isChecked() ? "2"
+                : bi.s1q17a03.isChecked() ? "3"
+                : bi.s1q17a96.isChecked() ? "96"
+                : "-1");
+
+        formsEN.setS1q17a96x(bi.s1q17a96x.getText().toString().trim().isEmpty() ? "-1" : bi.s1q17a96x.getText().toString());
 
         formsEN.setS1q18(bi.s1q1801.isChecked() ? "1"
                 : bi.s1q1802.isChecked() ? "2"
@@ -312,6 +327,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                                         if (jsonObject.getString("sf18").equals("1") && jsonObject.getString("s1q8").equals("null")) {
 
                                             bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
+                                            bi.s1qss.setText(jsonObject.getString("sfSite"));
                                             bi.s1q7.setText(jsonObject.getString("sl5"));
                                             bi.s1q8.setText(jsonObject.getString("sl4"));
                                             String dt501 = jsonObject.getString("sf6a").split(" ")[0];
@@ -323,6 +339,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                                             // CONTINUE VISIBLE
                                             bi.btnContinue.setVisibility(View.VISIBLE);
                                             bi.s1q1.setEnabled(false);
+                                            bi.s1qss.setEnabled(false);
                                             bi.s1q7.setEnabled(false);
                                             bi.s1q8.setEnabled(false);
                                             bi.s1q501.setEnabled(false);

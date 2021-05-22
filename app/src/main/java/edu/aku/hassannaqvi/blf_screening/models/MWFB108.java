@@ -28,6 +28,8 @@ public class MWFB108 extends LiveData<MWFB108> {
     private String synced_date = "";
     private String deviceid = "";
     private String wfb108a = "";
+    private String wfb108a2 = "";
+    private String wfb108a296x = "";
     private String wfb108b = "";
     private String wfb108c = "";
     private String wfb108d = "";
@@ -104,6 +106,22 @@ public class MWFB108 extends LiveData<MWFB108> {
         this.wfb108a = wfb108a;
     }
 
+    public String getWfb108a2() {
+        return wfb108a2;
+    }
+
+    public void setWfb108a2(String wfb108a2) {
+        this.wfb108a2 = wfb108a2;
+    }
+
+    public String getWfb108a296x() {
+        return wfb108a296x;
+    }
+
+    public void setWfb108a296x(String wfb108a296x) {
+        this.wfb108a296x = wfb108a296x;
+    }
+
     public String getWfb108b() {
         return wfb108b;
     }
@@ -162,6 +180,8 @@ public class MWFB108 extends LiveData<MWFB108> {
         this.synced_date = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_SYNCED_DATE);
         this.deviceid = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID);
         this.wfb108a = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_A);
+        this.wfb108a2 = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_A2);
+        this.wfb108a296x = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_A296X);
         this.wfb108b = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_B);
         this.wfb108c = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_C);
         this.wfb108d = jsonObject.getString(WFB108Contract.WFB108Table.COLUMN_WFB108_D);
@@ -181,6 +201,8 @@ public class MWFB108 extends LiveData<MWFB108> {
         this.sysdate = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_SYSDATE));
         this.deviceid = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID));
         this.wfb108a = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_A));
+        this.wfb108a2 = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_A2));
+        this.wfb108a296x = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_A296X));
         this.wfb108b = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_B));
         this.wfb108c = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_C));
         this.wfb108d = cursor.getString(cursor.getColumnIndex(WFB108Contract.WFB108Table.COLUMN_WFB108_D));
@@ -205,17 +227,19 @@ public class MWFB108 extends LiveData<MWFB108> {
         try {
 
             json.put(WFB108Contract.WFB108Table.ID, this.id == null ? JSONObject.NULL : this.id);
-            json.put(WFB108Contract.WFB108Table.COLUMN_UID, this.id == null ? JSONObject.NULL : this.uid);
-            json.put(WFB108Contract.WFB108Table.COLUMN_UUID, this.id == null ? JSONObject.NULL : this.uuid);
-            json.put(WFB108Contract.WFB108Table.COLUMN_SYSDATE, this.id == null ? JSONObject.NULL : this.sysdate);
-            json.put(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID, this.id == null ? JSONObject.NULL : this.deviceid);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A, this.id == null ? JSONObject.NULL : this.wfb108a);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_B, this.id == null ? JSONObject.NULL : this.wfb108b);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_C, this.id == null ? JSONObject.NULL : this.wfb108c);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D, this.id == null ? JSONObject.NULL : this.wfb108d);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D5X, this.id == null ? JSONObject.NULL : this.wfb108d5x);
-            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D96X, this.id == null ? JSONObject.NULL : this.wfb108d96x);
-            json.put(WFB108Contract.WFB108Table.COLUMN_DAY_NO, this.id == null ? JSONObject.NULL : this.dayNo);
+            json.put(WFB108Contract.WFB108Table.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
+            json.put(WFB108Contract.WFB108Table.COLUMN_UUID, this.uuid == null ? JSONObject.NULL : this.uuid);
+            json.put(WFB108Contract.WFB108Table.COLUMN_SYSDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
+            json.put(WFB108Contract.WFB108Table.COLUMN_DEVICE_ID, this.deviceid == null ? JSONObject.NULL : this.deviceid);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A, this.wfb108a == null ? JSONObject.NULL : this.wfb108a);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A2, this.wfb108a2 == null ? JSONObject.NULL : this.wfb108a2);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_A296X, this.wfb108a296x == null ? JSONObject.NULL : this.wfb108a296x);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_B, this.wfb108b == null ? JSONObject.NULL : this.wfb108b);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_C, this.wfb108c == null ? JSONObject.NULL : this.wfb108c);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D, this.wfb108d == null ? JSONObject.NULL : this.wfb108d);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D5X, this.wfb108d5x == null ? JSONObject.NULL : this.wfb108d5x);
+            json.put(WFB108Contract.WFB108Table.COLUMN_WFB108_D96X, this.wfb108d96x == null ? JSONObject.NULL : this.wfb108d96x);
+            json.put(WFB108Contract.WFB108Table.COLUMN_DAY_NO, this.dayNo == null ? JSONObject.NULL : this.dayNo);
 
             return json;
         } catch (JSONException e) {

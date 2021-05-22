@@ -198,6 +198,7 @@ public class SectionEN03Activity extends AppCompatActivity {
                 : bi.s3q204.isChecked() ? "4"
                 : bi.s3q205.isChecked() ? "5"
                 : bi.s3q206.isChecked() ? "6"
+                : bi.s3q207.isChecked() ? "7"
                 : bi.s3q2096.isChecked() ? "96"
                 : "-1");
         MainApp.formsEN.setS3q2096x(bi.s3q2096x.getText().toString().trim().isEmpty() ? "-1" : bi.s3q2096x.getText().toString());

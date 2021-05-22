@@ -18,6 +18,7 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsENContract.FormsS3Table;
 public class FormsEN extends LiveData<FormsEN> {
 
     private final String projectName = "blf";
+    public String sfSite = "";
     public String s1q1 = "";
     public String s1q2 = "";
     public String s1q3 = "";
@@ -36,6 +37,8 @@ public class FormsEN extends LiveData<FormsEN> {
     public String s1q15 = "";
     public String s1q16 = "";
     public String s1q17 = "";
+    public String s1q17a = "";
+    public String s1q17a96x = "";
     public String s1q18 = "";
     public String s1q1802x = "";
     public String s1q1901 = "";
@@ -107,6 +110,14 @@ public class FormsEN extends LiveData<FormsEN> {
     public FormsEN() {
     }
 
+    public String getSfSite() {
+        return sfSite;
+    }
+
+    public void setSfSite(String sfSite) {
+        this.sfSite = sfSite;
+    }
+
     public String getS1q1() {
         return s1q1;
     }
@@ -114,7 +125,6 @@ public class FormsEN extends LiveData<FormsEN> {
     public void setS1q1(String s1q1) {
         this.s1q1 = s1q1;
     }
-
 
     public String getS1q2() {
         return s1q2;
@@ -266,6 +276,22 @@ public class FormsEN extends LiveData<FormsEN> {
 
     public void setS1q17(String s1q17) {
         this.s1q17 = s1q17;
+    }
+
+    public String getS1q17a() {
+        return s1q17a;
+    }
+
+    public void setS1q17a(String s1q17a) {
+        this.s1q17a = s1q17a;
+    }
+
+    public String getS1q17a96x() {
+        return s1q17a96x;
+    }
+
+    public void setS1q17a96x(String s1q17a96x) {
+        this.s1q17a96x = s1q17a96x;
     }
 
 
@@ -892,6 +918,7 @@ public class FormsEN extends LiveData<FormsEN> {
 
         try {
             json.put("s1q1", s1q1)
+                    .put("sfSite", sfSite)
                     .put("username", username)
                     .put("s1q2", s1q2)
                     .put("s1q3", s1q3)
@@ -910,6 +937,8 @@ public class FormsEN extends LiveData<FormsEN> {
                     .put("s1q15", s1q15)
                     .put("s1q16", s1q16)
                     .put("s1q17", s1q17)
+                    .put("s1q17a", s1q17a)
+                    .put("s1q17a96x", s1q17a96x)
                     .put("s1q18", s1q18)
                     .put("s1q1802x", s1q1802x)
                     .put("s1q1901", s1q1901)
@@ -1004,6 +1033,7 @@ public class FormsEN extends LiveData<FormsEN> {
                 json = new JSONObject(string);
 
                 this.s1q1 = json.getString("s1q1");
+                this.sfSite = json.getString("sfSite");
                 this.username = json.getString("username");
                 this.s1q2 = json.getString("s1q2");
                 this.s1q3 = json.getString("s1q3");
@@ -1022,6 +1052,8 @@ public class FormsEN extends LiveData<FormsEN> {
                 this.s1q15 = json.getString("s1q15");
                 this.s1q16 = json.getString("s1q16");
                 this.s1q17 = json.getString("s1q17");
+                this.s1q17a = json.getString("s1q17a");
+                this.s1q17a96x = json.getString("s1q17a96x");
                 this.s1q18 = json.getString("s1q18");
                 this.s1q1802x = json.getString("s1q1802x");
                 this.s1q1901 = json.getString("s1q1901");

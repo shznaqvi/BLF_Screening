@@ -552,7 +552,7 @@
     <string name="sf1509">Revisit after 8th Screening</string>
     <string name="sf150901">Yes</string>
     <string name="sf150902">No</string>
-    <string name="sf16">Do you have any plans to move from Karachi in next 5 months?</string>
+    <string name="sf16">Do you have any plans to move outside this area in next 5 months?</string>
     <string name="sf1601">Yes</string>
     <string name="sf1602">No</string>
     <string name="sf1698">Don’t know</string>
@@ -596,6 +596,7 @@
     <string name="section2newbornexamination_mainheading">SECTION 2: NEWBORN EXAMINATION</string>
     <string name="section3careofbaby_mainheading">Section 3: CARE OF BABY</string>
     <string name="s1q1">Study ID</string>
+    <string name="s1qss">Study Site</string>
     <string name="s1q2">Baby’s MR Number</string>
     <string name="s1q3">Name of the enrolled child</string>
     <string name="s1q4">Gender of the child</string>
@@ -614,13 +615,22 @@
     <string name="s1q13">Any other residential address:</string>
     <string name="s1q14">No. of the family members in HH</string>
     <string name="s1q15">No. of under 5 children in HH</string>
-    <string name="s1q16">Did the staff explained about the procedure of the supplement mixing  (breast milk only)</string>
+    <string name="s1q16">Did the staff explained about the procedure of the supplement mixing?</string>
     <string name="s1q1601">Yes</string>
     <string name="s1q1602">No</string>
+
     <string name="s1q17">Did the mother understand the entire procedure</string>
     <string name="s1q1701">Yes</string>
     <string name="s1q1702">No</string>
-    <string name="s1q18">Has the baby received the supplement? (Within 72hrs of life)</string>
+
+    <string name="s1q17a">What medium was used for administrating first dose of the supplement?</string>
+    <string name="s1q17a01">Expressed Breast Milk</string>
+    <string name="s1q17a02">Formula Milk</string>
+    <string name="s1q17a03">Water</string>
+    <string name="s1q17a96">Other (specify)</string>
+
+
+    <string name="s1q18">Has the baby received / tolerated the supplement? (Within 5 days of life)</string>
     <string name="s1q1801">Yes</string>
     <string name="s1q1802">No (If no, specify the reason)</string>
     <string name="s1q19">Date and Time of the supplement given</string>
@@ -656,6 +666,7 @@
     <string name="s3q204">Gripe water</string>
     <string name="s3q205">Animal milk</string>
     <string name="s3q206">Formula milk</string>
+    <string name="s3q207">Water</string>
     <string name="s3q2096">Other (specify)</string>
     <string name="s3q3">Did you feed first milk (colostrum/thick milk) to your baby?</string>
     <string name="s3q301">Yes</string>
@@ -767,19 +778,19 @@
     <string name="wfa20207">Baby is unable to feed properly</string>
     <string name="wfa20208">Baby cries a lot even after feeding</string>
     <string name="wfa20296b">Others Specify</string>
-    <string name="wfa203">Feeding method</string>
+    <string name="wfa203">Feeding Practices</string>
     <string name="wfa20301">Exclusive Breast feed</string>
     <string name="wfa20302">Formula feed</string>
     <string name="wfa20303">Mixed feeding: (Breast &amp; Formula milk)</string>
     <string name="wfa204">Breast Feeding</string>
     <string name="wfa20401">Direct Breastfeeding</string>
     <string name="wfa20402">Expressed Breast Milk (EBM)</string>
-    <string name="wfa205">Methods to give (EBM)</string>
+    <string name="wfa205">Methods to give (EBM/Formula feed)</string>
     <string name="wfa20501">Tube feeding</string>
     <string name="wfa20502">Cup and Spoon</string>
     <string name="wfa20503">Bottle feed</string>
     <string name="wfa20596">Others Specify</string>
-    <string name="wfa206">What is given to the baby to drink within 24 hours? [Multiple Responses]</string>
+    <string name="wfa206">What was given to the baby to drink within 24 hours? [Multiple Responses]</string>
     <string name="wfa20601">Plain water</string>
     <string name="wfa20602">Sugar or glucose water</string>
     <string name="wfa20603">Gripe water</string>
@@ -990,6 +1001,11 @@
     <string name="wfb1081a">Day 1: Have u given the supplement</string>
     <string name="wfb1081a01">Yes</string>
     <string name="wfb1081a02">No</string>
+    <string name="wfb1081a2">Day 1: Medium of administrating study supplements</string>
+    <string name="wfb1081a201">Expressed Breast Milk</string>
+    <string name="wfb1081a202">Formula feeding</string>
+    <string name="wfb1081a203">Water</string>
+    <string name="wfb1081a296">Other (Specify)</string>
     <string name="wfb1081b">Day 1: How much quantity have you given?</string>
     <string name="wfb1081b01">Full</string>
     <string name="wfb1081b02">Partial</string>
@@ -1155,6 +1171,7 @@
 
     <!-- Form 3 Questions Id's -->
     <string name='Q_s1q1'>s1q1</string>
+    <string name='Q_s1qss'>s1qss</string>
     <string name='Q_s1q10'>s1q10</string>
     <string name='Q_s1q11'>s1q11</string>
     <string name='Q_s1q12'>s1q12</string>
@@ -1163,6 +1180,7 @@
     <string name='Q_s1q15'>s1q15</string>
     <string name='Q_s1q16'>s1q16</string>
     <string name='Q_s1q17'>s1q17</string>
+    <string name='Q_s1q17a'>s1q17A</string>
     <string name='Q_s1q18'>s1q18</string>
     <string name='Q_s1q19'>s1q19</string>
     <string name='Q_s1q2'>s1q2</string>
@@ -1285,6 +1303,7 @@
     <string name='Q_wfb104'>wfb104</string>
     <string name='Q_wfb105'>wfb105</string>
     <string name='Q_wfb1081a'>wfb1081a</string>
+    <string name='Q_wfb1081a2'>wfb1081a2</string>
     <string name='Q_wfb1081b'>wfb1081b</string>
     <string name='Q_wfb1081c'>wfb1081c</string>
     <string name='Q_wfb1081d'>wfb1081d</string>
@@ -2136,7 +2155,7 @@
     <string name="se4q903">Weeks</string>
     <string name="se4q999">Don’t Know</string>
 
-    <string name="se4q10">How many times such check happen?</string>
+    <string name="se4q10">How many times such check happen till discharged?</string>
 
     <string name="se4q11">Purpose of this check   [Multiple Responses]</string>
     <string name="se4q1101">Counseling on Nutrition</string>
@@ -2166,7 +2185,7 @@
     <string name="se4q15">How many times such check happen?</string>
 
     <string name="se4q16">Purpose of this check   [Multiple Responses]</string>
-    <string name="se4q1601">Vaccination</string>
+    <string name="se4q1601">Vaccination/Routine Immunization</string>
     <string name="se4q1602">Polio Drops</string>
     <string name="se4q1603">Assessment for complications</string>
     <string name="se4q1605">Referral to Health facility</string>

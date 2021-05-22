@@ -24,6 +24,7 @@ public class FormsSF extends LiveData<FormsSF> {
     public String sf103 = "";
     public String sf104 = "";
     public String sf105 = "";
+    public String sfSite = "";
     public String sf2 = "";
     public String sf3 = "";
     public String sf4 = "";
@@ -168,6 +169,14 @@ public class FormsSF extends LiveData<FormsSF> {
     public FormsSF setSf105(String sf105) {
         this.sf105 = sf105;
         return this;
+    }
+
+    public String getSfSite() {
+        return sfSite;
+    }
+
+    public void setSfSite(String sfSite) {
+        this.sfSite = sfSite;
     }
 
     public String getSf2() {
@@ -770,6 +779,7 @@ public class FormsSF extends LiveData<FormsSF> {
                     .put("sf103", sf103)
                     .put("sf104", sf104)
                     .put("sf105", sf105)
+                    .put("sfSite", sfSite)
                     .put("sf2", sf2)
                     .put("sf3 ", sf3)
                     .put("sf4 ", sf4)
@@ -877,6 +887,7 @@ public class FormsSF extends LiveData<FormsSF> {
                 this.sf103 = json.getString("sf103");
                 this.sf104 = json.getString("sf104");
                 this.sf105 = json.getString("sf105");
+                this.sfSite = json.getString("sfSite");
                 this.sf2 = json.getString("sf2");
                 this.sf3 = json.getString("sf3");
                 this.sf4 = json.getString("sf4");

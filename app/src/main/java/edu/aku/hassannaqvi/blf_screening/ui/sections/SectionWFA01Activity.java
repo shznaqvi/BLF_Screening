@@ -192,6 +192,8 @@ public class SectionWFA01Activity extends AppCompatActivity {
         String str = bi.wfa10401.getText().toString().trim();
         FD = str.replace("-", "/");
 
+        formsWF.setStudySite(bi.studySite.getText().toString().trim().isEmpty() ? "-1" : bi.studySite.getText().toString());
+
         formsWF.setWfa101(bi.wfa101.getText().toString().trim().isEmpty() ? "-1" : bi.wfa101.getText().toString());
 
         //mrno = bi.wfa101.getText().toString().trim().isEmpty() ? "000-00-00" : bi.wfa101.getText().toString();
@@ -492,6 +494,8 @@ public class SectionWFA01Activity extends AppCompatActivity {
                         bi.wfa102.setText(followups.getString(followups.getColumnIndex("sf20")));
                         bi.wfa103.setText(followups.getString(followups.getColumnIndex("s1q3")));
                         bi.wfa105.setText(followups.getString(followups.getColumnIndex("curfupweek")));
+                        bi.studySite.setText(followups.getString(followups.getColumnIndex("studySite")));
+
                         bi.wfa105.setEnabled(true);
                         bi.llsectionwfa01.setVisibility(View.VISIBLE);
                         // CONTINUE VISIBLE
