@@ -127,7 +127,7 @@ public class SectionSFActivity extends AppCompatActivity {
                 EligibilityFlag = true;
                 bi.Flag01.setChecked(true);
                 bi.Flag02.setChecked(false);
-                bi.fldGrpCVsf14.setVisibility(View.VISIBLE);
+                //bi.fldGrpCVsf14.setVisibility(View.VISIBLE);
                 //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
             } else {
                 /*bi.sf1701.setChecked(false);
@@ -138,13 +138,14 @@ public class SectionSFActivity extends AppCompatActivity {
                 EligibilityFlag = false;
                 bi.Flag01.setChecked(false);
                 bi.Flag02.setChecked(true);
-                bi.fldGrpCVsf14.setVisibility(View.GONE);
-                Clear.clearAllFields(bi.fldGrpCVsf14);
+                //bi.fldGrpCVsf14.setVisibility(View.GONE);
+                //Clear.clearAllFields(bi.fldGrpCVsf14);
 
                 //    Toast.makeText(this, "Not Eligible", Toast.LENGTH_SHORT).show();
 
             }
         }
+        // removed && bi.sf1401.isChecked()
         if (/*(Integer.parseInt(bi.sf6.getText().toString()) > 18 && Integer.parseInt(bi.sf6.getText().toString()) < 45)
                     && Integer.parseInt(bi.sf701.getText().toString()) >= 37
                     && Integer.parseInt(bi.sf8.getText().toString()) >= 7
@@ -153,7 +154,7 @@ public class SectionSFActivity extends AppCompatActivity {
                     && bi.sf1102.isChecked()
                     && bi.sf130101.isChecked()
                     && bi.sf1602.isChecked()*/
-                (EligibilityFlag || SfFlag) && bi.sf1401.isChecked()) {
+                (EligibilityFlag || SfFlag)) {
             bi.sf1701.setChecked(true);
             bi.fldGrpCVsf18.setVisibility(View.VISIBLE);
             //     Toast.makeText(this, "Eligible", Toast.LENGTH_SHORT).show();
@@ -310,19 +311,19 @@ public class SectionSFActivity extends AppCompatActivity {
         });
 
 
-        bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
+        /*bi.sf14.setOnCheckedChangeListener(((radioGroup, i) -> {
             if (bi.sf14.getCheckedRadioButtonId() != -1) {
                 checkEligibility();
                 Clear.clearAllFields(bi.fldGrpCVsf18);
             }
-           /* if(bi.sf1401.isChecked()) {
+            if(bi.sf1401.isChecked()) {
                 SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
                 Clear.clearAllFields(bi.llsf1501);
             } else {
                 EligibilityFlag = false;
                 SectionSFActivity.this.Eligibility(EligibilityFlag && bi.sf1401.isChecked());
-            }*/
-        }));
+            }
+        }));*/
 
 
         bi.sf16.setOnCheckedChangeListener((radioGroup, i) -> {
@@ -680,12 +681,12 @@ public class SectionSFActivity extends AppCompatActivity {
                 : "-1");
         MainApp.formsSF.setSf139601x(bi.sf139601x.getText().toString());
 
-        MainApp.formsSF.setSf14(bi.sf1401.isChecked() ? "1"
+        /*MainApp.formsSF.setSf14(bi.sf1401.isChecked() ? "1"
                 : bi.sf1402.isChecked() ? "2"
                 : "-1");
-        MainApp.formsSF.setSf1402x(bi.sf1402x.getText().toString());
-/*
-        MainApp.formsSF.setSf1501(bi.sf150101.isChecked() ? "1"
+        MainApp.formsSF.setSf1402x(bi.sf1402x.getText().toString());*/
+
+       /* MainApp.formsSF.setSf1501(bi.sf150101.isChecked() ? "1"
                 : bi.sf150102.isChecked() ? "2"
                 : "-1");
 

@@ -1800,7 +1800,7 @@
 
 
                 <!-- sf14  Radio   -->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVsf14"
                     style="@style/cardView">
 
@@ -1866,7 +1866,7 @@
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
 
                 <!--<LinearLayout
@@ -2505,12 +2505,12 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <!-- android:visibility='@{sf1402.checked ? View.GONE : View.VISIBLE}' -->
                 <LinearLayout
                     android:id="@+id/llsf1501"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{sf1402.checked ? View.GONE : View.VISIBLE}'>
+                    android:orientation="vertical">
 
 
                     <!-- sf18  Radio   -->
