@@ -276,7 +276,6 @@ public class SectionWFA01Activity extends AppCompatActivity {
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
-
     }
 
     /*private void setGPS(Activity activity) {

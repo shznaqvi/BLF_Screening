@@ -493,7 +493,7 @@
     <string name="sf1301">None</string>
     <string name="sf130101">Yes</string>
     <string name="sf130102">No</string>
-    <string name="sf1302"> Baby tolerated oral feed? </string>
+    <string name="sf1302"> Baby does not tolerate oral feed? </string>
     <string name="sf130201">Yes</string>
     <string name="sf130202">No</string>
     <string name="sf1303"> Severe respiratory distress (PR&lt;20 breaths/min)</string>
@@ -630,13 +630,13 @@
     <string name="s1q17a96">Other (specify)</string>
 
 
-    <string name="s1q18">Has the baby received / tolerated the supplement? (Within 5 days of life)</string>
+    <string name="s1q18">Has the baby received / tolerated the supplement? (Within 7 days of life)</string>
     <string name="s1q1801">Yes</string>
     <string name="s1q1802">No (If no, specify the reason)</string>
     <string name="s1q19">Date and Time of the supplement given</string>
     <string name="s1q1901">Date (DD/MM/YYYY)</string>
     <string name="s1q1902">hours (24-hour format)</string>
-    <string name="s1q20">Has the baby tolerated the supplement? (Within 72hrs of life)</string>
+    <string name="s1q20">Has the baby tolerated the supplement? (Within 7 days of life)</string>
     <string name="s1q2001">Yes</string>
     <string name="s1q2002">No</string>
     <string name="s1q21">If No, What was the reason</string>
@@ -1039,7 +1039,7 @@
     <string name="wfb20504">Withdrawal from study</string>
     <string name="wfb20596">Others (specify)</string>
     <string name="wfb206">Reason of refusal or withdrawal</string>
-    <string name="wfb207">Total sachets received at this visit</string>
+    <string name="wfb207">Total sachets given for next follow up</string>
 
     <string name="sectionci_mainheading">Section C: Section I To be assessed in Week2, 4, 6, 10, 14, 18 and 20</string>
     <string name="wfc101">Status of Anthropometry</string>

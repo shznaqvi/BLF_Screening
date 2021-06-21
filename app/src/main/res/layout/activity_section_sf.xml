@@ -286,7 +286,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/q_site_name"
-                            android:text="@string/sf2" />
+                            android:text="Study Site" />
 
                         <TextView
                             android:id="@+id/q_site_name"

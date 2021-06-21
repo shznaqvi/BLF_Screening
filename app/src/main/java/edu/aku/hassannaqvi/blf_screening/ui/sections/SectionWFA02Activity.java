@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.util.Arrays;
+
 import edu.aku.hassannaqvi.blf_screening.R;
 import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
@@ -48,6 +50,11 @@ public class SectionWFA02Activity extends AppCompatActivity {
         wfa106 = intent.getIntExtra("wfa106", 0);
         FD = intent.getStringExtra("FD");
         pFollowUpDate = intent.getStringExtra("pFollowUpDate");
+
+        String[] weekarray = {"1", "2", "3", "4", "5", "6"};
+        if (!Arrays.asList(weekarray).contains(week)) {
+            startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
+        }
     }
 
 

@@ -798,7 +798,7 @@ public class SectionSFActivity extends AppCompatActivity {
         bi.wmError.setVisibility(View.GONE);
         bi.wmError.setText(null);
 
-        bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -3, "d"));
+        bi.sf6a01.setMinDate(DateUtils.calculatedDate(bi.sf101.getText().toString().replace("-", "/"), "dd/MM/yyyy", -6, "d"));
 
         bi.sf6a01.setMaxDate(bi.sf101.getText().toString().replace("-", "/"));
 

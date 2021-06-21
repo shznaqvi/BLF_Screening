@@ -184,10 +184,10 @@ public class SectionS2Activity extends AppCompatActivity {
         json.put("se2q5", bi.se2q5.getText().toString().trim().isEmpty() ? "-1" : bi.se2q5.getText().toString());
         json.put("se2q6", bi.se2q6.getText().toString().trim().isEmpty() ? "-1" : bi.se2q6.getText().toString());
 
-        json.put("se2q7", bi.se2q701.isChecked() ? "1"
+        /*json.put("se2q7", bi.se2q701.isChecked() ? "1"
                 : bi.se2q702.isChecked() ? "2"
                 : bi.se2q703.isChecked() ? "3"
-                :  "-1");
+                :  "-1");*/
 
         json.put("se2q8", bi.se2q8.getText().toString().trim().isEmpty() ? "-1" : bi.se2q8.getText().toString());
 

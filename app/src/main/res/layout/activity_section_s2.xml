@@ -461,7 +461,7 @@
             </androidx.cardview.widget.CardView>
 
             <!-- se2q7  Input-Numeric   -->
-            <androidx.cardview.widget.CardView
+            <!--<androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVse2q7"
                 style="@style/cardView">
 
@@ -518,7 +518,7 @@
                     </RadioGroup>
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
             <!-- se2q8  Radio   -->
             <androidx.cardview.widget.CardView

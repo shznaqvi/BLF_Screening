@@ -85,16 +85,18 @@ public class SectionEN01Activity extends AppCompatActivity {
         });
 
         bi.s1q18.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == bi.s1q1802.getId()) {
-                Clear.clearAllFields(bi.llGrpsec31);
+            if (checkedId == bi.s1q1801.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVs1q21);
+            } else {
+                Clear.clearAllFields(bi.fldGrpCVs1q19);
             }
         });
 
-        bi.s1q20.setOnCheckedChangeListener((group, checkedId) -> {
+        /*bi.s1q20.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != bi.s1q2002.getId()) {
                 Clear.clearAllFields(bi.fldGrpCVs1q21);
             }
-        });
+        });*/
 
     }
 
@@ -223,14 +225,14 @@ public class SectionEN01Activity extends AppCompatActivity {
                 : bi.s1q1802.isChecked() ? "2"
                 : "-1");
 
-        formsEN.setS1q1802x(bi.s1q1802x.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1802x.getText().toString());
+        //formsEN.setS1q1802x(bi.s1q1802x.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1802x.getText().toString());
 
         formsEN.setS1q1901(bi.s1q1901.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1901.getText().toString());
         formsEN.setS1q1902(bi.s1q1902.getText().toString().trim().isEmpty() ? "-1" : bi.s1q1902.getText().toString());
 
-        formsEN.setS1q20(bi.s1q2001.isChecked() ? "1"
+        /*formsEN.setS1q20(bi.s1q2001.isChecked() ? "1"
                 : bi.s1q2002.isChecked() ? "2"
-                : "-1");
+                : "-1");*/
 
         formsEN.setS1q21(bi.s1q2101.isChecked() ? "1"
                 : bi.s1q2102.isChecked() ? "2"
@@ -247,8 +249,10 @@ public class SectionEN01Activity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+        
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
+        }
 
         if (!bi.s1q8.getText().toString().isEmpty()) {
 
@@ -327,7 +331,7 @@ public class SectionEN01Activity extends AppCompatActivity {
                                         if (jsonObject.getString("sf18").equals("1") && jsonObject.getString("s1q8").equals("null")) {
 
                                             bi.s1q1.setText(String.format("%04d", jsonObject.getInt("sf20")));
-                                            bi.s1qss.setText(jsonObject.getString("sfSite"));
+                                            bi.s1qss.setText(jsonObject.getString("studySite"));
                                             bi.s1q7.setText(jsonObject.getString("sl5"));
                                             bi.s1q8.setText(jsonObject.getString("sl4"));
                                             String dt501 = jsonObject.getString("sf6a").split(" ")[0];

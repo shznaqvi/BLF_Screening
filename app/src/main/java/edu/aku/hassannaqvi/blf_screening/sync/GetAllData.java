@@ -183,7 +183,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "fetchMR":
                     try {
                         json.put("table", tableName);
-                        json.put("filter", "curfupdt is not null");
+                        json.put("filter", "curfupdt is not null and colFlag is NULL");
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }
