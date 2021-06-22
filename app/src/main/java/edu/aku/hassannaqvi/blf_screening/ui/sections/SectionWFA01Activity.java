@@ -224,8 +224,7 @@ public class SectionWFA01Activity extends AppCompatActivity {
                 : bi.wfa10802.isChecked() ? "2"
                 : "-1");
 
-        formsWF.setWfa109(bi.wfa10901.isChecked() ? "1"
-                : bi.wfa10902.isChecked() ? "2"
+        formsWF.setWfa109(bi.wfa10902.isChecked() ? "2"
                 : bi.wfa10903.isChecked() ? "3"
                 : bi.wfa10904.isChecked() ? "4"
                 : bi.wfa10905.isChecked() ? "5"

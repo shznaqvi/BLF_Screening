@@ -48,6 +48,37 @@ public class SectionEN03Activity extends AppCompatActivity {
 
         bi.fldGrpCVs3q9.setVisibility(MainApp.childAgeinHours > 24 ? View.VISIBLE : View.GONE);
 
+        bi.s3q1.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == bi.s3q102.getId()) {
+
+                Clear.clearAllFields(bi.fldGrpCVs3q3);
+                Clear.clearAllFields(bi.fldGrpCVs3q4);
+                Clear.clearAllFields(bi.fldGrpCVs3q5);
+                Clear.clearAllFields(bi.fldGrpCVs3q6);
+                Clear.clearAllFields(bi.fldGrpCVs3q7);
+                Clear.clearAllFields(bi.fldGrpCVs3q8);
+                Clear.clearAllFields(bi.fldGrpCVs3q9);
+
+                bi.fldGrpCVs3q3.setVisibility(View.GONE);
+                bi.fldGrpCVs3q4.setVisibility(View.GONE);
+                bi.fldGrpCVs3q5.setVisibility(View.GONE);
+                bi.fldGrpCVs3q6.setVisibility(View.GONE);
+                bi.fldGrpCVs3q7.setVisibility(View.GONE);
+                bi.fldGrpCVs3q8.setVisibility(View.GONE);
+                bi.fldGrpCVs3q9.setVisibility(View.GONE);
+
+            } else {
+
+                bi.fldGrpCVs3q3.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q4.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q5.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q6.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q7.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q8.setVisibility(View.VISIBLE);
+                bi.fldGrpCVs3q9.setVisibility(View.VISIBLE);
+            }
+        });
+
         bi.s3q3.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == bi.s3q301.getId()) {
                 Clear.clearAllFields(bi.fldGrpCVs3q4);

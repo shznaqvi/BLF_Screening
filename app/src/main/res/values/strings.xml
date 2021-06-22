@@ -790,7 +790,7 @@
     <string name="wfa20502">Cup and Spoon</string>
     <string name="wfa20503">Bottle feed</string>
     <string name="wfa20596">Others Specify</string>
-    <string name="wfa206">What was given to the baby to drink within 24 hours? [Multiple Responses]</string>
+    <string name="wfa206">What was given to the baby to drink within last 24 hours? [Multiple Responses]</string>
     <string name="wfa20601">Plain water</string>
     <string name="wfa20602">Sugar or glucose water</string>
     <string name="wfa20603">Gripe water</string>
