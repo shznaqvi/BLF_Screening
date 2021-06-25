@@ -86,14 +86,20 @@ public class SectionEN03Activity extends AppCompatActivity {
         });
 
         bi.s3q5.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.s3q505.getId()) {
+            if (checkedId == bi.s3q505.getId()) {
+                bi.fldGrpCVs3q6.setVisibility(View.VISIBLE);
+            } else {
                 Clear.clearAllFields(bi.fldGrpCVs3q6);
+                bi.fldGrpCVs3q6.setVisibility(View.GONE);
             }
         });
 
         bi.s3q7.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId != bi.s3q702.getId()) {
+            if (checkedId == bi.s3q702.getId()) {
+                bi.fldGrpCVs3q8.setVisibility(View.VISIBLE);
+            } else {
                 Clear.clearAllFields(bi.fldGrpCVs3q8);
+                bi.fldGrpCVs3q8.setVisibility(View.GONE);
             }
         });
 
