@@ -121,8 +121,14 @@ public class SectionWFA02Activity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-
-            startActivity(new Intent(this, SectionWFA03Activity.class).putExtra("week", week).putExtra("delivery_date", delivery_date).putExtra("fupdate", fupdate).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
+            startActivity(new Intent(this, SectionWFA03Activity.class)
+                    .putExtra("week", week)
+                    .putExtra("delivery_date", delivery_date)
+                    .putExtra("fupdate", fupdate)
+                    .putExtra("col_id", col_id)
+                    .putExtra("wfa106", wfa106)
+                    .putExtra("FD", FD)
+                    .putExtra("pFollowUpDate", pFollowUpDate));
 
             /*if (bi.wfa20302.isChecked()) {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false).putExtra("form", "FP").putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("pFollowUpDate", pFollowUpDate));
