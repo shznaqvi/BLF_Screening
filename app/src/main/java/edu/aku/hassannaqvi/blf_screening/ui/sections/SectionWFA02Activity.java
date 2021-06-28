@@ -18,8 +18,6 @@ import edu.aku.hassannaqvi.blf_screening.contracts.FormsWFContract;
 import edu.aku.hassannaqvi.blf_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.blf_screening.core.MainApp;
 import edu.aku.hassannaqvi.blf_screening.databinding.ActivitySectionWfa02Binding;
-import edu.aku.hassannaqvi.blf_screening.ui.other.EndingActivity;
-import edu.aku.hassannaqvi.blf_screening.ui.other.MainActivity;
 import edu.aku.hassannaqvi.blf_screening.utils.AppUtilsKt;
 
 public class SectionWFA02Activity extends AppCompatActivity {
@@ -53,7 +51,10 @@ public class SectionWFA02Activity extends AppCompatActivity {
 
         String[] weekarray = {"1", "2", "3", "4", "5", "6"};
         if (!Arrays.asList(weekarray).contains(week)) {
-            startActivity(new Intent(this, SectionWFCActivity.class).putExtra("week", week).putExtra("col_id", col_id).putExtra("wfa106", wfa106).putExtra("FD", FD).putExtra("delivery_date", delivery_date));
+            startActivity(new Intent(this, SectionWFCActivity.class)
+                    .putExtra("week", week).putExtra("col_id", col_id)
+                    .putExtra("wfa106", wfa106).putExtra("FD", FD)
+                    .putExtra("delivery_date", delivery_date));
         }
     }
 
