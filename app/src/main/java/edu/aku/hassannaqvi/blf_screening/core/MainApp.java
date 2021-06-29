@@ -24,7 +24,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import edu.aku.hassannaqvi.blf_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.blf_screening.location.LocationLiveData;
@@ -89,6 +92,8 @@ public class MainApp extends Application {
     public static FormsWF formsWF;
     public static FormsSES formsSES;
     public static JSONObject jsonSL;
+    public static String[] downloadData;
+    public static List<JSONArray> uploadData;
 
     public static String DeviceURL = "devices.php";
     public static String IMEI;

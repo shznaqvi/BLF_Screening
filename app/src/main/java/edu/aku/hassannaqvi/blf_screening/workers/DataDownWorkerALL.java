@@ -35,7 +35,7 @@ public class DataDownWorkerALL extends Worker {
     private static final Object APP_NAME = PROJECT_NAME;
     private final String TAG = "DataWorkerEN()";
 
-    // to be initialised by workParams
+/*    // to be initialised by workParams
     private final Context mContext;
     HttpURLConnection urlConnection;
     private String uploadTable;
@@ -45,16 +45,28 @@ public class DataDownWorkerALL extends Worker {
     private ProgressDialog pd;
     private int length;
     private Data data;
-    private String nTitle = "Enrolment";
+    private String nTitle = "Enrolment";*/
+
+    private final int position;
+    private final String uploadTable;
+    private final String uploadColumns;
+    private final String uploadWhere;
+    //private final String uploadColumns;
+    private final URL serverURL = null;
+    private final String nTitle = "Enrolment";
+    HttpURLConnection urlConnection;
+    private ProgressDialog pd;
+    private int length;
+    private Data data;
 
     public DataDownWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
-        mContext = context;
+        // to be initialised by workParams
         uploadTable = workerParams.getInputData().getString("table");
-        //uploadColumns = workerParams.getInputData().getString("columns");
-        uploadWhere = workerParams.getInputData().getString("where");
-
-
+        position = workerParams.getInputData().getInt("position", -2);
+        Log.d(TAG, "DataDownWorkerALL: position " + position);
+        uploadColumns = workerParams.getInputData().getString("select");
+        uploadWhere = workerParams.getInputData().getString("filter");
     }
 
     /*
@@ -72,14 +84,14 @@ public class DataDownWorkerALL extends Worker {
     public Result doWork() {
 
         Log.d(TAG, "doWork: Starting");
-        displayNotification(nTitle, "Starting upload");
+        //displayNotification(nTitle, "Starting upload");
 
         StringBuilder result = new StringBuilder();
 
         URL url = null;
         try {
             if (serverURL == null) {
-                url = new URL(MainApp._HOST_URL + "getData.php");
+                url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
             } else {
                 url = serverURL;
             }
@@ -104,8 +116,10 @@ public class DataDownWorkerALL extends Worker {
             JSONArray jsonParam = new JSONArray();
 
             jsonTable.put("table", uploadTable);
-            //jsonTable.put("select", uploadColumns);
+            jsonTable.put("select", uploadColumns);
             jsonTable.put("filter", uploadWhere);
+            //jsonTable.put("limit", "3");
+            //jsonTable.put("orderby", "rand()");
             //jsonSync.put(uploadData);
             jsonParam
                     .put(jsonTable);
@@ -122,7 +136,7 @@ public class DataDownWorkerALL extends Worker {
 
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 Log.d(TAG, "Connection Response: " + urlConnection.getResponseCode());
-                displayNotification(nTitle, "Connection Established");
+                //displayNotification(nTitle, "Connection Established");
 
                 length = urlConnection.getContentLength();
                 Log.d(TAG, "Content Length: " + length);
@@ -136,28 +150,44 @@ public class DataDownWorkerALL extends Worker {
                     result.append(line);
 
                 }
-                displayNotification(nTitle, "Received Data");
+
+                if (result.equals("[]")) {
+                    Log.d(TAG, "No data received from server: " + result);
+
+                    data = new Data.Builder()
+                            .putString("error", "No data received from server: " + result)
+                            .putInt("position", this.position)
+                            .build();
+                    return Result.failure(data);
+                }
+                //displayNotification(nTitle, "Received Data");
                 Log.d(TAG, "doWork(EN): " + result.toString());
             } else {
 
                 Log.d(TAG, "Connection Response (Server Failure): " + urlConnection.getResponseCode());
 
                 data = new Data.Builder()
-                        .putString("error", String.valueOf(urlConnection.getResponseCode())).build();
+                        .putString("error", String.valueOf(urlConnection.getResponseCode()))
+                        .putInt("position", this.position)
+                        .build();
                 return Result.failure(data);
             }
         } catch (java.net.SocketTimeoutException e) {
             Log.d(TAG, "doWork (Timeout): " + e.getMessage());
-            displayNotification(nTitle, "Timeout Error: " + e.getMessage());
+            //displayNotification(nTitle, "Timeout Error: " + e.getMessage());
             data = new Data.Builder()
-                    .putString("error", String.valueOf(e.getMessage())).build();
+                    .putString("error", String.valueOf(e.getMessage()))
+                    .putInt("position", this.position)
+                    .build();
             return Result.failure(data);
 
         } catch (IOException | JSONException e) {
             Log.d(TAG, "doWork (IO Error): " + e.getMessage());
-            displayNotification(nTitle, "IO Error: " + e.getMessage());
+            //displayNotification(nTitle, "IO Error: " + e.getMessage());
             data = new Data.Builder()
-                    .putString("error", String.valueOf(e.getMessage())).build();
+                    .putString("error", String.valueOf(e.getMessage()))
+                    .putInt("position", this.position)
+                    .build();
 
             return Result.failure(data);
 
@@ -167,35 +197,38 @@ public class DataDownWorkerALL extends Worker {
 
         //Do something with the JSON string
         if (result != null) {
-            displayNotification(nTitle, "Starting Data Processing");
+            //displayNotification(nTitle, "Starting Data Processing");
 
             //String json = result.toString();
             /*if (json.length() > 0) {*/
-            displayNotification(nTitle, "Data Size: " + result.length());
+            //displayNotification(nTitle, "Data Size: " + result.length());
 
 
             // JSONArray jsonArray = new JSONArray(json);
 
 
             //JSONObject jsonObjectCC = jsonArray.getJSONObject(0);
-            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 BYTES
-            if (result.toString().length() > 10240) {
-                data = new Data.Builder()
-                        .putString("data", String.valueOf(result).substring(0, (10240 - 1) / 8)).build();
-            } else {
+            ///BE CAREFULL DATA.BUILDER CAN HAVE ONLY 1024O BYTES. EACH CHAR HAS 8 bits
 
-                data = new Data.Builder()
-                        .putString("data", String.valueOf(result)).build();
-            }
+            MainApp.downloadData[this.position] = String.valueOf(result);
 
-            displayNotification(nTitle, "Uploaded successfully");
+            data = new Data.Builder()
+                    //     .putString("data", String.valueOf(result))
+                    .putInt("position", this.position)
+                    .build();
+
+
+            //displayNotification(nTitle, "Uploaded successfully");
             Log.d(TAG, "doWork: " + result);
+            Log.d(TAG, "doWork (success) : position " + data.getInt("position", -1));
             return Result.success(data);
 
         } else {
             data = new Data.Builder()
-                    .putString("error", String.valueOf(result)).build();
-            displayNotification(nTitle, "Error Received");
+                    .putString("error", String.valueOf(result))
+                    .putInt("position", this.position)
+                    .build();
+            //displayNotification(nTitle, "Error Received");
             return Result.failure(data);
         }
 
@@ -208,11 +241,11 @@ public class DataDownWorkerALL extends Worker {
      * If you are confused about it
      * you should check the Android Notification Tutorial
      * */
-    private void displayNotification(String title, String task) {
+    private void ddisplayNotification(String title, String task) {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("scrlog", "BLF", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("scrlog", nTitle, NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
 
