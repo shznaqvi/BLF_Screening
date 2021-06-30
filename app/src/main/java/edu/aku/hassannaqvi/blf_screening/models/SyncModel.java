@@ -1,10 +1,47 @@
 package edu.aku.hassannaqvi.blf_screening.models;
 
+
 public class SyncModel {
     String tableName;
     String status;
     int statusID;
     String message;
+    String filter = null;
+    String select = null;
+
+    public SyncModel(String tableName) {
+
+        this.tableName = tableName;
+        this.status = "";
+        this.statusID = 0;
+        this.message = "";
+
+
+    }
+
+    public SyncModel(String tableName, String select) {
+
+        this.tableName = tableName;
+        this.status = "";
+        this.statusID = 0;
+        this.message = "";
+        this.select = select;
+    }
+
+
+    public SyncModel(String tableName, String select, String filter) {
+
+        this.tableName = tableName;
+        this.status = "";
+        this.statusID = 0;
+        this.message = "";
+        if (select != null)
+            this.select = select;
+        if (filter != null)
+            this.filter = filter;
+
+    }
+
 
     public String gettableName() {
         return tableName;
@@ -36,5 +73,22 @@ public class SyncModel {
 
     public void setmessage(String message) {
         this.message = message;
+    }
+
+    public String getFilter() {
+
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
+    }
+
+    public String getSelect() {
+        return select;
+    }
+
+    public void setSelect(String select) {
+        this.select = select;
     }
 }
